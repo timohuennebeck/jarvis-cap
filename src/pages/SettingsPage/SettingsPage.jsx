@@ -1,7 +1,14 @@
 import "./SettingsPage.scss";
 
 function SettingsPage() {
-    return <div>SettingsPage</div>;
+    return (
+        <article>
+            <div>
+                
+            </div>
+        </article>
+
+    )
 }
 
 export default SettingsPage;
