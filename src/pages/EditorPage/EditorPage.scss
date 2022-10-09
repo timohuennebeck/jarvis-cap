@@ -1,0 +1,23 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.editor {
+    margin: $border-margin-default;
+
+    &__sec {
+        border: 1px solid black;
+        border-radius: $border-radius-default;
+        padding: $border-padding-default;
+        height: 25rem;
+        position: relative;
+        @include shadow;
+
+        &-btn {
+            position: absolute;
+            bottom: 0px;
+            display: flex;
+            margin: $margin-between-elements-default;
+            gap: $gap-default;
+        }
+    }
+}
