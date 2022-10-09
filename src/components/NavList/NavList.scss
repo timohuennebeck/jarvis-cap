@@ -1,0 +1,10 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.nav-list {
+    border: 1px solid black;
+    border-radius: $border-radius-default;
+    padding: $border-padding-default;
+    display: flex;
+    flex-direction: column;
+}

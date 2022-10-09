@@ -1,6 +1,6 @@
 import "./Button.scss";
 
-function Button({ name, backgroundColor, fontColor }) {
+function Button({ content, backgroundColor, fontColor }) {
     return (
         <button
             className="button"
@@ -9,7 +9,7 @@ function Button({ name, backgroundColor, fontColor }) {
                 color: `${fontColor}`,
             }}
         >
-            {name}
+            {content}
         </button>
     );
 }

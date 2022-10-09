@@ -1,0 +1,14 @@
+@use "../../styles/partials/variables" as *;
+
+.nav-button {
+    padding: $btn-input-padding-default;
+    border: 1px solid black;
+    border-radius: $border-radius-default;
+    background-color: $prim-color-1;
+    font-weight: 600;
+    font-size: .75rem;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
