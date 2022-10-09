@@ -1,0 +1,14 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.border-o {
+    padding: .75rem;
+    background-color: #FAF6F1;
+}
+
+.border-i {
+    border: 1px solid black;
+    border-radius: $border-radius-default;
+    padding: .75rem;
+    @include shadow;
+}

@@ -1,0 +1,54 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.lead {
+    border: 1px solid black;
+    border-radius: $border-radius-default;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    &-container {
+        &__select {
+            @include border;
+            @include flex;
+            flex-shrink: 0;
+            width: 1rem;
+            height: 1rem;
+
+            &-active {
+                background-color: black;
+                border-radius: 50%;
+                width: 0.5rem;
+                height: 0.5rem;
+            }
+        }
+
+        &__img {
+            @include border;
+            width: 2.25rem;
+            height: 2.25rem;
+
+            &-placeholder {
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+
+        &__more {
+            @include border;
+            @include flex;
+            width: 1rem;
+            height: 1rem;
+        }
+
+        &__business {
+            display: none;
+
+            @include tablet {
+                display: block;
+            }
+        }
+    }
+}
