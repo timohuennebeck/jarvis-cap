@@ -1,2 +1,7 @@
 @use "./styles/partials/fonts";
 @use "./styles/partials/reset";
+@use "./styles/partials/variables" as *;
+
+html {
+    background-color: $prim-color-1;
+}

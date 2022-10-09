@@ -7,8 +7,11 @@
     background-color: $prim-color-1;
     font-weight: 600;
     font-size: .75rem;
+    width: 100%;
+    text-align: left;
 
     &:hover {
         transform: scale(1.05);
+        cursor: pointer;
     }
 }

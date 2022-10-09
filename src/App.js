@@ -10,10 +10,12 @@ import SettingsPage from "./pages/SettingsPage/SettingsPage";
 
 // libraries
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
 
 function App() {
     return (
         <BrowserRouter>
+            <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/editor" element={<EditorPage />} />
