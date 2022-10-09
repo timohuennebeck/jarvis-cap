@@ -9,6 +9,6 @@
 .border-i {
     border: 1px solid black;
     border-radius: $border-radius-default;
-    padding: .75rem;
+    padding: $border-padding-default;
     @include shadow;
 }
