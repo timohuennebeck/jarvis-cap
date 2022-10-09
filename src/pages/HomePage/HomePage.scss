@@ -9,5 +9,17 @@
         border-radius: $border-radius-default;
         padding: $border-padding-default;
         @include shadow;
+
+        &-btn {
+            margin: $margin-between-elements-default;
+            display: flex;
+            gap: $gap-default;
+        }
+
+        &-leads {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
     }
 }

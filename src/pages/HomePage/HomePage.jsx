@@ -17,7 +17,9 @@ function HomePage() {
                         />
                         <Button content="DELETE" backgroundColor="#E43A07" />
                     </div>
-                    <LeadInformation />
+                    <div className="homepage__sec-leads">
+                        <LeadInformation />
+                    </div>
                 </div>
             </article>
         </>

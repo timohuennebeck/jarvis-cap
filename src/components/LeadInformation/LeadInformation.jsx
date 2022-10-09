@@ -4,9 +4,7 @@ import Melanie from "../../assets/images/Untitled design.jpg";
 function LeadInformation() {
     return (
         <div className="lead">
-            <div className="lead-container__select">
-                <div className="lead-container__select-active"></div>
-            </div>
+            <div className="lead-container__select"></div>
 
             <div className="lead-container__img">
                 <img
