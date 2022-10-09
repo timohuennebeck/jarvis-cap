@@ -15,11 +15,15 @@ $border-radius-default: 0.75rem;
 $border-padding-default: 0.75rem;
 $border-margin-default: 0.75rem;
 
+// margin
+$margin-between-elements-default: 0.75rem 0;
+
+// gap
+$gap-default: 1rem;
+
 // padding requirements
 $mobile-padding-before-headlines: 1.5rem;
 $mobile-padding-after-headlines: 1rem;
-$mobile-padding-components: 1rem;
 
 $tablet-and-desktop-padding-before-headlines: 2.25rem;
 $tablet-and-desktop-padding-after-headlines: 1.5rem;
-$tablet-and-desktop-padding-components: 1.5rem;
