@@ -20,9 +20,23 @@
     align-items: center;
 }
 
+@mixin flex-horizontal {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin flex-vertical {
+    display: flex;
+    align-items: center;
+}
+
 @mixin border {
     border: 1px solid black;
     border-radius: 50%;
+}
+
+@mixin border-no-radius {
+    border: 1px solid black;
 }
 
 @mixin shadow {
