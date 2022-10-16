@@ -11,10 +11,7 @@ function HomePage() {
                 <div className="home__sec">
                     <InputField content="Search Leads..." />
                     <div className="home__sec-btn">
-                        <Button
-                            content="IMPORT LEADS"
-                            backgroundColor="#1C3F32"
-                        />
+                        <Button content="IMPORT LEADS" backgroundColor="#1C3F32" />
                         <Button content="DELETE" backgroundColor="#E43A07" />
                     </div>
                     <div className="home__sec-leads">

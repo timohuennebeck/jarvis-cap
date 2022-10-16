@@ -1,16 +1,20 @@
 import "./Button.scss";
 
-function Button({ content, backgroundColor, fontColor }) {
+import { Link } from "react-router-dom";
+
+function Button({ link, content, backgroundColor, fontColor }) {
     return (
-        <button
-            className="button"
-            style={{
-                backgroundColor: `${backgroundColor}`,
-                color: `${fontColor}`,
-            }}
-        >
-            {content}
-        </button>
+        <Link to={link}>
+            <button
+                className="button"
+                style={{
+                    backgroundColor: `${backgroundColor}`,
+                    color: `${fontColor}`,
+                }}
+            >
+                {content}
+            </button>
+        </Link>
     );
 }
 

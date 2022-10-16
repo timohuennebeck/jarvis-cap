@@ -2,11 +2,10 @@
 @use "../../styles/partials/variables" as *;
 
 .lead {
-    border: 1px solid black;
+    @include border-no-radius;
+    @include flex-vertical;
     border-radius: $border-radius-default;
     padding: 0.5rem 0.75rem;
-    display: flex;
-    align-items: center;
     gap: 1.5rem;
 
     &-container {

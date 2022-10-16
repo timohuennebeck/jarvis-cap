@@ -1,0 +1,104 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.nav {
+    margin: $border-margin-default;
+
+    &__sec {
+        @include shadow;
+        @include border-no-radius;
+        @include flex-vertical;
+        border-radius: $border-radius-default;
+        padding: $border-padding-default;
+        gap: $gap-default;
+    }
+
+    &__menu {
+        &-toggle {
+            @include border-no-radius;
+            @include flex-horizontal;
+            border-radius: $border-radius-default;
+            padding: $btn-input-padding-default;
+            height: 2rem;
+            cursor: pointer;
+
+            &-img {
+                height: 100%;
+            }
+        }
+
+        &-links {
+            margin-top: $border-margin-default;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            &-indv {
+                @include border-no-radius;
+                @include flex-horizontal;
+                @include shadow;
+                padding: 0.5rem 0.75rem;
+                gap: 1.5rem;
+                flex-direction: column;
+                border-radius: $border-radius-default;
+                text-decoration: none;
+                color: black;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        &-bar {
+            @include border-no-radius;
+            @include flex-horizontal;
+            border-radius: $border-radius-default;
+            margin: $border-margin-default;
+            background-color: #faf6f1;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -100%;
+            transition: 750ms;
+
+            &-buttons {
+                display: flex;
+                gap: $gap-default;
+            }
+
+            &-items {
+                width: 100%;
+            }
+
+            &-text {
+                @include flex-vertical;
+                justify-content: flex-start;
+                padding: 8px 0px 8px 16px;
+                height: 60px;
+
+                &-link {
+                    @include shadow;
+                    @include border-no-radius;
+                    @include flex-vertical;
+                    text-decoration: none;
+                    color: #000000;
+                    width: 95%;
+                    height: 100%;
+                    padding: 0 16px;
+                    border-radius: $border-radius-default;
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.active {
+    left: 0;
+    transition: 525ms;
+    padding: $border-padding-default;
+}
