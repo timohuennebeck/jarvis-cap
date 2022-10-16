@@ -7,6 +7,8 @@ import EditorPage from "./pages/EditorPage/EditorPage";
 import TemplatesPage from "./pages/TemplatesPage/TemplatesPage";
 import ReviewPage from "./pages/ReviewPage/ReviewPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+
 
 // libraries
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -20,8 +22,11 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/editor" element={<EditorPage />} />
                 <Route path="/templates" element={<TemplatesPage />} />
-                <Route path="/review" element={<ReviewPage />} />
+                <Route path="/review" element={<ReviewPage />}>
+                    <Route path="/review/:reviewId" element={<ReviewPage />}/>
+                </Route>
                 <Route path="/settings" element={<SettingsPage />} />
+                <Route path="*" element={<NotFoundPage />}/>
             </Routes>
         </BrowserRouter>
     );
