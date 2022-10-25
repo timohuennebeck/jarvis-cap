@@ -12,12 +12,12 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 // libraries
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HeaderMobile from "./components/HeaderMobile/HeaderMobile";
+import Header from "./components/Header/Header";
 
 function App() {
     return (
         <BrowserRouter>
-            <HeaderMobile />
+            <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/leads" element={<LeadsPage />}>
