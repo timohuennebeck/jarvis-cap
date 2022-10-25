@@ -3,9 +3,7 @@
 
 .review-container {
     @include tablet {
-        border: 1px solid black;
-        border-radius: $border-radius-default;
-        padding: $border-padding-default;
+        @include border-padding;
     }
     &__links {
         display: flex;

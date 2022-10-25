@@ -7,21 +7,18 @@
     }
 
     &__sec {
-        border: 1px solid black;
-        border-radius: $border-radius-default;
-        padding: $border-padding-default;
+        @include border-padding;
         @include shadow;
 
         &-btn {
-            margin: $margin-between-components-default;
             display: flex;
             gap: $gap-default;
+            margin-bottom: $margin-default;
         }
 
         &-indv {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            @include flex-column;
+            gap: $gap-leads;
         }
     }
 }

@@ -10,22 +10,13 @@ $btn-color-2: #e43a07;
 $btn-color-3: #faf6f1;
 $btn-input-padding-default: 0.35rem 1rem;
 
-// border radius
+// defaults
 $padding-default: 0.75rem;
+$margin-default: 0.75rem;
+$gap-default: 0.75rem;
+$gap-leads: 0.5rem;
+
+// border radius
 $border-radius-default: 0.75rem;
 $border-padding-default: 0.75rem;
 $border-margin-default: 0.75rem;
-
-// margin
-$margin-default: 0.75rem;
-$margin-between-components-default: 0.75rem 0;
-
-// gap
-$gap-default: 1rem;
-
-// padding requirements
-$mobile-padding-before-headlines: 1.5rem;
-$mobile-padding-after-headlines: 1rem;
-
-$tablet-and-desktop-padding-before-headlines: 2.25rem;
-$tablet-and-desktop-padding-after-headlines: 1.5rem;

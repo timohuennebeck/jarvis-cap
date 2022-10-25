@@ -3,7 +3,6 @@ import "./Header.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import InputField from "../InputField/InputField";
 import Menu from "../../assets/images/menu-icon.png";
 import ButtonElement from "../ButtonElement/ButtonElement";
 
@@ -44,7 +43,7 @@ export default function Header() {
                         <div className="nav__menu-bar-items" onClick={showSideBar}>
                             <div className="nav__menu-bar-buttons">
                                 <ButtonElement content="CANCEL" backgroundColor="#E43A07" />
-                                <ButtonElement link="/" content="HOME" backgroundColor="#1C3F32" />
+                                <ButtonElement link="/" content="HOME" backgroundColor="#000000" />
                             </div>
                             <div className="nav__menu-links">
                                 <Link className="nav__menu-links-indv" to="/leads">

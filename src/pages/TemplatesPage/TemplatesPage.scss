@@ -12,8 +12,7 @@
     }
 
     &__sec {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         gap: 0.5rem;
     }
 }

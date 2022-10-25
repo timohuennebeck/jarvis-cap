@@ -8,24 +8,23 @@
 
     &__sec {
         @include shadow;
-        border: 1px solid black;
-        border-radius: $border-radius-default;
-        padding: $border-padding-default;
+        @include border-padding;
 
         @include tablet {
             display: flex;
-            gap: .75rem;
+            gap: $gap-default;
         }
 
         &-leads {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            @include flex-column;
+            gap: $gap-leads;
 
             @include tablet {
-                border: 1px solid black;
-                border-radius: $border-radius-default;
-                padding: $border-padding-default;
+                @include border-padding;
+            }
+
+            &-img {
+                width: 2.25rem;
             }
         }
 
