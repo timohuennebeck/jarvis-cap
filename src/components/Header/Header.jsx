@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import InputField from "../InputField/InputField";
 import Menu from "../../assets/images/menu-icon.png";
-import Button from "../Button/Button";
+import ButtonElement from "../ButtonElement/ButtonElement";
 
 export default function Header() {
     const [sidebar, setSidebar] = useState(false);
@@ -24,13 +24,27 @@ export default function Header() {
                             alt=""
                         />
                     </div>
-                    <InputField content="Search..." />
+
+                    <div className="nav__desktop">
+                        <ButtonElement
+                            content="HOME"
+                            link="/"
+                            backgroundColor="#FFFFFF"
+                            fontColor="#000000"
+                        />
+                        <ButtonElement
+                            content="CREATE A TEMPLATE"
+                            link="/templates"
+                            backgroundColor="#1c3f32"
+                            fontColor="#FFFFFF"
+                        />
+                    </div>
 
                     <div className={sidebar ? "nav__menu-bar active" : "nav__menu-bar"}>
                         <div className="nav__menu-bar-items" onClick={showSideBar}>
                             <div className="nav__menu-bar-buttons">
-                                <Button content="CANCEL" backgroundColor="#E43A07" />
-                                <Button link="/" content="HOME" backgroundColor="#1C3F32" />
+                                <ButtonElement content="CANCEL" backgroundColor="#E43A07" />
+                                <ButtonElement link="/" content="HOME" backgroundColor="#1C3F32" />
                             </div>
                             <div className="nav__menu-links">
                                 <Link className="nav__menu-links-indv" to="/leads">
