@@ -1,19 +1,19 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.templates {
+.template-preview {
     @include border-no-radius;
     @include shadow;
     border-radius: $border-radius-default;
     padding: 0.5rem 0.75rem;
 
-    @include tablet {
-        margin: 0 0 0.75rem 0.75rem;
+    &__header, &__content {
+        padding-bottom: $padding-default;
     }
 
-    &__sec {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+    &__button {
+        @include tablet {
+            display: flex;
+        }
     }
 }
