@@ -4,7 +4,7 @@ import LeadInformation from "../../components/LeadInformation/LeadInformation";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import InputField from "../../components/InputField/InputField";
 
-function LeadsPage() {
+export default function SBNavigation() {
     return (
         <>
             <article className="leads">
@@ -16,11 +16,16 @@ function LeadsPage() {
                     </div>
                     <div className="leads__sec-indv">
                         <LeadInformation />
+                        <LeadInformation />
+                        <LeadInformation />
+                        <LeadInformation />
+                        <LeadInformation />
+                        <LeadInformation />
+                        <LeadInformation />
+                        <LeadInformation />
                     </div>
                 </div>
             </article>
         </>
     );
 }
-
-export default LeadsPage;
