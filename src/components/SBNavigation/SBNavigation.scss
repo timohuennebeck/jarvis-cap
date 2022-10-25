@@ -4,10 +4,10 @@
 .nav-list {
     display: none;
     @include shadow;
-    
+
     @include tablet {
+        @include border-no-radius;
         display: block;
-        border: 1px solid black;
         border-radius: $border-radius-default;
 
         &__link {

@@ -9,9 +9,8 @@ export default function LeadsPage() {
         <>
             <article className="leads">
                 <div className="leads__sec">
-                    <InputField content="Search Leads..." />
                     <div className="leads__sec-btn">
-                        <ButtonElement content="IMPORT LEADS" backgroundColor="#1C3F32" />
+                        <ButtonElement content="IMPORT LEADS" backgroundColor="#000000" />
                         <ButtonElement content="DELETE" backgroundColor="#E43A07" />
                     </div>
                     <div className="leads__sec-indv">

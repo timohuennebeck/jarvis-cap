@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .nav {
-    margin: $margin-between-components-default;
+    margin: $margin-default 0;
 
     &__sec {
         @include shadow;
@@ -32,10 +32,9 @@
         }
 
         &-links {
+            @include flex-column;
             margin-top: $border-margin-default;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            gap: $gap-default;
 
             &-indv {
                 @include border-no-radius;
@@ -59,7 +58,7 @@
             @include flex-horizontal;
             border-radius: $border-radius-default;
             margin: $border-margin-default;
-            background-color: #FFFFFF;
+            background-color: #ffffff;
             width: 250px;
             position: fixed;
             top: 0;

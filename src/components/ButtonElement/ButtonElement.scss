@@ -1,8 +1,9 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .button {
+    @include border-no-radius;
     padding: $btn-input-padding-default;
-    border: 1px solid black;
     border-radius: $border-radius-default;
     color: white;
     font-size: 0.75rem;

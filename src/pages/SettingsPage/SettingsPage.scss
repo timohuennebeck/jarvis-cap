@@ -29,8 +29,7 @@
             }
 
             &-input {
-                display: flex;
-                flex-direction: column;
+                @include flex-column;
                 gap: $padding-default;
 
                 @include tablet {
