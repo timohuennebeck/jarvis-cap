@@ -14,10 +14,7 @@
 
         &-information,
         &-delete {
-            @include border-no-radius;
-            @include shadow;
-            border-radius: $border-radius-default;
-            padding: $padding-default;
+            @include border-padding-content;
             margin: 0.75rem 0;
         }
 
@@ -43,10 +40,6 @@
                     }
                 }
             }
-
-            &-button {
-                display: flex;
-            }
         }
 
         &-delete {
@@ -54,8 +47,12 @@
             &-content {
                 padding-bottom: $padding-default;
             }
+        }
 
-            &-button {
+        &-link {
+            margin-top: 1.25rem;
+
+            @include tablet {
                 display: flex;
             }
         }
