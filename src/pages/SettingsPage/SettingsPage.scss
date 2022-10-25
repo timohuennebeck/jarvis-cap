@@ -10,22 +10,36 @@
         @include border-no-radius;
         @include shadow;
         border-radius: $border-radius-default;
-        padding: 0 .75rem;
+        padding: 0 0.75rem;
 
-        &-information, &-delete {
+        &-information,
+        &-delete {
             @include border-no-radius;
             @include shadow;
             border-radius: $border-radius-default;
-            padding: $border-padding-default;
-            margin: .75rem 0;
+            padding: $padding-default;
+            margin: 0.75rem 0;
         }
 
         &-information {
-            
+            &-header,
+            &-content,
+            &-input {
+                padding-bottom: $padding-default;
+            }
+
+            &-input {
+                display: flex;
+                flex-direction: column;
+                gap: $padding-default;
+            }
         }
 
         &-delete {
-            
+            &-header,
+            &-content {
+                padding-bottom: $padding-default;
+            }
         }
     }
 }
