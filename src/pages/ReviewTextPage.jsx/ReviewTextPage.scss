@@ -1,0 +1,14 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.review-container {
+    @include tablet {
+        border: 1px solid black;
+        border-radius: $border-radius-default;
+        padding: $border-padding-default;
+    }
+    &__links {
+        display: flex;
+        gap: $gap-default;
+    }
+}
