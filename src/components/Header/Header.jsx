@@ -34,7 +34,7 @@ export default function Header() {
                         <ButtonElement
                             content="CREATE A TEMPLATE"
                             link="/templates"
-                            backgroundColor="#1c3f32"
+                            backgroundColor="#000000"
                             fontColor="#FFFFFF"
                         />
                     </div>

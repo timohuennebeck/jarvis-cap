@@ -2,11 +2,19 @@
 @use "../../styles/partials/variables" as *;
 
 .review-container {
-    @include tablet {
-        @include border-padding;
-    }
+    @include shadow;
+    @include border-padding-content;
+
     &__links {
+        @include border-padding;
+        @include shadow;
+        margin-top: 1.75rem;
         display: flex;
+        flex-direction: column;
         gap: $gap-default;
+
+        @include tablet {
+            flex-direction: row;
+        }
     }
 }
