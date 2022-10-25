@@ -10,7 +10,20 @@ html {
 .app {
     padding: 0 1rem;
 
-    &__structure {
-        display: flex;
+    @include tablet {
+        &__structure {
+            display: flex;
+
+            &-sidebar {
+                display: flex;
+                flex-direction: column;
+                flex-shrink: 0;
+                gap: 0.75rem;
+            }
+
+            &-routes {
+                flex-grow: 5;
+            }
+        }
     }
 }

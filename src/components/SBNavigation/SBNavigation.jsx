@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import "./SBNavigation.scss";
+
+// components
 import ButtonElement from "../ButtonElement/ButtonElement";
-import "./NavList.scss";
 
 function NavList() {
     return (
