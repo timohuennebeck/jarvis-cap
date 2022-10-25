@@ -2,22 +2,23 @@
 @use "../../styles/partials/variables" as *;
 
 .editor {
-    margin: $border-margin-default;
+    @include tablet {
+        margin: 0 0 0.75rem 0.75rem;
+    }
 
     &__sec {
         border: 1px solid black;
         border-radius: $border-radius-default;
-        padding: $border-padding-default;
-        height: 25rem;
-        position: relative;
+        padding: 0 1.5rem;
         @include shadow;
 
+        &-content {
+            margin: 1rem 0;
+        }
+
         &-btn {
-            position: absolute;
-            bottom: 0px;
             display: flex;
-            margin: $margin-between-components-default;
-            gap: $gap-default;
+            margin: 1rem 0;
         }
     }
 }
