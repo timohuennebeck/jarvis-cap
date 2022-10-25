@@ -1,4 +1,4 @@
-import Button from "../../components/Button/Button";
+import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import "./EditorPage.scss";
 
 function EditorPage() {
@@ -15,8 +15,8 @@ function EditorPage() {
                     <p>Timo Huennebeck</p>
                 </div>
                 <div className="editor__sec-btn">
-                    <Button content="VARIABLES" backgroundColor="#FAF6F1" fontColor="black" />
-                    <Button content="REVIEW" backgroundColor="#1C3F32" />
+                    <ButtonElement content="VARIABLES" backgroundColor="#FAF6F1" fontColor="black" />
+                    <ButtonElement content="REVIEW" backgroundColor="#1C3F32" />
                 </div>
             </div>
         </article>
