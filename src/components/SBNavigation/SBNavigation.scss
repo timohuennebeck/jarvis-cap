@@ -3,6 +3,8 @@
 
 .nav-list {
     display: none;
+    @include shadow;
+    
     @include tablet {
         display: block;
         border: 1px solid black;

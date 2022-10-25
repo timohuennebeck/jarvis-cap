@@ -6,17 +6,36 @@ function EditorPage() {
         <article className="editor">
             <div className="editor__sec">
                 <div className="editor__sec-content">
-                    <p>{`{{fullName}}`}</p>
-                    <p>{`{{address}}`}</p>
+                    <p>{`{{date}}`}</p>
+                    <br />
+                    <p>{`{{firstName}} {{lastName}}`}</p>
                     <p>{`{{businessName}}`}</p>
+                    <p>{`{{streetAddress}}`}</p>
+                    <p>{`{{postCode}}`}</p>
                     <br />
-                    <p>I'm looking forward to receiving a positive response.</p>
+                    <p>{`Dear {{firstName}},`}</p>
+                    <p>{`{{icebreaker}}`}</p>
                     <br />
-                    <p>Timo Huennebeck</p>
+                    <p>{`{{paragraphOne}}`}</p>
+                    <br />
+                    <p>{`{{paragraphOne}}`}</p>
+                    <br />
+                    <p>{`{{paragraphOne}}`}</p>
+                    <br />
+                    <p>{`{{paragraphOne}}`}</p>
+                    <br />
+                    <p>{`{{signOff}}`}</p>
+                    <br />
+                    <p>Best regards,</p>
+                    <p>{`{{firstName}} {{lastName}}`}</p>
                 </div>
                 <div className="editor__sec-btn">
-                    <ButtonElement content="VARIABLES" backgroundColor="#FAF6F1" fontColor="black" />
-                    <ButtonElement content="REVIEW" backgroundColor="#1C3F32" />
+                    <ButtonElement
+                        content="REVIEW"
+                        link=""
+                        fontColor="#FFFFFF"
+                        backgroundColor="#1C3F32"
+                    />
                 </div>
             </div>
         </article>

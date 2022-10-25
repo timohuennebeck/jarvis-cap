@@ -6,11 +6,7 @@ function LeadInformation() {
         <div className="lead">
             <div className="lead-container__select"></div>
 
-                <img
-                    className="lead-container__img"
-                    src={Melanie}
-                    alt=""
-                />
+            <img className="lead-container__img" src={Melanie} alt="lead-icon" />
 
             <div className="lead-container__information">
                 <p>Melanie Perkins</p>
