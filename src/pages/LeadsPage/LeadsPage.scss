@@ -2,7 +2,11 @@
 @use "../../styles/partials/variables" as *;
 
 .leads {
-    margin: $border-margin-default;
+    width: 100%;
+
+    @include tablet {
+        margin: 0 0 0.75rem 0.75rem;
+    }
 
     &__sec {
         border: 1px solid black;
@@ -11,7 +15,7 @@
         @include shadow;
 
         &-btn {
-            margin: $margin-between-elements-default;
+            margin: $margin-between-components-default;
             display: flex;
             gap: $gap-default;
         }

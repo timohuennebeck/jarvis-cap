@@ -1,14 +1,50 @@
-import NavButton from "../NavButton/NavButton";
+import { Link } from "react-router-dom";
+import ButtonElement from "../ButtonElement/ButtonElement";
 import "./NavList.scss";
 
 function NavList() {
     return (
         <div className="nav-list">
-            <NavButton content="LEADS" link="/" />
-            <NavButton content="EDITOR" link="/editor" />
-            <NavButton content="TEMPLATES" link="/templates" />
-            <NavButton content="REVIEW" link="/review" />
-            <NavButton content="SETTINGS" link="/settings" />
+            <div className="nav-list__link">
+                <ButtonElement
+                    content="LEADS"
+                    link="/leads"
+                    backgroundColor="#FFFFFF"
+                    fontColor="#000000"
+                />
+            </div>
+            <div className="nav-list__link">
+                <ButtonElement
+                    content="EDITOR"
+                    link="/editor"
+                    backgroundColor="#FFFFFF"
+                    fontColor="#000000"
+                />
+            </div>
+            <div className="nav-list__link">
+                <ButtonElement
+                    content="TEMPLATES"
+                    link="/templates"
+                    backgroundColor="#FFFFFF"
+                    fontColor="#000000"
+                />
+            </div>
+            <div className="nav-list__link">
+                <ButtonElement
+                    content="REVIEW"
+                    link="/review"
+                    backgroundColor="#FFFFFF"
+                    fontColor="#000000"
+                />
+            </div>
+            <div className="nav-list__link">
+                <ButtonElement
+                    content="SETTINGS"
+                    link="/settings"
+                    backgroundColor="#FFFFFF"
+                    fontColor="#000000"
+                />
+            </div>
         </div>
     );
 }

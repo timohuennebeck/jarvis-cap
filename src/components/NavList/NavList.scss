@@ -2,9 +2,19 @@
 @use "../../styles/partials/mixins" as *;
 
 .nav-list {
-    border: 1px solid black;
-    border-radius: $border-radius-default;
-    padding: $border-padding-default;
-    display: flex;
-    flex-direction: column;
+    display: none;
+    @include tablet {
+        display: block;
+        border: 1px solid black;
+        border-radius: $border-radius-default;
+
+        &__link {
+            margin: $margin-default;
+
+            &:hover {
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+        }
+    }
 }

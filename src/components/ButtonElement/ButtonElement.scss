@@ -5,9 +5,9 @@
     border: 1px solid black;
     border-radius: $border-radius-default;
     color: white;
-    font-weight: 600;
     font-size: 0.75rem;
     text-decoration: none;
+    width: 100%;
 
     &:hover {
         transform: scale(1.05);
