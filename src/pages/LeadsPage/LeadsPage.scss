@@ -1,0 +1,25 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.leads {
+    margin: $border-margin-default;
+
+    &__sec {
+        border: 1px solid black;
+        border-radius: $border-radius-default;
+        padding: $border-padding-default;
+        @include shadow;
+
+        &-btn {
+            margin: $margin-between-elements-default;
+            display: flex;
+            gap: $gap-default;
+        }
+
+        &-indv {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+}
