@@ -29,12 +29,18 @@ function EditorPage() {
                     <p>Best regards,</p>
                     <p>{`{{firstName}} {{lastName}}`}</p>
                 </div>
-                <div className="editor__sec-btn">
+                <div className="editor__sec-link">
+                    <ButtonElement
+                        content="SAVE"
+                        link=""
+                        fontColor="#FFFFFF"
+                        backgroundColor="#000000"
+                    />
                     <ButtonElement
                         content="REVIEW"
                         link=""
-                        fontColor="#FFFFFF"
-                        backgroundColor="#1C3F32"
+                        fontColor="#000000"
+                        backgroundColor="#FFFFFF"
                     />
                 </div>
             </div>
