@@ -16,10 +16,16 @@ function SettingsPage() {
                         Lorem ipsum dolor sit amet...
                     </p>
                     <div className="settings__sec-information-input">
-                        <InputField content="Full Name" />
-                        <InputField content="Last Name" />
+                        <div className="settings__sec-information-input-indv">
+                            <InputField content="Full Name" />
+                        </div>
+                        <div className="settings__sec-information-input-indv">
+                            <InputField content="Last Name" />
+                        </div>
                     </div>
-                    <ButtonElement content="SAVE SETTINGS" backgroundColor="#000000" />
+                    <div className="settings__sec-information-button">
+                        <ButtonElement content="SAVE SETTINGS" backgroundColor="#000000" />
+                    </div>
                 </div>
                 <div className="settings__sec-delete">
                     <h5 className="settings__sec-delete-header">DELETE MY ACCOUNT</h5>
@@ -29,7 +35,9 @@ function SettingsPage() {
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
                         Lorem ipsum dolor sit amet...
                     </p>
-                    <ButtonElement content="DELETE ACCOUNT" backgroundColor="#E43A07" />
+                    <div className="settings__sec-delete-button">
+                        <ButtonElement content="DELETE ACCOUNT" backgroundColor="#E43A07" />
+                    </div>
                 </div>
             </div>
         </article>
