@@ -2,7 +2,7 @@ import "./ButtonElement.scss";
 
 import { Link } from "react-router-dom";
 
-function Button({ link, content, backgroundColor, fontColor }) {
+export default function ButtonElement({ link, content, backgroundColor, fontColor }) {
     return (
         <Link to={link}>
             <button
@@ -17,5 +17,3 @@ function Button({ link, content, backgroundColor, fontColor }) {
         </Link>
     );
 }
-
-export default Button;

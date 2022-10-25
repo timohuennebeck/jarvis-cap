@@ -4,7 +4,7 @@ import LeadInformation from "../../components/LeadInformation/LeadInformation";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import InputField from "../../components/InputField/InputField";
 
-export default function SBNavigation() {
+export default function LeadsPage() {
     return (
         <>
             <article className="leads">
