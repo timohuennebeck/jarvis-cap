@@ -1,7 +1,7 @@
 import "./LeadInformation.scss";
 import Melanie from "../../assets/images/Untitled design.jpg";
 
-function LeadInformation() {
+export default function LeadInformation() {
     return (
         <div className="lead">
             <div className="lead-container__select"></div>
@@ -23,5 +23,3 @@ function LeadInformation() {
         </div>
     );
 }
-
-export default LeadInformation;

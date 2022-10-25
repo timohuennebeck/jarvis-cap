@@ -1,0 +1,40 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.review {
+    @include tablet {
+        margin: 0 0 0.75rem 0.75rem;
+    }
+
+    &__sec {
+        @include shadow;
+        border: 1px solid black;
+        border-radius: $border-radius-default;
+        padding: $border-padding-default;
+
+        @include tablet {
+            display: flex;
+            gap: .75rem;
+        }
+
+        &-leads {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            @include tablet {
+                border: 1px solid black;
+                border-radius: $border-radius-default;
+                padding: $border-padding-default;
+            }
+        }
+
+        &-content {
+            display: none;
+
+            @include tablet {
+                display: flex;
+            }
+        }
+    }
+}
