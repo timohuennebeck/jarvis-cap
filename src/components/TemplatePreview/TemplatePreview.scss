@@ -2,16 +2,17 @@
 @use "../../styles/partials/variables" as *;
 
 .template-preview {
-    @include border-no-radius;
+    @include border-padding-content;
     @include shadow;
-    border-radius: $border-radius-default;
-    padding: 0.5rem 0.75rem;
 
-    &__header, &__content {
+    &__header,
+    &__content {
         padding-bottom: $padding-default;
     }
 
     &__button {
+        margin-top: 1.25rem;
+
         @include tablet {
             display: flex;
         }

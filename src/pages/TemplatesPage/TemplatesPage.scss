@@ -2,10 +2,8 @@
 @use "../../styles/partials/variables" as *;
 
 .templates {
-    @include border-no-radius;
     @include shadow;
-    border-radius: $border-radius-default;
-    padding: 0.5rem 0.75rem;
+    @include border-padding;
 
     @include tablet {
         margin: 0 0 0.75rem 0.75rem;
@@ -13,6 +11,6 @@
 
     &__sec {
         @include flex-column;
-        gap: 0.5rem;
+        gap: $gap-default;
     }
 }
