@@ -1,7 +1,16 @@
 @use "./styles/partials/fonts";
 @use "./styles/partials/reset";
 @use "./styles/partials/variables" as *;
+@use "./styles/partials/mixins" as *;
 
 html {
     background-color: $prim-color-1;
+}
+
+.app {
+    padding: 0 1rem;
+
+    &__structure {
+        display: flex;
+    }
 }
