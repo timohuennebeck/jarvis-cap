@@ -1,4 +1,4 @@
-import "./HeaderMobile.scss";
+import "./Header.scss";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import InputField from "../InputField/InputField";
 import Menu from "../../assets/images/menu-icon.png";
 import Button from "../Button/Button";
 
-function HeaderMobile() {
+export default function Header() {
     const [sidebar, setSidebar] = useState(false);
 
     const showSideBar = () => setSidebar(!sidebar);
@@ -56,5 +56,3 @@ function HeaderMobile() {
         </>
     );
 }
-
-export default HeaderMobile;
