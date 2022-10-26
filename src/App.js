@@ -4,7 +4,6 @@ import "./App.scss";
 // pages
 import HomePage from "./pages/HomePage/HomePage";
 import LeadsPage from "./pages/LeadsPage/LeadsPage";
-import EditorPage from "./pages/EditorPage/EditorPage";
 import TemplatesPage from "./pages/TemplatesPage/TemplatesPage";
 import ReviewPage from "./pages/ReviewPage/ReviewPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
@@ -32,7 +31,6 @@ function App() {
                             <Route path="/leads" element={<LeadsPage />}>
                                 <Route path="/leads/:id" />
                             </Route>
-                            <Route path="/editor" element={<EditorPage />} />
                             <Route path="/templates" element={<TemplatesPage />}>
                                 <Route path="/templates/:id" />
                             </Route>
