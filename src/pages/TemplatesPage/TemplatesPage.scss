@@ -12,5 +12,21 @@
     &__sec {
         @include flex-column;
         gap: $gap-default;
+
+        &-url {
+            @include border-padding-content;
+            @include flex-column;
+            gap: $gap-default;
+
+            &-links {
+                @include flex-column;
+                gap: $gap-default;
+                margin-top: 1rem;
+
+                @include tablet {
+                    flex-direction: row;
+                }
+            }
+        }
     }
 }
