@@ -17,10 +17,10 @@ function SettingsPage() {
                     </p>
                     <div className="settings__sec-information-input">
                         <div className="settings__sec-information-input-indv">
-                            <InputField content="Full Name" />
+                            <InputField placeholder="Full Name" />
                         </div>
                         <div className="settings__sec-information-input-indv">
-                            <InputField content="Last Name" />
+                            <InputField placeholder="Last Name" />
                         </div>
                     </div>
                     <div className="settings__sec-link">

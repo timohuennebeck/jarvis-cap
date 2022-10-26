@@ -1,6 +1,6 @@
 import "./InputField.scss";
 
-export default function InputField({ content }) {
-    return <input className="input" placeholder={content} />;
+export default function InputField({ placeholder }) {
+    return <input className="input" placeholder={placeholder} />;
 }
 
