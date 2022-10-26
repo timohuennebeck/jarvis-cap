@@ -15,6 +15,15 @@
 
         @include tablet {
             display: flex;
+            gap: $gap-default;
+        }
+
+        &-open-file {
+            display: none;
+
+            @include tablet {
+                display: block;
+            }
         }
     }
 }

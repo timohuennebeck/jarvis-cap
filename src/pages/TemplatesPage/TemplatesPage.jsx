@@ -18,11 +18,13 @@ function TemplatesPage() {
                     <InputField placeholder="Insert URL" />
                     <div className="templates__sec-url-links">
                         <ButtonElement content="SAVE" backgroundColor="#000" />
-                        <ButtonElement
-                            content="OPEN FILE"
-                            backgroundColor="#FFF"
-                            fontColor="#000"
-                        />
+                        <div className="templates__sec-url-links-open-file">
+                            <ButtonElement
+                                content="OPEN FILE"
+                                backgroundColor="#FFF"
+                                fontColor="#000"
+                            />
+                        </div>
                     </div>
                 </div>
                 <TemplatePreview />
