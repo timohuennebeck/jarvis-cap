@@ -12,7 +12,10 @@ export default function TemplatePreview() {
                 exercitation ullamco...
             </p>
             <div className="template-preview__button">
-                <ButtonElement content="USE TEMPLATE" backgroundColor="#000000" />
+                <ButtonElement content="USE TEMPLATE" backgroundColor="#000" />
+                <div className="template-preview__button-open-file">
+                    <ButtonElement content="OPEN FILE" backgroundColor="#FFF" fontColor="#000" />
+                </div>
             </div>
         </div>
     );
