@@ -7,17 +7,31 @@
     height: 100vh;
     justify-content: space-between;
 
+    @include tablet {
+        padding: 2.25rem;
+        height: 262px;
+        width: 672px;
+    }
+
     &__content {
         @include flex-column;
         gap: 2.25rem;
 
         &-header {
             padding-top: 2.25rem;
+
+            @include tablet {
+                padding-top: 0;
+            }
         }
     }
 
     &__links {
         @include flex-column;
         gap: $gap-default;
+
+        @include tablet {
+            flex-direction: row;
+        }
     }
 }
