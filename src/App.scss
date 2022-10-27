@@ -3,14 +3,13 @@
 @use "./styles/partials/variables" as *;
 @use "./styles/partials/mixins" as *;
 
-html {
-    background-color: $prim-color-1;
-}
-
 .app {
-    padding: 0 1rem;
+    padding: 1.25rem;
+    height: 100vh;
 
     &__structure {
+        // height: calc(100% - 4.25rem);
+
         @include tablet {
             display: flex;
         }
@@ -27,9 +26,10 @@ html {
         &-routes {
             @include border-padding;
             @include shadow;
+            // height: 100%;
 
             @include tablet {
-                margin: 0 0 0.75rem 0.75rem;
+                margin-left: 0.75rem;
                 flex-grow: 5;
             }
         }
