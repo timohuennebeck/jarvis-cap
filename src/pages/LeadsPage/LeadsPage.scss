@@ -2,23 +2,14 @@
 @use "../../styles/partials/variables" as *;
 
 .leads {
-    @include tablet {
-        margin: 0 0 0.75rem 0.75rem;
+    &__links {
+        display: flex;
+        gap: $gap-default;
+        margin-bottom: $margin-default;
     }
 
-    &__sec {
-        @include border-padding;
-        @include shadow;
-
-        &-btn {
-            display: flex;
-            gap: $gap-default;
-            margin-bottom: $margin-default;
-        }
-
-        &-indv {
-            @include flex-column;
-            gap: $gap-leads;
-        }
+    &__indv {
+        @include flex-column;
+        gap: $gap-leads;
     }
 }

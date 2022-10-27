@@ -3,37 +3,28 @@
 
 .review {
     @include tablet {
-        margin: 0 0 0.75rem 0.75rem;
+        display: flex;
+        gap: $gap-default;
     }
 
-    &__sec {
-        @include shadow;
-        @include border-padding;
+    &__leads {
+        @include flex-column;
+        gap: $gap-leads;
+
+        @include tablet {
+            @include border-padding;
+        }
+
+        &-img {
+            width: 2.25rem;
+        }
+    }
+
+    &__content {
+        display: none;
 
         @include tablet {
             display: flex;
-            gap: $gap-default;
-        }
-
-        &-leads {
-            @include flex-column;
-            gap: $gap-leads;
-
-            @include tablet {
-                @include border-padding;
-            }
-
-            &-img {
-                width: 2.25rem;
-            }
-        }
-
-        &-content {
-            display: none;
-
-            @include tablet {
-                display: flex;
-            }
         }
     }
 }

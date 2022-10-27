@@ -2,59 +2,50 @@
 @use "../../styles/partials/variables" as *;
 
 .settings {
-    @include tablet {
-        margin: 0 0 0.75rem 0.75rem;
+    @include flex-column;
+    gap: $gap-default;
+
+    &__information,
+    &__delete {
+        @include border-padding-content;
     }
 
-    &__sec {
-        @include border-no-radius;
-        @include shadow;
-        border-radius: $border-radius-default;
-        padding: 0 0.75rem;
-
-        &-information,
-        &-delete {
-            @include border-padding-content;
-            margin: 0.75rem 0;
+    &__information {
+        &-header,
+        &-content,
+        &-input {
+            padding-bottom: $padding-default;
         }
 
-        &-information {
-            &-header,
-            &-content,
-            &-input {
-                padding-bottom: $padding-default;
-            }
-
-            &-input {
-                @include flex-column;
-                gap: $padding-default;
-
-                @include tablet {
-                    width: 80%;
-                    flex-direction: row;
-                }
-
-                &-indv {
-                    @include tablet {
-                        flex-grow: 1;
-                    }
-                }
-            }
-        }
-
-        &-delete {
-            &-header,
-            &-content {
-                padding-bottom: $padding-default;
-            }
-        }
-
-        &-link {
-            margin-top: 1.25rem;
+        &-input {
+            @include flex-column;
+            gap: $padding-default;
 
             @include tablet {
-                display: flex;
+                width: 80%;
+                flex-direction: row;
             }
+
+            &-indv {
+                @include tablet {
+                    flex-grow: 1;
+                }
+            }
+        }
+    }
+
+    &__delete {
+        &-header,
+        &-content {
+            padding-bottom: $padding-default;
+        }
+    }
+
+    &__link {
+        margin-top: 1.25rem;
+
+        @include tablet {
+            display: flex;
         }
     }
 }
