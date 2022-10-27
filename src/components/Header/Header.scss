@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .nav {
-    margin: $margin-default 0;
+    margin-bottom: $margin-default;
 
     &__sec {
         @include shadow;
