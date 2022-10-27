@@ -1,0 +1,23 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.delete {
+    @include flex-column;
+    padding: 1rem;
+    height: 100vh;
+    justify-content: space-between;
+
+    &__content {
+        @include flex-column;
+        gap: 2.25rem;
+
+        &-header {
+            padding-top: 2.25rem;
+        }
+    }
+
+    &__links {
+        @include flex-column;
+        gap: $gap-default;
+    }
+}
