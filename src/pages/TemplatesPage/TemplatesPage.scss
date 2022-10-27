@@ -2,36 +2,27 @@
 @use "../../styles/partials/variables" as *;
 
 .templates {
-    @include shadow;
-    @include border-padding;
+    @include flex-column;
+    gap: $gap-default;
 
-    @include tablet {
-        margin: 0 0 0.75rem 0.75rem;
-    }
-
-    &__sec {
+    &__url {
+        @include border-padding-content;
         @include flex-column;
         gap: $gap-default;
 
-        &-url {
-            @include border-padding-content;
-            @include flex-column;
-            gap: $gap-default;
+        &-links {
+            margin-top: 1.25rem;
 
-            &-links {
-                margin-top: 1.25rem;
+            @include tablet {
+                display: flex;
+                gap: $gap-default;
+            }
+
+            &-open-file {
+                display: none;
 
                 @include tablet {
-                    display: flex;
-                    gap: $gap-default;
-                }
-
-                &-open-file {
-                    display: none;
-
-                    @include tablet {
-                        display: block;
-                    }
+                    display: block;
                 }
             }
         }

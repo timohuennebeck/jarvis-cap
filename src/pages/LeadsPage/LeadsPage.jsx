@@ -23,25 +23,19 @@ export default function LeadsPage() {
     return (
         <>
             <article className="leads">
-                <div className="leads__sec">
-                    <div className="leads__sec-btn">
-                        <ButtonElement content="IMPORT LEADS" backgroundColor="#000000" />
-                        <ButtonElement
-                            content="DELETE"
-                            backgroundColor="#E43A07"
-                            onClick={openModal}
-                        />
-                    </div>
-                    <div className="leads__sec-indv">
-                        <LeadInformation />
-                        <LeadInformation />
-                        <LeadInformation />
-                        <LeadInformation />
-                        <LeadInformation />
-                        <LeadInformation />
-                        <LeadInformation />
-                        <LeadInformation />
-                    </div>
+                <div className="leads__links">
+                    <ButtonElement content="IMPORT LEADS" backgroundColor="#000000" />
+                    <ButtonElement content="DELETE" backgroundColor="#E43A07" onClick={openModal} />
+                </div>
+                <div className="leads__indv">
+                    <LeadInformation />
+                    <LeadInformation />
+                    <LeadInformation />
+                    <LeadInformation />
+                    <LeadInformation />
+                    <LeadInformation />
+                    <LeadInformation />
+                    <LeadInformation />
                 </div>
                 <ReactModal isOpen={modelIsOpen} onRequestClose={closeModal}>
                     <DeleteNotification closeModal={closeModal} />

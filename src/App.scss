@@ -22,6 +22,9 @@ html {
             }
 
             &-routes {
+                @include border-padding;
+                @include shadow;
+                margin: 0 0 0.75rem 0.75rem;
                 flex-grow: 5;
             }
         }
