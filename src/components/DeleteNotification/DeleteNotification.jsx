@@ -1,8 +1,21 @@
 import "./DeleteNotification.scss";
 
+// components
 import ButtonElement from "../ButtonElement/ButtonElement";
 
-export default function DeleteNotification() {
+// libraries
+import { Navigate, useNavigate } from "react-router-dom";
+
+export default function DeleteNotification({ closeModal }) {
+    const navigate = useNavigate();
+
+    const handleDelete = (event) => {
+        event.preventDefault();
+        // do axios delete call here...
+        navigate("/leads");
+        closeModal();
+    };
+
     return (
         <div className="delete">
             <div className="delete__content">
@@ -13,8 +26,13 @@ export default function DeleteNotification() {
                 </p>
             </div>
             <div className="delete__links">
-                <ButtonElement content="DELETE" backgroundColor="#E43A07" />
-                <ButtonElement content="CANCEL" backgroundColor="#FFF" fontColor="#000" />
+                <ButtonElement content="DELETE" backgroundColor="#E43A07" onClick={handleDelete} />
+                <ButtonElement
+                    content="CANCEL"
+                    backgroundColor="#FFF"
+                    fontColor="#000"
+                    onClick={closeModal}
+                />
             </div>
         </div>
     );
