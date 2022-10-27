@@ -9,17 +9,21 @@ import ReviewPage from "./pages/ReviewPage/ReviewPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
-// libraries
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// components
 import Header from "./components/Header/Header";
 import SBNavigation from "./components/SBNavigation/SBNavigation";
 import SBTemplates from "./components/SBTemplates/SBTemplates";
+import DeleteNotification from "./components/DeleteNotification/DeleteNotification";
+
+// libraries
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
     return (
         <div className="app">
             <BrowserRouter>
-                <Header />
+            <DeleteNotification />
+                {/* <Header />
                 <div className="app__structure">
                     <div className="app__structure-sidebar">
                         <SBNavigation />
@@ -41,7 +45,7 @@ function App() {
                             <Route path="*" element={<NotFoundPage />} />
                         </Routes>
                     </div>
-                </div>
+                </div> */}
             </BrowserRouter>
         </div>
     );
