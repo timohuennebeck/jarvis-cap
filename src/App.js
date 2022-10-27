@@ -13,7 +13,6 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Header from "./components/Header/Header";
 import SBNavigation from "./components/SBNavigation/SBNavigation";
 import SBTemplates from "./components/SBTemplates/SBTemplates";
-import DeleteNotification from "./components/DeleteNotification/DeleteNotification";
 
 // libraries
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -22,8 +21,7 @@ function App() {
     return (
         <div className="app">
             <BrowserRouter>
-            <DeleteNotification />
-                {/* <Header />
+                <Header />
                 <div className="app__structure">
                     <div className="app__structure-sidebar">
                         <SBNavigation />
@@ -45,7 +43,7 @@ function App() {
                             <Route path="*" element={<NotFoundPage />} />
                         </Routes>
                     </div>
-                </div> */}
+                </div>
             </BrowserRouter>
         </div>
     );
