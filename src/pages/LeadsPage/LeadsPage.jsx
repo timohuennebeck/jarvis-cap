@@ -5,11 +5,17 @@ import LeadInformation from "../../components/LeadInformation/LeadInformation";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import DeleteNotification from "../../components/DeleteNotification/DeleteNotification";
 
+// axios call
+import { getLeads } from "../../utils/api";
+
 // libraries
 import ReactModal from "react-modal";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function LeadsPage() {
+    const [leads, setLeads] = useState([]);
+
     const [modelIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
@@ -20,6 +26,12 @@ export default function LeadsPage() {
         setIsOpen(false);
     }
 
+    useEffect(() => {
+        getLeads().then((resp) => {
+            setLeads(resp.data);
+        });
+    }, []);
+
     return (
         <>
             <article className="leads">
@@ -28,14 +40,9 @@ export default function LeadsPage() {
                     <ButtonElement content="DELETE" backgroundColor="#E43A07" onClick={openModal} />
                 </div>
                 <div className="leads__indv">
-                    <LeadInformation />
-                    <LeadInformation />
-                    <LeadInformation />
-                    <LeadInformation />
-                    <LeadInformation />
-                    <LeadInformation />
-                    <LeadInformation />
-                    <LeadInformation />
+                    {leads.map((lead) => {
+                        return <LeadInformation lead={lead} />;
+                    })}
                 </div>
                 <ReactModal isOpen={modelIsOpen} onRequestClose={closeModal}>
                     <DeleteNotification closeModal={closeModal} />
