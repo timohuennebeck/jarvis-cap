@@ -2,7 +2,7 @@ import "./ButtonElement.scss";
 
 import { Link } from "react-router-dom";
 
-export default function ButtonElement({ link, content, backgroundColor, fontColor, onClick }) {
+export default function ButtonElement({ onClick, link, content, backgroundColor, fontColor }) {
     return (
         <Link to={link}>
             <button

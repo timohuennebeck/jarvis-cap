@@ -38,8 +38,8 @@ export const addNewLead = () => {
     return axios.post(`${base_url}/leads`);
 };
 
-export const updateLead = ({ id }) => {
-    return axios.put(`${base_url}/leads`);
+export const updateLead = ({ id, userInput }) => {
+    return axios.put(`${base_url}/leads/${id}`, userInput);
 };
 
 export const deleteLead = ({ id }) => {
