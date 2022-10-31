@@ -8,6 +8,12 @@
     padding: 0.5rem 0.75rem;
     gap: $gap-default;
 
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.0075);
+        @include shadow;
+    }
+
     @include tablet {
         gap: 2.75rem;
     }
