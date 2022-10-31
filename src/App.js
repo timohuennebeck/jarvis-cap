@@ -22,8 +22,7 @@ function App() {
     return (
         <div className="app">
             <BrowserRouter>
-            <EditLeadInformation />
-                {/* <Header />
+                <Header />
                 <div className="app__structure">
                     <div className="app__structure-sidebar">
                         <SBNavigation />
@@ -33,7 +32,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="/leads" element={<LeadsPage />} />
-                            <Route path="/leads/:id" />
+                            <Route path="/leads/:id" element={<EditLeadInformation />} />
                             <Route path="/templates" element={<TemplatesPage />} />
                             <Route path="/templates/:id" />
                             <Route path="/review" element={<ReviewPage />} />
@@ -42,7 +41,7 @@ function App() {
                             <Route path="*" element={<NotFoundPage />} />
                         </Routes>
                     </div>
-                </div> */}
+                </div>
             </BrowserRouter>
         </div>
     );
