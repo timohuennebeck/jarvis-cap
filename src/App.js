@@ -16,6 +16,7 @@ import SBTemplates from "./components/SBTemplates/SBTemplates";
 
 // libraries
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EditLeadInformation from "./components/EditLeadInformation/EditLeadInformation";
 
 function App() {
     return (
