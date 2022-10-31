@@ -1,9 +1,21 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import InputField from "../../components/InputField/InputField";
+
+import { getUsers } from "../../utils/api";
 
 import "./SettingsPage.scss";
 
 function SettingsPage() {
+    const [user, setUser] = useState([]);
+
+    useEffect(() => {
+        getUsers().then((resp) => {
+            setUser(resp.data[0]);
+        });
+    });
+
     return (
         <article className="settings">
             <div className="settings__information">
@@ -16,10 +28,18 @@ function SettingsPage() {
                 </p>
                 <div className="settings__information-input">
                     <div className="settings__information-input-indv">
-                        <InputField placeholder="Full Name" />
+                        <InputField
+                            label="First Name"
+                            placeholder="First Name"
+                            value={user.first_name}
+                        />
                     </div>
                     <div className="settings__information-input-indv">
-                        <InputField placeholder="Last Name" />
+                        <InputField
+                            label="Last Name"
+                            placeholder="Last Name"
+                            value={user.last_name}
+                        />
                     </div>
                 </div>
                 <div className="settings__link">
