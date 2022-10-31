@@ -1,0 +1,26 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.edit-leads {
+    &__links {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: $margin-default;
+
+        &-spacing {
+            display: flex;
+            gap: $gap-default;
+        }
+    }
+
+    &__input {
+        @include flex-column;
+        gap: 4.25rem;
+
+        &-personal,
+        &-business {
+            @include flex-column;
+            gap: $gap-leads;
+        }
+    }
+}

@@ -14,24 +14,24 @@ export default function EditLeadInformation() {
                     </div>
                 </div>
                 <div className="edit-leads__input">
-                    <div className="edit_leads__input-personal">
-                        <InputField placeholder="First Name" />
-                        <InputField placeholder="Last Name" />
-                        <InputField placeholder="Position" />
-                        <InputField placeholder="Email" />
-                        <InputField placeholder="Phone" />
-                        <InputField placeholder="Image URL" />
-                        <InputField placeholder="LinkedIn" />
+                    <div className="edit-leads__input-personal">
+                        <InputField label="First Name" placeholder="First Name" />
+                        <InputField label="Last Name" placeholder="Last Name" />
+                        <InputField label="Position" placeholder="Position" />
+                        <InputField label="Email" placeholder="Email" />
+                        <InputField label="Phone" placeholder="Phone" />
+                        <InputField label="Image URL" placeholder="Image URL" />
+                        <InputField label="LinkedIn" placeholder="LinkedIn" />
                     </div>
-                    <div className="edit_leads__input-business">
-                        <InputField placeholder="Business Name" />
-                        <InputField placeholder="Street" />
-                        <InputField placeholder="Postcode" />
-                        <InputField placeholder="Icebreaker" />
-                        <InputField placeholder="Paragraph 1" />
-                        <InputField placeholder="Paragraph 2" />
-                        <InputField placeholder="Paragraph 3" />
-                        <InputField placeholder="Call To Action" />
+                    <div className="edit-leads__input-business">
+                        <InputField label="Business Name" placeholder="Business Name" />
+                        <InputField label="Street" placeholder="Street" />
+                        <InputField label="Postcode" placeholder="Postcode" />
+                        <InputField label="Icebreaker" placeholder="Icebreaker" />
+                        <InputField label="Paragraph 1" placeholder="Paragraph 1" />
+                        <InputField label="Paragraph 2" placeholder="Paragraph 2" />
+                        <InputField label="Paragraph 3" placeholder="Paragraph 3" />
+                        <InputField label="Call To Action" placeholder="Call To Action" />
                     </div>
                 </div>
             </article>
