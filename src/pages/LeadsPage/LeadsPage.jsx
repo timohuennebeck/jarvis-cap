@@ -8,6 +8,7 @@ import DeleteNotification from "../../components/DeleteNotification/DeleteNotifi
 // libraries
 import ReactModal from "react-modal";
 import { useState } from "react";
+import EditLeadInformation from "../../components/EditLeadInformation/EditLeadInformation";
 
 export default function LeadsPage() {
     const [modelIsOpen, setIsOpen] = useState(false);
