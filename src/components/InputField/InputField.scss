@@ -1,10 +1,18 @@
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .input {
-    background-color: $prim-color-1;
-    padding: $btn-input-padding-default;
-    border: 1px solid black;
-    border-radius: $border-radius-default;
+    @include flex-column;
+    @include shadow;
+    @include border-padding;
     width: 100%;
+
+    &__label {
+        font-weight: 600;
+    }
+
+    &__input {
+        border: none;
+        outline: none;
+    }
 }

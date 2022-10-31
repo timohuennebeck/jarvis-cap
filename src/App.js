@@ -22,7 +22,8 @@ function App() {
     return (
         <div className="app">
             <BrowserRouter>
-                <Header />
+            <EditLeadInformation />
+                {/* <Header />
                 <div className="app__structure">
                     <div className="app__structure-sidebar">
                         <SBNavigation />
@@ -31,20 +32,17 @@ function App() {
                     <div className="app__structure-routes">
                         <Routes>
                             <Route path="/" element={<HomePage />} />
-                            <Route path="/leads" element={<LeadsPage />}>
-                                <Route path="/leads/:id" />
-                            </Route>
-                            <Route path="/templates" element={<TemplatesPage />}>
-                                <Route path="/templates/:id" />
-                            </Route>
-                            <Route path="/review" element={<ReviewPage />}>
-                                <Route path="/review/:id" />
-                            </Route>
+                            <Route path="/leads" element={<LeadsPage />} />
+                            <Route path="/leads/:id" />
+                            <Route path="/templates" element={<TemplatesPage />} />
+                            <Route path="/templates/:id" />
+                            <Route path="/review" element={<ReviewPage />} />
+                            <Route path="/review/:id" />
                             <Route path="/settings" element={<SettingsPage />} />
                             <Route path="*" element={<NotFoundPage />} />
                         </Routes>
                     </div>
-                </div>
+                </div> */}
             </BrowserRouter>
         </div>
     );
