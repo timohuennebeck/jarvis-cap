@@ -1,3 +1,4 @@
+import LeadsPage from "../../pages/LeadsPage/LeadsPage";
 import ButtonElement from "../ButtonElement/ButtonElement";
 import InputField from "../InputField/InputField";
 import "./EditLeadInformation.scss";
@@ -7,7 +8,12 @@ export default function EditLeadInformation() {
         <>
             <article className="edit-leads">
                 <div className="edit-leads__links">
-                    <ButtonElement content="CANCEL..." backgroundColor="#FFF" fontColor="#000" />
+                    <ButtonElement
+                        link="/leads"
+                        content="CANCEL..."
+                        backgroundColor="#FFF"
+                        fontColor="#000"
+                    />
                     <div className="edit-leads__links-spacing">
                         <ButtonElement content="SAVE" backgroundColor="#000" />
                         <ButtonElement content="DELETE" backgroundColor="#E43A07" />

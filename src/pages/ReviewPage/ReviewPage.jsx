@@ -1,7 +1,7 @@
 import "./ReviewPage.scss";
 
 import LeadInformationMinimized from "../../components/LeadInformationMinimized/LeadInformationMinimized";
-import ReviewTextPage from "../ReviewTextPage.jsx/ReviewTextPage";
+import ReviewTextPage from "../ReviewTextPage/ReviewTextPage";
 
 function ReviewPage() {
     return (
