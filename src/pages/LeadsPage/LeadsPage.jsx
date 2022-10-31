@@ -12,6 +12,7 @@ import { getLeads } from "../../utils/api";
 import ReactModal from "react-modal";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function LeadsPage() {
     const [leads, setLeads] = useState([]);
@@ -41,7 +42,12 @@ export default function LeadsPage() {
                 </div>
                 <div className="leads__indv">
                     {leads.map((lead) => {
-                        return <LeadInformation lead={lead} />;
+                        console.log(lead.id);
+                        return (
+                            <Link to={`/leads/${lead.id}`} className="leads__indv-link">
+                                <LeadInformation lead={lead} />
+                            </Link>
+                        );
                     })}
                 </div>
                 <ReactModal isOpen={modelIsOpen} onRequestClose={closeModal}>

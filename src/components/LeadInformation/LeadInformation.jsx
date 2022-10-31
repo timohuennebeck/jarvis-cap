@@ -2,8 +2,6 @@ import "./LeadInformation.scss";
 import Melanie from "../../assets/images/Untitled design.jpg";
 
 export default function LeadInformation({ lead }) {
-    console.log(lead);
-
     return (
         <div className="lead">
             <div className="lead-container__select"></div>

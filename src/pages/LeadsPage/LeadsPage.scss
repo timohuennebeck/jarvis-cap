@@ -11,5 +11,10 @@
     &__indv {
         @include flex-column;
         gap: $gap-leads;
+
+        &-link {
+            text-decoration: none;
+            color: #000;
+        }
     }
 }
