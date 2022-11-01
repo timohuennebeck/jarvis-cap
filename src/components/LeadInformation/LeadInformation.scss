@@ -9,7 +9,6 @@
     gap: $gap-default;
 
     &:hover {
-        cursor: pointer;
         transform: scale(1.0075);
         @include shadow;
     }

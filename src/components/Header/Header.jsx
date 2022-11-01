@@ -68,7 +68,10 @@ export default function Header() {
                                 <Link className="nav__menu-links-indv" to="/templates">
                                     Templates
                                 </Link>
-                                <Link className="nav__menu-links-indv" to="/review">
+                                <Link
+                                    className="nav__menu-links-indv"
+                                    to={`/review/${userData.id}`}
+                                >
                                     Review
                                 </Link>
                                 <Link
