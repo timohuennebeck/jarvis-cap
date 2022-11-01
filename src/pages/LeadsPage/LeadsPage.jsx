@@ -1,5 +1,7 @@
 import "./LeadsPage.scss";
 
+import UploadImg from "../../assets/images/upload.svg";
+
 // components
 import LeadInformation from "../../components/LeadInformation/LeadInformation";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
@@ -43,8 +45,11 @@ export default function LeadsPage() {
                         backgroundColor="#FFF"
                         fontColor="#000"
                     />
-                    <ButtonElement content="IMPORT LEADS" backgroundColor="#000000" />
                     <ButtonElement content="DELETE" backgroundColor="#E43A07" onClick={openModal} />
+                    <form className="leads__links-upload">
+                        <input type="file" name="import-csv" accept="csv" />
+                        <input type="submit" value="Import Leads" />
+                    </form>
                 </div>
                 <div className="leads__indv">
                     {leads.map((lead) => {

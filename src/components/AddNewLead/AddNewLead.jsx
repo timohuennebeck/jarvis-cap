@@ -18,6 +18,7 @@ export default function AddNewLead() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const status = userValues.current.status.value;
         const first_name = userValues.current.first_name.value;
         const last_name = userValues.current.last_name.value;
         const position = userValues.current.position.value;
@@ -34,6 +35,7 @@ export default function AddNewLead() {
         const call_to_action = userValues.current.call_to_action.value;
 
         const addInputData = {
+            status,
             first_name,
             last_name,
             position,
@@ -78,6 +80,14 @@ export default function AddNewLead() {
                     <p className="save-data-leads">Lead has been added! Redirecting in 2s...</p>
                 )}
                 <form className="edit-leads__input" ref={userValues}>
+                    <div className="edit-leads__dropdown">
+                        <select className="edit-leads__dropdown-select" name="status">
+                            <option value="In Progress">In Progress</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Interview Scheduled">Interview Scheduled</option>
+                            <option value="Done">Done</option>
+                        </select>
+                    </div>
                     <div className="edit-leads__input-personal">
                         <InputField label="First Name" placeholder="First Name" name="first_name" />
                         <InputField label="Last Name" placeholder="Last Name" name="last_name" />

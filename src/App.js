@@ -18,6 +18,7 @@ import SBTemplates from "./components/SBTemplates/SBTemplates";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EditExistingLead from "./components/EditExistingLead/EditExistingLead";
 import AddNewLead from "./components/AddNewLead/AddNewLead";
+import EditorPage from "./pages/EditorPage/EditorPage";
 
 function App() {
     return (
@@ -37,6 +38,7 @@ function App() {
                             <Route path="/leads/add-new" element={<AddNewLead />} />
                             <Route path="/templates" element={<TemplatesPage />} />
                             <Route path="/templates/:id" />
+                            <Route path="/editor" element={<EditorPage />} />
                             <Route path="/review/:id" element={<ReviewPage />} />
                             <Route path="/settings/:id" element={<SettingsPage />} />
                             <Route path="*" element={<NotFoundPage />} />

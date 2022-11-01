@@ -31,6 +31,14 @@ function NavList() {
             </div>
             <div className="nav-list__link">
                 <ButtonElement
+                    content="EDITOR"
+                    link="/editor"
+                    backgroundColor="#FFFFFF"
+                    fontColor="#000000"
+                />
+            </div>
+            <div className="nav-list__link">
+                <ButtonElement
                     content="TEMPLATES"
                     link="/templates"
                     backgroundColor="#FFFFFF"
