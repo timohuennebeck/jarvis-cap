@@ -23,21 +23,29 @@ export default function ReviewTextPage() {
 
     return (
         <div className="review-container">
-            <p>{leadData.first_name} {leadData.last_name}</p>
+            <p>{new Date().toLocaleDateString()}</p>
+            <br />
+            <p>
+                {leadData.first_name} {leadData.last_name}
+            </p>
             <p>{leadData.business_name}</p>
             <p>{leadData.street_name}</p>
             <p>{leadData.postcode}</p>
             <br />
             <p>Dear {leadData.first_name}</p>
             <br />
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Aliquam ut porttitor leo a diam.
-                Interdum varius sit amet mattis. Mauris commodo quis imperdiet massa tincidunt nunc
-                pulvinar sapien et. Ut faucibus pulvinar elementum integer enim neque. In nulla
-                posuere sollicitudin aliquam ultrices sagittis. Lacus sed turpis tincidunt id
-                aliquet risus feugiat...
-            </p>
+            <p>{leadData.icebreaker}</p>
+            <br />
+            <p>{leadData.paragraph_one}</p>
+            <br />
+            <p>{leadData.paragraph_two}</p>
+            <br />
+            <p>{leadData.paragraph_three}</p>
+            <br />
+            <p>{leadData.call_to_action}</p>
+            <br />
+            <p>Best regards,</p>
+            <p>Timo</p>
             <div className="review-container__links">
                 <ButtonElement content="APPROVE" backgroundColor="#000000" />
                 <ButtonElement content="DECLINE" backgroundColor="#E43A07" />

@@ -8,8 +8,6 @@
     height: 100vh;
 
     &__structure {
-        // height: calc(100% - 4.25rem);
-
         @include tablet {
             display: flex;
         }
@@ -26,7 +24,6 @@
         &-routes {
             @include border-padding;
             @include shadow;
-            // height: 100%;
 
             @include tablet {
                 margin-left: 0.75rem;

@@ -3,6 +3,7 @@
 
 .review-container {
     @include border-padding-content;
+    width: 100%;
 
     &__links {
         @include border-padding;
