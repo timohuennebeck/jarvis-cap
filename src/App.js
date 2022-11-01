@@ -17,6 +17,7 @@ import SBTemplates from "./components/SBTemplates/SBTemplates";
 // libraries
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EditExistingLead from "./components/EditExistingLead/EditExistingLead";
+import AddNewLead from "./components/AddNewLead/AddNewLead";
 
 function App() {
     return (
@@ -33,6 +34,7 @@ function App() {
                             <Route path="/" element={<HomePage />} />
                             <Route path="/leads" element={<LeadsPage />} />
                             <Route path="/leads/:id" element={<EditExistingLead />} />
+                            <Route path="/leads/add-new" element={<AddNewLead />} />
                             <Route path="/templates" element={<TemplatesPage />} />
                             <Route path="/templates/:id" />
                             <Route path="/review" element={<ReviewPage />} />
