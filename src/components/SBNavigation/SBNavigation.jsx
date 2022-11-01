@@ -10,14 +10,13 @@ function NavList() {
     const [userData, setUserData] = useState();
 
     useEffect(() => {
-        getUsers()
-            .then((resp) => {
-                setUserData(resp.data[0]);
-        })
-    }, [])
+        getUsers().then((resp) => {
+            setUserData(resp.data[0]);
+        });
+    }, []);
 
     if (!userData) {
-        return <p>Loading...</p>
+        return <p>Loading...</p>;
     }
 
     return (
@@ -41,7 +40,7 @@ function NavList() {
             <div className="nav-list__link">
                 <ButtonElement
                     content="REVIEW"
-                    link="/review"
+                    link={`/review/${userData.id}`}
                     backgroundColor="#FFFFFF"
                     fontColor="#000000"
                 />

@@ -8,6 +8,11 @@
     gap: $gap-leads;
     padding: 0.5rem 0.75rem;
 
+    &:hover {
+        transform: scale(1.0075);
+        @include shadow;
+    }
+
     &__select {
         @include border-image;
         @include flex;
@@ -20,6 +25,10 @@
         @include border-image;
         width: 2.25rem;
         height: 2.25rem;
+    }
+
+    &__information {
+        width: 65%;
     }
 
     &__more {

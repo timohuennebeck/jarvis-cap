@@ -1,14 +1,16 @@
 import "./LeadInformationMinimized.scss";
 import Melanie from "../../assets/images/Untitled design.jpg";
 
-export default function LeadInformationMinimized() {
+export default function LeadInformationMinimized({ lead }) {
     return (
         <div className="lead-minimized">
             <img className="lead-minimized__img" src={Melanie} alt="lead-icon" />
 
             <div className="lead-minimized__information">
-                <p>Melanie Perkins</p>
-                <p>melanie@canva.com</p>
+                <p>
+                    {lead.first_name} {lead.last_name}
+                </p>
+                <p>{lead.email}</p>
             </div>
 
             <div className="lead-minimized__more">

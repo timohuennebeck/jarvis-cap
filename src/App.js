@@ -37,8 +37,7 @@ function App() {
                             <Route path="/leads/add-new" element={<AddNewLead />} />
                             <Route path="/templates" element={<TemplatesPage />} />
                             <Route path="/templates/:id" />
-                            <Route path="/review" element={<ReviewPage />} />
-                            <Route path="/review/:id" />
+                            <Route path="/review/:id" element={<ReviewPage />} />
                             <Route path="/settings/:id" element={<SettingsPage />} />
                             <Route path="*" element={<NotFoundPage />} />
                         </Routes>
