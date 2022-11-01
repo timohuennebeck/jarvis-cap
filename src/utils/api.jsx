@@ -45,3 +45,9 @@ export const updateLead = ({ id, userInput }) => {
 export const deleteLead = ({ id }) => {
     return axios.delete(`${base_url}/leads/${id}`);
 };
+
+// leads progress
+
+export const getLeadsProgress = () => {
+    return axios.get(`${base_url}/progress`);
+}
