@@ -77,10 +77,10 @@ export default function EditExistingLead() {
                     </div>
                 </div>
                 {saveNotification && (
-                    <p className="save-data-leads">Data has been saved! Redirecting in 2s...</p>
+                    <p className="save-data-leads">Lead has been saved! Redirecting in 2s...</p>
                 )}
                 {deleteNotification && (
-                    <p className="save-data-leads">Data has been deleted! Redirecting in 2s...</p>
+                    <p className="save-data-leads">Lead has been deleted! Redirecting in 2s...</p>
                 )}
                 <form className="edit-leads__input">
                     <DropdownField value={userInput.status} onChange={handleChange} />
