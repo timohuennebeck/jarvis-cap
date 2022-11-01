@@ -8,7 +8,7 @@ export const getUsers = () => {
     return axios.get(`${base_url}/users`);
 };
 
-export const getUsersId = ({ id }) => {
+export const getUserId = ({ id }) => {
     return axios.get(`${base_url}/users/${id}`);
 };
 
@@ -16,8 +16,8 @@ export const addNewUser = () => {
     return axios.post(`${base_url}/users`);
 };
 
-export const updateUser = ({ id }) => {
-    return axios.put(`${base_url}/users`);
+export const updateUser = ({ id, userInput }) => {
+    return axios.put(`${base_url}/users/${id}`, userInput);
 };
 
 export const deleteUser = ({ id }) => {

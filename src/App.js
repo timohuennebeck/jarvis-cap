@@ -16,7 +16,7 @@ import SBTemplates from "./components/SBTemplates/SBTemplates";
 
 // libraries
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import EditLeadInformation from "./components/EditLeadInformation/EditLeadInformation";
+import EditExistingLead from "./components/EditExistingLead/EditExistingLead";
 
 function App() {
     return (
@@ -32,12 +32,12 @@ function App() {
                         <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="/leads" element={<LeadsPage />} />
-                            <Route path="/leads/:id" element={<EditLeadInformation />} />
+                            <Route path="/leads/:id" element={<EditExistingLead />} />
                             <Route path="/templates" element={<TemplatesPage />} />
                             <Route path="/templates/:id" />
                             <Route path="/review" element={<ReviewPage />} />
                             <Route path="/review/:id" />
-                            <Route path="/settings" element={<SettingsPage />} />
+                            <Route path="/settings/:id" element={<SettingsPage />} />
                             <Route path="*" element={<NotFoundPage />} />
                         </Routes>
                     </div>

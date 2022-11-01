@@ -1,9 +1,21 @@
 import "./SBNavigation.scss";
+import { getUsers } from "../../utils/api";
 
 // components
 import ButtonElement from "../ButtonElement/ButtonElement";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function NavList() {
+    const [userData, setUserData] = useState();
+
+    useEffect(() => {
+        getUsers()
+            .then((resp) => {
+                setUserData(resp.data[0]);
+        })
+    }, [])
+
     return (
         <div className="nav-list">
             <div className="nav-list__link">
@@ -33,7 +45,7 @@ function NavList() {
             <div className="nav-list__link">
                 <ButtonElement
                     content="SETTINGS"
-                    link="/settings"
+                    link={`/settings/${userData.id}`}
                     backgroundColor="#FFFFFF"
                     fontColor="#000000"
                 />

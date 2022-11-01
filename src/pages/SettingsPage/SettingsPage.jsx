@@ -3,18 +3,39 @@ import { useEffect } from "react";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import InputField from "../../components/InputField/InputField";
 
-import { getUsers } from "../../utils/api";
+import { getUserId, updateUser } from "../../utils/api";
+import { useParams } from "react-router-dom";
 
 import "./SettingsPage.scss";
 
 function SettingsPage() {
-    const [user, setUser] = useState([]);
+    const [userInput, setUserInput] = useState(null);
+    const [notification, setNotification] = useState(false);
+
+    const { id } = useParams();
+
+    // updating the data inside an input field
+
+    const handleChange = (e) => {
+        setUserInput({ ...userInput, [e.target.name]: e.target.value });
+    };
+
+    // making api calls
 
     useEffect(() => {
-        getUsers().then((resp) => {
-            setUser(resp.data[0]);
+        getUserId({ id }).then((resp) => {
+            setUserInput(resp.data[0]);
         });
-    });
+    }, []);
+
+    const uploadData = () => {
+        updateUser({ id, userInput });
+        setNotification(true);
+    };
+
+    if (!userInput) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <article className="settings">
@@ -31,20 +52,29 @@ function SettingsPage() {
                         <InputField
                             label="First Name"
                             placeholder="First Name"
-                            value={user.first_name}
+                            name="first_name"
+                            value={userInput.first_name}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="settings__information-input-indv">
                         <InputField
                             label="Last Name"
                             placeholder="Last Name"
-                            value={user.last_name}
+                            name="last_name"
+                            value={userInput.last_name}
+                            onChange={handleChange}
                         />
                     </div>
                 </div>
                 <div className="settings__link">
-                    <ButtonElement content="SAVE SETTINGS" backgroundColor="#000000" />
+                    <ButtonElement
+                        content="SAVE SETTINGS"
+                        backgroundColor="#000000"
+                        onClick={uploadData}
+                    />
                 </div>
+                {notification && <p className="save-data-settings">Data has been saved!</p>}
             </div>
             <div className="settings__delete">
                 <h2 className="settings__delete-header">Delete Personal Account</h2>

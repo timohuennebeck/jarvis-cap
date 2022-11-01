@@ -1,15 +1,14 @@
-import LeadsPage from "../../pages/LeadsPage/LeadsPage";
 import ButtonElement from "../ButtonElement/ButtonElement";
 import InputField from "../InputField/InputField";
 
 import { getLeadId, updateLead } from "../../utils/api";
 
-import "./EditLeadInformation.scss";
+import "./EditExistingLead.scss";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
-export default function EditLeadInformation() {
+export default function EditExistingLead() {
     const [userInput, setUserInput] = useState(null);
     const [notification, setNotification] = useState(false);
 
@@ -53,7 +52,7 @@ export default function EditLeadInformation() {
                         <ButtonElement content="DELETE" backgroundColor="#E43A07" />
                     </div>
                 </div>
-                {notification && <p className="save-data">Data has been saved!</p>}
+                {notification && <p className="save-data-leads">Data has been saved!</p>}
                 <div className="edit-leads__input">
                     <div className="edit-leads__input-personal">
                         <InputField
