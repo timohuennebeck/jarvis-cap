@@ -3,7 +3,7 @@ import "./ReviewPage.scss";
 import LeadInformationMinimized from "../../components/LeadInformationMinimized/LeadInformationMinimized";
 import ReviewTextPage from "../ReviewTextPage/ReviewTextPage";
 
-import { getLeads, getLeadsProgress } from "../../utils/api";
+import { getLeadsProgress } from "../../utils/api";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -14,6 +14,7 @@ function ReviewPage() {
     useEffect(() => {
         getLeadsProgress().then((resp) => {
             setLeadData(resp.data);
+            console.log(leadData);
         });
     }, []);
 

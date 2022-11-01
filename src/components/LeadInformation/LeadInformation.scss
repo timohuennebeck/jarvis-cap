@@ -49,8 +49,17 @@
 
         &__business {
             display: none;
+            width: 20%;
 
             @include tablet {
+                display: block;
+            }
+        }
+
+        &__progress {
+            display: none;
+
+            @include desktop {
                 display: block;
             }
         }
