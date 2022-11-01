@@ -16,6 +16,10 @@ function NavList() {
         })
     }, [])
 
+    if (!userData) {
+        return <p>Loading...</p>
+    }
+
     return (
         <div className="nav-list">
             <div className="nav-list__link">

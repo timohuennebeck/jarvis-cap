@@ -37,12 +37,17 @@ export default function LeadsPage() {
         <>
             <article className="leads">
                 <div className="leads__links">
+                    <ButtonElement
+                        link="/leads/add-new"
+                        content="ADD LEAD"
+                        backgroundColor="#FFF"
+                        fontColor="#000"
+                    />
                     <ButtonElement content="IMPORT LEADS" backgroundColor="#000000" />
                     <ButtonElement content="DELETE" backgroundColor="#E43A07" onClick={openModal} />
                 </div>
                 <div className="leads__indv">
                     {leads.map((lead) => {
-                        console.log(lead.id);
                         return (
                             <Link to={`/leads/${lead.id}`} className="leads__indv-link">
                                 <LeadInformation lead={lead} />

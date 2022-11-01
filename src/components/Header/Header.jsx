@@ -2,12 +2,25 @@ import "./Header.scss";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { getUsers } from "../../utils/api";
 
 import Menu from "../../assets/images/menu-icon.png";
 import ButtonElement from "../ButtonElement/ButtonElement";
 
 export default function Header() {
+    const [userData, setUserData] = useState();
     const [sidebar, setSidebar] = useState(false);
+
+    useEffect(() => {
+        getUsers().then((resp) => {
+            setUserData(resp.data[0]);
+        });
+    }, []);
+
+    if (!userData) {
+        return <p>Loading...</p>;
+    }
 
     const showSideBar = () => setSidebar(!sidebar);
 
@@ -58,7 +71,10 @@ export default function Header() {
                                 <Link className="nav__menu-links-indv" to="/review">
                                     Review
                                 </Link>
-                                <Link className="nav__menu-links-indv" to="/settings">
+                                <Link
+                                    className="nav__menu-links-indv"
+                                    to={`/settings/${userData.id}`}
+                                >
                                     Settings
                                 </Link>
                             </div>
