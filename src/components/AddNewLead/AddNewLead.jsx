@@ -55,7 +55,7 @@ export default function AddNewLead() {
 
         addNewLead({ addInputData }).then(() => {
             setNotification(true);
-            setTimeout(redirectUser, 2000);
+            setTimeout(redirectUser, 1000);
         });
     };
 
@@ -78,7 +78,7 @@ export default function AddNewLead() {
                     </div>
                 </div>
                 {notification && (
-                    <p className="save-data-leads">Lead has been added! Redirecting in 2s...</p>
+                    <p className="save-data-leads">Lead has been added! Redirecting in 1s...</p>
                 )}
                 <form className="edit-leads__input" ref={userValues}>
                     <DropdownField />

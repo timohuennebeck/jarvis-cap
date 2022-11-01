@@ -40,14 +40,14 @@ export default function EditExistingLead() {
     const uploadData = () => {
         updateLead({ id, userInput }).then(() => {
             setSaveNotification(true);
-            setTimeout(redirectUser, 2000);
+            setTimeout(redirectUser, 1000);
         });
     };
 
     const deleteData = () => {
         deleteLead({ id }).then(() => {
             setDeleteNotification(true);
-            setTimeout(redirectUser, 2000);
+            setTimeout(redirectUser, 1000);
         });
     };
 
@@ -75,10 +75,10 @@ export default function EditExistingLead() {
                     </div>
                 </div>
                 {saveNotification && (
-                    <p className="save-data-leads">Lead has been saved! Redirecting in 2s...</p>
+                    <p className="save-data-leads">Lead has been saved! Redirecting in 1s...</p>
                 )}
                 {deleteNotification && (
-                    <p className="save-data-leads">Lead has been deleted! Redirecting in 2s...</p>
+                    <p className="save-data-leads">Lead has been deleted! Redirecting in 1s...</p>
                 )}
                 <form className="edit-leads__input">
                     <DropdownField value={userInput.status} onChange={handleChange} />
