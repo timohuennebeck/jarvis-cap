@@ -3,7 +3,7 @@
 
 .leads {
     &__links {
-        display: flex;
+        @include flex-vertical;
         gap: $gap-default;
         margin-bottom: $margin-default;
     }

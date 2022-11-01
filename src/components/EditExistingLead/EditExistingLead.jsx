@@ -14,6 +14,8 @@ export default function EditExistingLead() {
     const [saveNotification, setSaveNotification] = useState(false);
     const [deleteNotification, setDeleteNotification] = useState(false);
 
+    console.log(userInput);
+
     const navigate = useNavigate();
 
     const { id } = useParams();
@@ -79,6 +81,19 @@ export default function EditExistingLead() {
                 {deleteNotification && (
                     <p className="save-data-leads">Data has been deleted! Redirecting in 2s...</p>
                 )}
+                <div className="edit-leads__dropdown">
+                    <select
+                        className="edit-leads__dropdown-select"
+                        name="status"
+                        value={userInput.status}
+                        onChange={handleChange}
+                    >
+                        <option value="In Progress">In Progress</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Interview Scheduled">Interview Scheduled</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </div>
                 <div className="edit-leads__input">
                     <div className="edit-leads__input-personal">
                         <InputField

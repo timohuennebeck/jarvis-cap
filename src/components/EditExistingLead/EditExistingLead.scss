@@ -25,6 +25,13 @@
             gap: $gap-leads;
         }
     }
+
+    &__dropdown {
+        &-select {
+            @include border-padding;
+            margin-bottom: $padding-default;
+        }
+    }
 }
 
 .save-data-leads {
