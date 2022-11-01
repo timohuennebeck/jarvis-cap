@@ -1,16 +1,20 @@
 import ButtonElement from "../ButtonElement/ButtonElement";
 import InputField from "../InputField/InputField";
 
-import { getLeadId, updateLead } from "../../utils/api";
+import { getLeadId, updateLead, deleteLead } from "../../utils/api";
 
 import "./EditExistingLead.scss";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function EditExistingLead() {
     const [userInput, setUserInput] = useState(null);
-    const [notification, setNotification] = useState(false);
+    const [saveNotification, setSaveNotification] = useState(false);
+    const [deleteNotification, setDeleteNotification] = useState(false);
+
+    const navigate = useNavigate();
 
     const { id } = useParams();
 
@@ -28,9 +32,22 @@ export default function EditExistingLead() {
         });
     }, []);
 
+    const redirectUser = () => {
+        navigate("/leads");
+    };
+
     const uploadData = () => {
-        updateLead({ id, userInput });
-        setNotification(true);
+        updateLead({ id, userInput }).then(() => {
+            setSaveNotification(true);
+            setTimeout(redirectUser, 2000);
+        });
+    };
+
+    const deleteData = () => {
+        deleteLead({ id }).then(() => {
+            setDeleteNotification(true);
+            setTimeout(redirectUser, 2000);
+        });
     };
 
     if (!userInput) {
@@ -49,10 +66,19 @@ export default function EditExistingLead() {
                     />
                     <div className="edit-leads__links-spacing">
                         <ButtonElement onClick={uploadData} content="SAVE" backgroundColor="#000" />
-                        <ButtonElement content="DELETE" backgroundColor="#E43A07" />
+                        <ButtonElement
+                            onClick={deleteData}
+                            content="DELETE"
+                            backgroundColor="#E43A07"
+                        />
                     </div>
                 </div>
-                {notification && <p className="save-data-leads">Data has been saved!</p>}
+                {saveNotification && (
+                    <p className="save-data-leads">Data has been saved! Redirecting in 2s...</p>
+                )}
+                {deleteNotification && (
+                    <p className="save-data-leads">Data has been deleted! Redirecting in 2s...</p>
+                )}
                 <div className="edit-leads__input">
                     <div className="edit-leads__input-personal">
                         <InputField

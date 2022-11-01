@@ -1,11 +1,17 @@
 import ButtonElement from "../ButtonElement/ButtonElement";
 import InputField from "../InputField/InputField";
 import { useRef, useState } from "react";
-import { useEffect } from "react";
 import { addNewLead } from "../../utils/api";
+import { useNavigate } from "react-router-dom";
 
 export default function AddNewLead() {
     const [notification, setNotification] = useState(false);
+
+    const navigate = useNavigate();
+
+    const redirectUser = () => {
+        navigate("/leads");
+    };
 
     const userValues = useRef();
 
@@ -44,7 +50,10 @@ export default function AddNewLead() {
             call_to_action,
         };
 
-        addNewLead({ addInputData }).then(() => setNotification(true));
+        addNewLead({ addInputData }).then(() => {
+            setNotification(true);
+            setTimeout(redirectUser, 2000);
+        });
     };
 
     return (
@@ -65,7 +74,9 @@ export default function AddNewLead() {
                         />
                     </div>
                 </div>
-                {notification && <p className="save-data-leads">Lead has been added!</p>}
+                {notification && (
+                    <p className="save-data-leads">Lead has been added! Redirecting in 2s...</p>
+                )}
                 <form className="edit-leads__input" ref={userValues}>
                     <div className="edit-leads__input-personal">
                         <InputField label="First Name" placeholder="First Name" name="first_name" />

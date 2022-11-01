@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import InputField from "../../components/InputField/InputField";
 
-import { getUserId, updateUser } from "../../utils/api";
+import { deleteUser, getUserId, updateUser } from "../../utils/api";
 import { useParams } from "react-router-dom";
 
 import "./SettingsPage.scss";
@@ -31,6 +31,10 @@ function SettingsPage() {
     const uploadData = () => {
         updateUser({ id, userInput });
         setNotification(true);
+    };
+
+    const deleteData = () => {
+        deleteUser({ id });
     };
 
     if (!userInput) {
@@ -85,7 +89,11 @@ function SettingsPage() {
                     dolor sit amet...
                 </p>
                 <div className="settings__link">
-                    <ButtonElement content="DELETE ACCOUNT" backgroundColor="#E43A07" />
+                    <ButtonElement
+                        content="DELETE ACCOUNT"
+                        backgroundColor="#E43A07"
+                        onClick={deleteData}
+                    />
                 </div>
             </div>
         </article>
