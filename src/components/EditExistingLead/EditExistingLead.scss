@@ -7,7 +7,7 @@
     &__links {
         display: flex;
         justify-content: space-between;
-        margin-bottom: $margin-default;
+        margin-bottom: 1.75rem;
 
         &-spacing {
             display: flex;
@@ -17,19 +17,12 @@
 
     &__input {
         @include flex-column;
-        gap: 4.25rem;
+        gap: 1.75rem;
 
         &-personal,
         &-business {
             @include flex-column;
             gap: $gap-leads;
-        }
-    }
-
-    &__dropdown {
-        &-select {
-            @include border-padding;
-            margin-bottom: $padding-default;
         }
     }
 }

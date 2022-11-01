@@ -1,5 +1,6 @@
 import ButtonElement from "../ButtonElement/ButtonElement";
 import InputField from "../InputField/InputField";
+import DropdownField from "../DropdownField/DropdownField";
 
 import { getLeadId, updateLead, deleteLead } from "../../utils/api";
 
@@ -81,20 +82,8 @@ export default function EditExistingLead() {
                 {deleteNotification && (
                     <p className="save-data-leads">Data has been deleted! Redirecting in 2s...</p>
                 )}
-                <div className="edit-leads__dropdown">
-                    <select
-                        className="edit-leads__dropdown-select"
-                        name="status"
-                        value={userInput.status}
-                        onChange={handleChange}
-                    >
-                        <option value="In Progress">In Progress</option>
-                        <option value="Approved">Approved</option>
-                        <option value="Interview Scheduled">Interview Scheduled</option>
-                        <option value="Done">Done</option>
-                    </select>
-                </div>
-                <div className="edit-leads__input">
+                <form className="edit-leads__input">
+                    <DropdownField value={userInput.status} onChange={handleChange} />
                     <div className="edit-leads__input-personal">
                         <InputField
                             label="First Name"
@@ -204,7 +193,7 @@ export default function EditExistingLead() {
                             onChange={handleChange}
                         />
                     </div>
-                </div>
+                </form>
             </article>
         </>
     );
