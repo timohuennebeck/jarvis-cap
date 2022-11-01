@@ -22,7 +22,6 @@
         &__select {
             @include border-image;
             @include flex;
-            flex-shrink: 0;
             width: 1rem;
             height: 1rem;
         }
@@ -31,6 +30,10 @@
             @include border-image;
             width: 2.25rem;
             height: 2.25rem;
+        }
+
+        &__information {
+            width: 35%;
         }
 
         &__more {

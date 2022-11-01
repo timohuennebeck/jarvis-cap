@@ -9,10 +9,10 @@ export default function LeadInformation({ lead }) {
             <img className="lead-container__img" src={Melanie} alt="lead-icon" />
 
             <div className="lead-container__information">
-                <p>
+                <p className="lead-container__information__name">
                     {lead.first_name} {lead.last_name}
                 </p>
-                <p>{lead.email}</p>
+                <p className="lead-container__information__email">{lead.email}</p>
             </div>
 
             <div className="lead-container__more">
