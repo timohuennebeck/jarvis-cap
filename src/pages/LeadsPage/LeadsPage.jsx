@@ -46,9 +46,9 @@ export default function LeadsPage() {
                         fontColor="#000"
                     />
                     <ButtonElement content="DELETE" backgroundColor="#E43A07" onClick={openModal} />
-                    <form className="leads__links-upload">
+                    <form action="/uploadfile" className="leads__links-upload">
                         <input type="file" name="import-csv" accept="csv" />
-                        <input type="submit" value="Import Leads" />
+                        <button>Import CSV</button>
                     </form>
                 </div>
                 <div className="leads__indv">

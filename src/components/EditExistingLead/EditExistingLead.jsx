@@ -15,8 +15,6 @@ export default function EditExistingLead() {
     const [saveNotification, setSaveNotification] = useState(false);
     const [deleteNotification, setDeleteNotification] = useState(false);
 
-    console.log(userInput);
-
     const navigate = useNavigate();
 
     const { id } = useParams();
