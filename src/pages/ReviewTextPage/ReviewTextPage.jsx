@@ -1,21 +1,35 @@
 import "./ReviewTextPage.scss";
 
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
-import { getLeadId } from "../../utils/api";
+import { getLeadId, updateLead } from "../../utils/api";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
 export default function ReviewTextPage() {
     const [leadData, setLeadData] = useState(null);
+    const [userInput, setUserInput] = useState(null);
 
     const { id } = useParams();
 
     useEffect(() => {
         getLeadId({ id }).then((resp) => {
             setLeadData(resp.data[0]);
+            setUserInput(resp.data[0]);
         });
     }, [id]);
+
+    const approveLead = () => {
+        const leadApproved = (userInput.status = "Approved");
+        setUserInput(leadApproved);
+        updateLead({ id, userInput });
+    };
+
+    const declineLead = () => {
+        const leadDeclined = (userInput.status = "Declined");
+        setUserInput(leadDeclined);
+        updateLead({ id, userInput });
+    };
 
     if (!leadData) {
         return <p>Loading...</p>;
@@ -47,13 +61,8 @@ export default function ReviewTextPage() {
             <p>Best regards,</p>
             <p>Timo</p>
             <div className="review-container__links">
-                <ButtonElement content="APPROVE" backgroundColor="#000000" />
-                <ButtonElement content="DECLINE" backgroundColor="#E43A07" />
-                <ButtonElement
-                    content="APPROVE ALL"
-                    backgroundColor="#FFFFFF"
-                    fontColor="#000000"
-                />
+                <ButtonElement onClick={approveLead} content="APPROVE" backgroundColor="#000000" />
+                <ButtonElement onClick={declineLead} content="DECLINE" backgroundColor="#E43A07" />
             </div>
         </div>
     );
