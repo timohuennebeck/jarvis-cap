@@ -1,5 +1,6 @@
 import ButtonElement from "../ButtonElement/ButtonElement";
 import InputField from "../InputField/InputField";
+import DropdownField from "../DropdownField/DropdownField";
 import { useRef, useState } from "react";
 import { addNewLead } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
@@ -80,14 +81,7 @@ export default function AddNewLead() {
                     <p className="save-data-leads">Lead has been added! Redirecting in 2s...</p>
                 )}
                 <form className="edit-leads__input" ref={userValues}>
-                    <div className="edit-leads__dropdown">
-                        <select className="edit-leads__dropdown-select" name="status">
-                            <option value="In Progress">In Progress</option>
-                            <option value="Approved">Approved</option>
-                            <option value="Interview Scheduled">Interview Scheduled</option>
-                            <option value="Done">Done</option>
-                        </select>
-                    </div>
+                    <DropdownField />
                     <div className="edit-leads__input-personal">
                         <InputField label="First Name" placeholder="First Name" name="first_name" />
                         <InputField label="Last Name" placeholder="Last Name" name="last_name" />
