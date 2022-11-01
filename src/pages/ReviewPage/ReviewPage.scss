@@ -5,6 +5,7 @@
     @include tablet {
         display: flex;
         gap: $gap-default;
+        width: 100%;
     }
 
     &__leads {
@@ -30,6 +31,7 @@
 
         @include tablet {
             display: flex;
+            width: 100%;
         }
     }
 }
