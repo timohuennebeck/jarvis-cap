@@ -1,7 +1,5 @@
 import "./LeadsPage.scss";
 
-import UploadImg from "../../assets/images/upload.svg";
-
 // components
 import LeadInformation from "../../components/LeadInformation/LeadInformation";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";

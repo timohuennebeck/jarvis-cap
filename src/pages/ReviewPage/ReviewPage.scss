@@ -15,6 +15,7 @@
 
         @include tablet {
             @include border-padding;
+            min-width: 18.5rem;
         }
 
         &-img {
