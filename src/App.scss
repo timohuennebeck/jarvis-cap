@@ -8,6 +8,8 @@
     height: 100vh;
 
     &__structure {
+        min-height: 72.5vh;
+
         @include tablet {
             display: flex;
         }

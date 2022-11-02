@@ -4,6 +4,9 @@
 .template-preview {
     @include border-padding-content;
     @include shadow;
+    @include flex-column;
+    justify-content: center;
+    min-height: 10.75rem;
 
     &__header,
     &__content {

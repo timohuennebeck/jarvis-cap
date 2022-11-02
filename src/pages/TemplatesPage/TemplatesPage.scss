@@ -8,7 +8,9 @@
     &__url {
         @include border-padding-content;
         @include flex-column;
+        justify-content: center;
         gap: $gap-default;
+        min-height: 12.5rem;
 
         &-links {
             margin-top: 1.25rem;
