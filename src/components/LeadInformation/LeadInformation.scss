@@ -7,6 +7,7 @@
     border-radius: $border-radius-default;
     padding: 0.5rem 0.75rem;
     gap: $gap-default;
+    min-height: 3.85rem;
 
     &:hover {
         transform: scale(1.0075);

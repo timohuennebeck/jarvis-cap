@@ -37,29 +37,31 @@ export default function ReviewTextPage() {
 
     return (
         <div className="review-container">
-            <p>{new Date().toLocaleDateString()}</p>
-            <br />
-            <p>
-                {leadData.first_name} {leadData.last_name}
-            </p>
-            <p>{leadData.business_name}</p>
-            <p>{leadData.street_name}</p>
-            <p>{leadData.postcode}</p>
-            <br />
-            <p>Dear {leadData.first_name}</p>
-            <br />
-            <p>{leadData.icebreaker}</p>
-            <br />
-            <p>{leadData.paragraph_one}</p>
-            <br />
-            <p>{leadData.paragraph_two}</p>
-            <br />
-            <p>{leadData.paragraph_three}</p>
-            <br />
-            <p>{leadData.call_to_action}</p>
-            <br />
-            <p>Best regards,</p>
-            <p>Timo</p>
+            <div className="review-container__content">
+                <p>{new Date().toLocaleDateString()}</p>
+                <br />
+                <p>
+                    {leadData.first_name} {leadData.last_name}
+                </p>
+                <p>{leadData.business_name}</p>
+                <p>{leadData.street_name}</p>
+                <p>{leadData.postcode}</p>
+                <br />
+                <p>Dear {leadData.first_name}</p>
+                <br />
+                <p>{leadData.icebreaker}</p>
+                <br />
+                <p>{leadData.paragraph_one}</p>
+                <br />
+                <p>{leadData.paragraph_two}</p>
+                <br />
+                <p>{leadData.paragraph_three}</p>
+                <br />
+                <p>{leadData.call_to_action}</p>
+                <br />
+                <p>Best regards,</p>
+                <p>Timo</p>
+            </div>
             <div className="review-container__links">
                 <ButtonElement onClick={approveLead} content="APPROVE" backgroundColor="#000000" />
                 <ButtonElement onClick={declineLead} content="DECLINE" backgroundColor="#E43A07" />
