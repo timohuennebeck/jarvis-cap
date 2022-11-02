@@ -3,12 +3,45 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import img from "../../assets/images/Untitled design.jpg";
+import { useEffect } from "react";
+
+const inProgress = [{}];
+
+const approved = [{}];
+
+const interviewScheduled = [{}];
+
+const offerReceived = [{}];
 
 const itemsFromBackend = [
-    { id: uuid(), content: "Microsoft" },
-    { id: uuid(), content: "Tesla" },
-    { id: uuid(), content: "Zapier" },
-    { id: uuid(), content: "Loom" },
+    {
+        id: uuid(),
+        business_name: "Microsoft",
+        first_name: "Melanie",
+        last_name: "Perkins",
+        created_at: "15th of Nov., 2022",
+    },
+    {
+        id: uuid(),
+        business_name: "Tesla",
+        first_name: "Melanie",
+        last_name: "Perkins",
+        created_at: "15th of Nov., 2022",
+    },
+    {
+        id: uuid(),
+        business_name: "Zapier",
+        first_name: "Melanie",
+        last_name: "Perkins",
+        created_at: "15th of Nov., 2022",
+    },
+    {
+        id: uuid(),
+        business_name: "Loom",
+        first_name: "Melanie",
+        last_name: "Perkins",
+        created_at: "15th of Nov., 2022",
+    },
 ];
 
 const columnsFromBackend = {
@@ -17,7 +50,11 @@ const columnsFromBackend = {
         items: itemsFromBackend,
     },
     [uuid()]: {
-        name: "Approved",
+        name: "CL Finished",
+        items: [],
+    },
+    [uuid()]: {
+        name: "Awaiting Response",
         items: [],
     },
     [uuid()]: {
@@ -25,9 +62,13 @@ const columnsFromBackend = {
         items: [],
     },
     [uuid()]: {
-        name: "Contract Signed",
+        name: "Accepted",
         items: [],
-    }
+    },
+    [uuid()]: {
+        name: "Rejected",
+        items: [],
+    },
 };
 
 const onDragEnd = (result, columns, setColumns) => {
@@ -104,10 +145,11 @@ export default function HomePage() {
                                                                     >
                                                                         <div className="home__kanban-container-content-indv-name">
                                                                             <p className="home__kanban-container-content-indv-name-business">
-                                                                                {item.content}
+                                                                                {item.business_name}
                                                                             </p>
                                                                             <p className="home__kanban-container-content-indv-name-manager">
-                                                                                Melanie Perkins
+                                                                                {item.first_name}{" "}
+                                                                                {item.last_name}
                                                                             </p>
                                                                         </div>
                                                                         <div className="home__kanban-container-content-indv-information">
@@ -116,7 +158,7 @@ export default function HomePage() {
                                                                                 src={img}
                                                                             />
                                                                             <p className="home__kanban-container-content-indv-information-paragraph">
-                                                                                15th Nov., 2022
+                                                                                {item.created_at}
                                                                             </p>
                                                                         </div>
                                                                     </div>
