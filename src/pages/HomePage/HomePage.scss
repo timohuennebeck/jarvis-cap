@@ -2,50 +2,45 @@
 @use "../../styles/partials/mixins" as *;
 
 .home {
-    display: flex;
-    gap: 1rem;
+    @include flex-column;
+    gap: $gap-default;
+
+    @include tablet {
+        flex-direction: row;
+    }
 
     &__kanban {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
+        @include flex-column;
+        gap: $gap-default;
+        flex: 1 1 0;
 
         &-header {
             @include shadow;
-            display: flex;
-            align-items: center;
-            border: 1px solid black;
-            border-radius: 0.75rem;
-            padding: 0.75rem;
-            width: 100%;
-            min-height: 5rem;
-            font-weight: 400;
+            @include flex-vertical;
+            @include border-no-radius;
+            border-radius: $border-radius-default;
+            padding: $padding-default;
         }
 
         &-container {
             @include shadow;
-            padding: 0.75rem;
-            border: 1px solid black;
-            border-radius: 0.75rem;
+            @include border-padding;
             min-width: 18.5rem;
+            width: 100%;
 
             &-content {
                 width: 250px;
-                min-height: 500px;
+                min-height: 35rem;
                 min-width: 18.5rem;
+                width: 100%;
 
                 &-indv {
-                    box-shadow: 0px 4px 4px rgb(0 0 0 / 0.25);
-                    padding: 1rem;
-                    border: 1px solid black;
-                    border-radius: 0.75rem;
+                    @include shadow;
+                    @include flex-column;
+                    @include border-padding-content;
                     min-height: 7.5rem;
                     margin: 0 0 8px 0;
-                    color: #000;
                     background-color: #fff;
-                    display: flex;
-                    flex-direction: column;
                     justify-content: space-between;
 
                     &-name {
@@ -55,14 +50,12 @@
                     }
 
                     &-information {
-                        display: flex;
-                        align-items: center;
-                        gap: 1rem;
+                        @include flex-vertical;
+                        gap: $gap-default;
 
                         &-img {
+                            @include border-image;
                             width: 2rem;
-                            border-radius: 50%;
-                            border: 1px solid black;
                         }
 
                         &-paragraph {

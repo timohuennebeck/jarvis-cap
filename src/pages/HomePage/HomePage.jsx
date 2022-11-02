@@ -27,7 +27,7 @@ const columnsFromBackend = {
     [uuid()]: {
         name: "Contract Signed",
         items: [],
-    },
+    }
 };
 
 const onDragEnd = (result, columns, setColumns) => {
