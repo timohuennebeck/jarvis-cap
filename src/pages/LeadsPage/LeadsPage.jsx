@@ -3,7 +3,6 @@ import "./LeadsPage.scss";
 // components
 import LeadInformation from "../../components/LeadInformation/LeadInformation";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
-import DeleteNotification from "../../components/DeleteNotification/DeleteNotification";
 
 // axios call
 import { getLeads } from "../../utils/api";
@@ -18,12 +17,13 @@ import { addNewLead } from "../../utils/api";
 export default function LeadsPage() {
     const [leads, setLeads] = useState([]);
     const [parsedData, setParsedData] = useState([]);
+    const [updateLeads, setUpdateLeads] = useState(false);
 
     useEffect(() => {
         getLeads().then((resp) => {
             setLeads(resp.data);
         });
-    }, []);
+    }, [updateLeads]);
 
     const handleSubmit = (event) => {
         Papa.parse(event.target.files[0], {
@@ -31,12 +31,11 @@ export default function LeadsPage() {
             skipEmptyLines: true,
             complete: function (results) {
                 setParsedData(results.data);
-                console.log(results.data);
             },
         });
     };
 
-    useEffect(() => {
+    const uploadFile = () => {
         parsedData.map((person) => {
             const addInputData = {
                 status: person.status,
@@ -56,8 +55,9 @@ export default function LeadsPage() {
                 call_to_action: person.call_to_action,
             };
             addNewLead({ addInputData });
+            setUpdateLeads(true);
         });
-    }, [parsedData]);
+    };
 
     return (
         <>
@@ -70,8 +70,14 @@ export default function LeadsPage() {
                         fontColor="#000"
                     />
                     <ButtonElement content="DELETE" backgroundColor="#E43A07" />
+                    <ButtonElement
+                        onClick={uploadFile}
+                        content="Upload CSV"
+                        backgroundColor="#000"
+                    />
                     <input type="file" name="file" accept=".csv" onChange={handleSubmit} />
                 </div>
+                {updateLeads && <p className="leads__update">Leads have been uploaded!</p>}
                 <div className="leads__indv">
                     {leads.map((lead) => {
                         return (
