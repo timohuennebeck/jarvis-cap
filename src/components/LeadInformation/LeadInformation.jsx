@@ -1,10 +1,23 @@
 import "./LeadInformation.scss";
 import Melanie from "../../assets/images/Untitled design.jpg";
+import { useState } from "react";
 
 export default function LeadInformation({ lead }) {
+    const [hoverCircle, setHoverCircle] = useState(false);
+
+    const showBlock = () => {
+        setHoverCircle(true);
+    };
+
+    const hideBlock = () => {
+        setHoverCircle(false);
+    };
+
     return (
-        <div className="lead">
-            <div className="lead-container__select"></div>
+        <div className="lead" onMouseOver={showBlock} onMouseLeave={hideBlock}>
+            <div className="lead-container__select">
+                {hoverCircle && <div className="lead-container__select-fill"></div>}
+            </div>
 
             <img className="lead-container__img" src={lead.image_url} alt="lead-icon" />
 

@@ -27,7 +27,6 @@ export default function AddNewLead() {
         const position = userValues.current.position.value;
         const email = userValues.current.email.value;
         const phone = userValues.current.phone.value;
-        const image_url = userValues.current.image_url.value;
         const linked_in = userValues.current.linked_in.value;
         const business_name = userValues.current.business_name.value;
         const postcode = userValues.current.postcode.value;
@@ -45,7 +44,6 @@ export default function AddNewLead() {
             position,
             email,
             phone,
-            image_url,
             linked_in,
             business_name,
             postcode,
