@@ -26,6 +26,7 @@
         &-routes {
             @include border-padding;
             @include shadow;
+            overflow: scroll;
 
             @include tablet {
                 margin-left: 0.75rem;
