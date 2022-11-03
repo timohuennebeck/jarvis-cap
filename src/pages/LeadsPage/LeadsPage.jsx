@@ -19,6 +19,10 @@ export default function LeadsPage() {
     const [parsedData, setParsedData] = useState([]);
     const [updateLeads, setUpdateLeads] = useState(false);
 
+    const resetMessage = () => {
+        setUpdateLeads(false);
+    };
+
     useEffect(() => {
         getLeads().then((resp) => {
             setLeads(resp.data);
@@ -56,6 +60,7 @@ export default function LeadsPage() {
             };
             addNewLead({ addInputData });
             setUpdateLeads(true);
+            setTimeout(resetMessage, 2500);
         });
     };
 
@@ -69,7 +74,6 @@ export default function LeadsPage() {
                         backgroundColor="#FFF"
                         fontColor="#000"
                     />
-                    <ButtonElement content="DELETE" backgroundColor="#E43A07" />
                     <ButtonElement
                         onClick={uploadFile}
                         content="Upload CSV"
