@@ -4,6 +4,7 @@ import DropdownField from "../DropdownField/DropdownField";
 import { useRef, useState } from "react";
 import { addNewLead } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
+import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 
 export default function AddNewLead() {
     const [notification, setNotification] = useState(false);
@@ -20,6 +21,7 @@ export default function AddNewLead() {
         e.preventDefault();
 
         const status = userValues.current.status.value;
+        const his_or_her = userValues.current.his_or_her.value;
         const first_name = userValues.current.first_name.value;
         const last_name = userValues.current.last_name.value;
         const position = userValues.current.position.value;
@@ -37,6 +39,7 @@ export default function AddNewLead() {
 
         const addInputData = {
             status,
+            his_or_her,
             first_name,
             last_name,
             position,
@@ -52,7 +55,6 @@ export default function AddNewLead() {
             paragraph_three,
             call_to_action,
         };
-
         addNewLead({ addInputData }).then(() => {
             setNotification(true);
             setTimeout(redirectUser, 1000);
@@ -81,7 +83,10 @@ export default function AddNewLead() {
                     <p className="save-data-leads">Lead has been added! Redirecting in 1s...</p>
                 )}
                 <form className="edit-leads__input" ref={userValues}>
-                    <DropdownField />
+                    <div className="edit-leads__input-dropdown">
+                        <DropdownField />
+                        <GenderDropdownField />
+                    </div>
                     <div className="edit-leads__input-personal">
                         <InputField label="First Name" placeholder="First Name" name="first_name" />
                         <InputField label="Last Name" placeholder="Last Name" name="last_name" />

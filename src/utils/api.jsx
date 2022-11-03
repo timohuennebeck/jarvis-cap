@@ -34,7 +34,7 @@ export const getLeadId = ({ id }) => {
     return axios.get(`${base_url}/leads/${id}`);
 };
 
-export const addNewLead = ({ addInputData }) => {
+export const addNewLead = ({ addInputData}) => {
     return axios.post(`${base_url}/leads`, addInputData);
 };
 

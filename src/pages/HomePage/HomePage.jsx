@@ -12,6 +12,7 @@ export default function HomePage() {
     useEffect(() => {
         getLeadsInProgress().then((resp) => {
             setLeads(resp.data);
+            console.log(resp.data);
         });
     }, []);
 

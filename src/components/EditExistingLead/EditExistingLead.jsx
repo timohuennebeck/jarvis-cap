@@ -9,9 +9,10 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 
 export default function EditExistingLead() {
-    const [userInput, setUserInput] = useState(null);
+    const [userInput, setUserInput] = useState([]);
     const [saveNotification, setSaveNotification] = useState(false);
     const [deleteNotification, setDeleteNotification] = useState(false);
 
@@ -81,7 +82,10 @@ export default function EditExistingLead() {
                     <p className="save-data-leads">Lead has been deleted! Redirecting in 1s...</p>
                 )}
                 <form className="edit-leads__input">
-                    <DropdownField value={userInput.status} onChange={handleChange} />
+                    <div className="edit-leads__input-dropdown">
+                        <DropdownField value={userInput.status} onChange={handleChange} />
+                        <GenderDropdownField value={userInput.his_or_her} onChange={handleChange} />
+                    </div>
                     <div className="edit-leads__input-personal">
                         <InputField
                             label="First Name"
