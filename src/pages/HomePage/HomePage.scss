@@ -37,13 +37,17 @@
                 width: 100%;
 
                 &-indv {
-                    @include shadow;
                     @include flex-column;
                     @include border-padding-content;
                     min-height: 7.5rem;
                     margin: 0 0 8px 0;
                     background-color: #fff;
                     justify-content: space-between;
+
+                    &:hover {
+                        transform: scale(1.025);
+                        @include shadow;
+                    }
 
                     &-name {
                         &-business {
