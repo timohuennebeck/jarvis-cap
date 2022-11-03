@@ -12,10 +12,11 @@
     &__leads {
         @include flex-column;
         gap: $gap-leads;
+        flex: 1 1 0;
 
         @include tablet {
             @include border-padding;
-            min-width: 18.5rem;
+            min-width: 19.75rem;
         }
 
         &-img {
