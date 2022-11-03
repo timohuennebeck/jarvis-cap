@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
-export default function ReviewTextPage() {
+export default function ReviewTextPage({ setUpdateData }) {
     const [leadData, setLeadData] = useState(null);
     const [userInput, setUserInput] = useState(null);
 
@@ -20,15 +20,17 @@ export default function ReviewTextPage() {
     }, [id]);
 
     const approveLead = () => {
-        const leadApproved = (userInput.status = "Approved");
+        const leadApproved = (userInput.status = "CL Approved");
         setUserInput(leadApproved);
         updateLead({ id, userInput });
+        setUpdateData(true);
     };
 
     const declineLead = () => {
-        const leadDeclined = (userInput.status = "Declined");
+        const leadDeclined = (userInput.status = "CL Declined");
         setUserInput(leadDeclined);
         updateLead({ id, userInput });
+        setUpdateData(true);
     };
 
     if (!leadData) {

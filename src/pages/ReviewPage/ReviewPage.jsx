@@ -10,12 +10,13 @@ import { Link } from "react-router-dom";
 
 function ReviewPage() {
     const [leadData, setLeadData] = useState(null);
+    const [updateData, setUpdateData] = useState(false);
 
     useEffect(() => {
         getLeadsInProgress().then((resp) => {
             setLeadData(resp.data);
         });
-    }, []);
+    }, [updateData]);
 
     if (!leadData) {
         return <p>Loading...</p>;
@@ -26,14 +27,18 @@ function ReviewPage() {
             <div className="review__leads">
                 {leadData.map((lead) => {
                     return (
-                        <Link to={`/review/${lead.id}`} className="review__leads-link" key={lead.id}>
+                        <Link
+                            to={`/review/${lead.id}`}
+                            className="review__leads-link"
+                            key={lead.id}
+                        >
                             <LeadInformationMinimized lead={lead} />
                         </Link>
                     );
                 })}
             </div>
             <div className="review__content">
-                <ReviewTextPage leadData={leadData} />
+                <ReviewTextPage leadData={leadData} setUpdateData={setUpdateData} />
             </div>
         </article>
     );
