@@ -26,7 +26,7 @@ function ReviewPage() {
             <div className="review__leads">
                 {leadData.map((lead) => {
                     return (
-                        <Link to={`/review/${lead.id}`} className="review__leads-link">
+                        <Link to={`/review/${lead.id}`} className="review__leads-link" key={lead.id}>
                             <LeadInformationMinimized lead={lead} />
                         </Link>
                     );
