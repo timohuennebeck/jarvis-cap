@@ -6,7 +6,7 @@ export default function LeadInformation({ lead }) {
         <div className="lead">
             <div className="lead-container__select"></div>
 
-            <img className="lead-container__img" src={Melanie} alt="lead-icon" />
+            <img className="lead-container__img" src={lead.image_url} alt="lead-icon" />
 
             <div className="lead-container__information">
                 <p className="lead-container__information__name">
