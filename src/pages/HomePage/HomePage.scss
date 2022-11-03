@@ -14,6 +14,7 @@
         @include flex-column;
         gap: $gap-default;
         flex: 1 1 0;
+        min-width: 18.25rem;
 
         &-header {
             @include shadow;
@@ -26,14 +27,11 @@
         &-container {
             @include shadow;
             @include border-padding;
-            min-width: 18.5rem;
-            width: 100%;
+            min-width: 18.25rem;
             height: 100%;
 
             &-content {
-                width: 250px;
                 min-height: 35rem;
-                min-width: 18.5rem;
                 width: 100%;
 
                 &-indv {
