@@ -25,6 +25,13 @@
             flex-shrink: 0;
             width: 1rem;
             height: 1rem;
+
+            &-fill {
+                @include border-image;
+                background-color: black;
+                width: .5rem;
+                height: .5rem;
+            }
         }
 
         &__img {

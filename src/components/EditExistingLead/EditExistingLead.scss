@@ -20,7 +20,7 @@
         gap: 1.75rem;
 
         &-img {
-            @include border-no-radius ;
+            @include border-no-radius;
             border-radius: 25%;
             width: 5.25rem;
             height: 5.25rem;
@@ -31,6 +31,13 @@
                 cursor: pointer;
                 transform: scale(1.05);
                 filter: grayscale(0%);
+            }
+
+            &:active {
+                position: relative;
+                left: 5rem;
+                top: 3.5rem;
+                transform: scale(2.5);
             }
         }
 

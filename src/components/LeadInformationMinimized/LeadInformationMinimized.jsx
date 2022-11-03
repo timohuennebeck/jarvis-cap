@@ -3,7 +3,7 @@ import "./LeadInformationMinimized.scss";
 export default function LeadInformationMinimized({ lead }) {
     return (
         <div className="lead-minimized">
-            <img className="lead-minimized__img" src={lead.image_url}alt="lead-icon" />
+            <img className="lead-minimized__img" src={lead.image_url} alt="lead-icon" />
 
             <div className="lead-minimized__information">
                 <p>
