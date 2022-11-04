@@ -13,6 +13,7 @@
         @include flex-column;
         gap: $gap-leads;
         flex: 1 1 0;
+        overflow: hidden;
 
         @include tablet {
             @include border-padding;
