@@ -27,9 +27,14 @@ export default function AddNewLead() {
         const position = userValues.current.position.value;
         const email = userValues.current.email.value;
         const phone = userValues.current.phone.value;
+        const image_url = userValues.current.image_url.value;
         const linked_in = userValues.current.linked_in.value;
-        const business_name = userValues.current.business_name.value;
+        const company = userValues.current.company.value;
+        const street_name = userValues.current.street_name.value;
+        const city = userValues.current.city.value;
+        const state = userValues.current.state.value;
         const postcode = userValues.current.postcode.value;
+        const country = userValues.current.country.value;
         const icebreaker = userValues.current.icebreaker.value;
         const paragraph_one = userValues.current.paragraph_one.value;
         const paragraph_two = userValues.current.paragraph_two.value;
@@ -44,9 +49,14 @@ export default function AddNewLead() {
             position,
             email,
             phone,
+            image_url,
             linked_in,
-            business_name,
+            company,
+            street_name,
+            city,
+            state,
             postcode,
+            country,
             icebreaker,
             paragraph_one,
             paragraph_two,
@@ -95,13 +105,16 @@ export default function AddNewLead() {
                         <InputField label="LinkedIn" placeholder="LinkedIn" name="linked_in" />
                     </div>
                     <div className="edit-leads__input-business">
+                        <InputField label="Company" placeholder="Company" name="company" />
                         <InputField
-                            label="Business Name"
-                            placeholder="Business Name"
-                            name="business_name"
+                            label="Street Name"
+                            placeholder="Street Name"
+                            name="street_name"
                         />
-                        <InputField label="Street" placeholder="Street" name="street_name" />
+                        <InputField label="City" placeholder="City" name="city" />
+                        <InputField label="State" placeholder="State" name="state" />
                         <InputField label="Postcode" placeholder="Postcode" name="postcode" />
+                        <InputField label="Country" placeholder="Country" name="country" />
                         <InputField label="Icebreaker" placeholder="Icebreaker" name="icebreaker" />
                         <InputField
                             label="Paragraph 1"
