@@ -1,5 +1,5 @@
 import ButtonElement from "../ButtonElement/ButtonElement";
-import InputField from "../InputField/InputField";
+import InputFieldError from "../InputFieldError/InputFieldError";
 import DropdownField from "../DropdownField/DropdownField";
 
 import { getLeadId, updateLead, deleteLead } from "../../utils/api";
@@ -7,14 +7,17 @@ import { getLeadId, updateLead, deleteLead } from "../../utils/api";
 import "./EditExistingLead.scss";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 
 export default function EditExistingLead() {
+    const userValues = useRef();
+
     const [userInput, setUserInput] = useState([]);
     const [saveNotification, setSaveNotification] = useState(false);
     const [deleteNotification, setDeleteNotification] = useState(false);
+    const [errorMessage, setErrorMessage] = useState([]);
 
     const navigate = useNavigate();
 
@@ -34,15 +37,33 @@ export default function EditExistingLead() {
         });
     }, []);
 
-    const redirectUser = () => {
-        navigate("/leads");
-    };
-
     const uploadData = () => {
-        updateLead({ id, userInput }).then(() => {
-            setSaveNotification(true);
-            setTimeout(redirectUser, 1000);
-        });
+        const errors = [];
+
+        if (!userValues.current.first_name.value) {
+            errors.push("first_name");
+        }
+
+        if (!userValues.current.last_name.value) {
+            errors.push("last_name");
+        }
+
+        if (!userValues.current.email.value) {
+            errors.push("email");
+        }
+
+        if (!userValues.current.company.value) {
+            errors.push("company");
+        }
+
+        setErrorMessage(errors);
+
+        if (errors.length === 0) {
+            updateLead({ id, userInput }).then(() => {
+                setSaveNotification(true);
+                setTimeout(redirectUser, 1000);
+            });
+        }
     };
 
     const deleteData = () => {
@@ -50,6 +71,10 @@ export default function EditExistingLead() {
             setDeleteNotification(true);
             setTimeout(redirectUser, 1000);
         });
+    };
+
+    const redirectUser = () => {
+        navigate("/leads");
     };
 
     if (!userInput) {
@@ -81,140 +106,158 @@ export default function EditExistingLead() {
                 {deleteNotification && (
                     <p className="save-data-leads">Lead has been deleted! Redirecting in 1s...</p>
                 )}
-                <form className="edit-leads__input">
+                <form className="edit-leads__input" ref={userValues}>
                     <img className="edit-leads__input-img" src={userInput.image_url} alt="" />
                     <div className="edit-leads__input-dropdown">
                         <DropdownField value={userInput.status} onChange={handleChange} />
                         <GenderDropdownField value={userInput.his_or_her} onChange={handleChange} />
                     </div>
                     <div className="edit-leads__input-personal">
-                        <InputField
+                        <InputFieldError
                             label="First Name"
                             placeholder="First Name"
                             name="first_name"
                             value={userInput.first_name}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Last Name"
                             placeholder="Last Name"
                             name="last_name"
                             value={userInput.last_name}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Position"
                             placeholder="Position"
                             name="position"
                             value={userInput.position}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Email"
                             placeholder="Email"
                             name="email"
                             value={userInput.email}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Phone"
                             placeholder="Phone"
                             name="phone"
                             value={userInput.phone}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Image URL"
                             placeholder="Image URL"
                             name="image_url"
                             value={userInput.image_url}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="LinkedIn"
                             placeholder="LinkedIn"
                             name="linked_in"
                             value={userInput.linked_in}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
                     </div>
                     <div className="edit-leads__input-business">
-                        <InputField
+                        <InputFieldError
                             label="Company"
                             placeholder="Company"
                             name="company"
                             value={userInput.company}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Street Name"
                             placeholder="Street Name"
                             name="street_name"
                             value={userInput.street_name}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="City"
                             placeholder="City"
                             name="city"
                             value={userInput.city}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="State"
                             placeholder="State"
                             name="state"
                             value={userInput.state}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Postcode"
                             placeholder="Postcode"
                             name="postcode"
                             value={userInput.postcode}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Country"
                             placeholder="Country"
                             name="country"
                             value={userInput.country}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Icebreaker"
                             placeholder="Icebreaker"
                             name="icebreaker"
                             value={userInput.icebreaker}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Paragraph 1"
                             placeholder="Paragraph 1"
                             name="paragraph_one"
                             value={userInput.paragraph_one}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Paragraph 2"
                             placeholder="Paragraph 2"
                             name="paragraph_two"
                             value={userInput.paragraph_two}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Paragraph 3"
                             placeholder="Paragraph 3"
                             name="paragraph_three"
                             value={userInput.paragraph_three}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Call To Action"
                             placeholder="Call To Action"
                             name="call_to_action"
                             value={userInput.call_to_action}
                             onChange={handleChange}
+                            errorMessage={errorMessage}
                         />
                     </div>
                 </form>
