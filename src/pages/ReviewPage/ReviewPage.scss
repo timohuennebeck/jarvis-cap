@@ -2,8 +2,11 @@
 @use "../../styles/partials/variables" as *;
 
 .review {
+    @include flex-column;
+    gap: $gap-default;
+
     @include tablet {
-        display: flex;
+        flex-direction: row;
         gap: $gap-default;
         width: 100%;
         height: 100%;
@@ -31,8 +34,6 @@
     }
 
     &__content {
-        display: none;
-
         @include tablet {
             display: flex;
             width: 100%;

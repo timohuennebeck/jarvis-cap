@@ -2,24 +2,37 @@ import "./DeleteNotification.scss";
 
 // components
 import ButtonElement from "../ButtonElement/ButtonElement";
+import { deleteLead } from "../../utils/api";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // libraries
-import { Navigate, useNavigate } from "react-router-dom";
 
-export default function DeleteNotification({ closeModal }) {
+export default function DeleteNotification({ closeModal, selectedLead, setDeleteNotification }) {
+    const { id } = useParams();
+
     const navigate = useNavigate();
+
+    const redirectUser = () => {
+        navigate("/leads");
+    };
 
     const handleDelete = (event) => {
         event.preventDefault();
-        // do axios delete call here...
-        navigate("/leads");
+
+        deleteLead({ id }).then(() => {
+            setDeleteNotification(true);
+            setTimeout(redirectUser, 1000);
+        });
         closeModal();
     };
 
     return (
         <div className="delete">
             <div className="delete__content">
-                <h1 className="delete__content-header">Delete Melanie Perkins?</h1>
+                <h1 className="delete__content-header">
+                    Delete {selectedLead.first_name} {selectedLead.last_name}?
+                </h1>
                 <p className="delete__content-paragraph">
                     Please confirm that you’d like to delete Melanie Perkins from the list. You
                     won’t be able to undo this action.
