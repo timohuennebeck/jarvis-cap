@@ -10,16 +10,27 @@ import { useParams } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
+import ReactModal from "react-modal";
+import DeleteNotification from "../DeleteNotification/DeleteNotification";
 
 export default function EditExistingLead() {
     const userValues = useRef();
+
+    const navigate = useNavigate();
 
     const [userInput, setUserInput] = useState([]);
     const [saveNotification, setSaveNotification] = useState(false);
     const [deleteNotification, setDeleteNotification] = useState(false);
     const [errorMessage, setErrorMessage] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const navigate = useNavigate();
+    function openModal() {
+        setModalIsOpen(true);
+    }
+
+    function closeModal() {
+        setModalIsOpen(false);
+    }
 
     const { id } = useParams();
 
@@ -58,23 +69,16 @@ export default function EditExistingLead() {
 
         setErrorMessage(errors);
 
+        const redirectUser = () => {
+            navigate("/leads");
+        };
+
         if (errors.length === 0) {
             updateLead({ id, userInput }).then(() => {
                 setSaveNotification(true);
                 setTimeout(redirectUser, 1000);
             });
         }
-    };
-
-    const deleteData = () => {
-        deleteLead({ id }).then(() => {
-            setDeleteNotification(true);
-            setTimeout(redirectUser, 1000);
-        });
-    };
-
-    const redirectUser = () => {
-        navigate("/leads");
     };
 
     if (!userInput) {
@@ -94,7 +98,7 @@ export default function EditExistingLead() {
                     <div className="edit-leads__links-spacing">
                         <ButtonElement onClick={uploadData} content="SAVE" backgroundColor="#000" />
                         <ButtonElement
-                            onClick={deleteData}
+                            onClick={openModal}
                             content="DELETE"
                             backgroundColor="#E43A07"
                         />
@@ -261,6 +265,18 @@ export default function EditExistingLead() {
                         />
                     </div>
                 </form>
+                <ReactModal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    className="edit-leads__card-modal"
+                    overlayClassName="edit-leads__card-modal-background"
+                >
+                    <DeleteNotification
+                        closeModal={closeModal}
+                        selectedLead={userInput}
+                        setDeleteNotification={setDeleteNotification}
+                    />
+                </ReactModal>
             </article>
         </>
     );
