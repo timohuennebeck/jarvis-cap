@@ -17,3 +17,21 @@
         outline: none;
     }
 }
+
+.error {
+    @include flex-vertical;
+    gap: $gap-default;
+
+    &__sign {
+        @include flex;
+        color: #fff;
+        background-color: #c94515;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+    }
+
+    &__message {
+        color: #c94515;
+    }
+}

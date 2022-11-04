@@ -2,9 +2,8 @@ import "./HomePage.scss";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
-import img from "../../assets/images/Untitled design.jpg";
 import { useEffect } from "react";
-import { getLeads, getLeadsClApproved } from "../../utils/api";
+import { getLeads } from "../../utils/api";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([]);
@@ -44,8 +43,6 @@ export default function HomePage() {
             setColumns(columnsFromBackend);
         });
     }, []);
-
-    console.log(columns);
 
     const onDragEnd = (result, columns, setColumns) => {
         if (!result.destination) return;
@@ -128,10 +125,10 @@ export default function HomePage() {
                                                                         <div className="home__kanban-container-content-indv-information">
                                                                             <img
                                                                                 className="home__kanban-container-content-indv-information-img"
-                                                                                src={img}
+                                                                                src={item.image_url}
                                                                             />
                                                                             <p className="home__kanban-container-content-indv-information-paragraph">
-                                                                                {item.created_at}
+                                                                                {new Date().toLocaleDateString()}
                                                                             </p>
                                                                         </div>
                                                                     </div>

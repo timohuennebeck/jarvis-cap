@@ -1,5 +1,5 @@
 import ButtonElement from "../ButtonElement/ButtonElement";
-import InputField from "../InputField/InputField";
+import InputFieldError from "../InputFieldError/InputFieldError";
 import DropdownField from "../DropdownField/DropdownField";
 import { useRef, useState } from "react";
 import { addNewLead } from "../../utils/api";
@@ -7,15 +7,16 @@ import { useNavigate } from "react-router-dom";
 import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 
 export default function AddNewLead() {
+    const userValues = useRef();
+
     const [notification, setNotification] = useState(false);
+    const [errorMessage, setErrorMessage] = useState([]);
 
     const navigate = useNavigate();
 
     const redirectUser = () => {
         navigate("/leads");
     };
-
-    const userValues = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,7 +28,6 @@ export default function AddNewLead() {
         const position = userValues.current.position.value;
         const email = userValues.current.email.value;
         const phone = userValues.current.phone.value;
-        const image_url = userValues.current.image_url.value;
         const linked_in = userValues.current.linked_in.value;
         const company = userValues.current.company.value;
         const street_name = userValues.current.street_name.value;
@@ -49,7 +49,6 @@ export default function AddNewLead() {
             position,
             email,
             phone,
-            image_url,
             linked_in,
             company,
             street_name,
@@ -63,10 +62,33 @@ export default function AddNewLead() {
             paragraph_three,
             call_to_action,
         };
-        addNewLead({ addInputData }).then(() => {
-            setNotification(true);
-            setTimeout(redirectUser, 1000);
-        });
+
+        const errors = [];
+
+        if (!userValues.current.first_name.value) {
+            errors.push("first_name");
+        }
+
+        if (!userValues.current.last_name.value) {
+            errors.push("last_name");
+        }
+
+        if (!userValues.current.email.value) {
+            errors.push("email");
+        }
+
+        if (!userValues.current.company.value) {
+            errors.push("company");
+        }
+
+        setErrorMessage(errors);
+
+        if (errors.length === 0) {
+            addNewLead({ addInputData }).then(() => {
+                setNotification(true);
+                setTimeout(redirectUser, 1000);
+            });
+        }
     };
 
     return (
@@ -96,45 +118,116 @@ export default function AddNewLead() {
                         <GenderDropdownField />
                     </div>
                     <div className="edit-leads__input-personal">
-                        <InputField label="First Name" placeholder="First Name" name="first_name" />
-                        <InputField label="Last Name" placeholder="Last Name" name="last_name" />
-                        <InputField label="Position" placeholder="Position" name="position" />
-                        <InputField label="Email" placeholder="Email" name="email" />
-                        <InputField label="Phone" placeholder="Phone" name="phone" />
-                        <InputField label="Image URL" placeholder="Image URL" name="image_url" />
-                        <InputField label="LinkedIn" placeholder="LinkedIn" name="linked_in" />
+                        <InputFieldError
+                            label="First Name"
+                            placeholder="First Name"
+                            name="first_name"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="Last Name"
+                            placeholder="Last Name"
+                            name="last_name"
+                            errorMessage={errorMessage}
+                        />
+
+                        <InputFieldError
+                            label="Position"
+                            placeholder="Position"
+                            name="position"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="Email"
+                            placeholder="Email"
+                            name="email"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="Phone"
+                            placeholder="Phone"
+                            name="phone"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="Image URL"
+                            placeholder="Image URL"
+                            name="image_url"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="LinkedIn"
+                            placeholder="LinkedIn"
+                            name="linked_in"
+                            errorMessage={errorMessage}
+                        />
                     </div>
                     <div className="edit-leads__input-business">
-                        <InputField label="Company" placeholder="Company" name="company" />
-                        <InputField
+                        <InputFieldError
+                            label="Company"
+                            placeholder="Company"
+                            name="company"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
                             label="Street Name"
                             placeholder="Street Name"
                             name="street_name"
+                            errorMessage={errorMessage}
                         />
-                        <InputField label="City" placeholder="City" name="city" />
-                        <InputField label="State" placeholder="State" name="state" />
-                        <InputField label="Postcode" placeholder="Postcode" name="postcode" />
-                        <InputField label="Country" placeholder="Country" name="country" />
-                        <InputField label="Icebreaker" placeholder="Icebreaker" name="icebreaker" />
-                        <InputField
+                        <InputFieldError
+                            label="City"
+                            placeholder="City"
+                            name="city"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="State"
+                            placeholder="State"
+                            name="state"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="Postcode"
+                            placeholder="Postcode"
+                            name="postcode"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="Country"
+                            placeholder="Country"
+                            name="country"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="Icebreaker"
+                            placeholder="Icebreaker"
+                            name="icebreaker"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
                             label="Paragraph 1"
                             placeholder="Paragraph 1"
                             name="paragraph_one"
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Paragraph 2"
                             placeholder="Paragraph 2"
                             name="paragraph_two"
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Paragraph 3"
                             placeholder="Paragraph 3"
                             name="paragraph_three"
+                            errorMessage={errorMessage}
                         />
-                        <InputField
+                        <InputFieldError
                             label="Call To Action"
                             placeholder="Call To Action"
                             name="call_to_action"
+                            errorMessage={errorMessage}
                         />
                     </div>
                 </form>

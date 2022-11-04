@@ -60,6 +60,8 @@
                         &-img {
                             @include border-image;
                             width: 2rem;
+                            height: 2rem;
+                            object-fit: cover;
                         }
 
                         &-paragraph {
