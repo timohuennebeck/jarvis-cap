@@ -9,14 +9,19 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function ReviewPage() {
-    const [leadData, setLeadData] = useState(null);
-    const [updateData, setUpdateData] = useState([]);
+    const [leadData, setLeadData] = useState([]);
+
+    const refreshLeads = () => {
+        getLeadsInProgress().then((resp) => {
+            setLeadData(resp.data);
+        });
+    };
 
     useEffect(() => {
         getLeadsInProgress().then((resp) => {
             setLeadData(resp.data);
         });
-    }, [updateData]);
+    }, []);
 
     if (!leadData) {
         return <p>Loading...</p>;
@@ -38,7 +43,7 @@ function ReviewPage() {
                 })}
             </div>
             <div className="review__content">
-                <ReviewTextPage leadData={leadData} setUpdateData={setUpdateData} />
+                <ReviewTextPage refreshLeads={refreshLeads} />
             </div>
         </article>
     );

@@ -6,33 +6,33 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
-export default function ReviewTextPage({ setUpdateData }) {
-    const [leadData, setLeadData] = useState(null);
-    const [userInput, setUserInput] = useState(null);
+export default function ReviewTextPage({ refreshLeads }) {
+    const [leadData, setLeadData] = useState([]);
+    const [userInput, setUserInput] = useState([]);
 
     const { id } = useParams();
 
     useEffect(() => {
         getLeadId({ id }).then((resp) => {
-            setLeadData(resp.data[0]);
             setUserInput(resp.data[0]);
+            setLeadData(resp.data[0]);
         });
     }, [id]);
 
     const approveLead = () => {
         const leadApproved = (userInput.status = "CL Approved");
         setUserInput(leadApproved);
-        updateLead({ id, userInput });
-        setUpdateData(null);
-        setTimeout(setUpdateData([]), 1000);
+        updateLead({ id, userInput }).then(() => {
+            refreshLeads();
+        });
     };
 
     const declineLead = () => {
         const leadDeclined = (userInput.status = "CL Declined");
         setUserInput(leadDeclined);
-        updateLead({ id, userInput });
-        setUpdateData(null);
-        setTimeout(setUpdateData([]), 1000);
+        updateLead({ id, userInput }).then(() => {
+            refreshLeads();
+        });
     };
 
     if (!leadData) {

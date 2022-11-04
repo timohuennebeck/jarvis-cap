@@ -15,6 +15,8 @@ export default function HomePage() {
         });
     }, []);
 
+    console.log(dataFromApi);
+
     const hardCodedData = [
         {
             id: uuid(),
@@ -62,9 +64,13 @@ export default function HomePage() {
             items: [],
         },
     };
-
     const [columns, setColumns] = useState(columnsFromBackend);
-    console.log(columns); // logs the columns with its content
+    
+    useEffect(() => {
+        setColumns(columnsFromBackend);
+    }, [])
+
+    console.log(columnsFromBackend); // logs the columns with its content
 
     // const onDragEnd = (result, columns, setColumns) => {
     //     if (!result.destination) return;
