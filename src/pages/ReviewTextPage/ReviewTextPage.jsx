@@ -47,11 +47,15 @@ export default function ReviewTextPage({ setUpdateData }) {
                 <p>
                     {leadData.first_name} {leadData.last_name}
                 </p>
-                <p>{leadData.business_name}</p>
+                <p>{leadData.position}</p>
+                <p>{leadData.company}</p>
                 <p>{leadData.street_name}</p>
-                <p>{leadData.postcode}</p>
+                <p>{leadData.city}</p>
+                <p>
+                    {leadData.state} {leadData.postcode}
+                </p>
                 <br />
-                <p>Dear {leadData.first_name}</p>
+                <p>Dear {leadData.first_name},</p>
                 <br />
                 <p>{leadData.icebreaker}</p>
                 <br />

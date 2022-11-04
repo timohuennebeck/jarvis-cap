@@ -140,17 +140,31 @@ export default function EditExistingLead() {
                     </div>
                     <div className="edit-leads__input-business">
                         <InputField
-                            label="Business Name"
-                            placeholder="Business Name"
-                            name="business_name"
-                            value={userInput.business_name}
+                            label="Company"
+                            placeholder="Company"
+                            name="company"
+                            value={userInput.company}
                             onChange={handleChange}
                         />
                         <InputField
-                            label="Street"
-                            placeholder="Street"
+                            label="Street Name"
+                            placeholder="Street Name"
                             name="street_name"
                             value={userInput.street_name}
+                            onChange={handleChange}
+                        />
+                        <InputField
+                            label="City"
+                            placeholder="City"
+                            name="city"
+                            value={userInput.city}
+                            onChange={handleChange}
+                        />
+                        <InputField
+                            label="State"
+                            placeholder="State"
+                            name="state"
+                            value={userInput.state}
                             onChange={handleChange}
                         />
                         <InputField
@@ -158,6 +172,13 @@ export default function EditExistingLead() {
                             placeholder="Postcode"
                             name="postcode"
                             value={userInput.postcode}
+                            onChange={handleChange}
+                        />
+                        <InputField
+                            label="Country"
+                            placeholder="Country"
+                            name="country"
+                            value={userInput.country}
                             onChange={handleChange}
                         />
                         <InputField
