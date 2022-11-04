@@ -52,8 +52,12 @@ export const getLeadsInProgress = () => {
     return axios.get(`${base_url}/leads/in-progress`);
 };
 
-export const getLeadsClFinished = () => {
-    return axios.get(`${base_url}/leads/c-finished`);
+export const getLeadsClApproved = () => {
+    return axios.get(`${base_url}/leads/cl-approved`);
+};
+
+export const getLeadsClDeclined = () => {
+    return axios.get(`${base_url}/leads/cl-declined`);
 };
 
 export const getLeadsAwaitingResponse = () => {
