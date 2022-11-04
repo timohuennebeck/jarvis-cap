@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 function ReviewPage() {
     const [leadData, setLeadData] = useState(null);
-    const [updateData, setUpdateData] = useState(false);
+    const [updateData, setUpdateData] = useState([]);
 
     useEffect(() => {
         getLeadsInProgress().then((resp) => {

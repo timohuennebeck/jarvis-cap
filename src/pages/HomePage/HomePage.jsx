@@ -12,7 +12,6 @@ export default function HomePage() {
     useEffect(() => {
         getLeadsInProgress().then((resp) => {
             setLeads(resp.data);
-            console.log(resp.data);
         });
     }, []);
 
@@ -39,7 +38,11 @@ export default function HomePage() {
             items: itemsFromBackend,
         },
         [uuid()]: {
-            name: "CL Finished",
+            name: "CL Approved",
+            items: [],
+        },
+        [uuid()]: {
+            name: "CL Declined",
             items: [],
         },
         [uuid()]: {
@@ -117,7 +120,6 @@ export default function HomePage() {
                                                 className="home__kanban-container-content"
                                             >
                                                 {columnn.items.map((item, index) => {
-                                                    console.log("Fuck");
                                                     return (
                                                         <Draggable
                                                             key={item.id}

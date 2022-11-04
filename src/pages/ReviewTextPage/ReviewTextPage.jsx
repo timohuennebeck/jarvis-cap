@@ -23,14 +23,16 @@ export default function ReviewTextPage({ setUpdateData }) {
         const leadApproved = (userInput.status = "CL Approved");
         setUserInput(leadApproved);
         updateLead({ id, userInput });
-        setUpdateData(true);
+        setUpdateData(null);
+        setTimeout(setUpdateData([]), 1000);
     };
 
     const declineLead = () => {
         const leadDeclined = (userInput.status = "CL Declined");
         setUserInput(leadDeclined);
         updateLead({ id, userInput });
-        setUpdateData(true);
+        setUpdateData(null);
+        setTimeout(setUpdateData([]), 1000);
     };
 
     if (!leadData) {
