@@ -42,6 +42,11 @@ export default function ReviewTextPage({ setUpdateData }) {
     return (
         <div className="review-container">
             <div className="review-container__content">
+                <p>Timo Huennebeck</p>
+                <p>Rupert-Mayer-Str. 18</p>
+                <p>Huerth</p>
+                <p>NRW 50354</p>
+                <br />
                 <p>{new Date().toLocaleDateString()}</p>
                 <br />
                 <p>
