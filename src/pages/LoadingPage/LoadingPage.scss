@@ -1,0 +1,152 @@
+@use "../../styles/partials/mixins" as *;
+
+.loading {
+    @include flex-column;
+    align-items: center;
+    text-align: center;
+    gap: 2.5rem;
+    width: 100%;
+    height: 100%;
+
+    @include tablet {
+        gap: 3.25rem;
+    }
+
+    &__header {
+        @include flex-column;
+        align-items: center;
+        gap: 2.5rem;
+
+        @include tablet {
+            flex-direction: row;
+            gap: 3.25rem;
+        }
+
+        &-container {
+            overflow: hidden;
+            height: 5rem;
+
+            @include tablet {
+                height: 7.5rem;
+            }
+
+            &-text {
+                display: inline;
+                float: left;
+                margin: 0;
+            }
+
+            &-list {
+                text-align: center;
+                animation-name: change;
+                animation-duration: 10s;
+                animation-iteration-count: infinite;
+
+                &-item {
+                    letter-spacing: 1.25rem;
+                    padding-left: 1.25rem;
+                    font-size: 2.75rem;
+                    line-height: 5rem;
+
+                    @include tablet {
+                        line-height: 7.5rem;
+                        font-size: 5.25rem;
+                        letter-spacing: 1.75rem;
+                    }
+                }
+            }
+        }
+
+        &-img {
+            width: 1.5rem;
+            animation: spin 4s linear infinite;
+
+            @keyframes spin {
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+
+        &-logo {
+            width: 11.75rem;
+
+            @include tablet {
+                width: 17.25rem;
+            }
+        }
+
+        &-paragraph {
+            letter-spacing: 1.25rem;
+            padding-left: 1.25rem;
+            font-size: 3.75rem;
+
+            @include tablet {
+                font-size: 5.25rem;
+                letter-spacing: 1.75rem;
+            }
+        }
+    }
+
+    &__paragraph {
+        max-width: 28.5rem;
+        font-size: 1.15rem;
+        line-height: 2.25rem;
+    }
+}
+
+@keyframes change {
+    0%,
+    12.66%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+    16.66%,
+    29.32% {
+        transform: translate3d(0, -25%, 0);
+    }
+    33.32%,
+    45.98% {
+        transform: translate3d(0, -50%, 0);
+    }
+    49.98%,
+    62.64% {
+        transform: translate3d(0, -75%, 0);
+    }
+    66.64%,
+    79.3% {
+        transform: translate3d(0, -50%, 0);
+    }
+    83.3%,
+    95.96% {
+        transform: translate3d(0, -25%, 0);
+    }
+}
+
+@keyframes change {
+    0%,
+    12.66%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+    16.66%,
+    29.32% {
+        transform: translate3d(0, -25%, 0);
+    }
+    33.32%,
+    45.98% {
+        transform: translate3d(0, -50%, 0);
+    }
+    49.98%,
+    62.64% {
+        transform: translate3d(0, -75%, 0);
+    }
+    66.64%,
+    79.3% {
+        transform: translate3d(0, -50%, 0);
+    }
+    83.3%,
+    95.96% {
+        transform: translate3d(0, -25%, 0);
+    }
+}

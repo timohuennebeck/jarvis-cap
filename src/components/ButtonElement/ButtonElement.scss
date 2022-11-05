@@ -3,7 +3,7 @@
 
 .button {
     @include border-no-radius;
-    padding: $btn-input-padding-default;
+    padding: $padding-default;
     border-radius: $border-radius-default;
     color: white;
     font-size: 0.75rem;
