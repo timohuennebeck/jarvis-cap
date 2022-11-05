@@ -1,7 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.log-in {
+.register {
     @include flex-column;
     gap: 2.75rem;
 
@@ -72,6 +72,11 @@
         @include tablet {
             min-width: 35rem;
             max-width: 35rem;
+        }
+
+        &-names {
+            display: flex;
+            gap: $gap-default;
         }
 
         &-forgot {

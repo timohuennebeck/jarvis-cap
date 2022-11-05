@@ -25,9 +25,9 @@
         }
 
         &-routes {
-            // @include border-padding;
-            // @include shadow;
-            // overflow-x: scroll;
+            @include border-padding;
+            @include shadow;
+            overflow-x: scroll;
 
             &::-webkit-scrollbar {
                 @include border-no-radius;
