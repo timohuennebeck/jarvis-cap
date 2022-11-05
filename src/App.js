@@ -19,19 +19,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EditExistingLead from "./components/EditExistingLead/EditExistingLead";
 import AddNewLead from "./components/AddNewLead/AddNewLead";
 import EditorPage from "./pages/EditorPage/EditorPage";
+import LoadingPage from "./pages/LoadingPage/LoadingPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
     return (
         <div className="app">
             <BrowserRouter>
-                <Header />
+                {/* <Header /> */}
                 <div className="app__structure">
-                    <div className="app__structure-sidebar">
+                    {/* <div className="app__structure-sidebar">
                         <SBNavigation />
                         <SBTemplates />
-                    </div>
+                    </div> */}
                     <div className="app__structure-routes">
                         <Routes>
+                            <Route path="/log-in" element={<LoginPage />} />
+                            <Route path="/loading" element={<LoadingPage />} />
                             <Route path="/" element={<HomePage />} />
                             <Route path="/leads" element={<LeadsPage />} />
                             <Route path="/leads/:id" element={<EditExistingLead />} />

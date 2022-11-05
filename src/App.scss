@@ -9,6 +9,7 @@
 
     &__structure {
         min-height: 72.5vh;
+        width: 100%;
 
         @include tablet {
             display: flex;
@@ -24,9 +25,9 @@
         }
 
         &-routes {
-            @include border-padding;
-            @include shadow;
-            overflow-x: scroll;
+            // @include border-padding;
+            // @include shadow;
+            // overflow-x: scroll;
 
             &::-webkit-scrollbar {
                 @include border-no-radius;

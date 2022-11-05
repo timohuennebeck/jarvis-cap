@@ -1,0 +1,20 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.login-field {
+    @include flex-vertical;
+    @include shadow;
+    @include border-padding;
+    width: 100%;
+    gap: $gap-default;
+
+    &__img {
+        width: 1.25rem;
+        opacity: 50%;
+    }
+
+    &__input {
+        border: none;
+        outline: none;
+    }
+}

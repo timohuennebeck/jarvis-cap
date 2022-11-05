@@ -1,0 +1,61 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.log-in {
+    @include flex-column;
+    gap: 2.75rem;
+
+    @include tablet {
+        align-items: center;
+    }
+
+    &__header {
+        @include flex-column;
+        align-items: center;
+        text-align: center;
+
+        @include tablet {
+            flex-direction: row;
+            gap: 2.75rem;
+        }
+
+        &-img {
+            width: 11.75rem;
+
+            @include tablet {
+                width: 17.25rem;
+            }
+        }
+
+        &-content {
+            &-brand {
+                letter-spacing: 1.25rem;
+                padding-left: 1.25rem;
+                font-size: 3.75rem;
+
+                @include tablet {
+                    font-size: 5.25rem;
+                    letter-spacing: 1.75rem;
+                }
+            }
+        }
+    }
+
+    &__input {
+        @include flex-column;
+        gap: 1rem;
+        
+        @include tablet {
+            min-width: 35rem;
+            max-width: 35rem;
+        }
+
+        &-forgot {
+            text-align: right;
+        }
+
+        &-btn {
+            padding-top: 2.25rem;
+        }
+    }
+}

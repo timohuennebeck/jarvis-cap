@@ -1,5 +1,4 @@
 import "./LeadInformation.scss";
-import Melanie from "../../assets/images/Untitled design.jpg";
 import { useState } from "react";
 
 export default function LeadInformation({ lead }) {
