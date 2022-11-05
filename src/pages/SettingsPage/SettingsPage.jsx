@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import InputField from "../../components/InputField/InputField";
+import ReactModal from "react-modal";
+import DeleteNotificationUsers from "../../components/DeleteNotificationUsers/DeleteNotificationUsers";
 
-import { deleteUser, getUserId, updateUser } from "../../utils/api";
+import { getUserId, updateUser } from "../../utils/api";
 import { useParams } from "react-router-dom";
 
 import "./SettingsPage.scss";
@@ -11,14 +13,18 @@ import "./SettingsPage.scss";
 function SettingsPage() {
     const [userInput, setUserInput] = useState(null);
     const [notification, setNotification] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [deleteMessage, setDeleteMessage] = useState(false);
+
+    function openModal() {
+        setModalIsOpen(true);
+    }
+
+    function closeModal() {
+        setModalIsOpen(false);
+    }
 
     const { id } = useParams();
-
-    // updating the data inside an input field
-
-    const handleChange = (e) => {
-        setUserInput({ ...userInput, [e.target.name]: e.target.value });
-    };
 
     // making api calls
 
@@ -26,15 +32,15 @@ function SettingsPage() {
         getUserId({ id }).then((resp) => {
             setUserInput(resp.data[0]);
         });
-    }, []);
+    }, [id]);
+
+    const handleChange = (e) => {
+        setUserInput({ ...userInput, [e.target.name]: e.target.value });
+    };
 
     const uploadData = () => {
         updateUser({ id, userInput });
         setNotification(true);
-    };
-
-    const deleteData = () => {
-        deleteUser({ id });
     };
 
     if (!userInput) {
@@ -79,6 +85,11 @@ function SettingsPage() {
                     />
                 </div>
                 {notification && <p className="save-data-settings">Data has been saved!</p>}
+                {deleteMessage && (
+                    <p className="save-data-settings">
+                        User has been deleted! Redirecting in 1s...
+                    </p>
+                )}
             </div>
             <div className="settings__delete">
                 <h2 className="settings__delete-header">Delete Personal Account</h2>
@@ -92,10 +103,22 @@ function SettingsPage() {
                     <ButtonElement
                         content="DELETE ACCOUNT"
                         backgroundColor="#E43A07"
-                        onClick={deleteData}
+                        onClick={openModal}
                     />
                 </div>
             </div>
+            <ReactModal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                className="edit-leads__card-modal"
+                overlayClassName="edit-leads__card-modal-background"
+            >
+                <DeleteNotificationUsers
+                    closeModal={closeModal}
+                    selectedLead={userInput}
+                    setDeleteMessage={setDeleteMessage}
+                />
+            </ReactModal>
         </article>
     );
 }

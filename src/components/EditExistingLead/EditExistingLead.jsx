@@ -2,7 +2,7 @@ import ButtonElement from "../ButtonElement/ButtonElement";
 import InputFieldError from "../InputFieldError/InputFieldError";
 import DropdownField from "../DropdownField/DropdownField";
 
-import { getLeadId, updateLead, deleteLead } from "../../utils/api";
+import { getLeadId, updateLead } from "../../utils/api";
 
 import "./EditExistingLead.scss";
 import { useEffect } from "react";
@@ -11,7 +11,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 import ReactModal from "react-modal";
-import DeleteNotification from "../DeleteNotification/DeleteNotification";
+import DeleteNotificationLeads from "../DeleteNotificationLeads/DeleteNotificationLeads";
 
 export default function EditExistingLead() {
     const userValues = useRef();
@@ -20,7 +20,7 @@ export default function EditExistingLead() {
 
     const [userInput, setUserInput] = useState([]);
     const [saveNotification, setSaveNotification] = useState(false);
-    const [deleteNotification, setDeleteNotification] = useState(false);
+    const [deleteMessage, setDeleteMessage] = useState(false);
     const [errorMessage, setErrorMessage] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -46,7 +46,7 @@ export default function EditExistingLead() {
         getLeadId({ id }).then((resp) => {
             setUserInput(resp.data[0]);
         });
-    }, []);
+    }, [id]);
 
     const uploadData = () => {
         const errors = [];
@@ -107,7 +107,7 @@ export default function EditExistingLead() {
                 {saveNotification && (
                     <p className="save-data-leads">Lead has been saved! Redirecting in 1s...</p>
                 )}
-                {deleteNotification && (
+                {deleteMessage && (
                     <p className="save-data-leads">Lead has been deleted! Redirecting in 1s...</p>
                 )}
                 <form className="edit-leads__input" ref={userValues}>
@@ -271,10 +271,10 @@ export default function EditExistingLead() {
                     className="edit-leads__card-modal"
                     overlayClassName="edit-leads__card-modal-background"
                 >
-                    <DeleteNotification
+                    <DeleteNotificationLeads
                         closeModal={closeModal}
                         selectedLead={userInput}
-                        setDeleteNotification={setDeleteNotification}
+                        setDeleteMessage={setDeleteMessage}
                     />
                 </ReactModal>
             </article>
