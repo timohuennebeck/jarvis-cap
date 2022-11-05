@@ -1,14 +1,14 @@
-import "./DeleteNotification.scss";
+import "./DeleteNotificationUsers.scss";
 
 // components
 import ButtonElement from "../ButtonElement/ButtonElement";
-import { deleteLead } from "../../utils/api";
+import { deleteUser } from "../../utils/api";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 // libraries
 
-export default function DeleteNotification({ closeModal, selectedLead, setDeleteNotification }) {
+export default function DeleteNotification({ closeModal, selectedLead, setDeleteMessage }) {
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -20,8 +20,8 @@ export default function DeleteNotification({ closeModal, selectedLead, setDelete
     const handleDelete = (event) => {
         event.preventDefault();
 
-        deleteLead({ id }).then(() => {
-            setDeleteNotification(true);
+        deleteUser({ id }).then(() => {
+            setDeleteMessage(true);
             setTimeout(redirectUser, 1000);
         });
         closeModal();
@@ -34,8 +34,8 @@ export default function DeleteNotification({ closeModal, selectedLead, setDelete
                     Delete {selectedLead.first_name} {selectedLead.last_name}?
                 </h1>
                 <p className="delete__content-paragraph">
-                    Please confirm that you’d like to delete Melanie Perkins from the list. You
-                    won’t be able to undo this action.
+                    Please confirm that you’d like to delete {selectedLead.first_name}{" "}
+                    {selectedLead.last_name} from the list. You won’t be able to undo this action.
                 </p>
             </div>
             <div className="delete__links">
