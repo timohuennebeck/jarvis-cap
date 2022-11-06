@@ -51,9 +51,10 @@ export default function Header() {
                                 <img
                                     className="nav__desktop-profile-img"
                                     src={ProfileImg}
-                                    alt="Profile Picture"
+                                    alt="profile"
                                 />
                             </Link>
+                            <ButtonElement link="/login" content="Logout" backgroundColor="#000"/>
                         </div>
                     </div>
 

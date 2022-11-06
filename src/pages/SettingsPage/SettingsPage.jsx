@@ -81,11 +81,6 @@ function SettingsPage() {
                     />
                 </div>
                 {notification && <p className="save-data-settings">Data has been saved!</p>}
-                {deleteMessage && (
-                    <p className="save-data-settings">
-                        User has been deleted! Redirecting in 1s...
-                    </p>
-                )}
             </div>
             <div className="settings__information">
                 <h2 className="settings__information-header">Address Information</h2>
@@ -135,11 +130,6 @@ function SettingsPage() {
                     />
                 </div>
                 {notification && <p className="save-data-settings">Data has been saved!</p>}
-                {deleteMessage && (
-                    <p className="save-data-settings">
-                        User has been deleted! Redirecting in 1s...
-                    </p>
-                )}
             </div>
             <div className="settings__delete">
                 <h2 className="settings__delete-header">Delete Personal Account</h2>
@@ -156,6 +146,11 @@ function SettingsPage() {
                         onClick={openModal}
                     />
                 </div>
+                {deleteMessage && (
+                    <p className="save-data-settings">
+                        User has been deleted! Redirecting in 1s...
+                    </p>
+                )}
             </div>
             <ReactModal
                 isOpen={modalIsOpen}
