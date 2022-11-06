@@ -13,19 +13,13 @@
         min-height: 12.5rem;
 
         &-links {
+            @include flex-column;
+            gap: $gap-default;
+            text-align: center;
             margin-top: 1.25rem;
 
             @include tablet {
-                display: flex;
-                gap: $gap-default;
-            }
-
-            &-open-file {
-                display: none;
-
-                @include tablet {
-                    display: block;
-                }
+                flex-direction: row;
             }
         }
     }

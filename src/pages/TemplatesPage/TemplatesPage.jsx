@@ -10,6 +10,7 @@ import { getUserId } from "../../utils/api";
 import { useState } from "react";
 import { useRef } from "react";
 import { updateUser } from "../../utils/api";
+import ExternalButton from "../../components/ExternalButton/ExternalButton";
 
 function TemplatesPage() {
     const userValues = useRef();
@@ -53,17 +54,13 @@ function TemplatesPage() {
                 <div className="templates__url-links">
                     <ButtonElement content="SAVE" backgroundColor="#000" onClick={uploadData} />
                     <div className="templates__url-links-open-file">
-                        <ButtonElement
-                            content="OPEN FILE"
-                            backgroundColor="#FFF"
-                            fontColor="#000"
-                        />
+                        <ExternalButton link={userInput.google_url} name="OPEN FILE" />
                     </div>
                 </div>
             </form>
-            <TemplatePreview />
-            <TemplatePreview />
-            <TemplatePreview />
+            <TemplatePreview link="" name="Template #1" />
+            <TemplatePreview link="" name="Template #2" />
+            <TemplatePreview link="" name="Template #3" />
         </article>
     );
 }

@@ -28,7 +28,6 @@ function App() {
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/loading" element={<LoadingPage />} />
-                    <Route path="*" element={<NotFoundPage />} />
                 </Route>
                 <Route element={<UserInterfaceLYT />}>
                     <Route path="/" element={<HomePage />} />
@@ -40,6 +39,7 @@ function App() {
                     <Route path="/review/:id" element={<ReviewPage />} />
                     <Route path="/editor" element={<EditorPage />} />
                     <Route path="/settings/:id" element={<SettingsPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>
