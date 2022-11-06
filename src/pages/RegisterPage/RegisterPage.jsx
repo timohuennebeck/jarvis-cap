@@ -39,11 +39,11 @@ export default function RegisterPage() {
                 <p className="register__input-forgot">Forgot Password?</p>
                 <div className="register__input-user">
                     <Link to="/loading">
-                        <button className="register__input-user-link">Log In</button>
+                        <button className="register__input-user-link">Register</button>
                     </Link>
                     <p className="register__input-user-existing-user">
                         Already have an account?{" "}
-                        <Link to="/log-in" className="register__input-user-existing-user-link">
+                        <Link to="/login" className="register__input-user-existing-user-link">
                             Login here.
                         </Link>
                     </p>

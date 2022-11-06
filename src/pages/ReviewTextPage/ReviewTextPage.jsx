@@ -36,7 +36,7 @@ export default function ReviewTextPage({ refreshLeads }) {
     };
 
     if (!leadData) {
-        return <p>Loading...</p>;
+        return <p>Loading data! Please select a lead to continue...</p>;
     }
 
     return (
