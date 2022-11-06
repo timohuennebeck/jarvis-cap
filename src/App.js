@@ -35,8 +35,7 @@ function App() {
                     <Route path="/leads" element={<LeadsPage />} />
                     <Route path="/leads/:id" element={<EditExistingLead />} />
                     <Route path="/leads/add-new" element={<AddNewLead />} />
-                    <Route path="/templates" element={<TemplatesPage />} />
-                    <Route path="/templates/:id" />
+                    <Route path="/templates/:id" element={<TemplatesPage />} />
                     <Route path="/review" element={<ReviewPage />} />
                     <Route path="/review/:id" element={<ReviewPage />} />
                     <Route path="/editor" element={<EditorPage />} />
