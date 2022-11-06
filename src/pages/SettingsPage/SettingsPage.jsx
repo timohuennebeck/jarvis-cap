@@ -58,24 +58,74 @@ function SettingsPage() {
                     dolor sit amet...
                 </p>
                 <div className="settings__information-input">
-                    <div className="settings__information-input-indv">
-                        <InputField
-                            label="First Name"
-                            placeholder="First Name"
-                            name="first_name"
-                            value={userInput.first_name}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="settings__information-input-indv">
-                        <InputField
-                            label="Last Name"
-                            placeholder="Last Name"
-                            name="last_name"
-                            value={userInput.last_name}
-                            onChange={handleChange}
-                        />
-                    </div>
+                    <InputField
+                        label="First Name"
+                        placeholder="First Name"
+                        name="first_name"
+                        value={userInput.first_name}
+                        onChange={handleChange}
+                    />
+                    <InputField
+                        label="Last Name"
+                        placeholder="Last Name"
+                        name="last_name"
+                        value={userInput.last_name}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="settings__link">
+                    <ButtonElement
+                        content="SAVE SETTINGS"
+                        backgroundColor="#000000"
+                        onClick={uploadData}
+                    />
+                </div>
+                {notification && <p className="save-data-settings">Data has been saved!</p>}
+                {deleteMessage && (
+                    <p className="save-data-settings">
+                        User has been deleted! Redirecting in 1s...
+                    </p>
+                )}
+            </div>
+            <div className="settings__information">
+                <h2 className="settings__information-header">Address Information</h2>
+                <p className="settings__information-content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum
+                    dolor sit amet...
+                </p>
+                <div className="settings__information-input">
+                    <InputField
+                        label="Street Name"
+                        placeholder="Street Name"
+                        name="street_name"
+                        value={userInput.street_name}
+                        onChange={handleChange}
+                    />
+                    <InputField
+                        label="State"
+                        placeholder="State"
+                        name="state"
+                        value={userInput.state}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="settings__information-input">
+                    <InputField
+                        label="City"
+                        placeholder="City"
+                        name="city"
+                        value={userInput.city}
+                        onChange={handleChange}
+                    />
+                    <InputField
+                        label="Postcode"
+                        placeholder="Postcode"
+                        name="postcode"
+                        value={userInput.postcode}
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className="settings__link">
                     <ButtonElement

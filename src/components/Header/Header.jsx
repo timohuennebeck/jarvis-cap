@@ -7,6 +7,7 @@ import { getUsers } from "../../utils/api";
 
 import Menu from "../../assets/images/menu-icon.png";
 import ButtonElement from "../ButtonElement/ButtonElement";
+import ProfileImg from "../../assets/images/portrait.jpg";
 
 export default function Header() {
     const [userData, setUserData] = useState();
@@ -44,12 +45,16 @@ export default function Header() {
                             backgroundColor="#FFFFFF"
                             fontColor="#000000"
                         />
-                        <ButtonElement
-                            content="CREATE A TEMPLATE"
-                            link="/templates"
-                            backgroundColor="#000000"
-                            fontColor="#FFFFFF"
-                        />
+                        <div className="nav__desktop-profile">
+                            <p>Hello, Timo</p>
+                            <Link to="/settings/1">
+                                <img
+                                    className="nav__desktop-profile-img"
+                                    src={ProfileImg}
+                                    alt="Profile Picture"
+                                />
+                            </Link>
+                        </div>
                     </div>
 
                     <div className={sidebar ? "nav__menu-bar active" : "nav__menu-bar"}>
