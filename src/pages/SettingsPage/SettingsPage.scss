@@ -16,22 +16,6 @@
         &-input {
             padding-bottom: $padding-default;
         }
-
-        &-input {
-            @include flex-column;
-            gap: $padding-default;
-
-            @include tablet {
-                width: 80%;
-                flex-direction: row;
-            }
-
-            &-indv {
-                @include tablet {
-                    flex-grow: 1;
-                }
-            }
-        }
     }
 
     &__information {
@@ -55,6 +39,42 @@
                 left: 5rem;
                 top: 3.5rem;
                 transform: scale(2.5);
+            }
+        }
+
+        &-user {
+            @include flex-column;
+            gap: $gap-default;
+
+            @include tablet {
+                width: 80%;
+            }
+
+            &-input {
+                @include flex-column;
+                gap: $gap-default;
+
+                @include tablet {
+                    flex-direction: row;
+                }
+            }
+        }
+
+        &-address {
+            @include flex-column;
+            gap: $gap-default;
+
+            @include tablet {
+                width: 80%;
+            }
+
+            &-input {
+                @include flex-column;
+                gap: $gap-default;
+
+                @include tablet {
+                    flex-direction: row;
+                }
             }
         }
     }

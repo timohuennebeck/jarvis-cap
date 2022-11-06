@@ -58,9 +58,14 @@ function TemplatesPage() {
                     </div>
                 </div>
             </form>
-            <TemplatePreview link="" name="Template #1" />
-            <TemplatePreview link="" name="Template #2" />
-            <TemplatePreview link="" name="Template #3" />
+            <TemplatePreview
+                link="https://docs.google.com/document/d/1pg3id6wxlmV65hVNb3uzYMbYVaPki1c8593KcpNIKcw"
+                name="Template #1"
+            />
+            <TemplatePreview
+                link="https://docs.google.com/document/d/1J3TK7yN2TntBzd9oUfXsTq1V4IRsr1713nh-uvqHKTQ"
+                name="Template #2"
+            />
         </article>
     );
 }
