@@ -40,7 +40,7 @@ function NavList() {
             <div className="nav-list__link">
                 <ButtonElement
                     content="TEMPLATES"
-                    link="/templates"
+                    link={`/templates/${userData.id}`}
                     backgroundColor="#FFFFFF"
                     fontColor="#000000"
                 />
