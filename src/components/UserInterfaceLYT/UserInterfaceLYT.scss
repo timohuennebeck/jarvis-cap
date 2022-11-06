@@ -15,8 +15,7 @@
 
         &-sidebar {
             @include tablet {
-                display: flex;
-                flex-direction: column;
+                @include flex-column;
                 flex-shrink: 0;
                 gap: 0.75rem;
             }

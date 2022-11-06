@@ -107,6 +107,31 @@
             display: flex;
             justify-content: space-between;
         }
+
+        &-profile {
+            display: none;
+
+            @include tablet {
+                @include flex-vertical;
+                gap: $gap-default;
+            }
+            &-img {
+                display: none;
+
+                @include tablet {
+                    @include border-image;
+                    display: flex;
+                    width: 2.25rem;
+                    height: 2.25rem;
+                    object-fit: cover;
+
+                    &:hover {
+                        transform: scale(1.15);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
     }
 }
 
