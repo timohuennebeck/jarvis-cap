@@ -62,21 +62,30 @@ function SettingsPage() {
                     src={userInput.image_url}
                     alt="profile"
                 />
-                <div className="settings__information-input">
+                <div className="settings__information-user">
                     <InputField
-                        label="First Name"
-                        placeholder="First Name"
-                        name="first_name"
-                        value={userInput.first_name}
+                        label="Email"
+                        placeholder="Email"
+                        name="email"
+                        value={userInput.email}
                         onChange={handleChange}
                     />
-                    <InputField
-                        label="Last Name"
-                        placeholder="Last Name"
-                        name="last_name"
-                        value={userInput.last_name}
-                        onChange={handleChange}
-                    />
+                    <div className="settings__information-user-input">
+                        <InputField
+                            label="First Name"
+                            placeholder="First Name"
+                            name="first_name"
+                            value={userInput.first_name}
+                            onChange={handleChange}
+                        />
+                        <InputField
+                            label="Last Name"
+                            placeholder="Last Name"
+                            name="last_name"
+                            value={userInput.last_name}
+                            onChange={handleChange}
+                        />
+                    </div>
                 </div>
                 <div className="settings__link">
                     <ButtonElement
@@ -95,44 +104,46 @@ function SettingsPage() {
                     nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum
                     dolor sit amet...
                 </p>
-                <div className="settings__information-input">
-                    <InputField
-                        label="Street Name"
-                        placeholder="Street Name"
-                        name="street_name"
-                        value={userInput.street_name}
-                        onChange={handleChange}
-                    />
-                    <InputField
-                        label="State"
-                        placeholder="State"
-                        name="state"
-                        value={userInput.state}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="settings__information-input">
-                    <InputField
-                        label="City"
-                        placeholder="City"
-                        name="city"
-                        value={userInput.city}
-                        onChange={handleChange}
-                    />
-                    <InputField
-                        label="Postcode"
-                        placeholder="Postcode"
-                        name="postcode"
-                        value={userInput.postcode}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="settings__link">
-                    <ButtonElement
-                        content="SAVE SETTINGS"
-                        backgroundColor="#000000"
-                        onClick={uploadData}
-                    />
+                <div className="settings__information-address">
+                    <div className="settings__information-address-input">
+                        <InputField
+                            label="Street Name"
+                            placeholder="Street Name"
+                            name="street_name"
+                            value={userInput.street_name}
+                            onChange={handleChange}
+                        />
+                        <InputField
+                            label="State"
+                            placeholder="State"
+                            name="state"
+                            value={userInput.state}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="settings__information-address-input">
+                        <InputField
+                            label="City"
+                            placeholder="City"
+                            name="city"
+                            value={userInput.city}
+                            onChange={handleChange}
+                        />
+                        <InputField
+                            label="Postcode"
+                            placeholder="Postcode"
+                            name="postcode"
+                            value={userInput.postcode}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="settings__link">
+                        <ButtonElement
+                            content="SAVE SETTINGS"
+                            backgroundColor="#000000"
+                            onClick={uploadData}
+                        />
+                    </div>
                 </div>
                 {notification && <p className="save-data-settings">Data has been saved!</p>}
             </div>
