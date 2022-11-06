@@ -57,6 +57,11 @@ function SettingsPage() {
                     nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum
                     dolor sit amet...
                 </p>
+                <img
+                    className="settings__information-img"
+                    src={userInput.image_url}
+                    alt="profile"
+                />
                 <div className="settings__information-input">
                     <InputField
                         label="First Name"

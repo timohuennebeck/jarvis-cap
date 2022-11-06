@@ -22,22 +22,42 @@
             gap: 3.25rem;
         }
 
-        &-logo {
-            width: 11.75rem;
-
-            @include tablet {
-                width: 17.25rem;
-            }
-        }
-
         &-img {
-            width: 1.5rem;
-            animation: spin 4s linear infinite;
-
+            width: 1rem;
+            animation: spin 1.25s linear infinite;
             @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
                 100% {
                     transform: rotate(360deg);
                 }
+            }
+        }
+
+        &-logo {
+            width: 14.75rem;
+            animation: wiggle 2s linear infinite;
+            @keyframes wiggle {
+                0% {
+                    transform: rotate(1.5deg);
+                }
+                25% {
+                    transform: rotate(0deg);
+                }
+                50% {
+                    transform: rotate(1.5deg);
+                }
+                75% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(1.5deg);
+                }
+            }
+
+            @include tablet {
+                width: 17.25rem;
             }
         }
     }

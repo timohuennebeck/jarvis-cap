@@ -18,7 +18,7 @@ export default function LoadingPage() {
                 </div>
                 <img className="loading__header-img" src={Loading} alt="" />
                 <p className="loading__paragraph">
-                    Sit back and relax while we are preparing the workspace for you...
+                    Please sit back and relax while we are preparing the workspace for you...
                 </p>
             </div>
         </>
