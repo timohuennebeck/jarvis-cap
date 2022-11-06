@@ -126,6 +126,7 @@ export default function HomePage() {
                                                                             <img
                                                                                 className="home__kanban-container-content-indv-information-img"
                                                                                 src={item.image_url}
+                                                                                alt="profile"
                                                                             />
                                                                             <p className="home__kanban-container-content-indv-information-paragraph">
                                                                                 {new Date().toLocaleDateString()}
