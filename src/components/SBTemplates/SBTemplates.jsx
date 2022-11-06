@@ -2,49 +2,19 @@ import "./SBTemplates.scss";
 
 // components
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
+import ExternalButton from "../ExternalButton/ExternalButton";
 
 export default function SBTemplates() {
     return (
         <div className="nav-list">
             <div className="nav-list__link">
-                <ButtonElement
-                    content="TEMPLATE #1"
-                    link="/leads"
-                    backgroundColor="#FFFFFF"
-                    fontColor="#000000"
-                />
+                <ExternalButton link="" name="TEMPLATE #1" />
             </div>
             <div className="nav-list__link">
-                <ButtonElement
-                    content="TEMPLATE #1"
-                    link="/editor"
-                    backgroundColor="#FFFFFF"
-                    fontColor="#000000"
-                />
+                <ExternalButton link="" name="TEMPLATE #2" />
             </div>
             <div className="nav-list__link">
-                <ButtonElement
-                    content="TEMPLATE #1"
-                    link="/templates"
-                    backgroundColor="#FFFFFF"
-                    fontColor="#000000"
-                />
-            </div>
-            <div className="nav-list__link">
-                <ButtonElement
-                    content="TEMPLATE #1"
-                    link="/review"
-                    backgroundColor="#FFFFFF"
-                    fontColor="#000000"
-                />
-            </div>
-            <div className="nav-list__link">
-                <ButtonElement
-                    content="TEMPLATE #1"
-                    link="/settings"
-                    backgroundColor="#FFFFFF"
-                    fontColor="#000000"
-                />
+                <ExternalButton link="" name="TEMPLATE #3" />
             </div>
         </div>
     );

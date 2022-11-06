@@ -1,11 +1,12 @@
 import "./TemplatePreview.scss";
 
 import ButtonElement from "../ButtonElement/ButtonElement";
+import ExternalButton from "../ExternalButton/ExternalButton";
 
-export default function TemplatePreview() {
+export default function TemplatePreview({ link, name }) {
     return (
         <div className="template-preview">
-            <h2 className="template-preview__header">Template #1</h2>
+            <h2 className="template-preview__header">{name}</h2>
             <p className="template-preview__content">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -14,7 +15,7 @@ export default function TemplatePreview() {
             <div className="template-preview__button">
                 <ButtonElement content="USE TEMPLATE" backgroundColor="#000" />
                 <div className="template-preview__button-open-file">
-                    <ButtonElement content="OPEN FILE" backgroundColor="#FFF" fontColor="#000" />
+                    <ExternalButton link={link} name="OPEN FILE" />
                 </div>
             </div>
         </div>

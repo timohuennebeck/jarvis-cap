@@ -1,0 +1,22 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.external {
+    width: 100%;
+
+    &:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    &__link {
+        display: block;
+        @include border-no-radius;
+        padding: $btn-input-padding-default;
+        border-radius: $border-radius-default;
+        font-size: 0.75rem;
+        text-decoration: none;
+        width: 100%;
+        color: #000;
+    }
+}
