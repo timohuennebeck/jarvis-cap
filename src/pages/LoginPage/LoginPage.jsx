@@ -18,8 +18,8 @@ export default function LoginPage() {
 
         const errors = [];
 
-        if (!userValues.current.username.value) {
-            errors.push("username");
+        if (!userValues.current.email.value) {
+            errors.push("email");
         }
 
         if (!userValues.current.password.value) {
@@ -58,8 +58,8 @@ export default function LoginPage() {
                 <span className="log-in__input-log-in">Log In</span>
                 <LoginField
                     img={UserImg}
-                    placeholder="Username"
-                    name="username"
+                    placeholder="Email"
+                    name="email"
                     errorMessage={errorMessage}
                 />
                 <LoginField

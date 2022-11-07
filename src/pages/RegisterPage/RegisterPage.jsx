@@ -19,6 +19,15 @@ export default function RegisterPage() {
         e.preventDefault();
 
         const errors = [];
+
+        if (!userValues.current.first_name.value) {
+            errors.push("first_name");
+        }
+
+        if (!userValues.current.last_name.value) {
+            errors.push("last_name");
+        }
+
         if (!userValues.current.email.value) {
             errors.push("email");
         }
@@ -64,18 +73,22 @@ export default function RegisterPage() {
             <form className="register__input" ref={userValues}>
                 <span className="register__input-register">Register</span>
                 <div className="register__input-names">
-                    <LoginField
-                        img={UserImg}
-                        placeholder="First Name"
-                        name="first_name"
-                        errorMessage={errorMessage}
-                    />
-                    <LoginField
-                        img={UserImg}
-                        placeholder="Last Name"
-                        name="last_name"
-                        errorMessage={errorMessage}
-                    />
+                    <div className="register__input-names-indv">
+                        <LoginField
+                            img={UserImg}
+                            placeholder="First Name"
+                            name="first_name"
+                            errorMessage={errorMessage}
+                        />
+                    </div>
+                    <div className="register__input-names-indv">
+                        <LoginField
+                            img={UserImg}
+                            placeholder="Last Name"
+                            name="last_name"
+                            errorMessage={errorMessage}
+                        />
+                    </div>
                 </div>
                 <LoginField
                     img={EmailImg}
