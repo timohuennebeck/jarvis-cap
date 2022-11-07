@@ -1,6 +1,10 @@
-### `Jarvis`
+# `Jarvis`
 
 Jarvis is a software that allows one to write personalized cover letters while decreasing the amount of manual work and margin of error, saving 5- 10+ mins per cover letter, on average.
+
+![image](./jarvis-cover.jpg)
+
+## `Installing Jarvis`
 
 ### `Step 1`
 
@@ -23,7 +27,7 @@ You're almost done! On the client side run `npm start` to launch the application
 
 You are now able to fully navigate through the application to your liking. 
 
-### `Importing Leads`
+## `Importing Leads`
 
 Want to import leads to the database? Make sure to use a `CSV file` which follows the following structure.
 
