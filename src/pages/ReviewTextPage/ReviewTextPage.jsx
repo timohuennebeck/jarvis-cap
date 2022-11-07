@@ -6,6 +6,9 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+
 export default function ReviewTextPage({ refreshLeads }) {
     const [leadData, setLeadData] = useState([]);
     const [userInput, setUserInput] = useState([]);
@@ -22,6 +25,7 @@ export default function ReviewTextPage({ refreshLeads }) {
     const approveLead = () => {
         const leadApproved = (userInput.status = "CL Approved");
         setUserInput(leadApproved);
+        printPDF();
         updateLead({ id, userInput }).then(() => {
             refreshLeads();
         });
@@ -35,13 +39,27 @@ export default function ReviewTextPage({ refreshLeads }) {
         });
     };
 
+    function printPDF() {
+        const domElement = document.getElementById("print-pdf");
+        html2canvas(domElement, {
+            onclone: (document) => {
+                document.getElementById("print-button");
+            },
+        }).then((canvas) => {
+            const imgData = canvas.toDataURL("image.png");
+            const doc = new jsPDF();
+            doc.addImage(imgData, "JPEG", 5, 5);
+            doc.save("new-file");
+        });
+    }
+
     if (!leadData) {
         return <p>Loading data! Please select a lead to continue...</p>;
     }
 
     return (
         <div className="review-container">
-            <div className="review-container__content">
+            <div className="review-container__content" id="print-pdf">
                 <p>Timo Huennebeck</p>
                 <p>Rupert-Mayer-Str. 18</p>
                 <p>Huerth</p>
@@ -76,7 +94,11 @@ export default function ReviewTextPage({ refreshLeads }) {
                 <p>Timo</p>
             </div>
             <div className="review-container__links">
-                <ButtonElement onClick={approveLead} content="APPROVE" backgroundColor="#000000" />
+                <ButtonElement
+                    onClick={approveLead}
+                    content="APPROVE AND PRINT PDF"
+                    backgroundColor="#000"
+                />
                 <ButtonElement onClick={declineLead} content="DECLINE" backgroundColor="#E43A07" />
             </div>
         </div>
