@@ -14,7 +14,7 @@ export default function DeleteNotification({ closeModal, selectedLead, setDelete
     const navigate = useNavigate();
 
     const redirectUser = () => {
-        navigate("/login");
+        navigate("/register");
     };
 
     const handleDelete = (event) => {

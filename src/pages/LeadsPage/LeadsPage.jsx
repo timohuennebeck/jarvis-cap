@@ -3,6 +3,8 @@ import "./LeadsPage.scss";
 // components
 import LeadInformation from "../../components/LeadInformation/LeadInformation";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
+import ExternalButton from "../../components/ExternalButton/ExternalButton";
+import approvedLead from "../../assets/approved_leads.zip"
 
 // axios call
 import { getLeads } from "../../utils/api";
@@ -78,9 +80,16 @@ export default function LeadsPage() {
                         backgroundColor="#FFF"
                         fontColor="#000"
                     />
+                    <div>
+                        <ExternalButton
+                            link={approvedLead}
+                            download
+                            name="DOWNLOAD FINISHED CL'S"
+                        />
+                    </div>
                     <ButtonElement
                         onClick={uploadFile}
-                        content="Upload CSV"
+                        content="UPLOAD CSV"
                         backgroundColor="#000"
                     />
                     <input type="file" name="file" accept=".csv" onChange={handleSubmit} />

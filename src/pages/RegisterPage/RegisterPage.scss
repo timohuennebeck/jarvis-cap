@@ -75,8 +75,21 @@
         }
 
         &-names {
-            display: flex;
-            gap: $gap-default;
+            @include flex-column;
+            gap: 1rem;
+
+            @include tablet {
+                flex-direction: row
+            }
+
+            &-indv {
+                @include flex-column;
+                gap: 1rem;
+
+                @include tablet {
+                    width: 100%;
+                }
+            }
         }
 
         &-forgot {

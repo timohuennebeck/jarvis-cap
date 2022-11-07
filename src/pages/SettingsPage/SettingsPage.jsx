@@ -174,7 +174,7 @@ function SettingsPage() {
                 className="edit-leads__card-modal"
                 overlayClassName="edit-leads__card-modal-background"
             >
-                <DeleteNotificationUsers
+                <DeleteNotificationUsers    
                     closeModal={closeModal}
                     selectedLead={userInput}
                     setDeleteMessage={setDeleteMessage}

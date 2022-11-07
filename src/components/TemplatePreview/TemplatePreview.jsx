@@ -13,7 +13,6 @@ export default function TemplatePreview({ link, name }) {
                 exercitation ullamco...
             </p>
             <div className="template-preview__button">
-                <ButtonElement content="USE TEMPLATE" backgroundColor="#000" />
                 <div className="template-preview__button-open-file">
                     <ExternalButton link={link} name="OPEN FILE" />
                 </div>

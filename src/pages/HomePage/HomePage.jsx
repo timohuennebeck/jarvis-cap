@@ -3,43 +3,48 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useEffect } from "react";
-import { getLeads } from "../../utils/api";
+import { getLeads, updateLead, updateUser } from "../../utils/api";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([]);
+    // const [userInput, setUserInput] = useState([]);
+
+    // useEffect(() => {
+    //     updateUser({ userInput})
+    // })
 
     useEffect(() => {
         getLeads().then(({ data }) => {
-            const columnsFromBackend = {
-                [uuid()]: {
+            const columnsFromBackend = [
+                {
                     name: "In Progress",
                     items: data.filter((person) => person.status === "In Progress"),
                 },
-                [uuid()]: {
+                {
                     name: "CL Approved",
                     items: data.filter((person) => person.status === "CL Approved"),
                 },
-                [uuid()]: {
+                {
                     name: "CL Declined",
                     items: data.filter((person) => person.status === "CL Declined"),
                 },
-                [uuid()]: {
+                {
                     name: "Awaiting Response",
                     items: data.filter((person) => person.status === "Awaiting Response"),
                 },
-                [uuid()]: {
+                {
                     name: "Interview Scheduled",
                     items: data.filter((person) => person.status === "Interview Scheduled"),
                 },
-                [uuid()]: {
+                {
                     name: "Accepted",
                     items: data.filter((person) => person.status === "Accepted"),
                 },
-                [uuid()]: {
+                {
                     name: "Rejected",
                     items: data.filter((person) => person.status === "Rejected"),
                 },
-            };
+            ];
             setColumns(columnsFromBackend);
         });
     }, []);
@@ -65,6 +70,8 @@ export default function HomePage() {
                     items: destItems,
                 },
             });
+            const id = result.draggableId;
+            updateLead({ id, userInput: {status: destColumn.name}  });
         } else {
             const column = columns[source.droppableId];
             const copiedItems = [...column.items];
@@ -80,12 +87,14 @@ export default function HomePage() {
         }
     };
 
+    // console.log(columns);
+
     return (
         <div className="home">
             <DragDropContext onDragEnd={(result) => onDragEnd(result, columns, setColumns)}>
                 {Object.entries(columns).map(([id, columnn]) => {
                     return (
-                        <div className="home__kanban">
+                        <div className="home__kanban" key={id}>
                             <div className="home__kanban-header">
                                 <p className="home__kanban-header-indv">{columnn.name}</p>
                             </div>
