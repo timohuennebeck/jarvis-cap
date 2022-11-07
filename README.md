@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+### `Jarvis`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Jarvis is a software that allows one to write personalized cover letters while decreasing the amount of manual work and margin of error, saving 5- 10+ mins per cover letter, on average.
 
-## Available Scripts
+### `Step 1`
 
-In the project directory, you can run:
+Download "jarvis-cap" and "jarvis-cap-api" and make sure to create a .env file on the client side which includes a port where the server can run. Jarvis was running on port 4040 in production, therefore, we recommend using the same.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `Step 2`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Run `npm install` on the client and server side to download all dependencies.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `Step 3`
 
-### `npm run build`
+Run `npm run migrate` and `npm run seed` on the server side to populate the MySQL database "jarvis_cap" with some data.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `Step 4`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You're almost done! On the client side run `npm start` to launch the application and `npx nodemon` on the client side to start the server. Welcome to Jarvis!
 
-### `npm run eject`
+You are now able to fully navigate through the application to your liking. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `Importing Leads`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Want to import leads to the database? Make sure to use a `CSV file` which follows the following structure.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The first row of the file must match `EXACTLY` the following `naming convention`, first_name, last_name, position, email, phone, linked_in, company, street_name, city, state, postcode, country, icebreaker, paragraph_one, paragraph_two, paragraph_three, call_to_action, status.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You can also just download this [sample file](https://docs.google.com/spreadsheets/d/1qk9gSxsAPOP7cHvWGpGWX6rBkPpVtQ1pmisFdqNC7TA/edit#gid=1182257161) which contains the exact structure.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
