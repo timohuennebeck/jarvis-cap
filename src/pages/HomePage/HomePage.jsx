@@ -130,7 +130,9 @@ export default function HomePage() {
                                                                                 alt="profile"
                                                                             />
                                                                             <p className="home__kanban-container-content-indv-information-paragraph">
-                                                                                {new Date().toLocaleDateString()}
+                                                                                {new Date(
+                                                                                    item.updated_at
+                                                                                ).toDateString()}
                                                                             </p>
                                                                         </div>
                                                                     </div>
