@@ -3,11 +3,10 @@ import "./LeadsPage.scss";
 // components
 import LeadInformation from "../../components/LeadInformation/LeadInformation";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
-import ExternalButton from "../../components/ExternalButton/ExternalButton";
-import approvedLead from "../../assets/approved_leads.zip"
+import DropdownField from "../../components/DropdownField/DropdownField";
 
 // axios call
-import { getLeads } from "../../utils/api";
+import { getLeads, getUsers, updateUser } from "../../utils/api";
 
 // libraries
 import { useState } from "react";
@@ -15,21 +14,42 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Papa from "papaparse";
 import { addNewLead } from "../../utils/api";
+import { useRef } from "react";
 
 export default function LeadsPage() {
     const [leads, setLeads] = useState([]);
     const [parsedData, setParsedData] = useState([]);
-    const [updateLeads, setUpdateLeads] = useState(false);
+    const [updateMessage, setUpdateMessage] = useState(false);
+    const [updateStatus, setUpdateStatus] = useState([]);
+    const [filteredLeads, setFilteredLeads] = useState([]);
 
-    const resetMessage = () => {
-        setUpdateLeads(false);
-    };
+    const userValues = useRef();
 
     useEffect(() => {
         getLeads().then((resp) => {
             setLeads(resp.data);
         });
-    }, [updateLeads]);
+    }, [updateMessage]);
+
+    useEffect(() => {
+        getUsers().then((resp) => {
+            setUpdateStatus(resp.data[0]);
+        });
+    }, []);
+
+    const handleChange = (e) => {
+        setUpdateStatus({ ...updateStatus, [e.target.name]: e.target.value });
+    };
+
+    const newLeads = leads.filter((person) => person.status === updateStatus.status);
+
+    useEffect(() => {
+        setFilteredLeads(newLeads);
+    }, [updateStatus, updateMessage]);
+
+    const resetMessage = () => {
+        setUpdateMessage(false);
+    };
 
     const handleSubmit = (event) => {
         Papa.parse(event.target.files[0], {
@@ -65,14 +85,14 @@ export default function LeadsPage() {
                 call_to_action: person.call_to_action,
             };
             addNewLead({ addInputData });
-            setUpdateLeads(true);
-            setTimeout(resetMessage, 2500);
+            setUpdateMessage(true);
+            setTimeout(resetMessage, 1250);
         });
     };
 
     return (
         <>
-            <article className="leads">
+            <form className="leads" ref={userValues}>
                 <div className="leads__links">
                     <ButtonElement
                         link="/leads/add-new"
@@ -80,13 +100,6 @@ export default function LeadsPage() {
                         backgroundColor="#FFF"
                         fontColor="#000"
                     />
-                    <div>
-                        <ExternalButton
-                            link={approvedLead}
-                            download
-                            name="DOWNLOAD FINISHED CL'S"
-                        />
-                    </div>
                     <ButtonElement
                         onClick={uploadFile}
                         content="UPLOAD CSV"
@@ -94,9 +107,10 @@ export default function LeadsPage() {
                     />
                     <input type="file" name="file" accept=".csv" onChange={handleSubmit} />
                 </div>
-                {updateLeads && <p className="leads__update">Leads have been uploaded!</p>}
+                <DropdownField value={updateStatus.status} onChange={handleChange} />
+                {updateMessage && <p className="leads__update">Leads are being processed...</p>}
                 <div className="leads__indv">
-                    {leads.map((lead) => {
+                    {filteredLeads.map((lead) => {
                         return (
                             <Link
                                 to={`/leads/${lead.id}`}
@@ -108,7 +122,7 @@ export default function LeadsPage() {
                         );
                     })}
                 </div>
-            </article>
+            </form>
         </>
     );
 }

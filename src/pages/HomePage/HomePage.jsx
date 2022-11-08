@@ -1,17 +1,11 @@
 import "./HomePage.scss";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
-import { v4 as uuid } from "uuid";
 import { useEffect } from "react";
-import { getLeads, updateLead, updateUser } from "../../utils/api";
+import { getLeads, updateLead } from "../../utils/api";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([]);
-    // const [userInput, setUserInput] = useState([]);
-
-    // useEffect(() => {
-    //     updateUser({ userInput})
-    // })
 
     useEffect(() => {
         getLeads().then(({ data }) => {
@@ -86,8 +80,6 @@ export default function HomePage() {
             });
         }
     };
-
-    // console.log(columns);
 
     return (
         <div className="home">
