@@ -16,11 +16,15 @@
         @include flex-column;
         gap: $gap-leads;
         flex: 1 1 0;
-        overflow: hidden;
 
         @include tablet {
             @include border-padding;
             min-width: 19.75rem;
+            overflow: scroll;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
 
         &-img {

@@ -3,7 +3,7 @@
 
 .interface {
     padding: 1.25rem;
-    height: 100vh;
+    max-height: 100vh;
 
     &__structure {
         min-height: 72.5vh;
@@ -24,9 +24,12 @@
         &-routes {
             @include border-padding;
             @include shadow;
-            overflow-x: scroll;
+            overflow: auto;
+            min-height: 91.25vh;
+            max-height: 91.25vh;
 
             &::-webkit-scrollbar {
+                display: none;
                 @include border-no-radius;
                 border-radius: $border-radius-default;
                 width: 1rem;

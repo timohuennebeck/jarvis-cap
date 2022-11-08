@@ -1,3 +1,5 @@
+import "./EditorPage.scss";
+
 import Handlebars from "handlebars/dist/cjs/handlebars";
 
 const clTemplate = `
