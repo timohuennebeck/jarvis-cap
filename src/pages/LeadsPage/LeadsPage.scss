@@ -16,6 +16,20 @@
         }
     }
 
+    &__dropdown {
+        @include flex-column;
+        gap: $gap-default;
+
+        @include tablet {
+            flex-direction: row;
+        }
+
+        &-amount {
+            @include border-padding;
+            font-size: 0.75rem;
+        }
+    }
+
     &__update {
         padding-bottom: $padding-default;
     }
