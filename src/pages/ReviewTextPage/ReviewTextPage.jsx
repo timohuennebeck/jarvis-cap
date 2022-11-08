@@ -49,7 +49,7 @@ export default function ReviewTextPage({ refreshLeads }) {
             const imgData = canvas.toDataURL("image.png");
             const doc = new jsPDF();
             doc.addImage(imgData, "JPEG", 5, 5);
-            doc.save("new-file");
+            doc.save(`${leadData.company}-Timo-Huennebeck-Cover-Letter`);
         });
     }
 
@@ -58,42 +58,58 @@ export default function ReviewTextPage({ refreshLeads }) {
     }
 
     return (
-        <div className="review-container">
-            <div className="review-container__content" id="print-pdf">
-                <p>Timo Huennebeck</p>
-                <p>Rupert-Mayer-Str. 18</p>
-                <p>Huerth</p>
-                <p>NRW 50354</p>
-                <br />
-                <p>{new Date().toLocaleDateString()}</p>
-                <br />
-                <p>
-                    {leadData.first_name} {leadData.last_name}
-                </p>
-                <p>{leadData.position}</p>
-                <p>{leadData.company}</p>
-                <p>{leadData.street_name}</p>
-                <p>{leadData.city}</p>
-                <p>
-                    {leadData.state} {leadData.postcode}
-                </p>
-                <br />
-                <p>Dear {leadData.first_name},</p>
-                <br />
-                <p>{leadData.icebreaker}</p>
-                <br />
-                <p>{leadData.paragraph_one}</p>
-                <br />
-                <p>{leadData.paragraph_two}</p>
-                <br />
-                <p>{leadData.paragraph_three}</p>
-                <br />
-                <p>{leadData.call_to_action}</p>
-                <br />
-                <p>Best regards,</p>
-                <p>Timo</p>
+        <div className="review-ctr">
+            <div className="review-ctr__content" id="print-pdf">
+                <div className="review-ctr__content-user">
+                    <p className="review-ctr__content-user-name">Timo Huennebeck</p>
+                    <p className="review-ctr__content-user-position">Software Developer</p>
+                    <div className="review-ctr__content-user-line"></div>
+                    <p className="review-ctr__content-user-street-name">Rupert-Mayer-Str. 18</p>
+                    <p className="review-ctr__content-user-city">Huerth</p>
+                    <p className="review-ctr__content-user-state-postcode-">NRW 50354</p>
+                </div>
+                <div className="review-ctr__content-lead">
+                    <div className="review-ctr__content-lead-line"></div>
+                    <div>
+                        <p>{new Date().toLocaleDateString()}</p>
+                    </div>
+                    <div>
+                        <p className="review-ctr__content-lead-name">
+                            {leadData.first_name} {leadData.last_name}
+                        </p>
+                        <p>{leadData.position}</p>
+                        <p>{leadData.company}</p>
+                        <p>{leadData.street_name}</p>
+                        <p>{leadData.city}</p>
+                        <p>
+                            {leadData.state} {leadData.postcode}
+                        </p>
+                    </div>
+                    <div>
+                        <p>Dear {leadData.first_name},</p>
+                    </div>
+                    <div>
+                        <p>{leadData.icebreaker}</p>
+                    </div>
+                    <div>
+                        <p>{leadData.paragraph_one}</p>
+                    </div>
+                    <div>
+                        <p>{leadData.paragraph_two}</p>
+                    </div>
+                    <div>
+                        <p>{leadData.paragraph_three}</p>
+                    </div>
+                    <div>
+                        <p>{leadData.call_to_action}</p>
+                    </div>
+                    <div>
+                        <p>Best regards,</p>
+                        <p className="review-ctr__content-lead-user-name">Timo Huennebeck</p>
+                    </div>
+                </div>
             </div>
-            <div className="review-container__links">
+            <div className="review-ctr__links">
                 <ButtonElement
                     onClick={approveLead}
                     content="APPROVE AND PRINT PDF"

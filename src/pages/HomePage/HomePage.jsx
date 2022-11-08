@@ -116,7 +116,7 @@ export default function HomePage() {
                                                                     >
                                                                         <div className="home__kanban-container-content-indv-name">
                                                                             <p className="home__kanban-container-content-indv-name-business">
-                                                                                {item.business_name}
+                                                                                {item.company}
                                                                             </p>
                                                                             <p className="home__kanban-container-content-indv-name-manager">
                                                                                 {item.first_name}{" "}
