@@ -12,9 +12,8 @@
         padding: 1rem;
         gap: 2.75rem;
 
-        @include tablet {
+        @include desktop {
             flex-direction: row;
-            min-width: 47.75rem;
             max-width: 47.75rem;
         }
 

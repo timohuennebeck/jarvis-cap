@@ -116,6 +116,7 @@ export default function EditExistingLead() {
                         <DropdownField value={userInput.status} onChange={handleChange} />
                         <GenderDropdownField value={userInput.his_or_her} onChange={handleChange} />
                     </div>
+                    <p>{userInput.updated_at}</p>
                     <div className="edit-leads__input-personal">
                         <InputFieldError
                             label="First Name"

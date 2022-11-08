@@ -9,6 +9,8 @@ import { useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
+import domtoimage from "dom-to-image";
+
 export default function ReviewTextPage({ refreshLeads }) {
     const [leadData, setLeadData] = useState([]);
     const [userInput, setUserInput] = useState([]);
@@ -41,12 +43,8 @@ export default function ReviewTextPage({ refreshLeads }) {
 
     function printPDF() {
         const domElement = document.getElementById("print-pdf");
-        html2canvas(domElement, {
-            onclone: (document) => {
-                document.getElementById("print-button");
-            },
-        }).then((canvas) => {
-            const imgData = canvas.toDataURL("image.png");
+        html2canvas(domElement, {}).then((canvas) => {
+            const imgData = canvas.toDataURL("image/jpeg", 1.0);
             const doc = new jsPDF();
             doc.addImage(imgData, "JPEG", 5, 5);
             doc.save(`${leadData.company}-Timo-Huennebeck-Cover-Letter`);
