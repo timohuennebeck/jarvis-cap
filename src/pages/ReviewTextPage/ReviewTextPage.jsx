@@ -9,8 +9,6 @@ import { useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-import domtoimage from "dom-to-image";
-
 export default function ReviewTextPage({ refreshLeads }) {
     const [leadData, setLeadData] = useState([]);
     const [userInput, setUserInput] = useState([]);
