@@ -65,7 +65,7 @@ export default function HomePage() {
                 },
             });
             const id = result.draggableId;
-            updateLead({ id, userInput: {status: destColumn.name}  });
+            updateLead({ id, userInput: { status: destColumn.name } });
         } else {
             const column = columns[source.droppableId];
             const copiedItems = [...column.items];

@@ -1,71 +1,62 @@
 import "./EditorPage.scss";
 
-import Handlebars from "handlebars/dist/cjs/handlebars";
-
-const clTemplate = `
-    <p>
-    {{user_first_name}} {{user_last_name}}
-    </p>
-    <p>{{user_street_name}}</p>
-    <p>{{user_city}}</p>
-    <p>{{user_state}} {{user_postcode}}</p>
-<br />
-    <p>{{date}}</p>
-<br />
-    <p>
-    {{first_name}} {{last_name}}
-    </p>
-    <p>{{position}}</p>
-    <p>{{company}}</p>
-    <p>{{street_name}}</p>
-    <p>{{city}}</p>
-    <p>{{state}} {{postcode}}</p>
-<br />
-    <p>Dear {{first_name}},</p>
-<br />
-    <p>{{icebreaker}}</p>
-<br />
-    <p>{{paragraph_one}}</p>
-<br />
-    <p>{{paragraph_two}}</p>
-<br />
-    <p>{{paragraph_three}}</p>
-<br />
-    <p>{{call_to_action}}</p>
-<br />
-    <p>Best regards,</p>
-    <p>{{first_name}}</p>
-`;
-
-const template = Handlebars.compile(clTemplate);
-
 export default function EditorPage() {
-    const data = {
-        user_first_name: "{{user_first_name}}",
-        user_last_name: "{{user_last_name}}",
-        user_street_name: "{{user_street_name}}",
-        user_city: "{{user_city}}",
-        user_state: "{{user_state}}",
-        user_postcode: "{{user_postcode}}",
-        date: "{{date}}",
-        first_name: "{{first_name}}",
-        last_name: "{{last_name}}",
-        position: "{{position}}",
-        company: "{{company}}",
-        street_name: "{{street_name}}",
-        city: "{{city}}",
-        state: "{{state}}",
-        postcode: "{{postcode}}",
-        icebreaker: "{{icebreaker}}",
-        paragraph_one: "{{paragraph_one}}",
-        paragraph_two: "{{paragraph_two}}",
-        paragraph_three: "{{paragraph_three}}",
-        call_to_action: "{{call_to_action}}",
-    };
-
     return (
-        <div className="editor">
-            <div dangerouslySetInnerHTML={{ __html: template(data) }} />
+        <div className="editor-ctr">
+            <div className="editor-ctr__content" id="print-pdf">
+                <div className="editor-ctr__content-user">
+                    <span className="editor-ctr__content-user-name">
+                        {"{{user_first_name}} {{user_last_name}}"}
+                    </span>
+                    <p className="editor-ctr__content-user-position">{"{{user_position}}"}</p>
+                    <div className="editor-ctr__content-user-line"></div>
+                    <p className="editor-ctr__content-user-street-name">{"{{user_street_name}}"}</p>
+                    <p className="editor-ctr__content-user-city">{"{{user_city}}"}</p>
+                    <p className="editor-ctr__content-user-state-postcode-">
+                        {"{{user_state}} {{user_postcode}}"}
+                    </p>
+                </div>
+                <div className="editor-ctr__content-lead">
+                    <div className="editor-ctr__content-lead-line"></div>
+                    <div>
+                        <p>{new Date().toLocaleDateString()}</p>
+                    </div>
+                    <div>
+                        <p className="editor-ctr__content-lead-name">
+                            {"{{first_name}} {{last_name}}"}
+                        </p>
+                        <p>{"{{position}}"}</p>
+                        <p>{"{{company}}"}</p>
+                        <p>{"{{street_name}}"}</p>
+                        <p>{"{{city}}"}</p>
+                        <p>{"{{state}} {{postcode}}"}</p>
+                    </div>
+                    <div>
+                        <p>Dear {"{{first_name}}"},</p>
+                    </div>
+                    <div>
+                        <p>{"{{icebreaker}}"}</p>
+                    </div>
+                    <div>
+                        <p>{"{{paragraph_one}}"}</p>
+                    </div>
+                    <div>
+                        <p>{"{{paragraph_two}}"}</p>
+                    </div>
+                    <div>
+                        <p>{"{{paragraph_three}}"}</p>
+                    </div>
+                    <div>
+                        <p>{"{{call_to_action}}"}</p>
+                    </div>
+                    <div>
+                        <p>Best regards,</p>
+                        <p className="review-ctr__content-lead-user-name">
+                            {"{{user_first_name}} {{user_last_name}}"}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
