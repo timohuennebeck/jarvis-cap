@@ -4,7 +4,7 @@ Jarvis is a software that allows one to write personalized cover letters while d
 
 ![image](./jarvis-cover.jpg)
 
-## `What issue is Jarvis solving?`
+## `What Issue Is Jarvis Solving?`
 Well, it turns out that the average job seeker is requird to send out 100 - 200 applications during their job hunt to land a job, which ends up being about 10 weeks worth of their time. 
 
 This is where Jarvis comes into place to `reduce the amount of work` required for each individual application, resulting in saving the job seeker `20 - 40 hours` of work during their job hunt.
