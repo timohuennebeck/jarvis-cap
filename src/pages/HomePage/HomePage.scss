@@ -4,6 +4,7 @@
 .home {
     @include flex-column;
     gap: $gap-default;
+    min-height: 89.25vh;
 
     @include tablet {
         flex-direction: row;
