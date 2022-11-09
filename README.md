@@ -29,7 +29,7 @@ Run `npm run migrate` and `npm run seed` on the server side to populate the MySQ
 
 ### `Step 4`
 
-You're almost done! On the client side run `npm start` to launch the application and `npx nodemon` on the client side to start the server. Welcome to Jarvis!
+You're almost done! On the client side run `npm start` to launch the application and `npx nodemon` on the server side to start the server. Welcome to Jarvis!
 
 You are now able to fully navigate through the application to your liking. 
 
