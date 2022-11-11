@@ -33,6 +33,10 @@ You're almost done! On the client side run `npm start` to launch the application
 
 You are now able to fully navigate through the application to your liking. 
 
+## `API`
+
+Please make sure to download the API, [here](https://github.com/timohuennebeck/jarvis-cap-api) 
+
 ## `Importing Leads`
 
 Want to import leads to the database? Make sure to use a `CSV file` which follows the following structure.
@@ -40,4 +44,3 @@ Want to import leads to the database? Make sure to use a `CSV file` which follow
 The first row of the file must match `EXACTLY` the following `naming convention`, first_name, last_name, position, email, phone, linked_in, company, street_name, city, state, postcode, country, icebreaker, paragraph_one, paragraph_two, paragraph_three, call_to_action, status.
 
 You can also just download this [sample file](https://docs.google.com/spreadsheets/d/1qk9gSxsAPOP7cHvWGpGWX6rBkPpVtQ1pmisFdqNC7TA/edit#gid=1182257161) which contains the exact structure.
-
