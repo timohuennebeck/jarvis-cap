@@ -37,14 +37,14 @@ function NavList() {
                     fontColor="#000000"
                 />
             </div>
-            <div className="nav-list__link">
+            {/* <div className="nav-list__link">
                 <ButtonElement
                     content="TEMPLATES"
                     link={`/templates/${userData.id}`}
                     backgroundColor="#FFFFFF"
                     fontColor="#000000"
                 />
-            </div>
+            </div> */}
             <div className="nav-list__link">
                 <ButtonElement
                     content="REVIEW"

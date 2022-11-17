@@ -11,7 +11,7 @@ export default function UserInterfaceLYT() {
             <div className="interface__structure">
                 <div className="interface__structure-sidebar">
                     <SBNavigation />
-                    <SBTemplates />
+                    {/* <SBTemplates /> */}
                 </div>
                 <div className="interface__structure-routes">
                     <Outlet />

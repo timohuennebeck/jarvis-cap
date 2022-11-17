@@ -29,7 +29,7 @@ export default function LoginPage() {
         setErrorMessage(errors);
 
         if (errors.length === 0) {
-            navigate("/loading");
+            navigate("/");
         }
     };
 

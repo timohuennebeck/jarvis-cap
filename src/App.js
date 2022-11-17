@@ -14,7 +14,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EditExistingLead from "./components/EditExistingLead/EditExistingLead";
 import AddNewLead from "./components/AddNewLead/AddNewLead";
 import EditorPage from "./pages/EditorPage/EditorPage";
-import LoadingPage from "./pages/LoadingPage/LoadingPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import UserInterfaceLYT from "./components/UserInterfaceLYT/UserInterfaceLYT";
@@ -27,7 +26,6 @@ function App() {
                 <Route element={<LoginLYT />}>
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/login" element={<LoginPage />} />
-                    <Route path="/loading" element={<LoadingPage />} />
                 </Route>
                 <Route element={<UserInterfaceLYT />}>
                     <Route path="/" element={<HomePage />} />
