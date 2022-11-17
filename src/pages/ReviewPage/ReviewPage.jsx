@@ -3,7 +3,7 @@ import "./ReviewPage.scss";
 import LeadInformationMinimized from "../../components/LeadInformationMinimized/LeadInformationMinimized";
 import ReviewTextPage from "../ReviewTextPage/ReviewTextPage";
 
-import { getLeadsInProgress } from "../../utils/api";
+import { getLeads } from "../../utils/api";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -12,14 +12,14 @@ function ReviewPage() {
     const [leadData, setLeadData] = useState([]);
 
     const refreshLeads = () => {
-        getLeadsInProgress().then((resp) => {
-            setLeadData(resp.data);
+        getLeads().then(({ data }) => {
+            setLeadData(data.filter((person) => person.status === "In Progress"));
         });
     };
 
     useEffect(() => {
-        getLeadsInProgress().then((resp) => {
-            setLeadData(resp.data);
+        getLeads().then(({ data }) => {
+            setLeadData(data.filter((person) => person.status === "In Progress"));
         });
     }, []);
 

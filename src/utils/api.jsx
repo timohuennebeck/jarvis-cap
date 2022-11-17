@@ -45,33 +45,3 @@ export const updateLead = ({ id, userInput }) => {
 export const deleteLead = ({ id }) => {
     return axios.delete(`${base_url}/leads/${id}`);
 };
-
-// leads status
-
-export const getLeadsInProgress = () => {
-    return axios.get(`${base_url}/leads/in-progress`);
-};
-
-export const getLeadsClApproved = () => {
-    return axios.get(`${base_url}/leads/cl-approved`);
-};
-
-export const getLeadsClDeclined = () => {
-    return axios.get(`${base_url}/leads/cl-declined`);
-};
-
-export const getLeadsAwaitingResponse = () => {
-    return axios.get(`${base_url}/leads/awaiting-response`);
-};
-
-export const getLeadsInterviewScheduled = () => {
-    return axios.get(`${base_url}/leads/interview-scheduled`);
-};
-
-export const getLeadsAccepted = () => {
-    return axios.get(`${base_url}/leads/accepted`);
-};
-
-export const getLeadsRejected = () => {
-    return axios.get(`${base_url}/rejected`);
-};

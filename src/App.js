@@ -8,16 +8,18 @@ import TemplatesPage from "./pages/TemplatesPage/TemplatesPage";
 import ReviewPage from "./pages/ReviewPage/ReviewPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-
-// libraries
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import EditExistingLead from "./components/EditExistingLead/EditExistingLead";
-import AddNewLead from "./components/AddNewLead/AddNewLead";
 import EditorPage from "./pages/EditorPage/EditorPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+
+// components
+import EditExistingLead from "./components/EditExistingLead/EditExistingLead";
+import AddNewLead from "./components/AddNewLead/AddNewLead";
 import UserInterfaceLYT from "./components/UserInterfaceLYT/UserInterfaceLYT";
 import LoginLYT from "./components/LoginLYT/LoginLYT";
+
+// libraries
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
     return (
