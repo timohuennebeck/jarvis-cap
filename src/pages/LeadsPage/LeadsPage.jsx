@@ -6,7 +6,7 @@ import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import DropdownField from "../../components/DropdownField/DropdownField";
 
 // axios call
-import { getLeads, getUsers, updateUser } from "../../utils/api";
+import { getLeads, getUsers } from "../../utils/api";
 
 // libraries
 import { useState } from "react";
