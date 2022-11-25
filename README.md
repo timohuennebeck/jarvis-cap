@@ -1,8 +1,8 @@
 # `Jarvis`
 
-Finding a job can be time-consuming and stressful! 
+Finding a job can be `time-consuming` and stressful! 
 
-Jarvis aims to solve this problem - allowing users to track the status of their job application and create personalised cover letters all while saving 5 - 10min. per application.
+Jarvis aims to solve this problem - allowing users to `track the status of their job application` and create `personalised cover letters` all while saving 5 - 10min. per application.
 
 It's time to put an end to the stress of searching for jobs! 👊
 
@@ -35,14 +35,14 @@ Run `npm install` on the client and server side to download all dependencies.
 
 ### `Step 3`
 
-Run `npm run migrate` and `npm run seed` on the server side to populate the MySQL database "jarvis_cap" with some data.
+Run `npm run migrate` and `npm run seed` on the server side to populate the SQL database.
 
 
 ### `Step 4`
 
 You're almost done! On the client side run `npm start` to launch the application and `npx nodemon` on the server side to start the server. Welcome to Jarvis!
 
-You are now able to fully navigate through the application to your liking. 
+Have fun! 🌻
 
 
 <br />
