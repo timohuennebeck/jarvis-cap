@@ -1,6 +1,10 @@
 # `Jarvis`
 
-Jarvis is a software that allows one to write personalized cover letters while decreasing the amount of manual work and margin of error, saving 5- 10+ mins per cover letter, on average.
+Finding a job can be time-consuming and stressful! 
+
+Jarvis aims to solve this problem - allowing users to track the status of their job application and create personalised cover letters all while saving 5 - 10min. per application.
+
+It's time to put an end to the stress of searching for jobs! 👊
 
 ![image](./jarvis-cover.jpg)
 
