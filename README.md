@@ -8,17 +8,24 @@ It's time to put an end to the stress of searching for jobs! 👊
 
 ![image](./jarvis-cover.jpg)
 
+
+<br />
+
+
 ## `What Issue Is Jarvis Solving?`
 Well, it turns out that the average job seeker is requird to send out 100 - 200 applications during their job hunt to land a job, which ends up being about 10 weeks worth of their time. 
 
 This is where Jarvis comes into place to `reduce the amount of work` required for each individual application, resulting in saving the job seeker `20 - 40 hours` of work during their job hunt.
 
 
+<br />
+
+
 ## `Installing Jarvis`
 
 ### `Step 1`
 
-Download "jarvis-cap" and "jarvis-cap-api" and make sure to create a .env file on the client side which includes a port where the server can run. Jarvis was running on port 4040 in production, therefore, we recommend using the same.
+Download ['jarvis-cap'](https://github.com/timohuennebeck/jarvis-cap) and ['jarvis-cap-api'](https://github.com/timohuennebeck/jarvis-cap-api) and make sure to create a .env file on the client side which includes a port where the server can run. Jarvis was running on port 4040 in production, therefore, we recommend using the same.
 
 
 ### `Step 2`
@@ -37,9 +44,9 @@ You're almost done! On the client side run `npm start` to launch the application
 
 You are now able to fully navigate through the application to your liking. 
 
-## `API`
 
-Please make sure to download the API, [here](https://github.com/timohuennebeck/jarvis-cap-api) 
+<br />
+
 
 ## `Importing Leads`
 
