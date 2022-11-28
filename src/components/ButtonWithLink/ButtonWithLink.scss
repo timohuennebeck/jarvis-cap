@@ -3,17 +3,20 @@
 
 .button-link {
     @include flex-vertical;
-    @include border-no-radius;
     gap: $gap-default;
     padding: $btn-input-padding-default;
     border-radius: 5rem;
     font-size: 0.75rem;
     width: 100%;
-    color: #000;
+    color: #fff;
     text-decoration: none;
 
     &:hover {
         transform: scale(1.05);
         cursor: pointer;
+    }
+
+    &__img {
+        filter: brightness(0) invert(1);
     }
 }

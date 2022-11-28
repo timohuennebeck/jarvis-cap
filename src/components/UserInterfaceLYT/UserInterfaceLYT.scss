@@ -23,10 +23,8 @@
 
         &-sidebar {
             @include desktop {
-                border-right: 1px solid black;
-                padding-right: 2.5rem;
                 flex: 0.125 1 0;
-                min-width: 12.25rem;
+                min-width: 15.25rem;
                 max-width: 12.25rem;
             }
         }
