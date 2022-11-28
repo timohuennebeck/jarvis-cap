@@ -42,7 +42,7 @@ export default function RegisterPage() {
         setErrorMessage(errors);
 
         if (errors.length === 0) {
-            navigate("/loading");
+            navigate("/");
         }
     };
 

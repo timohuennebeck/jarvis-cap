@@ -2,7 +2,6 @@ import LoginField from "../../components/LoginField/LoginField";
 import "./LoginPage.scss";
 import UserImg from "../../assets/icons/user.png";
 import PasswordImg from "../../assets/icons/password.png";
-import LogoImg from "../../assets/images/jarvis-logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useState } from "react";
@@ -29,7 +28,7 @@ export default function LoginPage() {
         setErrorMessage(errors);
 
         if (errors.length === 0) {
-            navigate("/loading");
+            navigate("/");
         }
     };
 
