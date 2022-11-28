@@ -5,7 +5,7 @@
     display: none;
     @include shadow;
 
-    @include tablet {
+    @include desktop {
         @include border-no-radius;
         display: block;
         border-radius: $border-radius-default;
