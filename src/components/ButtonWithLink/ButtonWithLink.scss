@@ -8,8 +8,12 @@
     border-radius: 5rem;
     font-size: 0.75rem;
     width: 100%;
-    color: #fff;
+    color: #000;
     text-decoration: none;
+
+    @include desktop {
+        color: #fff;
+    }
 
     &:hover {
         transform: scale(1.05);
@@ -17,6 +21,8 @@
     }
 
     &__img {
-        filter: brightness(0) invert(1);
+        @include desktop {
+            filter: brightness(0) invert(1);
+        }
     }
 }

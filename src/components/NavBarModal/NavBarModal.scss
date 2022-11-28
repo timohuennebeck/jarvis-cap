@@ -1,3 +1,11 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .nav-modal {
     width: 25%;
+
+    &__links {
+        @include flex-column;
+        gap: $gap-default;
+    }
 }

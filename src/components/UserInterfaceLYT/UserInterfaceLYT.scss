@@ -4,13 +4,6 @@
 .interface {
     padding: 1.25rem;
     max-height: 100vh;
-    max-width: 42.5rem;
-    margin: auto;
-
-    @include desktop {
-        max-width: 160rem;
-        margin: auto;
-    }
 
     &__structure {
         min-height: 72.5vh;
