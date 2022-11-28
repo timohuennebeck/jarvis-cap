@@ -4,29 +4,43 @@
 .interface {
     padding: 1.25rem;
     max-height: 100vh;
+    max-width: 42.5rem;
+    margin: auto;
+
+    @include desktop {
+        max-width: 160rem;
+        margin: auto;
+    }
 
     &__structure {
         min-height: 72.5vh;
         width: 100%;
 
-        @include tablet {
+        @include desktop {
             display: flex;
+            gap: 2.5rem;
         }
 
         &-sidebar {
-            @include tablet {
-                @include flex-column;
-                flex-shrink: 0;
-                gap: 0.75rem;
+            @include desktop {
+                border-right: 1px solid black;
+                padding-right: 2.5rem;
+                flex: 0.125 1 0;
+                min-width: 12.25rem;
+                max-width: 12.25rem;
             }
         }
 
         &-routes {
-            @include border-padding;
-            @include shadow;
-            overflow: auto;
             min-height: 91.25vh;
             max-height: 91.25vh;
+            overflow: scroll;
+
+            @include desktop {
+                box-shadow: none;
+                overflow: visible;
+                flex: 1 1 0;
+            }
 
             &::-webkit-scrollbar {
                 display: none;
@@ -47,8 +61,7 @@
             }
 
             @include tablet {
-                margin-left: 0.75rem;
-                flex-grow: 5;
+                width: 100%;
             }
         }
     }

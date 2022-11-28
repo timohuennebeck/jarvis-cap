@@ -32,7 +32,7 @@ export default function LeadInformation({ lead }) {
             </div>
 
             <div className="lead-container__business">
-                <p>{lead.business_name}</p>
+                <p>{lead.company}</p>
             </div>
             <div className="lead-container__progress">
                 <p>{lead.status}</p>

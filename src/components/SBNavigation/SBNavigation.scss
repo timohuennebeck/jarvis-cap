@@ -3,20 +3,46 @@
 
 .nav-list {
     display: none;
-    @include shadow;
 
-    @include tablet {
-        @include border-no-radius;
-        display: block;
-        border-radius: $border-radius-default;
+    @include desktop {
+        @include flex-column;
+        height: 100%;
+        justify-content: space-between;
+    }
 
-        &__link {
-            margin: $margin-default;
+    &__ctn {
+        @include flex-column;
+        gap: 4.25rem;
 
-            &:hover {
-                transform: scale(1.05);
-                cursor: pointer;
+        &-user {
+            @include flex-vertical;
+            @include border-no-radius;
+            gap: $gap-default;
+            padding: 0.35rem 0.5rem;
+            border-radius: 5rem;
+            font-size: 0.75rem;
+            width: 100%;
+
+            &-text {
+                font-size: 0.75rem;
+            }
+
+            &-img {
+                width: 2.25rem;
+                height: 2.25rem;
+                border-radius: 50%;
+                border: 1px solid black;
             }
         }
+
+        &-main {
+            @include flex-column;
+            gap: $gap-default;
+        }
+    }
+
+    &__settings {
+        @include flex-column;
+        gap: $gap-default;
     }
 }

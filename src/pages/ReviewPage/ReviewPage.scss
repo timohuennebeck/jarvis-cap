@@ -5,7 +5,7 @@
     @include flex-column;
     gap: $gap-default;
 
-    @include tablet {
+    @include desktop {
         flex-direction: row;
         gap: $gap-default;
         width: 100%;

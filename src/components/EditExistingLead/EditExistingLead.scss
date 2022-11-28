@@ -6,7 +6,7 @@
 
     &__links {
         display: flex;
-        justify-content: space-between;
+        gap: $gap-default;
         margin-bottom: 1.75rem;
 
         &-spacing {
@@ -21,7 +21,7 @@
 
         &-img {
             @include border-no-radius;
-            border-radius: 25%;
+            border-radius: 50%;
             width: 5.25rem;
             height: 5.25rem;
             object-fit: cover;
@@ -78,6 +78,7 @@
             right: 0;
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(0.25rem);
         }
     }
 }

@@ -111,7 +111,12 @@ export default function ReviewTextPage({ refreshLeads }) {
                     content="APPROVE AND PRINT PDF"
                     backgroundColor="#000"
                 />
-                <ButtonElement onClick={declineLead} content="DECLINE" backgroundColor="#E43A07" />
+                <ButtonElement
+                    onClick={declineLead}
+                    content="DECLINE"
+                    backgroundColor="#FFF"
+                    fontColor="#000"
+                />
             </div>
         </div>
     );
