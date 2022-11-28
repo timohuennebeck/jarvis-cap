@@ -8,7 +8,7 @@
     margin: auto;
 
     @include desktop {
-        max-width: 92.25rem;
+        max-width: 160rem;
         margin: auto;
     }
 
@@ -18,18 +18,28 @@
 
         @include desktop {
             display: flex;
+            gap: 2.5rem;
+        }
+
+        &-sidebar {
+            @include desktop {
+                border-right: 1px solid black;
+                padding-right: 2.5rem;
+                flex: 0.125 1 0;
+                min-width: 12.25rem;
+                max-width: 12.25rem;
+            }
         }
 
         &-routes {
-            @include border-padding;
-            @include shadow;
-            overflow: auto;
             min-height: 91.25vh;
             max-height: 91.25vh;
+            overflow: scroll;
 
             @include desktop {
-                border: none;
                 box-shadow: none;
+                overflow: visible;
+                flex: 1 1 0;
             }
 
             &::-webkit-scrollbar {

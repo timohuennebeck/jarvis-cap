@@ -100,7 +100,8 @@ export default function EditExistingLead() {
                         <ButtonElement
                             onClick={openModal}
                             content="DELETE"
-                            backgroundColor="#E43A07"
+                            backgroundColor="#FFF"
+                            fontColor="#000"
                         />
                     </div>
                 </div>

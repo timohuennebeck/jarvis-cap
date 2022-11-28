@@ -4,9 +4,9 @@
 .home {
     @include flex-column;
     gap: $gap-default;
-    min-height: 89.25vh;
+    min-height: 91.25vh;
 
-    @include tablet {
+    @include desktop {
         flex-direction: row;
     }
 
@@ -49,7 +49,7 @@
 
                     &-name {
                         &-business {
-                            font-size: 1.05rem;
+                            font-size: 0.9725rem;
                         }
                     }
 

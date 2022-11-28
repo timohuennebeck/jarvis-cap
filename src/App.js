@@ -4,7 +4,6 @@ import "./App.scss";
 // pages
 import HomePage from "./pages/HomePage/HomePage";
 import LeadsPage from "./pages/LeadsPage/LeadsPage";
-import TemplatesPage from "./pages/TemplatesPage/TemplatesPage";
 import ReviewPage from "./pages/ReviewPage/ReviewPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
@@ -30,12 +29,14 @@ function App() {
                     <Route path="/loading" element={<LoadingPage />} />
                 </Route>
                 <Route element={<UserInterfaceLYT />}>
-                    <Route path="/" element={<HomePage />} />
+                    <Route path="/tracker" element={<HomePage />} />
+
+
                     <Route path="/leads" element={<LeadsPage />} />
                     <Route path="/leads/:id" element={<EditExistingLead />} />
                     <Route path="/leads/add-new" element={<AddNewLead />} />
-                    <Route path="/templates/:id" element={<TemplatesPage />} />
-                    <Route path="/review" element={<ReviewPage />} />
+
+
                     <Route path="/review/:id" element={<ReviewPage />} />
                     <Route path="/editor" element={<EditorPage />} />
                     <Route path="/settings/:id" element={<SettingsPage />} />

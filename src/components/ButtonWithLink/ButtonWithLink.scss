@@ -1,14 +1,16 @@
-@use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
-.button {
+.button-link {
+    @include flex-vertical;
     @include border-no-radius;
+    gap: $gap-default;
     padding: $btn-input-padding-default;
     border-radius: 5rem;
-    color: white;
     font-size: 0.75rem;
-    text-decoration: none;
     width: 100%;
+    color: #000;
+    text-decoration: none;
 
     &:hover {
         transform: scale(1.05);

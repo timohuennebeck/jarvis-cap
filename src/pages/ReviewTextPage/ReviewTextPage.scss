@@ -50,9 +50,6 @@
     }
 
     &__links {
-        @include border-padding;
-        @include shadow;
-        margin-top: 1.75rem;
         display: flex;
         flex-direction: column;
         gap: $gap-default;
