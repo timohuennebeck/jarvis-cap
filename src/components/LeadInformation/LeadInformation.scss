@@ -2,7 +2,8 @@
 @use "../../styles/partials/variables" as *;
 
 .lead {
-    @include border-no-radius;
+    // @include border-no-radius;
+    background-color: #FFF;
     @include flex-vertical;
     border-radius: $border-radius-default;
     padding: 0.5rem 0.75rem;

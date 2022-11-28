@@ -19,28 +19,6 @@
         @include flex-column;
         gap: 1.75rem;
 
-        &-img {
-            @include border-no-radius;
-            border-radius: 50%;
-            width: 5.25rem;
-            height: 5.25rem;
-            object-fit: cover;
-            filter: grayscale(100%);
-
-            &:hover {
-                cursor: pointer;
-                transform: scale(1.05);
-                filter: grayscale(0%);
-            }
-
-            &:active {
-                position: relative;
-                left: 5rem;
-                top: 3.5rem;
-                transform: scale(2.5);
-            }
-        }
-
         &-dropdown {
             display: flex;
             gap: $gap-default;

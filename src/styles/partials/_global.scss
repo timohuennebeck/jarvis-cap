@@ -4,6 +4,7 @@
 html {
     max-width: 42.5rem;
     margin: auto;
+    background-color: #F4F4F6;
 
     @include desktop {
         max-width: 160rem;

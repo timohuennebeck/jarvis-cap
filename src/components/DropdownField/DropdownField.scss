@@ -2,6 +2,8 @@
 @use "../../styles/partials/variables" as *;
 
 .dropdown-select {
-    @include border-padding;
+    border: none;
+    border-radius: $border-radius-default;
+    padding: $border-padding-default;
     width: 100%;
 }

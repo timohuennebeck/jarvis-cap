@@ -114,8 +114,8 @@ export default function ReviewTextPage({ refreshLeads }) {
                 <ButtonElement
                     onClick={declineLead}
                     content="DECLINE"
-                    backgroundColor="#FFF"
-                    fontColor="#000"
+                    backgroundColor="#C71919"
+                    fontColor="#FFF"
                 />
             </div>
         </div>

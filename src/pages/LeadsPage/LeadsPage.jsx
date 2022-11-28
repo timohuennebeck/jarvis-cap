@@ -109,7 +109,9 @@ export default function LeadsPage() {
                 </div>
                 <div className="leads__dropdown">
                     <DropdownField value={updateStatus.status} onChange={handleChange} />
-                    <p className="leads__dropdown-amount">You are viewing {filteredLeads.length} Leads</p>
+                    <p className="leads__dropdown-amount">
+                        You are viewing {filteredLeads.length} Leads
+                    </p>
                 </div>
                 {updateMessage && <p className="leads__update">Leads are being processed...</p>}
                 <div className="leads__indv">

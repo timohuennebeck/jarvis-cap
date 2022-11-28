@@ -18,7 +18,6 @@
         flex: 1 1 0;
 
         @include tablet {
-            @include border-padding;
             min-width: 19.75rem;
             overflow: scroll;
 

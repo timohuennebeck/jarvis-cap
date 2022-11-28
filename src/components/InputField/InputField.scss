@@ -3,8 +3,9 @@
 
 .input {
     @include flex-column;
-    @include shadow;
-    @include border-padding;
+    background-color: #fff;
+    border-radius: $border-radius-default;
+    padding: $border-padding-default;
     width: 100%;
 
     &__label {

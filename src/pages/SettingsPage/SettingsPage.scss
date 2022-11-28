@@ -7,7 +7,8 @@
 
     &__information,
     &__delete {
-        @include border-padding-content;
+        border-radius: $border-radius-default;
+        padding: 1rem;
     }
 
     &__information {
@@ -19,8 +20,9 @@
     }
 
     &__information {
+        background-color: #FFF;
+
         &-img {
-            @include border-no-radius;
             border-radius: 25%;
             width: 5.25rem;
             height: 5.25rem;
@@ -80,6 +82,8 @@
     }
 
     &__delete {
+        background-color: #FFF;
+        
         &-header,
         &-content {
             padding-bottom: $padding-default;

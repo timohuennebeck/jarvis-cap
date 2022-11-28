@@ -25,7 +25,9 @@
         }
 
         &-amount {
-            @include border-padding;
+            background-color: #fff;
+            border-radius: $border-radius-default;
+            padding: $border-padding-default;
             font-size: 0.75rem;
         }
     }
@@ -46,7 +48,7 @@
 }
 
 input::file-selector-button {
-    @include border-no-radius;
+    border: none;
     padding: $btn-input-padding-default;
     background-color: #fff;
     border-radius: 0.5rem;

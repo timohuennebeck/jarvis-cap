@@ -100,7 +100,7 @@ export default function EditExistingLead() {
                         <ButtonElement
                             onClick={openModal}
                             content="DELETE"
-                            backgroundColor="#E43A07"
+                            backgroundColor="#C71919"
                         />
                     </div>
                 </div>
@@ -111,7 +111,6 @@ export default function EditExistingLead() {
                     <p className="save-data-leads">Lead has been deleted! Redirecting in 1s...</p>
                 )}
                 <form className="edit-leads__input" ref={userValues}>
-                    <img className="edit-leads__input-img" src={userInput.image_url} alt="" />
                     <div className="edit-leads__input-dropdown">
                         <DropdownField value={userInput.status} onChange={handleChange} />
                         <GenderDropdownField value={userInput.his_or_her} onChange={handleChange} />

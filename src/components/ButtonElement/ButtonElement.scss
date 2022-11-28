@@ -2,9 +2,9 @@
 @use "../../styles/partials/mixins" as *;
 
 .button {
-    @include border-no-radius;
+    border: none;
     padding: $btn-input-padding-default;
-    border-radius: 5rem;
+    border-radius: $border-radius-default;
     color: white;
     font-size: 0.75rem;
     text-decoration: none;

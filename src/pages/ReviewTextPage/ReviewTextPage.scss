@@ -2,8 +2,10 @@
 @use "../../styles/partials/variables" as *;
 
 .review-ctr {
-    @include border-padding-content;
     @include flex-column;
+    background-color: #FFF;
+    border-radius: $border-radius-default;
+    padding: 1rem;
     justify-content: space-between;
     width: 100%;
 

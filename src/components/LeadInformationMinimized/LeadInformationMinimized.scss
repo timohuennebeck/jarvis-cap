@@ -2,8 +2,8 @@
 @use "../../styles/partials/variables" as *;
 
 .lead-minimized {
-    @include border-no-radius;
     @include flex-vertical;
+    background-color: #FFF;
     border-radius: $border-radius-default;
     gap: $gap-leads;
     padding: 0.5rem 0.75rem;
