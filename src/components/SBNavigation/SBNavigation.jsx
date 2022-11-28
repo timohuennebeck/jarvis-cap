@@ -37,7 +37,7 @@ function NavList() {
                     <p className="nav-list__ctn-user-text">Hello, Timo!</p>
                 </div>
                 <div className="nav-list__ctn-main">
-                    <ButtonWithLink link="/construction" name="Dashboard" img={dashhboardImg} />
+                    <ButtonWithLink link="/" name="Dashboard" img={dashhboardImg} />
                     <ButtonWithLink link="/tracker" name="Tracker" img={trackerImg} />
                     <ButtonWithLink link="/leads" name="Leads" img={leadsImg} />
                     <ButtonWithLink link="/construction" name="Companies" img={companiesImg} />

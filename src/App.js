@@ -19,6 +19,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import UserInterfaceLYT from "./components/UserInterfaceLYT/UserInterfaceLYT";
 import LoginLYT from "./components/LoginLYT/LoginLYT";
 import MaintenancePage from "./pages/MaintenancePage/MaintenancePage";
+import DashboardPage from "./pages/DashboardPage/DashboardPage";
 
 function App() {
     return (
@@ -30,7 +31,7 @@ function App() {
                     <Route path="/loading" element={<LoadingPage />} />
                 </Route>
                 <Route element={<UserInterfaceLYT />}>
-                    <Route path="/" element={<HomePage />} />
+                    <Route path="/" element={<DashboardPage />} />
                     <Route path="/tracker" element={<HomePage />} />
 
                     <Route path="/leads" element={<LeadsPage />} />

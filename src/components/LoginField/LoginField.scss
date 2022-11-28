@@ -3,8 +3,9 @@
 
 .login-field {
     @include flex-vertical;
-    @include shadow;
-    @include border-padding;
+    background-color: #FFF;
+    border-radius: $border-radius-default;
+    padding: $border-padding-default;
     width: 100%;
     gap: $gap-default;
 
