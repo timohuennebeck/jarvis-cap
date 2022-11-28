@@ -37,18 +37,18 @@ function NavList() {
                     <p className="nav-list__ctn-user-text">Hello, Timo!</p>
                 </div>
                 <div className="nav-list__ctn-main">
-                    <ButtonWithLink link="/dashboard" name="Dashboard" img={dashhboardImg} />
+                    <ButtonWithLink link="/construction" name="Dashboard" img={dashhboardImg} />
                     <ButtonWithLink link="/tracker" name="Tracker" img={trackerImg} />
                     <ButtonWithLink link="/leads" name="Leads" img={leadsImg} />
-                    <ButtonWithLink link="/companies" name="Companies" img={companiesImg} />
+                    <ButtonWithLink link="/construction" name="Companies" img={companiesImg} />
                     <ButtonWithLink link="/review/1" name="Review" img={reviewImg} />
                 </div>
             </div>
 
             <div className="nav-list__settings">
-                <ButtonWithLink link="/help" name="Help Center" img={helpCenterImg} />
-                <ButtonWithLink link="/settings" name="Settings" img={settingsImg} />
-                <ButtonWithLink link="/log-out" name="Log out" img={logOutImg} />
+                <ButtonWithLink link="/construction" name="Help Center" img={helpCenterImg} />
+                <ButtonWithLink link="/settings/1" name="Settings" img={settingsImg} />
+                <ButtonWithLink link="/login" name="Log out" img={logOutImg} />
             </div>
         </div>
     );

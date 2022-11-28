@@ -18,6 +18,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import UserInterfaceLYT from "./components/UserInterfaceLYT/UserInterfaceLYT";
 import LoginLYT from "./components/LoginLYT/LoginLYT";
+import MaintenancePage from "./pages/MaintenancePage/MaintenancePage";
 
 function App() {
     return (
@@ -29,17 +30,18 @@ function App() {
                     <Route path="/loading" element={<LoadingPage />} />
                 </Route>
                 <Route element={<UserInterfaceLYT />}>
+                    <Route path="/" element={<HomePage />} />
                     <Route path="/tracker" element={<HomePage />} />
-
 
                     <Route path="/leads" element={<LeadsPage />} />
                     <Route path="/leads/:id" element={<EditExistingLead />} />
                     <Route path="/leads/add-new" element={<AddNewLead />} />
 
-
                     <Route path="/review/:id" element={<ReviewPage />} />
-                    <Route path="/editor" element={<EditorPage />} />
                     <Route path="/settings/:id" element={<SettingsPage />} />
+
+                    <Route path="/construction" element={<MaintenancePage />} />
+
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
             </Routes>
