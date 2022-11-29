@@ -15,25 +15,29 @@ import { Link } from "react-router-dom";
 import Papa from "papaparse";
 import { addNewLead } from "../../utils/api";
 import { useRef } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function LeadsPage() {
-    const [leads, setLeads] = useState([]);
+    const [userData, setUserData] = useState([]);
+    const [leadsData, setLeadsData] = useState([]);
     const [parsedData, setParsedData] = useState([]);
     const [updateMessage, setUpdateMessage] = useState(false);
     const [updateStatus, setUpdateStatus] = useState([]);
     const [filteredLeads, setFilteredLeads] = useState([]);
 
+    const { user } = useAuth0();
+
     const userValues = useRef();
 
     useEffect(() => {
         getLeads().then(({ data }) => {
-            setLeads(data);
+            setLeadsData(data.filter((lead) => lead.users_id === userData.id));
         });
     }, [updateMessage]);
 
     useEffect(() => {
         getUsers().then(({ data }) => {
-            setUpdateStatus(data[0]);
+            console.log(data.filter((person) => person.email === user.email)[0]);
         });
     }, []);
 
@@ -41,7 +45,7 @@ export default function LeadsPage() {
         setUpdateStatus({ ...updateStatus, [e.target.name]: e.target.value });
     };
 
-    const newLeads = leads.filter((person) => person.status === updateStatus.status);
+    const newLeads = leadsData.filter((person) => person.status === updateStatus.status);
 
     useEffect(() => {
         setFilteredLeads(newLeads);

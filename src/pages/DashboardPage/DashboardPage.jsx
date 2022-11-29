@@ -3,24 +3,29 @@ import "./DashboardPage.scss";
 import targetImg from "../../assets/icons/collapse-alt2.svg";
 import calendarImg from "../../assets/icons/calendar-month.svg";
 import tagImg from "../../assets/icons/price-tag.svg";
-import { getLeads } from "../../utils/api";
+import { getLeads, getUsers } from "../../utils/api";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export default function DashboardPage() {
+    const [userData, setUserData] = useState([]);
     const [leadsData, setLeadsData] = useState([]);
 
     const { user } = useAuth0();
 
     useEffect(() => {
+        getUsers().then(({ data }) => {
+            console.log(data.filter((person) => person.email === user.email)[0]);
+        });
         getLeads().then(({ data }) => {
-            setLeadsData(data);
+            setLeadsData(data.filter((lead) => lead.users_id === userData.id));
+            // setLeadsData(data.filter((lead) => lead.users_id === userData.id));
         });
     }, []);
 
-    if (!leadsData) {
+    if (!user || !userData || !leadsData) {
         return null;
     }
 
