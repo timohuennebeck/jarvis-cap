@@ -5,7 +5,6 @@ import { getUsers } from "../../utils/api";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import axios from "axios";
 
 import ButtonWithLink from "../ButtonWithLink/ButtonWithLink";
 import dashhboardImg from "../../assets/icons/collapse-alt.svg";
@@ -31,10 +30,6 @@ function NavList() {
 
     if (!userData) {
         return <p>Loading...</p>;
-    }
-
-    if (isAuthenticated) {
-        console.log(user.sub);
     }
 
     return (
