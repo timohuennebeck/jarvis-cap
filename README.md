@@ -25,7 +25,7 @@ This is where Jarvis comes into place to `reduce the amount of work` required fo
 
 ### `Step 1`
 
-Download ['jarvis-cap'](https://github.com/timohuennebeck/jarvis-cap) and ['jarvis-cap-api'](https://github.com/timohuennebeck/jarvis-cap-api) and make sure to create a .env file on the client side which includes a port where the server can run. Jarvis was running on port 4040 in production, therefore, we recommend using the same.
+Download ['jarvis-cap'](https://github.com/timohuennebeck/jarvis-cap) and ['jarvis-cap-api'](https://github.com/timohuennebeck/jarvis-cap-api) and make sure to create a .env file on the client side which includes a port where the server can run. Jarvis was running on port 8080 in production, therefore, we recommend using the same.
 
 
 ### `Step 2`

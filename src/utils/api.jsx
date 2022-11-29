@@ -46,32 +46,3 @@ export const deleteLead = ({ id }) => {
     return axios.delete(`${API_URL}/leads/${id}`);
 };
 
-// leads status
-
-export const getLeadsInProgress = () => {
-    return axios.get(`${API_URL}/leads/in-progress`);
-};
-
-export const getLeadsClApproved = () => {
-    return axios.get(`${API_URL}/leads/cl-approved`);
-};
-
-export const getLeadsClDeclined = () => {
-    return axios.get(`${API_URL}/leads/cl-declined`);
-};
-
-export const getLeadsAwaitingResponse = () => {
-    return axios.get(`${API_URL}/leads/awaiting-response`);
-};
-
-export const getLeadsInterviewScheduled = () => {
-    return axios.get(`${API_URL}/leads/interview-scheduled`);
-};
-
-export const getLeadsAccepted = () => {
-    return axios.get(`${API_URL}/leads/accepted`);
-};
-
-export const getLeadsRejected = () => {
-    return axios.get(`${API_URL}/rejected`);
-};

@@ -26,14 +26,14 @@ export default function LeadsPage() {
     const userValues = useRef();
 
     useEffect(() => {
-        getLeads().then((resp) => {
-            setLeads(resp.data);
+        getLeads().then(({ data }) => {
+            setLeads(data);
         });
     }, [updateMessage]);
 
     useEffect(() => {
-        getUsers().then((resp) => {
-            setUpdateStatus(resp.data[0]);
+        getUsers().then(({ data }) => {
+            setUpdateStatus(data[0]);
         });
     }, []);
 

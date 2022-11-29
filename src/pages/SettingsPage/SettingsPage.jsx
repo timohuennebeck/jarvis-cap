@@ -96,57 +96,6 @@ function SettingsPage() {
                 </div>
                 {notification && <p className="save-data-settings">Data has been saved!</p>}
             </div>
-            <div className="settings__information">
-                <h2 className="settings__information-header">Address Information</h2>
-                <p className="settings__information-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum
-                    dolor sit amet...
-                </p>
-                <div className="settings__information-address">
-                    <div className="settings__information-address-input">
-                        <InputField
-                            label="Street Name"
-                            placeholder="Street Name"
-                            name="street_name"
-                            value={userInput.street_name}
-                            onChange={handleChange}
-                        />
-                        <InputField
-                            label="State"
-                            placeholder="State"
-                            name="state"
-                            value={userInput.state}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="settings__information-address-input">
-                        <InputField
-                            label="City"
-                            placeholder="City"
-                            name="city"
-                            value={userInput.city}
-                            onChange={handleChange}
-                        />
-                        <InputField
-                            label="Postcode"
-                            placeholder="Postcode"
-                            name="postcode"
-                            value={userInput.postcode}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="settings__link">
-                        <ButtonElement
-                            content="SAVE SETTINGS"
-                            backgroundColor="#000000"
-                            onClick={uploadData}
-                        />
-                    </div>
-                </div>
-                {notification && <p className="save-data-settings">Data has been saved!</p>}
-            </div>
             <div className="settings__delete">
                 <h2 className="settings__delete-header">Delete Personal Account</h2>
                 <p className="settings__delete-content">
@@ -174,7 +123,7 @@ function SettingsPage() {
                 className="edit-leads__card-modal"
                 overlayClassName="edit-leads__card-modal-background"
             >
-                <DeleteNotificationUsers    
+                <DeleteNotificationUsers
                     closeModal={closeModal}
                     selectedLead={userInput}
                     setDeleteMessage={setDeleteMessage}
