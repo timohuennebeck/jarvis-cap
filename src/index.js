@@ -11,6 +11,7 @@ root.render(
         domain="dev-zapksw78lj5vrfgb.us.auth0.com"
         clientId="sMARsqfXx49GTDnciIuAkz0fc7gqKh5k"
         redirectUri={window.location.origin}
+        cacheLocation="localstorage"
     >
         <React.StrictMode>
             <App />
