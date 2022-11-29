@@ -10,22 +10,17 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default function DashboardPage() {
-    const [userData, setUserData] = useState([]);
     const [leadsData, setLeadsData] = useState([]);
 
     const { user } = useAuth0();
 
     useEffect(() => {
-        getUsers().then(({ data }) => {
-            console.log(data.filter((person) => person.email === user.email)[0]);
-        });
         getLeads().then(({ data }) => {
-            setLeadsData(data.filter((lead) => lead.users_id === userData.id));
-            // setLeadsData(data.filter((lead) => lead.users_id === userData.id));
+            setLeadsData(data);
         });
     }, []);
 
-    if (!user || !userData || !leadsData) {
+    if (!leadsData) {
         return null;
     }
 
