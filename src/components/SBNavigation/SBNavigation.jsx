@@ -29,7 +29,7 @@ function NavList() {
     }, []);
 
     if (!userData) {
-        return <p>Loading...</p>;
+        return null;
     }
 
     return (

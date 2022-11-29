@@ -51,7 +51,7 @@ function SettingsPage() {
     };
 
     if (!userInput) {
-        return <p>Loading...</p>;
+        return null;
     }
 
     return (

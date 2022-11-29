@@ -28,7 +28,7 @@ export default function Header() {
     };
 
     if (!userData) {
-        return <p>Loading...</p>;
+        return null;
     }
 
     return (

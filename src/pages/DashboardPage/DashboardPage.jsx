@@ -21,7 +21,7 @@ export default function DashboardPage() {
     }, []);
 
     if (!leadsData) {
-        return <p>Loading...</p>;
+        return null;
     }
 
     return (

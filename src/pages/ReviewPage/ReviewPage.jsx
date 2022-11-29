@@ -24,7 +24,7 @@ function ReviewPage() {
     }, []);
 
     if (!leadData) {
-        return <p>Loading...</p>;
+        return null;
     }
 
     return (
