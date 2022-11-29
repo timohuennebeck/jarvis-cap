@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getLeads, updateLead } from "../../utils/api";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
     const [columns, setColumns] = useState([]);
@@ -114,7 +115,10 @@ export default function HomePage() {
                                                                         {...provided.dragHandleProps}
                                                                         className="home__kanban-container-content-indv"
                                                                     >
-                                                                        <div className="home__kanban-container-content-indv-name">
+                                                                        <Link
+                                                                            to={`/leads/${item.id}`}
+                                                                            className="home__kanban-container-content-indv-name"
+                                                                        >
                                                                             <p className="home__kanban-container-content-indv-name-business">
                                                                                 {item.company}
                                                                             </p>
@@ -122,7 +126,7 @@ export default function HomePage() {
                                                                                 {item.first_name}{" "}
                                                                                 {item.last_name}
                                                                             </p>
-                                                                        </div>
+                                                                        </Link>
                                                                         <div className="home__kanban-container-content-indv-information">
                                                                             <img
                                                                                 className="home__kanban-container-content-indv-information-img"
