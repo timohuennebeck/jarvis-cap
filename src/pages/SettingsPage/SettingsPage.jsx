@@ -1,20 +1,27 @@
+import "./SettingsPage.scss";
+
 import { useState } from "react";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+
+// api calls
+import { getUserId, updateUser } from "../../utils/api";
+
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import InputField from "../../components/InputField/InputField";
 import ReactModal from "react-modal";
 import DeleteNotificationUsers from "../../components/DeleteNotificationUsers/DeleteNotificationUsers";
-
-import { getUserId, updateUser } from "../../utils/api";
-import { useParams } from "react-router-dom";
-
-import "./SettingsPage.scss";
 
 function SettingsPage() {
     const [userInput, setUserInput] = useState(null);
     const [notification, setNotification] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [deleteMessage, setDeleteMessage] = useState(false);
+
+    const { user } = useAuth0();
+
+    console.log(user);
 
     function openModal() {
         setModalIsOpen(true);
@@ -52,22 +59,18 @@ function SettingsPage() {
             <div className="settings__information">
                 <h2 className="settings__information-header">Personal Information</h2>
                 <p className="settings__information-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum
-                    dolor sit amet...
+                    Here we are rendering the data from your connected account - which is either
+                    Google or Facebook. If you'd like change the name or email address, you'll have
+                    to do that in your actual account that's connected and it will then
+                    automatically change it here.
                 </p>
-                <img
-                    className="settings__information-img"
-                    src={userInput.image_url}
-                    alt="profile"
-                />
+                <img className="settings__information-img" src={user.picture} alt="profile" />
                 <div className="settings__information-user">
                     <InputField
                         label="Email"
                         placeholder="Email"
                         name="email"
-                        value={userInput.email}
+                        value={user.email}
                         onChange={handleChange}
                     />
                     <div className="settings__information-user-input">
@@ -75,28 +78,28 @@ function SettingsPage() {
                             label="First Name"
                             placeholder="First Name"
                             name="first_name"
-                            value={userInput.first_name}
+                            value={user.given_name}
                             onChange={handleChange}
                         />
                         <InputField
                             label="Last Name"
                             placeholder="Last Name"
                             name="last_name"
-                            value={userInput.last_name}
+                            value={user.family_name}
                             onChange={handleChange}
                         />
                     </div>
                 </div>
-                <div className="settings__link">
+                {/* <div className="settings__link">
                     <ButtonElement
                         content="SAVE SETTINGS"
                         backgroundColor="#000000"
                         onClick={uploadData}
                     />
-                </div>
+                </div> */}
                 {notification && <p className="save-data-settings">Data has been saved!</p>}
             </div>
-            <div className="settings__delete">
+            {/* <div className="settings__delete">
                 <h2 className="settings__delete-header">Delete Personal Account</h2>
                 <p className="settings__delete-content">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -116,7 +119,7 @@ function SettingsPage() {
                         User has been deleted! Redirecting in 1s...
                     </p>
                 )}
-            </div>
+            </div> */}
             <ReactModal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
