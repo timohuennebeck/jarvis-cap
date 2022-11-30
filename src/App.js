@@ -31,31 +31,29 @@ function App() {
     }
 
     return (
-        isAuthenticated && (
-            <BrowserRouter>
-                <Routes>
-                    <Route element={<LoginLYT />}>
-                        <Route path="/register" element={<RegisterPage />} />
-                        <Route path="/login" element={<LoginPage />} />
-                    </Route>
-                    <Route element={<UserInterfaceLYT />}>
-                        <Route path="/" element={<DashboardPage />} />
-                        <Route path="/tracker" element={<HomePage />} />
+        <BrowserRouter>
+            <Routes>
+                <Route element={<LoginLYT />}>
+                    <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                </Route>
+                <Route element={<UserInterfaceLYT />}>
+                    <Route path="/" element={<DashboardPage />} />
+                    <Route path="/tracker" element={<HomePage />} />
 
-                        <Route path="/leads" element={<LeadsPage />} />
-                        <Route path="/leads/:id" element={<EditExistingLead />} />
-                        <Route path="/leads/add-new" element={<AddNewLead />} />
+                    <Route path="/leads" element={<LeadsPage />} />
+                    <Route path="/leads/:id" element={<EditExistingLead />} />
+                    <Route path="/leads/add-new" element={<AddNewLead />} />
 
-                        <Route path="/review/:id" element={<ReviewPage />} />
-                        <Route path="/settings/:id" element={<SettingsPage />} />
+                    <Route path="/review/:id" element={<ReviewPage />} />
+                    <Route path="/settings/:id" element={<SettingsPage />} />
 
-                        <Route path="/construction" element={<MaintenancePage />} />
+                    <Route path="/construction" element={<MaintenancePage />} />
 
-                        <Route path="*" element={<NotFoundPage />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        )
+                    <Route path="*" element={<NotFoundPage />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     );
 }
 
