@@ -46,3 +46,10 @@ export const deleteLead = ({ id }) => {
     return axios.delete(`${API_URL}/leads/${id}`);
 };
 
+
+// faqs
+
+export const getFaqs = () => {
+    return axios.get(`${API_URL}/faqs`);
+};
+

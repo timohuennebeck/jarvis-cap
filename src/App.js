@@ -19,6 +19,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import EditExistingLead from "./components/EditExistingLead/EditExistingLead";
 import AddNewLead from "./components/AddNewLead/AddNewLead";
 import UserInterfaceLYT from "./components/UserInterfaceLYT/UserInterfaceLYT";
+import HelpCenterPage from "./pages/HelpCenterPage/HelpCenterPage";
 
 function App() {
     const { isAuthenticated } = useAuth0();
@@ -40,6 +41,8 @@ function App() {
 
                     <Route path="/review/:id" element={<ReviewPage />} />
                     <Route path="/settings/:id" element={<SettingsPage />} />
+
+                    <Route path="/help-center" element={<HelpCenterPage />} />
 
                     <Route path="/construction" element={<MaintenancePage />} />
 

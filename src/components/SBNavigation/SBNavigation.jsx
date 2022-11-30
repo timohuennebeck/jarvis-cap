@@ -50,7 +50,7 @@ function NavList() {
                 </div>
 
                 <div className="nav-list__settings">
-                    <ButtonWithLink link="/construction" name="Help Center" img={helpCenterImg} />
+                    <ButtonWithLink link="/help-center" name="Help Center" img={helpCenterImg} />
                     <ButtonWithLink link="/settings/1" name="Settings" img={settingsImg} />
                     <ButtonWithLink
                         onClick={() => logout({ returnTo: window.location.origin })}
