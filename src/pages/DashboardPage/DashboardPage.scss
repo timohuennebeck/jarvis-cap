@@ -44,6 +44,8 @@
                         border: none;
                         outline: none;
                         font-size: 0.875rem;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                 }
             }
