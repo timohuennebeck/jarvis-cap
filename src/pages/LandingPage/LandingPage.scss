@@ -4,6 +4,8 @@
 .landing {
     @include flex-column;
     padding: $padding-default;
+    height: 100vh;
+    justify-content: space-evenly;
 
     @include desktop {
         padding: 2.25rem;
