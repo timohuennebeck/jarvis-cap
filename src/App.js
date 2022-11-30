@@ -15,28 +15,21 @@ import { useAuth0 } from "@auth0/auth0-react";
 // components
 import EditExistingLead from "./components/EditExistingLead/EditExistingLead";
 import AddNewLead from "./components/AddNewLead/AddNewLead";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import UserInterfaceLYT from "./components/UserInterfaceLYT/UserInterfaceLYT";
-import LoginLYT from "./components/LoginLYT/LoginLYT";
 import MaintenancePage from "./pages/MaintenancePage/MaintenancePage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
-import LoginButton from "./components/LoginButton/LoginButton";
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 function App() {
     const { isAuthenticated } = useAuth0();
 
     if (!isAuthenticated) {
-        return <LoginButton />;
+        return <LandingPage />;
     }
 
     return (
         <BrowserRouter>
             <Routes>
-                <Route element={<LoginLYT />}>
-                    <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                </Route>
                 <Route element={<UserInterfaceLYT />}>
                     <Route path="/" element={<DashboardPage />} />
                     <Route path="/tracker" element={<HomePage />} />

@@ -1,0 +1,96 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.landing {
+    @include flex-column;
+    padding: $padding-default;
+
+    @include desktop {
+        padding: 2.25rem;
+    }
+
+    &__header {
+        @include flex-column;
+        gap: $gap-default;
+        text-align: center;
+        order: 1;
+
+        @include desktop {
+            flex-direction: row;
+            justify-content: space-between;
+            order: 0;
+        }
+
+        &-buttons {
+            @include flex-column;
+            gap: $gap-default;
+
+            @include tablet {
+                flex-direction: row;
+            }
+
+            @include desktop {
+                flex: 0.15 1 0;
+            }
+
+            &-indv {
+                border: none;
+                padding: $btn-input-padding-default;
+                border-radius: $border-radius-default;
+                color: white;
+                font-size: 0.75rem;
+                background-color: #1f3146;
+                min-height: 2.5rem;
+                width: 100%;
+
+                &:hover {
+                    transform: scale(1.05);
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &-version {
+            display: none;
+
+            @include desktop {
+                display: block;
+            }
+        }
+    }
+
+    &__img {
+        @include flex-column;
+        justify-content: center;
+        align-items: center;
+        gap: $gap-default;
+        min-height: 35vh;
+        overflow-y: hidden;
+
+        @include tablet {
+            min-height: 50vh;
+        }
+
+        @include desktop {
+            min-height: 82.5vh;
+        }
+
+        &-version {
+            @include desktop {
+                display: none;
+            }
+        }
+
+        &-mobile {
+            max-width: 15rem;
+
+            @include tablet {
+                max-width: 22.5rem;
+            }
+
+            @include desktop {
+                max-width: 27.5rem;
+            }
+        }
+    }
+}
