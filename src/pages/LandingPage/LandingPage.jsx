@@ -14,7 +14,7 @@ export default function LandingPage() {
             <div className="landing__header">
                 <div className="landing__header-buttons">
                     <button
-                        onClick={() => loginWithRedirect()}
+                        onClick={() => loginWithRedirect({screen_hint: "signup"})}
                         className="landing__header-buttons-indv"
                     >
                         Sign Up
