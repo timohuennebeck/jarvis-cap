@@ -8,6 +8,7 @@
     justify-content: space-evenly;
 
     @include desktop {
+        height: 100vh;
         padding: 2.25rem;
     }
 
