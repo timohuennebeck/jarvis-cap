@@ -47,6 +47,10 @@ export default function AddNewCompany() {
             errors.push("name");
         }
 
+        if (!userValues.current.location.value) {
+            errors.push("location");
+        }
+
         setErrorMessage(errors);
 
         if (errors.length === 0) {

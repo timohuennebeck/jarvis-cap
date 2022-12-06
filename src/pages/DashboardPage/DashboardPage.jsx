@@ -9,19 +9,23 @@ import rejectionsImg from "../../assets/icons/briefcase.svg";
 import { useOutletContext } from "react-router-dom";
 import { useRef } from "react";
 
-import { getLeads, updateUser } from "../../utils/api";
+import { getCompanies, getLeads, updateUser } from "../../utils/api";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export default function DashboardPage() {
     const [currentUser, setCurrentUser] = useOutletContext();
     const [leadsData, setLeadsData] = useState([]);
+    const [companiesData, setCompaniesData] = useState([]);
 
     const userValues = useRef();
 
     useEffect(() => {
         getLeads().then(({ data }) => {
             setLeadsData(data.filter((item) => item.users_id === currentUser.id));
+        });
+        getCompanies().then(({ data }) => {
+            setCompaniesData(data.filter((item) => item.users_id === currentUser.id));
         });
     }, [currentUser]);
 
@@ -95,7 +99,7 @@ export default function DashboardPage() {
                     className="dashboard__ctn-video"
                     width="100%"
                     height="500rem"
-                    src="https://i.imgur.com/kgUbW0v.mp4"
+                    src="https://i.imgur.com/embed/kgUbW0v"
                 ></iframe>
                 <div className="dashboard__ctn-stats">
                     <div className="dashboard__ctn-stats-title">
@@ -196,27 +200,115 @@ export default function DashboardPage() {
                     </div>
                 </div>
                 <div className="dashboard__stats-networking">
-                    <p className="dashboard__stats-networking-header">Funnel - Networking</p>
+                    <p className="dashboard__stats-networking-header">Funnel - Companies</p>
                     <div className="dashboard__stats-networking-indv">
-                        <div className="dashboard__stats-networking-indv-name">
-                            <p>To Be Contacted</p>
-                            <p>5</p>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>Preparing</p>
+                            <p>
+                                {
+                                    companiesData.filter((person) => person.status === "Preparing")
+                                        .length
+                                }
+                            </p>
                         </div>
-                        <div className="dashboard__stats-networking-indv-name">
-                            <p>Awaiting Response</p>
-                            <p>5</p>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>Messaged Recruiter</p>
+                            <p>
+                                {
+                                    companiesData.filter(
+                                        (person) => person.status === "Messaged Recruiter"
+                                    ).length
+                                }
+                            </p>
                         </div>
-                        <div className="dashboard__stats-networking-indv-name">
-                            <p>Thank You Message</p>
-                            <p>5</p>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>VC Conversation Scheduled</p>
+                            <p>
+                                {
+                                    companiesData.filter(
+                                        (person) => person.status === "VC Conversation Scheduled"
+                                    ).length
+                                }
+                            </p>
                         </div>
-                        <div className="dashboard__stats-networking-indv-name">
-                            <p>Follow Up Needed</p>
-                            <p>5</p>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>Preparing Documents</p>
+                            <p>
+                                {
+                                    companiesData.filter(
+                                        (person) => person.status === "Preparing Documents"
+                                    ).length
+                                }
+                            </p>
                         </div>
-                        <div className="dashboard__stats-networking-indv-name">
-                            <p>144 Hours > Engage</p>
-                            <p>5</p>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>Followed Up [Pre-Interview]</p>
+                            <p>
+                                {
+                                    companiesData.filter(
+                                        (person) => person.status === "Followed Up [Pre-Interview]"
+                                    ).length
+                                }
+                            </p>
+                        </div>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>Interview Scheduled</p>
+                            <p>
+                                {
+                                    companiesData.filter(
+                                        (person) => person.status === "Interview Scheduled"
+                                    ).length
+                                }
+                            </p>
+                        </div>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>Interview Finished</p>
+                            <p>
+                                {
+                                    companiesData.filter(
+                                        (person) => person.status === "Interview Finished"
+                                    ).length
+                                }
+                            </p>
+                        </div>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>Thank You Sent</p>
+                            <p>
+                                {
+                                    companiesData.filter(
+                                        (person) => person.status === "Thank You Sent"
+                                    ).length
+                                }
+                            </p>
+                        </div>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>Followed Up [Post-Interview]</p>
+                            <p>
+                                {
+                                    companiesData.filter(
+                                        (person) => person.status === "Followed Up [Post-Interview]"
+                                    ).length
+                                }
+                            </p>
+                        </div>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>Negotiating</p>
+                            <p>
+                                {
+                                    companiesData.filter(
+                                        (person) => person.status === "Negotiating"
+                                    ).length
+                                }
+                            </p>
+                        </div>
+                        <div className="dashboard__stats-leads-indv-name">
+                            <p>Rejected</p>
+                            <p>
+                                {
+                                    companiesData.filter((person) => person.status === "Rejected")
+                                        .length
+                                }
+                            </p>
                         </div>
                     </div>
                 </div>
