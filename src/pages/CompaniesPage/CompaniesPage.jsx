@@ -15,8 +15,10 @@ import { Link } from "react-router-dom";
 import Papa from "papaparse";
 import { addNewLead } from "../../utils/api";
 import { useRef } from "react";
+import { useOutletContext } from "react-router-dom";
 
 export default function CompaniesPage() {
+    const [currentUser] = useOutletContext();
     const [companiesData, setCompaniesData] = useState([]);
     const [parsedData, setParsedData] = useState([]);
     const [updateMessage, setUpdateMessage] = useState(false);
@@ -27,10 +29,15 @@ export default function CompaniesPage() {
 
     useEffect(() => {
         getCompanies().then(({ data }) => {
-            setCompaniesData(data);
-            setFilteredCompanies(data.filter((person) => person.status === "Preparing"));
+            setCompaniesData(data.filter((item) => item.users_id === currentUser.id));
+            setFilteredCompanies(
+                data.filter(
+                    (person) =>
+                        person.status === "Preparing" && person.users_id === currentUser.id
+                )
+            );
         });
-    }, []);
+    }, [currentUser]);
 
     const handleChange = (e) => {
         setUpdateStatus({ ...updateStatus, [e.target.name]: e.target.value });

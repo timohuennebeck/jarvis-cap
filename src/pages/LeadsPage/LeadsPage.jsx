@@ -6,7 +6,7 @@ import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import DropdownField from "../../components/DropdownField/DropdownField";
 
 // axios call
-import { getLeads, getUsers } from "../../utils/api";
+import { getLeads } from "../../utils/api";
 
 // libraries
 import { useState } from "react";
@@ -15,8 +15,10 @@ import { Link } from "react-router-dom";
 import Papa from "papaparse";
 import { addNewLead } from "../../utils/api";
 import { useRef } from "react";
+import { useOutletContext } from "react-router-dom";
 
 export default function LeadsPage() {
+    const [currentUser] = useOutletContext();
     const [leadsData, setLeadsData] = useState([]);
     const [parsedData, setParsedData] = useState([]);
     const [updateMessage, setUpdateMessage] = useState(false);
@@ -27,10 +29,15 @@ export default function LeadsPage() {
 
     useEffect(() => {
         getLeads().then(({ data }) => {
-            setLeadsData(data);
-            setFilteredLeads(data.filter((person) => person.status === "In Progress"));
+            setLeadsData(data.filter((item) => item.users_id === currentUser.id));
+            setFilteredLeads(
+                data.filter(
+                    (person) =>
+                        person.status === "In Progress" && person.users_id === currentUser.id
+                )
+            );
         });
-    }, []);
+    }, [currentUser]);
 
     const handleChange = (e) => {
         setUpdateStatus({ ...updateStatus, [e.target.name]: e.target.value });

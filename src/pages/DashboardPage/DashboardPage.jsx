@@ -6,22 +6,21 @@ import tagImg from "../../assets/icons/price-tag.svg";
 import usersImg from "../../assets/icons/users.svg";
 import applicationsImg from "../../assets/icons/add-note.svg";
 import rejectionsImg from "../../assets/icons/briefcase.svg";
+import { useOutletContext } from "react-router-dom";
 
 import { getLeads } from "../../utils/api";
-import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export default function DashboardPage() {
+    const [currentUser] = useOutletContext();
     const [leadsData, setLeadsData] = useState([]);
-
-    const { user } = useAuth0();
 
     useEffect(() => {
         getLeads().then(({ data }) => {
-            setLeadsData(data);
+            setLeadsData(data.filter((item) => item.users_id === currentUser.id));
         });
-    }, []);
+    }, [currentUser]);
 
     if (!leadsData) {
         return null;
@@ -67,7 +66,7 @@ export default function DashboardPage() {
                     </div>
                 </div>
                 <div className="dashboard__ctn-main">
-                    <h2>Welcome back, {user.given_name}! 👊</h2>
+                    <h2>Welcome back, {currentUser.first_name}! 👊</h2>
                     <p>
                         Here are a couple of resources to get things off the ground. Have some
                         feedback for us? Please, reach out to us at hello@timohuennebeck.com

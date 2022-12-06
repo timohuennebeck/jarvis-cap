@@ -4,8 +4,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getLeads, updateLead } from "../../utils/api";
 import { Link } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 export default function HomePage() {
+    const [currentUser] = useOutletContext();
     const [columns, setColumns] = useState([]);
 
     useEffect(() => {
@@ -13,36 +15,59 @@ export default function HomePage() {
             const columnsFromBackend = [
                 {
                     name: "In Progress",
-                    items: data.filter((person) => person.status === "In Progress"),
+                    items: data.filter(
+                        (person) =>
+                            person.status === "In Progress" && person.users_id === currentUser.id
+                    ),
                 },
                 {
                     name: "CL Approved",
-                    items: data.filter((person) => person.status === "CL Approved"),
+                    items: data.filter(
+                        (person) =>
+                            person.status === "CL Approved" && person.users_id === currentUser.id
+                    ),
                 },
                 {
                     name: "CL Declined",
-                    items: data.filter((person) => person.status === "CL Declined"),
+                    items: data.filter(
+                        (person) =>
+                            person.status === "CL Declined" && person.users_id === currentUser.id
+                    ),
                 },
                 {
                     name: "Awaiting Response",
-                    items: data.filter((person) => person.status === "Awaiting Response"),
+                    items: data.filter(
+                        (person) =>
+                            person.status === "Awaiting Response" &&
+                            person.users_id === currentUser.id
+                    ),
                 },
                 {
                     name: "Interview Scheduled",
-                    items: data.filter((person) => person.status === "Interview Scheduled"),
+                    items: data.filter(
+                        (person) =>
+                            person.status === "Interview Scheduled" &&
+                            person.users_id === currentUser.id
+                    ),
                 },
                 {
                     name: "Accepted",
-                    items: data.filter((person) => person.status === "Accepted"),
+                    items: data.filter(
+                        (person) =>
+                            person.status === "Accepted" && person.users_id === currentUser.id
+                    ),
                 },
                 {
                     name: "Rejected",
-                    items: data.filter((person) => person.status === "Rejected"),
+                    items: data.filter(
+                        (person) =>
+                            person.status === "Rejected" && person.users_id === currentUser.id
+                    ),
                 },
             ];
             setColumns(columnsFromBackend);
         });
-    }, []);
+    }, [currentUser]);
 
     const onDragEnd = (result, columns, setColumns) => {
         if (!result.destination) return;

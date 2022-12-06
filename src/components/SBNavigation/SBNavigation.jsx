@@ -51,7 +51,7 @@ function NavList() {
 
                 <div className="nav-list__settings">
                     <ButtonWithLink link="/help-center" name="Help Center" img={helpCenterImg} />
-                    <ButtonWithLink link="/settings/1" name="Settings" img={settingsImg} />
+                    <ButtonWithLink link="/settings" name="Settings" img={settingsImg} />
                     <ButtonWithLink
                         onClick={() => logout({ returnTo: window.location.origin })}
                         name="Log out"

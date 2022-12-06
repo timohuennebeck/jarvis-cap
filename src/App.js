@@ -47,7 +47,7 @@ function App() {
                     <Route path="/companies/add-new" element={<AddNewCompany />} />
 
                     <Route path="/review/:id" element={<ReviewPage />} />
-                    <Route path="/settings/:id" element={<SettingsPage />} />
+                    <Route path="/settings" element={<SettingsPage />} />
 
                     <Route path="/help-center" element={<HelpCenterPage />} />
 

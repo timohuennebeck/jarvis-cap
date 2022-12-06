@@ -7,30 +7,42 @@ import { getLeads } from "../../utils/api";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 function ReviewPage() {
-    const [leadData, setLeadData] = useState([]);
+    const [currentUser] = useOutletContext();
+    const [leadsData, setLeadsData] = useState([]);
 
     const refreshLeads = () => {
         getLeads().then(({ data }) => {
-            setLeadData(data.filter((person) => person.status === "In Progress"));
+            setLeadsData(
+                data.filter(
+                    (person) =>
+                        person.status === "In Progress" && person.users_id === currentUser.id
+                )
+            );
         });
     };
 
     useEffect(() => {
         getLeads().then(({ data }) => {
-            setLeadData(data.filter((person) => person.status === "In Progress"));
+            setLeadsData(
+                data.filter(
+                    (person) =>
+                        person.status === "In Progress" && person.users_id === currentUser.id
+                )
+            );
         });
-    }, []);
+    }, [currentUser]);
 
-    if (!leadData) {
+    if (!leadsData) {
         return null;
     }
 
     return (
         <article className="review">
             <div className="review__leads">
-                {leadData.map((lead) => {
+                {leadsData.map((lead) => {
                     return (
                         <Link
                             to={`/review/${lead.id}`}
