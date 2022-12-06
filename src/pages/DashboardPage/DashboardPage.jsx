@@ -98,8 +98,8 @@ export default function DashboardPage() {
                 <iframe
                     className="dashboard__ctn-video"
                     width="100%"
-                    height="500rem"
-                    src="https://i.imgur.com/embed/kgUbW0v"
+                    height="525rem"
+                    src="https://www.youtube.com/embed/V3WkgVpv1Zk"
                 ></iframe>
                 <div className="dashboard__ctn-stats">
                     <div className="dashboard__ctn-stats-title">
