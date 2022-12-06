@@ -7,20 +7,30 @@ import usersImg from "../../assets/icons/users.svg";
 import applicationsImg from "../../assets/icons/add-note.svg";
 import rejectionsImg from "../../assets/icons/briefcase.svg";
 import { useOutletContext } from "react-router-dom";
+import { useRef } from "react";
 
-import { getLeads } from "../../utils/api";
+import { getLeads, updateUser } from "../../utils/api";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export default function DashboardPage() {
-    const [currentUser] = useOutletContext();
+    const [currentUser, setCurrentUser] = useOutletContext();
     const [leadsData, setLeadsData] = useState([]);
+
+    const userValues = useRef();
 
     useEffect(() => {
         getLeads().then(({ data }) => {
             setLeadsData(data.filter((item) => item.users_id === currentUser.id));
         });
     }, [currentUser]);
+
+    const handleChange = (e) => {
+        updateUser({
+            userInput: currentUser,
+        });
+        setCurrentUser({ ...currentUser, [e.target.name]: e.target.value });
+    };
 
     if (!leadsData) {
         return null;
@@ -29,7 +39,7 @@ export default function DashboardPage() {
     return (
         <div className="dashboard">
             <div className="dashboard__ctn">
-                <div className="dashboard__ctn-targets">
+                <form className="dashboard__ctn-targets" ref={userValues}>
                     <div className="dashboard__ctn-targets-title">
                         <img src={targetImg} alt="" />
                         <div className="dashboard__ctn-targets-title-content">
@@ -39,6 +49,9 @@ export default function DashboardPage() {
                             <input
                                 className="dashboard__ctn-targets-title-content-input"
                                 placeholder="Insert Desired Position"
+                                name="target_title"
+                                value={currentUser.target_title}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -48,7 +61,10 @@ export default function DashboardPage() {
                             <p className="dashboard__ctn-targets-title-content-name">Target Date</p>
                             <input
                                 className="dashboard__ctn-targets-title-content-input"
+                                name="target_date"
+                                value={currentUser.target_date}
                                 placeholder="Insert Due Date"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -61,10 +77,13 @@ export default function DashboardPage() {
                             <input
                                 className="dashboard__ctn-targets-title-content-input"
                                 placeholder="Insert Desired Income"
+                                name="target_income"
+                                value={currentUser.target_income}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
-                </div>
+                </form>
                 <div className="dashboard__ctn-main">
                     <h2>Welcome back, {currentUser.first_name}! 👊</h2>
                     <p>

@@ -1,9 +1,6 @@
 import "./SBNavigation.scss";
-import { getUsers } from "../../utils/api";
 
 // components
-import { useEffect } from "react";
-import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import ButtonWithLink from "../ButtonWithLink/ButtonWithLink";
@@ -16,51 +13,36 @@ import helpCenterImg from "../../assets/icons/bell.svg";
 import settingsImg from "../../assets/icons/cog.svg";
 import logOutImg from "../../assets/icons/lock-alt.svg";
 
-function NavList() {
-    const [userData, setUserData] = useState();
-    const { user, isAuthenticated } = useAuth0();
+export default function SBNavigation() {
+    const { user } = useAuth0();
 
     const { logout } = useAuth0();
 
-    useEffect(() => {
-        getUsers().then((resp) => {
-            setUserData(resp.data[0]);
-        });
-    }, []);
-
-    if (!userData) {
-        return null;
-    }
-
     return (
-        isAuthenticated && (
-            <div className="nav-list">
-                <div className="nav-list__ctn">
-                    <div className="nav-list__ctn-user">
-                        <img className="nav-list__ctn-user-img" src={user.picture} alt="" />
-                        <p className="nav-list__ctn-user-text">Hello, {user.given_name}!</p>
-                    </div>
-                    <div className="nav-list__ctn-main">
-                        <ButtonWithLink link="/" name="Dashboard" img={dashhboardImg} />
-                        <ButtonWithLink link="/tracker" name="Tracker" img={trackerImg} />
-                        <ButtonWithLink link="/leads" name="Leads" img={leadsImg} />
-                        <ButtonWithLink link="/companies" name="Companies" img={companiesImg} />
-                        <ButtonWithLink link="/review/1" name="Review" img={reviewImg} />
-                    </div>
+        <div className="nav-list">
+            <div className="nav-list__ctn">
+                <div className="nav-list__ctn-user">
+                    <img className="nav-list__ctn-user-img" src={user.picture} alt="" />
+                    <p className="nav-list__ctn-user-text">Hello, {user.given_name}!</p>
                 </div>
-
-                <div className="nav-list__settings">
-                    <ButtonWithLink link="/help-center" name="Help Center" img={helpCenterImg} />
-                    <ButtonWithLink link="/settings" name="Settings" img={settingsImg} />
-                    <ButtonWithLink
-                        onClick={() => logout({ returnTo: window.location.origin })}
-                        name="Log out"
-                        img={logOutImg}
-                    />
+                <div className="nav-list__ctn-main">
+                    <ButtonWithLink link="/" name="Dashboard" img={dashhboardImg} />
+                    <ButtonWithLink link="/tracker" name="Tracker" img={trackerImg} />
+                    <ButtonWithLink link="/leads" name="Leads" img={leadsImg} />
+                    <ButtonWithLink link="/companies" name="Companies" img={companiesImg} />
+                    <ButtonWithLink link="/review/1" name="Review" img={reviewImg} />
                 </div>
             </div>
-        )
+
+            <div className="nav-list__settings">
+                <ButtonWithLink link="/help-center" name="Help Center" img={helpCenterImg} />
+                <ButtonWithLink link="/settings" name="Settings" img={settingsImg} />
+                <ButtonWithLink
+                    onClick={() => logout({ returnTo: window.location.origin })}
+                    name="Log out"
+                    img={logOutImg}
+                />
+            </div>
+        </div>
     );
 }
-
-export default NavList;

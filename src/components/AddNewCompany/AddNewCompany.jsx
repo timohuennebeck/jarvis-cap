@@ -4,10 +4,12 @@ import DropdownFieldCompanies from "../DropdownFieldCompanies/DropdownFieldCompa
 import { useRef, useState } from "react";
 import { addNewCompany } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 export default function AddNewCompany() {
     const userValues = useRef();
 
+    const [currentUser] = useOutletContext();
     const [notification, setNotification] = useState(false);
     const [errorMessage, setErrorMessage] = useState([]);
 
@@ -29,6 +31,7 @@ export default function AddNewCompany() {
         const cover_letter = userValues.current.cover_letter.value;
 
         const addInputData = {
+            users_id: currentUser.id,
             status,
             name,
             location,

@@ -12,8 +12,8 @@ export const getUserId = ({ id }) => {
     return axios.get(`${API_URL}/users/${id}`);
 };
 
-export const addNewUser = () => {
-    return axios.post(`${API_URL}/users`);
+export const addNewUser = ({ addInputData }) => {
+    return axios.post(`${API_URL}/users`, addInputData);
 };
 
 export const updateUser = ({ id, userInput }) => {

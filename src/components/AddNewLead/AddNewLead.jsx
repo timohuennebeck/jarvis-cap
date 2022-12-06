@@ -5,10 +5,12 @@ import { useRef, useState } from "react";
 import { addNewLead } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
+import { useOutletContext } from "react-router-dom";
 
 export default function AddNewLead() {
     const userValues = useRef();
 
+    const [currentUser] = useOutletContext();
     const [notification, setNotification] = useState(false);
     const [errorMessage, setErrorMessage] = useState([]);
 
@@ -42,6 +44,7 @@ export default function AddNewLead() {
         const call_to_action = userValues.current.call_to_action.value;
 
         const addInputData = {
+            users_id: currentUser.id,
             status,
             his_or_her,
             first_name,
