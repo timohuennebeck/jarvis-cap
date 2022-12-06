@@ -88,7 +88,9 @@ export default function DashboardPage() {
                             </p>
                             <div className="dashboard__ctn-stats-title-content-div">
                                 <p>451</p>
-                                <p className="dashboard__ctn-stats-title-content-div-color">10,2%</p>
+                                <p className="dashboard__ctn-stats-title-content-div-color">
+                                    10,2%
+                                </p>
                             </div>
                         </div>
                     </div>

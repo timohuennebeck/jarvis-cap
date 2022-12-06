@@ -22,7 +22,7 @@
             @include flex-column;
             gap: $gap-default;
 
-            @include desktop {
+            @include tablet {
                 flex-direction: row;
             }
 
@@ -64,7 +64,7 @@
             @include flex-column;
             gap: $gap-default;
 
-            @include desktop {
+            @include tablet {
                 flex-direction: row;
             }
 

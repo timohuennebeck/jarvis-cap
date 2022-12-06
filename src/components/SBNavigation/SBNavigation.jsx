@@ -44,7 +44,7 @@ function NavList() {
                         <ButtonWithLink link="/" name="Dashboard" img={dashhboardImg} />
                         <ButtonWithLink link="/tracker" name="Tracker" img={trackerImg} />
                         <ButtonWithLink link="/leads" name="Leads" img={leadsImg} />
-                        <ButtonWithLink link="/construction" name="Companies" img={companiesImg} />
+                        <ButtonWithLink link="/companies" name="Companies" img={companiesImg} />
                         <ButtonWithLink link="/review/1" name="Review" img={reviewImg} />
                     </div>
                 </div>

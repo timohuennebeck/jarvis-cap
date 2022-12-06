@@ -20,6 +20,9 @@ import EditExistingLead from "./components/EditExistingLead/EditExistingLead";
 import AddNewLead from "./components/AddNewLead/AddNewLead";
 import UserInterfaceLYT from "./components/UserInterfaceLYT/UserInterfaceLYT";
 import HelpCenterPage from "./pages/HelpCenterPage/HelpCenterPage";
+import CompaniesPage from "./pages/CompaniesPage/CompaniesPage";
+import EditExistingCompany from "./components/EditExistingCompany/EditExistingCompany";
+import AddNewCompany from "./components/AddNewCompany/AddNewCompany";
 
 function App() {
     const { isAuthenticated } = useAuth0();
@@ -38,6 +41,10 @@ function App() {
                     <Route path="/leads" element={<LeadsPage />} />
                     <Route path="/leads/:id" element={<EditExistingLead />} />
                     <Route path="/leads/add-new" element={<AddNewLead />} />
+
+                    <Route path="/companies" element={<CompaniesPage />} />
+                    <Route path="/companies/:id" element={<EditExistingCompany />} />
+                    <Route path="/companies/add-new" element={<AddNewCompany />} />
 
                     <Route path="/review/:id" element={<ReviewPage />} />
                     <Route path="/settings/:id" element={<SettingsPage />} />

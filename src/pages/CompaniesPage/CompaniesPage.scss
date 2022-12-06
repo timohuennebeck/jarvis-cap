@@ -1,0 +1,60 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.companies {
+    @include flex-column;
+    gap: $gap-default;
+
+    &__links {
+        @include flex-column;
+        gap: $gap-default;
+        width: 100%;
+
+        @include tablet {
+            @include flex-vertical;
+            flex-direction: row;
+        }
+    }
+
+    &__dropdown {
+        @include flex-column;
+        gap: $gap-default;
+
+        @include tablet {
+            flex-direction: row;
+        }
+
+        &-amount {
+            background-color: #fff;
+            border-radius: $border-radius-default;
+            padding: $border-padding-default;
+            font-size: 0.75rem;
+        }
+    }
+
+    &__update {
+        padding-bottom: $padding-default;
+    }
+
+    &__indv {
+        @include flex-column;
+        gap: $gap-leads;
+
+        &-link {
+            text-decoration: none;
+            color: #000;
+        }
+    }
+}
+
+input::file-selector-button {
+    border: none;
+    padding: $btn-input-padding-default;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

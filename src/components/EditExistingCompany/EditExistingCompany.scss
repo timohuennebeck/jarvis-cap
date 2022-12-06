@@ -1,0 +1,67 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.edit-company {
+    width: 100%;
+    overflow: hidden;
+
+    &__links {
+        display: flex;
+        gap: $gap-default;
+        margin-bottom: 1.75rem;
+
+        &-spacing {
+            display: flex;
+            gap: $gap-default;
+        }
+    }
+
+    &__input {
+        @include flex-column;
+        gap: 1.75rem;
+
+        &-dropdown {
+            display: flex;
+            gap: $gap-default;
+        }
+
+        &-personal,
+        &-business {
+            @include flex-column;
+            gap: $gap-leads;
+        }
+    }
+
+    &__card-modal {
+        background-color: #fff;
+        height: 100%;
+
+        @include tablet {
+            @include border-no-radius;
+            @include shadow;
+            @include flex;
+            height: 17.25rem;
+            max-width: 42.5rem;
+            border-radius: $border-radius-default;
+            position: absolute;
+            left: 23.75%;
+            right: 23.75%;
+            top: 20%;
+            bottom: 51.68%;
+        }
+
+        &-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(0.25rem);
+        }
+    }
+}
+
+.save-data-leads {
+    padding-bottom: $padding-default;
+}

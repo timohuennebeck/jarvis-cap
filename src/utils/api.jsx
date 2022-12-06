@@ -46,10 +46,30 @@ export const deleteLead = ({ id }) => {
     return axios.delete(`${API_URL}/leads/${id}`);
 };
 
+// companies
+
+export const getCompanies = () => {
+    return axios.get(`${API_URL}/companies`);
+};
+
+export const getCompanyId = ({ id }) => {
+    return axios.get(`${API_URL}/companies/${id}`);
+};
+
+export const addNewCompany = ({ addInputData }) => {
+    return axios.post(`${API_URL}/companies`, addInputData);
+};
+
+export const updateCompany = ({ id, userInput }) => {
+    return axios.put(`${API_URL}/companies/${id}`, userInput);
+};
+
+export const deleteCompany = ({ id }) => {
+    return axios.delete(`${API_URL}/companies/${id}`);
+};
 
 // faqs
 
 export const getFaqs = () => {
     return axios.get(`${API_URL}/faqs`);
 };
-

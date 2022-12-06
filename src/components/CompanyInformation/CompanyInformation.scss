@@ -1,0 +1,64 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.company {
+    background-color: #fff;
+    @include flex-vertical;
+    border-radius: $border-radius-default;
+    padding: 0.5rem 0.75rem;
+    gap: $gap-default;
+    min-height: 3.85rem;
+
+    &:hover {
+        transform: scale(1.0075);
+        @include shadow;
+    }
+
+    @include tablet {
+        gap: 2.75rem;
+    }
+
+    &__select {
+        @include border-image;
+        @include flex;
+        flex-shrink: 0;
+        width: 1rem;
+        height: 1rem;
+
+        &-fill {
+            @include border-image;
+            background-color: black;
+            width: 0.5rem;
+            height: 0.5rem;
+        }
+    }
+
+    &__data {
+        @include flex-vertical;
+        width: 100%;
+
+        &-name,
+        &-location {
+            flex: 0.5 1 0;
+        }
+
+        &-status,
+        &-date_posted {
+            display: none;
+
+            @include tablet {
+                display: block;
+                flex: 0.5 1 0;
+            }
+        }
+
+        &-position {
+            display: none;
+
+            @include desktop {
+                display: block;
+                flex: 0.5 1 0;
+            }
+        }
+    }
+}
