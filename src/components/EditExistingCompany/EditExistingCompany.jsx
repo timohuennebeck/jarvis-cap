@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
-import DeleteNotificationContacts from "../DeleteNotificationContacts/DeleteNotificationContacts";
+import DeleteNotificationCompanies from "../DeleteNotificationCompanies/DeleteNotificationCompanies";
 import DropdownAssociatedContact from "../DropdownAssociatedContact/DropdownAssociatedContact";
 
 export default function EditExistingCompany() {
@@ -175,7 +175,7 @@ export default function EditExistingCompany() {
                     className="edit-company__card-modal"
                     overlayClassName="edit-company__card-modal-background"
                 >
-                    <DeleteNotificationContacts
+                    <DeleteNotificationCompanies
                         closeModal={closeModal}
                         selectedContact={userInput}
                         setDeleteMessage={setDeleteMessage}
