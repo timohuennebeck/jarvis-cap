@@ -66,7 +66,7 @@ export default function EditExistingContact() {
         setErrorMessage(errors);
 
         const redirectUser = () => {
-            navigate("/contact");
+            navigate("/contacts");
         };
 
         if (errors.length === 0) {
