@@ -21,8 +21,12 @@
         gap: 1.75rem;
 
         &-dropdown {
-            display: flex;
+            @include flex-column;
             gap: $gap-default;
+
+            @include tablet {
+                flex-direction: row;
+            }
         }
 
         &-personal,
