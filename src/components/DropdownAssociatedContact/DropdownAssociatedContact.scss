@@ -1,0 +1,12 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.associated-contact {
+
+    &__indv {
+        border: none;
+        border-radius: $border-radius-default;
+        padding: $border-padding-default;
+        width: 100%;
+    }
+}

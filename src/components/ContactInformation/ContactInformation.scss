@@ -1,9 +1,8 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.lead {
-    // @include border-no-radius;
-    background-color: #FFF;
+.contact {
+    background-color: #fff;
     @include flex-vertical;
     border-radius: $border-radius-default;
     padding: 0.5rem 0.75rem;
@@ -30,8 +29,8 @@
             &-fill {
                 @include border-image;
                 background-color: black;
-                width: .5rem;
-                height: .5rem;
+                width: 0.5rem;
+                height: 0.5rem;
             }
         }
 
@@ -44,6 +43,10 @@
 
         &__information {
             width: 35%;
+
+            &-email {
+                opacity: 50%;
+            }
         }
 
         &__more {

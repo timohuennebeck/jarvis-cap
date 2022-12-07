@@ -48,9 +48,9 @@ Have fun! 🌻
 <br />
 
 
-## `Importing Leads`
+## `Importing Contacts`
 
-Want to import leads to the database? Make sure to use a `CSV file` which follows the following structure.
+Want to import contacts to the database? Make sure to use a `CSV file` which follows the following structure.
 
 The first row of the file must match `EXACTLY` the following `naming convention`, first_name, last_name, position, email, phone, linked_in, company, street_name, city, state, postcode, country, icebreaker, paragraph_one, paragraph_two, paragraph_three, call_to_action, status.
 

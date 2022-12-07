@@ -1,26 +1,26 @@
-import "./DeleteNotificationLeads.scss";
+import "./DeleteNotificationContacts.scss";
 
 // components
 import ButtonElement from "../ButtonElement/ButtonElement";
-import { deleteLead } from "../../utils/api";
+import { deleteContact } from "../../utils/api";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 // libraries
 
-export default function DeleteNotification({ closeModal, selectedLead, setDeleteMessage }) {
+export default function DeleteNotificationContacts({ closeModal, selectedContact, setDeleteMessage }) {
     const { id } = useParams();
 
     const navigate = useNavigate();
 
     const redirectUser = () => {
-        navigate("/leads");
+        navigate("/contacts");
     };
 
     const handleDelete = (event) => {
         event.preventDefault();
 
-        deleteLead({ id }).then(() => {
+        deleteContact({ id }).then(() => {
             setDeleteMessage(true);
             setTimeout(redirectUser, 1000);
         });
@@ -31,11 +31,11 @@ export default function DeleteNotification({ closeModal, selectedLead, setDelete
         <div className="delete">
             <div className="delete__content">
                 <h1 className="delete__content-header">
-                    Delete {selectedLead.first_name} {selectedLead.last_name}?
+                    Delete {selectedContact.first_name} {selectedContact.last_name}?
                 </h1>
                 <p className="delete__content-paragraph">
-                    Please confirm that you’d like to delete {selectedLead.first_name}{" "}
-                    {selectedLead.last_name} from the list. You won’t be able to undo this action.
+                    Please confirm that you’d like to delete {selectedContact.first_name}{" "}
+                    {selectedContact.last_name} from the list. You won’t be able to undo this action.
                 </p>
             </div>
             <div className="delete__links">

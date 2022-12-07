@@ -9,20 +9,20 @@ import rejectionsImg from "../../assets/icons/briefcase.svg";
 import { useOutletContext } from "react-router-dom";
 import { useRef } from "react";
 
-import { getCompanies, getLeads, updateUser } from "../../utils/api";
+import { getCompanies, getContacts, updateUser } from "../../utils/api";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export default function DashboardPage() {
     const [currentUser, setCurrentUser] = useOutletContext();
-    const [leadsData, setLeadsData] = useState([]);
+    const [contactsData, setContactsData] = useState([]);
     const [companiesData, setCompaniesData] = useState([]);
 
     const userValues = useRef();
 
     useEffect(() => {
-        getLeads().then(({ data }) => {
-            setLeadsData(data.filter((item) => item.users_id === currentUser.id));
+        getContacts().then(({ data }) => {
+            setContactsData(data.filter((item) => item.users_id === currentUser.id));
         });
         getCompanies().then(({ data }) => {
             setCompaniesData(data.filter((item) => item.users_id === currentUser.id));
@@ -36,7 +36,7 @@ export default function DashboardPage() {
         setCurrentUser({ ...currentUser, [e.target.name]: e.target.value });
     };
 
-    if (!leadsData) {
+    if (!contactsData) {
         return null;
     }
 
@@ -141,60 +141,69 @@ export default function DashboardPage() {
                 </div>
             </div>
             <div className="dashboard__stats">
-                <div className="dashboard__stats-leads">
-                    <p className="dashboard__stats-leads-header">Funnel - Leads</p>
-                    <div className="dashboard__stats-leads-indv">
-                        <div className="dashboard__stats-leads-indv-name">
-                            <p>In Progress</p>
+                <div className="dashboard__stats-contacts">
+                    <p className="dashboard__stats-contacts-header">Funnel - Contacts</p>
+                    <div className="dashboard__stats-contacts-indv">
+                        <div className="dashboard__stats-contacts-indv-name">
+                            <p>To Be Contacted</p>
                             <p>
                                 {
-                                    leadsData.filter((person) => person.status === "In Progress")
-                                        .length
+                                    contactsData.filter(
+                                        (person) => person.status === "To Be Contacted"
+                                    ).length
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
-                            <p>CL Approved</p>
+                        <div className="dashboard__stats-contacts-indv-name">
+                            <p>LinkedIn CR Accepted</p>
                             <p>
                                 {
-                                    leadsData.filter((person) => person.status === "CL Approved")
-                                        .length
+                                    contactsData.filter(
+                                        (person) => person.status === "LinkedIn CR Accepted"
+                                    ).length
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
-                            <p>CL Declined</p>
-                            <p>
-                                {
-                                    leadsData.filter((person) => person.status === "CL Declined")
-                                        .length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>Awaiting Response</p>
                             <p>
                                 {
-                                    leadsData.filter(
+                                    contactsData.filter(
                                         (person) => person.status === "Awaiting Response"
                                     ).length
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
-                            <p>Interview Scheduled</p>
+                        <div className="dashboard__stats-contacts-indv-name">
+                            <p>Followed Up [Pre-Conversation]</p>
                             <p>
                                 {
-                                    leadsData.filter(
-                                        (person) => person.status === "Interview Scheduled"
+                                    contactsData.filter(
+                                        (person) =>
+                                            person.status === "Followed Up [Pre-Conversation]"
                                     ).length
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
-                            <p>Rejected</p>
+                        <div className="dashboard__stats-contacts-indv-name">
+                            <p>Coffee Conversation Scheduled</p>
                             <p>
-                                {leadsData.filter((person) => person.status === "Rejected").length}
+                                {
+                                    contactsData.filter(
+                                        (person) =>
+                                            person.status === "Coffee Conversation Scheduled"
+                                    ).length
+                                }
+                            </p>
+                        </div>
+                        <div className="dashboard__stats-contacts-indv-name">
+                            <p>Followed Up [Post-Conversation]</p>
+                            <p>
+                                {
+                                    contactsData.filter(
+                                        (person) => person.status === "Followed Up [Post-Conversation]"
+                                    ).length
+                                }
                             </p>
                         </div>
                     </div>
@@ -202,7 +211,7 @@ export default function DashboardPage() {
                 <div className="dashboard__stats-networking">
                     <p className="dashboard__stats-networking-header">Funnel - Companies</p>
                     <div className="dashboard__stats-networking-indv">
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>Preparing</p>
                             <p>
                                 {
@@ -211,7 +220,7 @@ export default function DashboardPage() {
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>Messaged Recruiter</p>
                             <p>
                                 {
@@ -221,7 +230,7 @@ export default function DashboardPage() {
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>VC Conversation Scheduled</p>
                             <p>
                                 {
@@ -231,7 +240,7 @@ export default function DashboardPage() {
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>Preparing Documents</p>
                             <p>
                                 {
@@ -241,7 +250,7 @@ export default function DashboardPage() {
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>Followed Up [Pre-Interview]</p>
                             <p>
                                 {
@@ -251,7 +260,7 @@ export default function DashboardPage() {
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>Interview Scheduled</p>
                             <p>
                                 {
@@ -261,7 +270,7 @@ export default function DashboardPage() {
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>Interview Finished</p>
                             <p>
                                 {
@@ -271,17 +280,7 @@ export default function DashboardPage() {
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
-                            <p>Thank You Sent</p>
-                            <p>
-                                {
-                                    companiesData.filter(
-                                        (person) => person.status === "Thank You Sent"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>Followed Up [Post-Interview]</p>
                             <p>
                                 {
@@ -291,7 +290,7 @@ export default function DashboardPage() {
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>Negotiating</p>
                             <p>
                                 {
@@ -301,7 +300,7 @@ export default function DashboardPage() {
                                 }
                             </p>
                         </div>
-                        <div className="dashboard__stats-leads-indv-name">
+                        <div className="dashboard__stats-contacts-indv-name">
                             <p>Rejected</p>
                             <p>
                                 {

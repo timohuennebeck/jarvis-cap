@@ -2,18 +2,18 @@ import ButtonElement from "../ButtonElement/ButtonElement";
 import InputFieldError from "../InputFieldError/InputFieldError";
 import DropdownField from "../DropdownField/DropdownField";
 
-import { getLeadId, updateLead } from "../../utils/api";
+import { getContactId, updateContact } from "../../utils/api";
 
-import "./EditExistingLead.scss";
+import "./EditExistingContact.scss";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 import ReactModal from "react-modal";
-import DeleteNotificationLeads from "../DeleteNotificationLeads/DeleteNotificationLeads";
+import DeleteNotificationContacts from "../DeleteNotificationContacts/DeleteNotificationContacts";
 
-export default function EditExistingLead() {
+export default function EditExistingContact() {
     const userValues = useRef();
 
     const navigate = useNavigate();
@@ -43,7 +43,7 @@ export default function EditExistingLead() {
     // making api calls
 
     useEffect(() => {
-        getLeadId({ id }).then((resp) => {
+        getContactId({ id }).then((resp) => {
             setUserInput(resp.data[0]);
         });
     }, [id]);
@@ -63,18 +63,14 @@ export default function EditExistingLead() {
             errors.push("email");
         }
 
-        if (!userValues.current.company.value) {
-            errors.push("company");
-        }
-
         setErrorMessage(errors);
 
         const redirectUser = () => {
-            navigate("/leads");
+            navigate("/contact");
         };
 
         if (errors.length === 0) {
-            updateLead({ id, userInput }).then(() => {
+            updateContact({ id, userInput }).then(() => {
                 setSaveNotification(true);
                 setTimeout(redirectUser, 1000);
             });
@@ -87,15 +83,15 @@ export default function EditExistingLead() {
 
     return (
         <>
-            <article className="edit-leads">
-                <div className="edit-leads__links">
+            <article className="edit-contacts">
+                <div className="edit-contacts__links">
                     <ButtonElement
-                        link="/leads"
+                        link="/contacts"
                         content="CANCEL..."
                         backgroundColor="#FFF"
                         fontColor="#000"
                     />
-                    <div className="edit-leads__links-spacing">
+                    <div className="edit-contacts__links-spacing">
                         <ButtonElement onClick={uploadData} content="SAVE" backgroundColor="#000" />
                         <ButtonElement
                             onClick={openModal}
@@ -105,17 +101,21 @@ export default function EditExistingLead() {
                     </div>
                 </div>
                 {saveNotification && (
-                    <p className="save-data-leads">Lead has been saved! Redirecting in 1s...</p>
+                    <p className="save-data-contacts">
+                        Contact has been saved! Redirecting in 1s...
+                    </p>
                 )}
                 {deleteMessage && (
-                    <p className="save-data-leads">Lead has been deleted! Redirecting in 1s...</p>
+                    <p className="save-data-contacts">
+                        Contact has been deleted! Redirecting in 1s...
+                    </p>
                 )}
-                <form className="edit-leads__input" ref={userValues}>
-                    <div className="edit-leads__input-dropdown">
+                <form className="edit-contacts__input" ref={userValues}>
+                    <div className="edit-contacts__input-dropdown">
                         <DropdownField value={userInput.status} onChange={handleChange} />
                         <GenderDropdownField value={userInput.his_or_her} onChange={handleChange} />
                     </div>
-                    <div className="edit-leads__input-personal">
+                    <div className="edit-contacts__input-personal">
                         <InputFieldError
                             label="First Name"
                             placeholder="First Name"
@@ -173,7 +173,7 @@ export default function EditExistingLead() {
                             errorMessage={errorMessage}
                         />
                     </div>
-                    <div className="edit-leads__input-business">
+                    <div className="edit-contacts__input-business">
                         <InputFieldError
                             label="Company"
                             placeholder="Company"
@@ -267,12 +267,12 @@ export default function EditExistingLead() {
                 <ReactModal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
-                    className="edit-leads__card-modal"
-                    overlayClassName="edit-leads__card-modal-background"
+                    className="edit-contacts__card-modal"
+                    overlayClassName="edit-contacts__card-modal-background"
                 >
-                    <DeleteNotificationLeads
+                    <DeleteNotificationContacts
                         closeModal={closeModal}
-                        selectedLead={userInput}
+                        selectedContact={userInput}
                         setDeleteMessage={setDeleteMessage}
                     />
                 </ReactModal>

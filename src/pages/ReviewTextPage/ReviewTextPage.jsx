@@ -1,7 +1,7 @@
 import "./ReviewTextPage.scss";
 
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
-import { getLeadId, updateLead } from "../../utils/api";
+import { getContactId, updateContact } from "../../utils/api";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
@@ -9,33 +9,33 @@ import { useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-export default function ReviewTextPage({ refreshLeads }) {
-    const [leadData, setLeadData] = useState([]);
+export default function ReviewTextPage({ refreshContacts }) {
+    const [contactData, setContactData] = useState([]);
     const [userInput, setUserInput] = useState([]);
 
     const { id } = useParams();
 
     useEffect(() => {
-        getLeadId({ id }).then((resp) => {
+        getContactId({ id }).then((resp) => {
             setUserInput(resp.data[0]);
-            setLeadData(resp.data[0]);
+            setContactData(resp.data[0]);
         });
     }, [id]);
 
-    const approveLead = () => {
-        const leadApproved = (userInput.status = "CL Approved");
-        setUserInput(leadApproved);
+    const approvedContact = () => {
+        const contactApproved = (userInput.status = "CL Approved");
+        setUserInput(contactApproved);
         printPDF();
-        updateLead({ id, userInput }).then(() => {
-            refreshLeads();
+        updateContact({ id, userInput }).then(() => {
+            refreshContacts();
         });
     };
 
-    const declineLead = () => {
-        const leadDeclined = (userInput.status = "CL Declined");
-        setUserInput(leadDeclined);
-        updateLead({ id, userInput }).then(() => {
-            refreshLeads();
+    const declineContact = () => {
+        const contactDeclined = (userInput.status = "CL Declined");
+        setUserInput(contactDeclined);
+        updateContact({ id, userInput }).then(() => {
+            refreshContacts();
         });
     };
 
@@ -45,11 +45,11 @@ export default function ReviewTextPage({ refreshLeads }) {
             const imgData = canvas.toDataURL("image/jpeg", 1.0);
             const doc = new jsPDF();
             doc.addImage(imgData, "JPEG", 5, 5);
-            doc.save(`${leadData.company}-Timo-Huennebeck-Cover-Letter`);
+            doc.save(`${contactData.company}-Timo-Huennebeck-Cover-Letter`);
         });
     }
 
-    if (!leadData) {
+    if (!contactData) {
         return null;
     }
 
@@ -64,55 +64,55 @@ export default function ReviewTextPage({ refreshLeads }) {
                     <p className="review-ctr__content-user-city">Huerth</p>
                     <p className="review-ctr__content-user-state-postcode-">NRW 50354</p>
                 </div>
-                <div className="review-ctr__content-lead">
-                    <div className="review-ctr__content-lead-line"></div>
+                <div className="review-ctr__content-contact">
+                    <div className="review-ctr__content-contact-line"></div>
                     <div>
                         <p>{new Date().toLocaleDateString()}</p>
                     </div>
                     <div>
-                        <p className="review-ctr__content-lead-name">
-                            {leadData.first_name} {leadData.last_name}
+                        <p className="review-ctr__content-contact-name">
+                            {contactData.first_name} {contactData.last_name}
                         </p>
-                        <p>{leadData.position}</p>
-                        <p>{leadData.company}</p>
-                        <p>{leadData.street_name}</p>
-                        <p>{leadData.city}</p>
+                        <p>{contactData.position}</p>
+                        <p>{contactData.company}</p>
+                        <p>{contactData.street_name}</p>
+                        <p>{contactData.city}</p>
                         <p>
-                            {leadData.state} {leadData.postcode}
+                            {contactData.state} {contactData.postcode}
                         </p>
                     </div>
                     <div>
-                        <p>Dear {leadData.first_name},</p>
+                        <p>Dear {contactData.first_name},</p>
                     </div>
                     <div>
-                        <p>{leadData.icebreaker}</p>
+                        <p>{contactData.icebreaker}</p>
                     </div>
                     <div>
-                        <p>{leadData.paragraph_one}</p>
+                        <p>{contactData.paragraph_one}</p>
                     </div>
                     <div>
-                        <p>{leadData.paragraph_two}</p>
+                        <p>{contactData.paragraph_two}</p>
                     </div>
                     <div>
-                        <p>{leadData.paragraph_three}</p>
+                        <p>{contactData.paragraph_three}</p>
                     </div>
                     <div>
-                        <p>{leadData.call_to_action}</p>
+                        <p>{contactData.call_to_action}</p>
                     </div>
                     <div>
                         <p>Best regards,</p>
-                        <p className="review-ctr__content-lead-user-name">Timo Huennebeck</p>
+                        <p className="review-ctr__content-contact-user-name">Timo Huennebeck</p>
                     </div>
                 </div>
             </div>
             <div className="review-ctr__links">
                 <ButtonElement
-                    onClick={approveLead}
+                    onClick={approvedContact}
                     content="APPROVE AND PRINT PDF"
                     backgroundColor="#000"
                 />
                 <ButtonElement
-                    onClick={declineLead}
+                    onClick={declineContact}
                     content="DECLINE"
                     backgroundColor="#C71919"
                     fontColor="#FFF"

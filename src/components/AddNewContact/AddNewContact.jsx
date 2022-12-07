@@ -2,12 +2,12 @@ import ButtonElement from "../ButtonElement/ButtonElement";
 import InputFieldError from "../InputFieldError/InputFieldError";
 import DropdownField from "../DropdownField/DropdownField";
 import { useRef, useState } from "react";
-import { addNewLead } from "../../utils/api";
+import { addNewContact } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 import { useOutletContext } from "react-router-dom";
 
-export default function AddNewLead() {
+export default function AddNewContact() {
     const userValues = useRef();
 
     const [currentUser] = useOutletContext();
@@ -17,7 +17,7 @@ export default function AddNewLead() {
     const navigate = useNavigate();
 
     const redirectUser = () => {
-        navigate("/leads");
+        navigate("/contacts");
     };
 
     const handleSubmit = (e) => {
@@ -80,14 +80,10 @@ export default function AddNewLead() {
             errors.push("email");
         }
 
-        if (!userValues.current.company.value) {
-            errors.push("company");
-        }
-
         setErrorMessage(errors);
 
         if (errors.length === 0) {
-            addNewLead({ addInputData }).then(() => {
+            addNewContact({ addInputData }).then(() => {
                 setNotification(true);
                 setTimeout(redirectUser, 1000);
             });
@@ -96,15 +92,15 @@ export default function AddNewLead() {
 
     return (
         <>
-            <article className="edit-leads">
-                <div className="edit-leads__links">
+            <article className="edit-contacts">
+                <div className="edit-contacts__links">
                     <ButtonElement
-                        link="/leads"
+                        link="/contacts"
                         content="CANCEL..."
                         backgroundColor="#FFF"
                         fontColor="#000"
                     />
-                    <div className="edit-leads__links-spacing">
+                    <div className="edit-contacts__links-spacing">
                         <ButtonElement
                             content="SAVE"
                             backgroundColor="#000"
@@ -113,14 +109,16 @@ export default function AddNewLead() {
                     </div>
                 </div>
                 {notification && (
-                    <p className="save-data-leads">Lead has been added! Redirecting in 1s...</p>
+                    <p className="save-data-contacts">
+                        Contact has been added! Redirecting in 1s...
+                    </p>
                 )}
-                <form className="edit-leads__input" ref={userValues}>
-                    <div className="edit-leads__input-dropdown">
+                <form className="edit-contacts__input" ref={userValues}>
+                    <div className="edit-contacts__input-dropdown">
                         <DropdownField />
                         <GenderDropdownField />
                     </div>
-                    <div className="edit-leads__input-personal">
+                    <div className="edit-contacts__input-personal">
                         <InputFieldError
                             label="First Name"
                             placeholder="First Name"
@@ -165,7 +163,7 @@ export default function AddNewLead() {
                             errorMessage={errorMessage}
                         />
                     </div>
-                    <div className="edit-leads__input-business">
+                    <div className="edit-contacts__input-business">
                         <InputFieldError
                             label="Company"
                             placeholder="Company"

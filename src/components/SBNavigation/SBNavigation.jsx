@@ -5,8 +5,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import ButtonWithLink from "../ButtonWithLink/ButtonWithLink";
 import dashhboardImg from "../../assets/icons/collapse-alt.svg";
-import trackerImg from "../../assets/icons/tasksvg.svg";
-import leadsImg from "../../assets/icons/users.svg";
+// import trackerImg from "../../assets/icons/tasksvg.svg";
+import contactsImg from "../../assets/icons/users.svg";
 import companiesImg from "../../assets/icons/briefcase.svg";
 import reviewImg from "../../assets/icons/eye.svg";
 import helpCenterImg from "../../assets/icons/bell.svg";
@@ -27,8 +27,8 @@ export default function SBNavigation() {
                 </div>
                 <div className="nav-list__ctn-main">
                     <ButtonWithLink link="/" name="Dashboard" img={dashhboardImg} />
-                    <ButtonWithLink link="/tracker" name="Tracker" img={trackerImg} />
-                    <ButtonWithLink link="/leads" name="Leads" img={leadsImg} />
+                    {/* <ButtonWithLink link="/tracker" name="Tracker" img={trackerImg} /> */}
+                    <ButtonWithLink link="/contacts" name="Contacts" img={contactsImg} />
                     <ButtonWithLink link="/companies" name="Companies" img={companiesImg} />
                     <ButtonWithLink link="/review/1" name="Review" img={reviewImg} />
                 </div>

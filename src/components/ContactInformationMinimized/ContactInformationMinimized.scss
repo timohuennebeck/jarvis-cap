@@ -1,11 +1,11 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.lead-minimized {
+.contact-minimized {
     @include flex-vertical;
     background-color: #FFF;
     border-radius: $border-radius-default;
-    gap: $gap-leads;
+    gap: $gap-contacts;
     padding: 0.5rem 0.75rem;
     min-height: 3.85rem;
 

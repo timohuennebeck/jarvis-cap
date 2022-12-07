@@ -24,22 +24,26 @@ export default function AddNewCompany() {
 
         const status = userValues.current.status.value;
         const name = userValues.current.name.value;
-        const location = userValues.current.location.value;
-        const position = userValues.current.position.value;
+        const position_to_fill = userValues.current.position_to_fill.value;
         const posting_url = userValues.current.posting_url.value;
-        const resume = userValues.current.resume.value;
-        const cover_letter = userValues.current.cover_letter.value;
+        const location = userValues.current.location.value;
+        const postcode = userValues.current.postcode.value;
+        const street_name = userValues.current.street_name.value;
+        const state = userValues.current.state.value;
 
         const addInputData = {
             users_id: currentUser.id,
             status,
             name,
-            location,
-            position,
+            position_to_fill,
             posting_url,
-            resume,
-            cover_letter,
+            location,
+            postcode,
+            street_name,
+            state,
         };
+
+        console.log(addInputData);
 
         const errors = [];
 
@@ -47,8 +51,8 @@ export default function AddNewCompany() {
             errors.push("name");
         }
 
-        if (!userValues.current.location.value) {
-            errors.push("location");
+        if (!userValues.current.posting_url.value) {
+            errors.push("posting_url");
         }
 
         setErrorMessage(errors);
@@ -63,15 +67,15 @@ export default function AddNewCompany() {
 
     return (
         <>
-            <article className="edit-leads">
-                <div className="edit-leads__links">
+            <article className="edit-contacts">
+                <div className="edit-contacts__links">
                     <ButtonElement
                         link="/companies"
                         content="CANCEL..."
                         backgroundColor="#FFF"
                         fontColor="#000"
                     />
-                    <div className="edit-leads__links-spacing">
+                    <div className="edit-contacts__links-spacing">
                         <ButtonElement
                             content="SAVE"
                             backgroundColor="#000"
@@ -80,13 +84,15 @@ export default function AddNewCompany() {
                     </div>
                 </div>
                 {notification && (
-                    <p className="save-data-leads">Company has been added! Redirecting in 1s...</p>
+                    <p className="save-data-contacts">
+                        Company has been added! Redirecting in 1s...
+                    </p>
                 )}
-                <form className="edit-leads__input" ref={userValues}>
-                    <div className="edit-leads__input-dropdown">
+                <form className="edit-contacts__input" ref={userValues}>
+                    <div className="edit-contacts__input-dropdown">
                         <DropdownFieldCompanies />
                     </div>
-                    <div className="edit-leads__input-personal">
+                    <div className="edit-contacts__input-personal">
                         <InputFieldError
                             label="Name"
                             placeholder="Name"
@@ -94,15 +100,9 @@ export default function AddNewCompany() {
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
-                            label="Location"
-                            placeholder="Location"
-                            name="location"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="Position"
-                            placeholder="Position"
-                            name="position"
+                            label="Position To Fill"
+                            placeholder="Position To Fill"
+                            name="position_to_fill"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
@@ -112,15 +112,27 @@ export default function AddNewCompany() {
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
-                            label="Resume"
-                            placeholder="Resume"
-                            name="resume"
+                            label="Location"
+                            placeholder="Location"
+                            name="location"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
-                            label="Cover Letter"
-                            placeholder="Cover Letter"
-                            name="cover_letter"
+                            label="Postcode"
+                            placeholder="Postcode"
+                            name="postcode"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="Street Name"
+                            placeholder="Street Name"
+                            name="street_name"
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="State"
+                            placeholder="State"
+                            name="state"
                             errorMessage={errorMessage}
                         />
                     </div>

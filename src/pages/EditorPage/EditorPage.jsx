@@ -16,13 +16,13 @@ export default function EditorPage() {
                         {"{{user_state}} {{user_postcode}}"}
                     </p>
                 </div>
-                <div className="editor-ctr__content-lead">
-                    <div className="editor-ctr__content-lead-line"></div>
+                <div className="editor-ctr__content-contact">
+                    <div className="editor-ctr__content-contact-line"></div>
                     <div>
                         <p>{new Date().toLocaleDateString()}</p>
                     </div>
                     <div>
-                        <p className="editor-ctr__content-lead-name">
+                        <p className="editor-ctr__content-contact-name">
                             {"{{first_name}} {{last_name}}"}
                         </p>
                         <p>{"{{position}}"}</p>
@@ -51,7 +51,7 @@ export default function EditorPage() {
                     </div>
                     <div>
                         <p>Best regards,</p>
-                        <p className="review-ctr__content-lead-user-name">
+                        <p className="review-ctr__content-contact-user-name">
                             {"{{user_first_name}} {{user_last_name}}"}
                         </p>
                     </div>

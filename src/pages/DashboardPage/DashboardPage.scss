@@ -113,7 +113,7 @@
             flex: 0.35 1 0;
         }
 
-        &-leads,
+        &-contacts,
         &-networking {
             @include flex-column;
             gap: $gap-default;

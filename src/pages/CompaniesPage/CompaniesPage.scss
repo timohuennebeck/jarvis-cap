@@ -22,6 +22,23 @@
 
         @include tablet {
             flex-direction: row;
+            align-items: center;
+        }
+
+        &-ctn {
+            @include flex-vertical;
+            gap: $gap-default;
+
+            &-kanban {
+                @include flex;
+                background-color: #fff;
+                border-radius: $border-radius-default;
+                padding: $border-padding-default;
+            }
+
+            &-field {
+                width: 100%;
+            }
         }
 
         &-amount {
@@ -38,7 +55,7 @@
 
     &__indv {
         @include flex-column;
-        gap: $gap-leads;
+        gap: $gap-contacts;
 
         &-link {
             text-decoration: none;

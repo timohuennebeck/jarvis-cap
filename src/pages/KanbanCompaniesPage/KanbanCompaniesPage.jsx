@@ -1,44 +1,54 @@
-import "./HomePage.scss";
+import "./KanbanCompaniesPage.scss";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getLeads, updateLead } from "../../utils/api";
+import { getCompanies, updateCompany, updateContact } from "../../utils/api";
 import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 
-export default function HomePage() {
+export default function KanbanCompaniesPage() {
     const [currentUser] = useOutletContext();
     const [columns, setColumns] = useState([]);
 
     useEffect(() => {
-        getLeads().then(({ data }) => {
+        getCompanies().then(({ data }) => {
             const columnsFromBackend = [
                 {
-                    name: "In Progress",
+                    name: "Preparing",
                     items: data.filter(
                         (person) =>
-                            person.status === "In Progress" && person.users_id === currentUser.id
+                            person.status === "Preparing" && person.users_id === currentUser.id
                     ),
                 },
                 {
-                    name: "CL Approved",
+                    name: "Messaged Recruiter",
                     items: data.filter(
                         (person) =>
-                            person.status === "CL Approved" && person.users_id === currentUser.id
+                            person.status === "Messaged Recruiter" &&
+                            person.users_id === currentUser.id
                     ),
                 },
                 {
-                    name: "CL Declined",
+                    name: "VC Conversation Scheduled",
                     items: data.filter(
                         (person) =>
-                            person.status === "CL Declined" && person.users_id === currentUser.id
+                            person.status === "VC Conversation Scheduled" &&
+                            person.users_id === currentUser.id
                     ),
                 },
                 {
-                    name: "Awaiting Response",
+                    name: "Preparing Documents",
                     items: data.filter(
                         (person) =>
-                            person.status === "Awaiting Response" &&
+                            person.status === "Preparing Documents" &&
+                            person.users_id === currentUser.id
+                    ),
+                },
+                {
+                    name: "Followed Up [Pre-Interview]",
+                    items: data.filter(
+                        (person) =>
+                            person.status === "Followed Up [Pre-Interview]" &&
                             person.users_id === currentUser.id
                     ),
                 },
@@ -51,10 +61,26 @@ export default function HomePage() {
                     ),
                 },
                 {
-                    name: "Accepted",
+                    name: "Interview Finished",
                     items: data.filter(
                         (person) =>
-                            person.status === "Accepted" && person.users_id === currentUser.id
+                            person.status === "Interview Finished" &&
+                            person.users_id === currentUser.id
+                    ),
+                },
+                {
+                    name: "Followed Up [Post-Interview]",
+                    items: data.filter(
+                        (person) =>
+                            person.status === "Followed Up [Post-Interview]" &&
+                            person.users_id === currentUser.id
+                    ),
+                },
+                {
+                    name: "Negotiating",
+                    items: data.filter(
+                        (person) =>
+                            person.status === "Negotiating" && person.users_id === currentUser.id
                     ),
                 },
                 {
@@ -91,7 +117,7 @@ export default function HomePage() {
                 },
             });
             const id = result.draggableId;
-            updateLead({ id, userInput: { status: destColumn.name } });
+            updateCompany({ id, userInput: { status: destColumn.name } });
         } else {
             const column = columns[source.droppableId];
             const copiedItems = [...column.items];
@@ -108,22 +134,24 @@ export default function HomePage() {
     };
 
     return (
-        <div className="home">
+        <div className="companies-board">
             <DragDropContext onDragEnd={(result) => onDragEnd(result, columns, setColumns)}>
                 {Object.entries(columns).map(([id, columnn]) => {
                     return (
-                        <div className="home__kanban" key={id}>
-                            <div className="home__kanban-header">
-                                <p className="home__kanban-header-indv">{columnn.name}</p>
+                        <div className="companies-board__kanban" key={id}>
+                            <div className="companies-board__kanban-header">
+                                <p className="companies-board__kanban-header-indv">
+                                    {columnn.name}
+                                </p>
                             </div>
-                            <div className="home__kanban-container">
+                            <div className="companies-board__kanban-container">
                                 <Droppable droppableId={id} key={id}>
                                     {(provided) => {
                                         return (
                                             <div
                                                 {...provided.droppableProps}
                                                 ref={provided.innerRef}
-                                                className="home__kanban-container-content"
+                                                className="companies-board__kanban-container-content"
                                             >
                                                 {columnn.items.map((item, index) => {
                                                     return (
@@ -138,32 +166,22 @@ export default function HomePage() {
                                                                         ref={provided.innerRef}
                                                                         {...provided.draggableProps}
                                                                         {...provided.dragHandleProps}
-                                                                        className="home__kanban-container-content-indv"
+                                                                        className="companies-board__kanban-container-content-indv"
                                                                     >
                                                                         <Link
-                                                                            to={`/leads/${item.id}`}
-                                                                            className="home__kanban-container-content-indv-name"
+                                                                            to={`/companies/${item.id}`}
+                                                                            className="companies-board__kanban-container-content-indv-name"
                                                                         >
-                                                                            <p className="home__kanban-container-content-indv-name-business">
-                                                                                {item.company}
-                                                                            </p>
-                                                                            <p className="home__kanban-container-content-indv-name-manager">
-                                                                                {item.first_name}{" "}
-                                                                                {item.last_name}
-                                                                            </p>
+                                                                            {item.name}
                                                                         </Link>
-                                                                        <div className="home__kanban-container-content-indv-information">
-                                                                            <img
-                                                                                className="home__kanban-container-content-indv-information-img"
-                                                                                src={item.image_url}
-                                                                                alt="profile"
-                                                                            />
-                                                                            <p className="home__kanban-container-content-indv-information-paragraph">
-                                                                                {new Date(
-                                                                                    item.updated_at
-                                                                                ).toDateString()}
-                                                                            </p>
-                                                                        </div>
+                                                                        <p className="companies-board__kanban-container-content-indv-posting-url">
+                                                                            {item.posting_url}
+                                                                        </p>
+                                                                        <p className="companies-board__kanban-container-content-indv-information">
+                                                                            {new Date(
+                                                                                item.updated_at
+                                                                            ).toDateString()}
+                                                                        </p>
                                                                     </div>
                                                                 );
                                                             }}

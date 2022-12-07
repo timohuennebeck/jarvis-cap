@@ -24,26 +24,26 @@ export const deleteUser = ({ id }) => {
     return axios.delete(`${API_URL}/users/${id}`);
 };
 
-// leads
+// contacts
 
-export const getLeads = () => {
-    return axios.get(`${API_URL}/leads`);
+export const getContacts = () => {
+    return axios.get(`${API_URL}/contacts`);
 };
 
-export const getLeadId = ({ id }) => {
-    return axios.get(`${API_URL}/leads/${id}`);
+export const getContactId = ({ id }) => {
+    return axios.get(`${API_URL}/contacts/${id}`);
 };
 
-export const addNewLead = ({ addInputData }) => {
-    return axios.post(`${API_URL}/leads`, addInputData);
+export const addNewContact = ({ addInputData }) => {
+    return axios.post(`${API_URL}/contacts`, addInputData);
 };
 
-export const updateLead = ({ id, userInput }) => {
-    return axios.put(`${API_URL}/leads/${id}`, userInput);
+export const updateContact = ({ id, userInput }) => {
+    return axios.put(`${API_URL}/contacts/${id}`, userInput);
 };
 
-export const deleteLead = ({ id }) => {
-    return axios.delete(`${API_URL}/leads/${id}`);
+export const deleteContact = ({ id }) => {
+    return axios.delete(`${API_URL}/contacts/${id}`);
 };
 
 // companies

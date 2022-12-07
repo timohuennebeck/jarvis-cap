@@ -4,13 +4,12 @@ export default function DropdownField({ value, onChange }) {
     return (
         <div className="dropdown">
             <select className="dropdown-select" name="status" value={value} onChange={onChange}>
-                <option value="In Progress">In Progress</option>
-                <option value="CL Approved">CL Approved</option>
-                <option value="CL Declined">CL Declined</option>
+                <option value="To Be Contacted">To Be Contacted</option>
+                <option value="LinkedIn CR Accepted">LinkedIn CR Accepted</option>
                 <option value="Awaiting Response">Awaiting Response</option>
-                <option value="Interview Scheduled">Interview Scheduled</option>
-                <option value="Accepted">Accepted</option>
-                <option value="Rejected">Rejected</option>
+                <option value="Followed Up [Pre-Conversation]">Followed Up [Pre-Conversation]</option>
+                <option value="Coffee Conversation Scheduled">Coffee Conversation Scheduled</option>
+                <option value="Followed Up [Post-Conversation]">Followed Up [Post-Conversation]</option>
             </select>
         </div>
     );

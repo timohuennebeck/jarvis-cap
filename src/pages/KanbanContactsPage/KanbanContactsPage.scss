@@ -1,0 +1,77 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.contacts-board {
+    @include flex-column;
+    gap: $gap-default;
+    min-height: 91.25vh;
+
+    @include desktop {
+        flex-direction: row;
+    }
+
+    &__kanban {
+        @include flex-column;
+        gap: $gap-default;
+        flex: 1 1 0;
+        min-width: 18.25rem;
+
+        &-header {
+            @include flex-vertical;
+            background-color: #fff;
+            border-radius: $border-radius-default;
+            padding: $padding-default;
+        }
+
+        &-container {
+            border-radius: $border-radius-default;
+            min-width: 18.25rem;
+            height: 100%;
+
+            &-content {
+                min-height: 35rem;
+                width: 100%;
+
+                &-indv {
+                    @include flex-column;
+                    border-radius: $border-radius-default;
+                    padding: 1rem;
+                    min-height: 7.5rem;
+                    margin: 0 0 8px 0;
+                    background-color: #fff;
+                    justify-content: space-between;
+
+                    &:hover {
+                        transform: scale(1.025);
+                        @include shadow;
+                    }
+
+                    &-name {
+                        text-decoration: none;
+                        color: #000;
+                        
+                        &-business {
+                            font-size: 0.9725rem;
+                        }
+                    }
+
+                    &-information {
+                        @include flex-vertical;
+                        gap: $gap-default;
+
+                        &-img {
+                            @include border-image;
+                            width: 2rem;
+                            height: 2rem;
+                            object-fit: cover;
+                        }
+
+                        &-paragraph {
+                            font-size: 0.85rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

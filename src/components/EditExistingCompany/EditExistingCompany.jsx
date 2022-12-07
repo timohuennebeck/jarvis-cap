@@ -2,7 +2,7 @@ import ButtonElement from "../ButtonElement/ButtonElement";
 import InputFieldError from "../InputFieldError/InputFieldError";
 import DropdownFieldCompanies from "../DropdownFieldCompanies/DropdownFieldCompanies";
 
-import { getCompanyId, updateCompany } from "../../utils/api";
+import { getCompanyId, getContacts, updateCompany } from "../../utils/api";
 
 import "./EditExistingCompany.scss";
 import { useEffect } from "react";
@@ -10,7 +10,8 @@ import { useParams } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
-import DeleteNotificationLeads from "../DeleteNotificationLeads/DeleteNotificationLeads";
+import DeleteNotificationContacts from "../DeleteNotificationContacts/DeleteNotificationContacts";
+import DropdownAssociatedContact from "../DropdownAssociatedContact/DropdownAssociatedContact";
 
 export default function EditExistingCompany() {
     const userValues = useRef();
@@ -54,8 +55,8 @@ export default function EditExistingCompany() {
             errors.push("name");
         }
 
-        if (!userValues.current.location.value) {
-            errors.push("location");
+        if (!userValues.current.posting_url.value) {
+            errors.push("posting_url");
         }
 
         setErrorMessage(errors);
@@ -109,7 +110,7 @@ export default function EditExistingCompany() {
                     <div className="edit-company__input-dropdown">
                         <DropdownFieldCompanies value={userInput.status} onChange={handleChange} />
                     </div>
-                    <div className="edit-company__input-personal">
+                    <div className="edit-contacts__input-personal">
                         <InputFieldError
                             label="Name"
                             placeholder="Name"
@@ -119,18 +120,10 @@ export default function EditExistingCompany() {
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
-                            label="Location"
-                            placeholder="Location"
-                            name="location"
-                            value={userInput.location}
-                            onChange={handleChange}
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="Position"
-                            placeholder="Position"
-                            name="position"
-                            value={userInput.position}
+                            label="Position To Fill"
+                            placeholder="Position To Fill"
+                            name="position_to_fill"
+                            value={userInput.position_to_fill}
                             onChange={handleChange}
                             errorMessage={errorMessage}
                         />
@@ -143,18 +136,34 @@ export default function EditExistingCompany() {
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
-                            label="Resume"
-                            placeholder="Resume"
-                            name="resume"
-                            value={userInput.resume}
+                            label="Location"
+                            placeholder="Location"
+                            name="location"
+                            value={userInput.location}
                             onChange={handleChange}
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
-                            label="Cover Letter"
-                            placeholder="Cover Letter"
-                            name="cover_letter"
-                            value={userInput.cover_letter}
+                            label="Postcode"
+                            placeholder="Postcode"
+                            name="postcode"
+                            value={userInput.postcode}
+                            onChange={handleChange}
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="Street Name"
+                            placeholder="Street Name"
+                            name="street_name"
+                            value={userInput.street_name}
+                            onChange={handleChange}
+                            errorMessage={errorMessage}
+                        />
+                        <InputFieldError
+                            label="State"
+                            placeholder="State"
+                            name="state"
+                            value={userInput.state}
                             onChange={handleChange}
                             errorMessage={errorMessage}
                         />
@@ -166,9 +175,9 @@ export default function EditExistingCompany() {
                     className="edit-company__card-modal"
                     overlayClassName="edit-company__card-modal-background"
                 >
-                    <DeleteNotificationLeads
+                    <DeleteNotificationContacts
                         closeModal={closeModal}
-                        selectedLead={userInput}
+                        selectedContact={userInput}
                         setDeleteMessage={setDeleteMessage}
                     />
                 </ReactModal>

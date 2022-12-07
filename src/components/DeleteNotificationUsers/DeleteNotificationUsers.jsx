@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 // libraries
 
-export default function DeleteNotification({ closeModal, selectedLead, setDeleteMessage }) {
+export default function DeleteNotification({ closeModal, selectedContact, setDeleteMessage }) {
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -31,11 +31,11 @@ export default function DeleteNotification({ closeModal, selectedLead, setDelete
         <div className="delete">
             <div className="delete__content">
                 <h1 className="delete__content-header">
-                    Delete {selectedLead.first_name} {selectedLead.last_name}?
+                    Delete {selectedContact.first_name} {selectedContact.last_name}?
                 </h1>
                 <p className="delete__content-paragraph">
-                    Please confirm that you’d like to delete {selectedLead.first_name}{" "}
-                    {selectedLead.last_name} from the list. You won’t be able to undo this action.
+                    Please confirm that you’d like to delete {selectedContact.first_name}{" "}
+                    {selectedContact.last_name} from the list. You won’t be able to undo this action.
                 </p>
             </div>
             <div className="delete__links">

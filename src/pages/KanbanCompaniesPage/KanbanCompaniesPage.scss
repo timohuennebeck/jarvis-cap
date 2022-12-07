@@ -1,7 +1,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.home {
+.companies-board {
     @include flex-column;
     gap: $gap-default;
     min-height: 91.25vh;
@@ -34,6 +34,7 @@
 
                 &-indv {
                     @include flex-column;
+                    gap: $gap-default;
                     border-radius: $border-radius-default;
                     padding: 1rem;
                     min-height: 7.5rem;
@@ -49,26 +50,16 @@
                     &-name {
                         text-decoration: none;
                         color: #000;
-                        
-                        &-business {
-                            font-size: 0.9725rem;
-                        }
+                    }
+
+                    &-posting-url {
+                        opacity: 50%;
                     }
 
                     &-information {
                         @include flex-vertical;
                         gap: $gap-default;
-
-                        &-img {
-                            @include border-image;
-                            width: 2rem;
-                            height: 2rem;
-                            object-fit: cover;
-                        }
-
-                        &-paragraph {
-                            font-size: 0.85rem;
-                        }
+                        font-size: 0.85rem;
                     }
                 }
             }

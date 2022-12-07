@@ -22,6 +22,7 @@
 .error {
     @include flex-vertical;
     gap: $gap-default;
+    margin-left: 1.25rem;
 
     &__sign {
         @include flex;

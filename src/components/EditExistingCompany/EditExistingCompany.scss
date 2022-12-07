@@ -28,7 +28,7 @@
         &-personal,
         &-business {
             @include flex-column;
-            gap: $gap-leads;
+            gap: $gap-contacts;
         }
     }
 
@@ -62,6 +62,6 @@
     }
 }
 
-.save-data-leads {
+.save-data-contacts {
     padding-bottom: $padding-default;
 }

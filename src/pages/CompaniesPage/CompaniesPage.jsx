@@ -4,16 +4,16 @@ import "./CompaniesPage.scss";
 import CompanyInformation from "../../components/CompanyInformation/CompanyInformation";
 import ButtonElement from "../../components/ButtonElement/ButtonElement";
 import DropdownFieldCompanies from "../../components/DropdownFieldCompanies/DropdownFieldCompanies";
+import kanbanImg from "../../assets/icons/layout-4.svg";
 
 // axios call
-import { getCompanies } from "../../utils/api";
+import { addNewContact, getCompanies } from "../../utils/api";
 
 // libraries
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Papa from "papaparse";
-import { addNewLead } from "../../utils/api";
 import { useRef } from "react";
 import { useOutletContext } from "react-router-dom";
 
@@ -86,7 +86,7 @@ export default function CompaniesPage() {
                 paragraph_three: person.paragraph_three,
                 call_to_action: person.call_to_action,
             };
-            addNewLead({ addInputData });
+            addNewContact({ addInputData });
             setUpdateMessage(true);
             setTimeout(resetMessage, 1250);
         });
@@ -110,9 +110,16 @@ export default function CompaniesPage() {
                     <input type="file" name="file" accept=".csv" onChange={handleSubmit} />
                 </div>
                 <div className="companies__dropdown">
-                    <DropdownFieldCompanies value={updateStatus.status} onChange={handleChange} />
+                    <div className="companies__dropdown-ctn">
+                        <Link to="/companies-kanban" className="companies__dropdown-ctn-kanban">
+                            <img src={kanbanImg} alt="" />
+                        </Link>
+                        <div className="companies__dropdown-ctn-field">
+                            <DropdownFieldCompanies value={updateStatus.status} onChange={handleChange} />
+                        </div>
+                    </div>
                     <p className="companies__dropdown-amount">
-                        You are viewing {filteredCompanies.length} Companies
+                        You are viewing {filteredCompanies.length} Contacts
                     </p>
                 </div>
                 {updateMessage && (

@@ -12,9 +12,9 @@
         height: 100%;
     }
 
-    &__leads {
+    &__contacts {
         @include flex-column;
-        gap: $gap-leads;
+        gap: $gap-contacts;
         flex: 1 1 0;
 
         @include tablet {
