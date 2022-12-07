@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 import ReactModal from "react-modal";
 import DeleteNotificationContacts from "../DeleteNotificationContacts/DeleteNotificationContacts";
+import DropdownRelationship from "../DropdownRelationship/DropdownRelationship";
+import DropdownTarget from "../DropdownTarget/DropdownTarget";
 
 export default function EditExistingContact() {
     const userValues = useRef();
@@ -39,6 +41,8 @@ export default function EditExistingContact() {
     const handleChange = (e) => {
         setUserInput({ ...userInput, [e.target.name]: e.target.value });
     };
+
+    console.log(userInput);
 
     // making api calls
 
@@ -113,7 +117,8 @@ export default function EditExistingContact() {
                 <form className="edit-contacts__input" ref={userValues}>
                     <div className="edit-contacts__input-dropdown">
                         <DropdownField value={userInput.status} onChange={handleChange} />
-                        <GenderDropdownField value={userInput.his_or_her} onChange={handleChange} />
+                        <DropdownRelationship value={userInput.relationship} onChange={handleChange}/>
+                        <DropdownTarget value={userInput.target} onChange={handleChange}/>
                     </div>
                     <div className="edit-contacts__input-personal">
                         <InputFieldError

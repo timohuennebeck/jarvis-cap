@@ -6,6 +6,8 @@ import { addNewContact } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 import { useOutletContext } from "react-router-dom";
+import DropdownRelationship from "../DropdownRelationship/DropdownRelationship";
+import DropdownTarget from "../DropdownTarget/DropdownTarget";
 
 export default function AddNewContact() {
     const userValues = useRef();
@@ -24,7 +26,8 @@ export default function AddNewContact() {
         e.preventDefault();
 
         const status = userValues.current.status.value;
-        const his_or_her = userValues.current.his_or_her.value;
+        const relationship = userValues.current.relationship.value;
+        const target = userValues.current.target.value;
         const first_name = userValues.current.first_name.value;
         const last_name = userValues.current.last_name.value;
         const position = userValues.current.position.value;
@@ -46,7 +49,8 @@ export default function AddNewContact() {
         const addInputData = {
             users_id: currentUser.id,
             status,
-            his_or_her,
+            relationship,
+            target,
             first_name,
             last_name,
             position,
@@ -116,7 +120,8 @@ export default function AddNewContact() {
                 <form className="edit-contacts__input" ref={userValues}>
                     <div className="edit-contacts__input-dropdown">
                         <DropdownField />
-                        <GenderDropdownField />
+                        <DropdownRelationship />
+                        <DropdownTarget />
                     </div>
                     <div className="edit-contacts__input-personal">
                         <InputFieldError

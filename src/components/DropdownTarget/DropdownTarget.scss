@@ -1,0 +1,9 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.dropdown-select {
+    border: none;
+    border-radius: $border-radius-default;
+    padding: $border-padding-default;
+    width: 100%;
+}
