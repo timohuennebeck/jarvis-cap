@@ -9,9 +9,11 @@ import { useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-export default function ReviewTextPage({ refreshContacts }) {
+export default function ReviewTextPage({ refreshContacts, currentUser }) {
     const [contactData, setContactData] = useState([]);
     const [userInput, setUserInput] = useState([]);
+
+    console.log(currentUser);
 
     const { id } = useParams();
 
@@ -57,12 +59,14 @@ export default function ReviewTextPage({ refreshContacts }) {
         <div className="review-ctr">
             <div className="review-ctr__content" id="print-pdf">
                 <div className="review-ctr__content-user">
-                    <p className="review-ctr__content-user-name">Timo Huennebeck</p>
-                    <p className="review-ctr__content-user-position">Software Developer</p>
+                    <p className="review-ctr__content-user-name">
+                        {currentUser.first_name} {currentUser.last_name}
+                    </p>
+                    {/* <p className="review-ctr__content-user-position">{currentUser.email}</p> */}
                     <div className="review-ctr__content-user-line"></div>
-                    <p className="review-ctr__content-user-street-name">Rupert-Mayer-Str. 18</p>
-                    <p className="review-ctr__content-user-city">Huerth</p>
-                    <p className="review-ctr__content-user-state-postcode-">NRW 50354</p>
+                    <p className="review-ctr__content-user-street-name">{currentUser.email}</p>
+                    {/* <p className="review-ctr__content-user-city">Huerth</p>
+                    <p className="review-ctr__content-user-state-postcode-">NRW 50354</p> */}
                 </div>
                 <div className="review-ctr__content-contact">
                     <div className="review-ctr__content-contact-line"></div>
@@ -101,7 +105,9 @@ export default function ReviewTextPage({ refreshContacts }) {
                     </div>
                     <div>
                         <p>Best regards,</p>
-                        <p className="review-ctr__content-contact-user-name">Timo Huennebeck</p>
+                        <p className="review-ctr__content-contact-user-name">
+                            {currentUser.first_name} {currentUser.last_name}
+                        </p>
                     </div>
                 </div>
             </div>

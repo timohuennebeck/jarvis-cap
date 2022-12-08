@@ -55,7 +55,7 @@ function ReviewPage() {
                 })}
             </div>
             <div className="review__content">
-                <ReviewTextPage refreshContacts={refreshContacts} />
+                <ReviewTextPage refreshContacts={refreshContacts} currentUser={currentUser}/>
             </div>
         </article>
     );
