@@ -9,7 +9,15 @@ import rejectionsImg from "../../assets/icons/briefcase.svg";
 import { useOutletContext } from "react-router-dom";
 import { useRef } from "react";
 
-import { getCompanies, getContacts, updateUser } from "../../utils/api";
+import {
+    getCompanies,
+    getContacts,
+    getLastMonthCompanies,
+    getLastMonthContacts,
+    getThisMonthCompanies,
+    getThisMonthContacts,
+    updateUser,
+} from "../../utils/api";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -17,15 +25,35 @@ export default function DashboardPage() {
     const [currentUser, setCurrentUser] = useOutletContext();
     const [contactsData, setContactsData] = useState([]);
     const [companiesData, setCompaniesData] = useState([]);
+    const [currentMonthContacts, setCurrentMonthContacts] = useState([]);
+    const [currentMonthDates, setCurrentMonthDates] = useState([]);
+    const [lastMonthContacts, setLastMonthContacts] = useState([]);
+    const [lastMonthDates, setLastMonthDates] = useState([]);
 
     const userValues = useRef();
 
+    const filterUser = (data) => {
+        return data.filter((item) => item.users_id === currentUser.id);
+    };
+
     useEffect(() => {
         getContacts().then(({ data }) => {
-            setContactsData(data.filter((item) => item.users_id === currentUser.id));
+            setContactsData(filterUser(data));
         });
         getCompanies().then(({ data }) => {
-            setCompaniesData(data.filter((item) => item.users_id === currentUser.id));
+            setCompaniesData(filterUser(data));
+        });
+        getThisMonthContacts().then(({ data }) => {
+            setCurrentMonthContacts(filterUser(data));
+        });
+        getThisMonthCompanies().then(({ data }) => {
+            setCurrentMonthDates(filterUser(data));
+        });
+        getLastMonthContacts().then(({ data }) => {
+            setLastMonthContacts(filterUser(data));
+        });
+        getLastMonthCompanies().then(({ data }) => {
+            setLastMonthDates(filterUser(data));
         });
     }, [currentUser]);
 
@@ -35,6 +63,10 @@ export default function DashboardPage() {
         });
         setCurrentUser({ ...currentUser, [e.target.name]: e.target.value });
     };
+
+    const rejectionsThisMonth = currentMonthDates.filter((item) => item.status === "Rejected");
+    const rejectionsLastMonth = lastMonthDates.filter((item) => item.status === "Rejected");
+    const rejectionsChange = ((rejectionsThisMonth.length - rejectionsLastMonth.length) / 1) * 100;
 
     if (!contactsData) {
         return null;
@@ -109,9 +141,17 @@ export default function DashboardPage() {
                                 Potential Connections
                             </p>
                             <div className="dashboard__ctn-stats-title-content-div">
-                                <p>451</p>
+                                <p>
+                                    {currentMonthContacts.length === 0
+                                        ? 0
+                                        : currentMonthContacts.length}
+                                </p>
                                 <p className="dashboard__ctn-stats-title-content-div-color">
-                                    10,2%
+                                    {`${
+                                        ((currentMonthContacts.length - lastMonthContacts.length) /
+                                            1) *
+                                        100
+                                    }%`}
                                 </p>
                             </div>
                         </div>
@@ -121,8 +161,14 @@ export default function DashboardPage() {
                         <div className="dashboard__ctn-stats-title-content">
                             <p className="dashboard__ctn-stats-title-content-name">Applications</p>
                             <div className="dashboard__ctn-stats-title-content-div">
-                                <p>251</p>
-                                <p className="dashboard__ctn-stats-title-content-div-color">8,2%</p>
+                                <p>{currentMonthDates.length}</p>
+                                <p className="dashboard__ctn-stats-title-content-div-color">
+                                    {`${
+                                        ((currentMonthDates.length - lastMonthDates.length) /
+                                            1) *
+                                        100
+                                    }%`}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -133,8 +179,20 @@ export default function DashboardPage() {
                                 Rejections Received
                             </p>
                             <div className="dashboard__ctn-stats-title-content-div">
-                                <p>52</p>
-                                <p className="dashboard__ctn-stats-title-content-div-color">1,2%</p>
+                                <p>
+                                    {rejectionsThisMonth.length === 0
+                                        ? 0
+                                        : rejectionsThisMonth.length}
+                                </p>
+                                <p
+                                    className={
+                                        rejectionsChange > 0
+                                            ? "dashboard__ctn-stats-title-content-div-color negative"
+                                            : "dashboard__ctn-stats-title-content-div-color"
+                                    }
+                                >
+                                    {`${rejectionsChange}%`}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -201,7 +259,8 @@ export default function DashboardPage() {
                             <p>
                                 {
                                     contactsData.filter(
-                                        (person) => person.status === "Followed Up [Post-Conversation]"
+                                        (person) =>
+                                            person.status === "Followed Up [Post-Conversation]"
                                     ).length
                                 }
                             </p>

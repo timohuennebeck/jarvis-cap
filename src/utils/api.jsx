@@ -30,6 +30,14 @@ export const getContacts = () => {
     return axios.get(`${API_URL}/contacts`);
 };
 
+export const getThisMonthContacts = () => {
+    return axios.get(`${API_URL}/contacts/this-month`);
+};
+
+export const getLastMonthContacts = () => {
+    return axios.get(`${API_URL}/contacts/last-month`);
+};
+
 export const getContactId = ({ id }) => {
     return axios.get(`${API_URL}/contacts/${id}`);
 };
@@ -50,6 +58,14 @@ export const deleteContact = ({ id }) => {
 
 export const getCompanies = () => {
     return axios.get(`${API_URL}/companies`);
+};
+
+export const getThisMonthCompanies = () => {
+    return axios.get(`${API_URL}/companies/this-month`);
+};
+
+export const getLastMonthCompanies = () => {
+    return axios.get(`${API_URL}/companies/last-month`);
 };
 
 export const getCompanyId = ({ id }) => {
