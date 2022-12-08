@@ -128,10 +128,14 @@ export default function DashboardPage() {
                     </p>
                 </div>
                 <iframe
-                    className="dashboard__ctn-video"
-                    width="100%"
-                    height="525rem"
-                    src="https://www.youtube.com/embed/V3WkgVpv1Zk"
+                className="dashboard__ctn-video"
+                width="100%"
+                height="500rem"
+                    src="https://www.loom.com/embed/4edc34eb6a634d698ed1601e63d3d911"
+                    frameborder="0"
+                    webkitallowfullscreen
+                    mozallowfullscreen
+                    allowfullscreen
                 ></iframe>
                 <div className="dashboard__ctn-stats">
                     <div className="dashboard__ctn-stats-title">
@@ -164,8 +168,7 @@ export default function DashboardPage() {
                                 <p>{currentMonthDates.length}</p>
                                 <p className="dashboard__ctn-stats-title-content-div-color">
                                     {`${
-                                        ((currentMonthDates.length - lastMonthDates.length) /
-                                            1) *
+                                        ((currentMonthDates.length - lastMonthDates.length) / 1) *
                                         100
                                     }%`}
                                 </p>
