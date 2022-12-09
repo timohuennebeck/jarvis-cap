@@ -2,7 +2,7 @@ import ButtonElement from "../ButtonElement/ButtonElement";
 import InputFieldError from "../InputFieldError/InputFieldError";
 import DropdownFieldCompanies from "../DropdownFieldCompanies/DropdownFieldCompanies";
 
-import { getCompanyId, getContacts, updateCompany } from "../../utils/api";
+import { deleteCompany, getCompanyId, updateCompany } from "../../utils/api";
 
 import "./EditExistingCompany.scss";
 import { useEffect } from "react";
@@ -10,8 +10,7 @@ import { useParams } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
-import DeleteNotificationCompanies from "../DeleteNotificationCompanies/DeleteNotificationCompanies";
-import DropdownAssociatedContact from "../DropdownAssociatedContact/DropdownAssociatedContact";
+import DeleteNotification from "../DeleteNotification/DeleteNotification";
 
 export default function EditExistingCompany() {
     const userValues = useRef();
@@ -19,8 +18,6 @@ export default function EditExistingCompany() {
     const navigate = useNavigate();
 
     const [userInput, setUserInput] = useState([]);
-    const [saveNotification, setSaveNotification] = useState(false);
-    const [deleteMessage, setDeleteMessage] = useState(false);
     const [errorMessage, setErrorMessage] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -61,16 +58,20 @@ export default function EditExistingCompany() {
 
         setErrorMessage(errors);
 
-        const redirectUser = () => {
-            navigate("/companies");
-        };
-
         if (errors.length === 0) {
             updateCompany({ id, userInput }).then(() => {
-                setSaveNotification(true);
-                setTimeout(redirectUser, 1000);
+                setTimeout(() => navigate("/companies"), 1500);
             });
         }
+    };
+
+    const handleDelete = (event) => {
+        event.preventDefault();
+
+        deleteCompany({ id }).then(() => {
+            openModal();
+            setTimeout(() => navigate("/companies"), 1500);
+        });
     };
 
     if (!userInput) {
@@ -90,22 +91,12 @@ export default function EditExistingCompany() {
                     <div className="edit-company__links-spacing">
                         <ButtonElement onClick={uploadData} content="SAVE" backgroundColor="#000" />
                         <ButtonElement
-                            onClick={openModal}
+                            onClick={handleDelete}
                             content="DELETE"
                             backgroundColor="#C71919"
                         />
                     </div>
                 </div>
-                {saveNotification && (
-                    <p className="save-data-company">
-                        Company has been saved! Redirecting in 1s...
-                    </p>
-                )}
-                {deleteMessage && (
-                    <p className="save-data-company">
-                        Company has been deleted! Redirecting in 1s...
-                    </p>
-                )}
                 <form className="edit-company__input" ref={userValues}>
                     <div className="edit-company__input-dropdown">
                         <DropdownFieldCompanies value={userInput.status} onChange={handleChange} />
@@ -169,19 +160,15 @@ export default function EditExistingCompany() {
                         />
                     </div>
                 </form>
-                <ReactModal
-                    isOpen={modalIsOpen}
-                    onRequestClose={closeModal}
-                    className="edit-company__card-modal"
-                    overlayClassName="edit-company__card-modal-background"
-                >
-                    <DeleteNotificationCompanies
-                        closeModal={closeModal}
-                        selectedContact={userInput}
-                        setDeleteMessage={setDeleteMessage}
-                    />
-                </ReactModal>
             </article>
+            <ReactModal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                className="edit-company__card-modal"
+                overlayClassName="edit-company__card-modal-background"
+            >
+                <DeleteNotification selectedCompany={userInput} />
+            </ReactModal>
         </>
     );
 }

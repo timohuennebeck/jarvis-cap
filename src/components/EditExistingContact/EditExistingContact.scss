@@ -37,31 +37,25 @@
     }
 
     &__card-modal {
+        @include shadow;
+        @include flex;
         background-color: #fff;
-        height: 100%;
-
-        @include tablet {
-            @include border-no-radius;
-            @include shadow;
-            @include flex;
-            height: 17.25rem;
-            max-width: 42.5rem;
-            border-radius: $border-radius-default;
-            position: absolute;
-            left: 23.75%;
-            right: 23.75%;
-            top: 20%;
-            bottom: 51.68%;
+        border-radius: $border-radius-default;
+        position: absolute;
+        padding: 1.25rem;
+        top: 1.5%;
+        animation: slideInFromTop 1s;
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0%);
+            }
         }
 
         &-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(0.25rem);
+            @include flex;
         }
     }
 }

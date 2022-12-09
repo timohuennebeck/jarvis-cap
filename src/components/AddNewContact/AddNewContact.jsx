@@ -4,23 +4,29 @@ import DropdownField from "../DropdownField/DropdownField";
 import { useRef, useState } from "react";
 import { addNewContact } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
-import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 import { useOutletContext } from "react-router-dom";
 import DropdownRelationship from "../DropdownRelationship/DropdownRelationship";
+import ReactModal from "react-modal";
 import DropdownTarget from "../DropdownTarget/DropdownTarget";
+import AddNotification from "../AddNotification/AddNotification"
 
 export default function AddNewContact() {
     const userValues = useRef();
 
     const [currentUser] = useOutletContext();
-    const [notification, setNotification] = useState(false);
+    const [userInput, setUserInput] = useState([]);
     const [errorMessage, setErrorMessage] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    function openModal() {
+        setModalIsOpen(true);
+    }
+
+    function closeModal() {
+        setModalIsOpen(false);
+    }
 
     const navigate = useNavigate();
-
-    const redirectUser = () => {
-        navigate("/contacts");
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -70,6 +76,8 @@ export default function AddNewContact() {
             call_to_action,
         };
 
+        setUserInput(addInputData);
+
         const errors = [];
 
         if (!userValues.current.first_name.value) {
@@ -88,8 +96,8 @@ export default function AddNewContact() {
 
         if (errors.length === 0) {
             addNewContact({ addInputData }).then(() => {
-                setNotification(true);
-                setTimeout(redirectUser, 1000);
+                openModal();
+                setTimeout(() => navigate("/contacts"), 1500);
             });
         }
     };
@@ -112,11 +120,6 @@ export default function AddNewContact() {
                         />
                     </div>
                 </div>
-                {notification && (
-                    <p className="save-data-contacts">
-                        Contact has been added! Redirecting in 1s...
-                    </p>
-                )}
                 <form className="edit-contacts__input" ref={userValues}>
                     <div className="edit-contacts__input-dropdown">
                         <DropdownField />
@@ -238,6 +241,14 @@ export default function AddNewContact() {
                     </div>
                 </form>
             </article>
+            <ReactModal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                className="edit-company__card-modal"
+                overlayClassName="edit-company__card-modal-background"
+            >
+                <AddNotification selectedContact={userInput} />
+            </ReactModal>
         </>
     );
 }

@@ -5,19 +5,26 @@ import { useRef, useState } from "react";
 import { addNewCompany } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
+import ReactModal from "react-modal";
+import AddNotification from "../AddNotification/AddNotification";
 
 export default function AddNewCompany() {
     const userValues = useRef();
 
     const [currentUser] = useOutletContext();
-    const [notification, setNotification] = useState(false);
+    const [userInput, setUserInput] = useState([]);
     const [errorMessage, setErrorMessage] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    function openModal() {
+        setModalIsOpen(true);
+    }
+
+    function closeModal() {
+        setModalIsOpen(false);
+    }
 
     const navigate = useNavigate();
-
-    const redirectUser = () => {
-        navigate("/companies");
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -43,7 +50,7 @@ export default function AddNewCompany() {
             state,
         };
 
-        console.log(addInputData);
+        setUserInput(addInputData);
 
         const errors = [];
 
@@ -59,8 +66,8 @@ export default function AddNewCompany() {
 
         if (errors.length === 0) {
             addNewCompany({ addInputData }).then(() => {
-                setNotification(true);
-                setTimeout(redirectUser, 1000);
+                openModal();
+                setTimeout(() => navigate("/companies"), 1500);
             });
         }
     };
@@ -83,11 +90,6 @@ export default function AddNewCompany() {
                         />
                     </div>
                 </div>
-                {notification && (
-                    <p className="save-data-contacts">
-                        Company has been added! Redirecting in 1s...
-                    </p>
-                )}
                 <form className="edit-contacts__input" ref={userValues}>
                     <div className="edit-contacts__input-dropdown">
                         <DropdownFieldCompanies />
@@ -138,6 +140,14 @@ export default function AddNewCompany() {
                     </div>
                 </form>
             </article>
+            <ReactModal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                className="edit-company__card-modal"
+                overlayClassName="edit-company__card-modal-background"
+            >
+                <AddNotification selectedCompany={userInput} />
+            </ReactModal>
         </>
     );
 }

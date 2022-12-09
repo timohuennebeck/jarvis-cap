@@ -11,9 +11,10 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 import ReactModal from "react-modal";
-import DeleteNotificationContacts from "../DeleteNotificationContacts/DeleteNotificationContacts";
+import DeleteNotification from "../DeleteNotification/DeleteNotification";
 import DropdownRelationship from "../DropdownRelationship/DropdownRelationship";
 import DropdownTarget from "../DropdownTarget/DropdownTarget";
+import { deleteContact } from "../../utils/api";
 
 export default function EditExistingContact() {
     const userValues = useRef();
@@ -21,8 +22,6 @@ export default function EditExistingContact() {
     const navigate = useNavigate();
 
     const [userInput, setUserInput] = useState([]);
-    const [saveNotification, setSaveNotification] = useState(false);
-    const [deleteMessage, setDeleteMessage] = useState(false);
     const [errorMessage, setErrorMessage] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -41,8 +40,6 @@ export default function EditExistingContact() {
     const handleChange = (e) => {
         setUserInput({ ...userInput, [e.target.name]: e.target.value });
     };
-
-    console.log(userInput);
 
     // making api calls
 
@@ -69,16 +66,20 @@ export default function EditExistingContact() {
 
         setErrorMessage(errors);
 
-        const redirectUser = () => {
-            navigate("/contacts");
-        };
-
         if (errors.length === 0) {
             updateContact({ id, userInput }).then(() => {
-                setSaveNotification(true);
-                setTimeout(redirectUser, 1000);
+                setTimeout(() => navigate("contacts"), 1500);
             });
         }
+    };
+
+    const handleDelete = (event) => {
+        event.preventDefault();
+
+        deleteContact({ id }).then(() => {
+            openModal();
+            setTimeout(() => navigate("/contacts"), 1500);
+        });
     };
 
     if (!userInput) {
@@ -98,27 +99,20 @@ export default function EditExistingContact() {
                     <div className="edit-contacts__links-spacing">
                         <ButtonElement onClick={uploadData} content="SAVE" backgroundColor="#000" />
                         <ButtonElement
-                            onClick={openModal}
+                            onClick={handleDelete}
                             content="DELETE"
                             backgroundColor="#C71919"
                         />
                     </div>
                 </div>
-                {saveNotification && (
-                    <p className="save-data-contacts">
-                        Contact has been saved! Redirecting in 1s...
-                    </p>
-                )}
-                {deleteMessage && (
-                    <p className="save-data-contacts">
-                        Contact has been deleted! Redirecting in 1s...
-                    </p>
-                )}
                 <form className="edit-contacts__input" ref={userValues}>
                     <div className="edit-contacts__input-dropdown">
                         <DropdownField value={userInput.status} onChange={handleChange} />
-                        <DropdownRelationship value={userInput.relationship} onChange={handleChange}/>
-                        <DropdownTarget value={userInput.target} onChange={handleChange}/>
+                        <DropdownRelationship
+                            value={userInput.relationship}
+                            onChange={handleChange}
+                        />
+                        <DropdownTarget value={userInput.target} onChange={handleChange} />
                     </div>
                     <div className="edit-contacts__input-personal">
                         <InputFieldError
@@ -275,11 +269,7 @@ export default function EditExistingContact() {
                     className="edit-contacts__card-modal"
                     overlayClassName="edit-contacts__card-modal-background"
                 >
-                    <DeleteNotificationContacts
-                        closeModal={closeModal}
-                        selectedContact={userInput}
-                        setDeleteMessage={setDeleteMessage}
-                    />
+                    <DeleteNotification selectedContact={userInput} />
                 </ReactModal>
             </article>
         </>

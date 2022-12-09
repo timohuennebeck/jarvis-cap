@@ -25,7 +25,6 @@
         &-routes {
             min-height: 94.25vh;
             max-height: 94.25vh;
-            overflow: scroll;
 
             @include desktop {
                 box-shadow: none;
