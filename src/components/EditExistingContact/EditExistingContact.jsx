@@ -9,11 +9,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import GenderDropdownField from "../GenderDropdownField/GenderDropdownField";
 import ReactModal from "react-modal";
 import DeleteNotification from "../DeleteNotification/DeleteNotification";
-import DropdownRelationship from "../DropdownRelationship/DropdownRelationship";
-import DropdownTarget from "../DropdownTarget/DropdownTarget";
 import { deleteContact } from "../../utils/api";
 
 export default function EditExistingContact() {
@@ -68,7 +65,7 @@ export default function EditExistingContact() {
 
         if (errors.length === 0) {
             updateContact({ id, userInput }).then(() => {
-                setTimeout(() => navigate("contacts"), 1500);
+                setTimeout(() => navigate("/contacts"), 1500);
             });
         }
     };
@@ -108,11 +105,6 @@ export default function EditExistingContact() {
                 <form className="edit-contacts__input" ref={userValues}>
                     <div className="edit-contacts__input-dropdown">
                         <DropdownField value={userInput.status} onChange={handleChange} />
-                        <DropdownRelationship
-                            value={userInput.relationship}
-                            onChange={handleChange}
-                        />
-                        <DropdownTarget value={userInput.target} onChange={handleChange} />
                     </div>
                     <div className="edit-contacts__input-personal">
                         <InputFieldError

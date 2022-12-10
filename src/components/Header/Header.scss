@@ -37,9 +37,9 @@
 
     &__card-modal {
         background-color: #F4F4F6;
+        position: absolute;
         padding: 1.25rem;
-        // max-height: 100vh;
-        // min-height: 100vh;
+        height: 100vh;
         outline: none;
         overflow: scroll;
 

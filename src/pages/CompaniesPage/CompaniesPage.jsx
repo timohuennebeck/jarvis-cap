@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import Papa from "papaparse";
 import { useRef } from "react";
 import { useOutletContext } from "react-router-dom";
+import { getCompaniesFunnel } from "../../utils/companiesFunnelBackend";
 
 export default function CompaniesPage() {
     const [currentUser] = useOutletContext();
@@ -23,6 +24,7 @@ export default function CompaniesPage() {
     const [parsedData, setParsedData] = useState([]);
     const [updateMessage, setUpdateMessage] = useState(false);
     const [updateStatus, setUpdateStatus] = useState([]);
+    const [companiesFunnel, setCompaniesFunnel] = useState([]);
     const [filteredCompanies, setFilteredCompanies] = useState([]);
 
     const userValues = useRef();
@@ -30,14 +32,23 @@ export default function CompaniesPage() {
     useEffect(() => {
         getCompanies().then(({ data }) => {
             setCompaniesData(data.filter((item) => item.users_id === currentUser.id));
+        });
+        getCompaniesFunnel().then(({ data }) => {
+            const filteredData = data.filter((item) => item.users_id === currentUser.id);
+            setCompaniesFunnel(filteredData[0].status);
+        });
+    }, [currentUser]);
+
+    useEffect(() => {
+        getCompanies().then(({ data }) => {
             setFilteredCompanies(
                 data.filter(
                     (person) =>
-                        person.status === "Preparing" && person.users_id === currentUser.id
+                        person.status === companiesFunnel && person.users_id === currentUser.id
                 )
             );
         });
-    }, [currentUser]);
+    }, [companiesFunnel, currentUser]);
 
     const handleChange = (e) => {
         setUpdateStatus({ ...updateStatus, [e.target.name]: e.target.value });
@@ -115,7 +126,10 @@ export default function CompaniesPage() {
                             <img src={kanbanImg} alt="" />
                         </Link>
                         <div className="companies__dropdown-ctn-field">
-                            <DropdownFieldCompanies value={updateStatus.status} onChange={handleChange} />
+                            <DropdownFieldCompanies
+                                value={updateStatus.status}
+                                onChange={handleChange}
+                            />
                         </div>
                     </div>
                     <p className="companies__dropdown-amount">

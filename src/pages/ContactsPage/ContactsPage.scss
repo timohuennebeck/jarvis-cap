@@ -36,6 +36,14 @@
                 padding: $border-padding-default;
             }
 
+            &-plus {
+                @include flex;
+                background-color: #fff;
+                border-radius: $border-radius-default;
+                padding: $border-padding-default;
+                cursor: pointer;
+            }
+
             &-field {
                 width: 100%;
             }

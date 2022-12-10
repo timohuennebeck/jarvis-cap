@@ -2,13 +2,11 @@ import ButtonElement from "../ButtonElement/ButtonElement";
 import InputFieldError from "../InputFieldError/InputFieldError";
 import DropdownField from "../DropdownField/DropdownField";
 import { useRef, useState } from "react";
-import { addNewContact } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
-import DropdownRelationship from "../DropdownRelationship/DropdownRelationship";
 import ReactModal from "react-modal";
-import DropdownTarget from "../DropdownTarget/DropdownTarget";
-import AddNotification from "../AddNotification/AddNotification"
+import AddNotification from "../AddNotification/AddNotification";
+import { addNewContact } from "../../utils/api";
 
 export default function AddNewContact() {
     const userValues = useRef();
@@ -31,49 +29,26 @@ export default function AddNewContact() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const status = userValues.current.status.value;
-        const relationship = userValues.current.relationship.value;
-        const target = userValues.current.target.value;
-        const first_name = userValues.current.first_name.value;
-        const last_name = userValues.current.last_name.value;
-        const position = userValues.current.position.value;
-        const email = userValues.current.email.value;
-        const phone = userValues.current.phone.value;
-        const linked_in = userValues.current.linked_in.value;
-        const company = userValues.current.company.value;
-        const street_name = userValues.current.street_name.value;
-        const city = userValues.current.city.value;
-        const state = userValues.current.state.value;
-        const postcode = userValues.current.postcode.value;
-        const country = userValues.current.country.value;
-        const icebreaker = userValues.current.icebreaker.value;
-        const paragraph_one = userValues.current.paragraph_one.value;
-        const paragraph_two = userValues.current.paragraph_two.value;
-        const paragraph_three = userValues.current.paragraph_three.value;
-        const call_to_action = userValues.current.call_to_action.value;
-
         const addInputData = {
             users_id: currentUser.id,
-            status,
-            relationship,
-            target,
-            first_name,
-            last_name,
-            position,
-            email,
-            phone,
-            linked_in,
-            company,
-            street_name,
-            city,
-            state,
-            postcode,
-            country,
-            icebreaker,
-            paragraph_one,
-            paragraph_two,
-            paragraph_three,
-            call_to_action,
+            status: userValues.current.status.value,
+            first_name: userValues.current.first_name.value,
+            last_name: userValues.current.last_name.value,
+            position: userValues.current.position.value,
+            email: userValues.current.email.value,
+            phone: userValues.current.phone.value,
+            linked_in: userValues.current.linked_in.value,
+            company: userValues.current.company.value,
+            street_name: userValues.current.street_name.value,
+            city: userValues.current.city.value,
+            state: userValues.current.state.value,
+            postcode: userValues.current.postcode.value,
+            country: userValues.current.country.value,
+            icebreaker: userValues.current.icebreaker.value,
+            paragraph_one: userValues.current.paragraph_one.value,
+            paragraph_two: userValues.current.paragraph_two.value,
+            paragraph_three: userValues.current.paragraph_three.value,
+            call_to_action: userValues.current.call_to_action.value,
         };
 
         setUserInput(addInputData);
@@ -123,8 +98,6 @@ export default function AddNewContact() {
                 <form className="edit-contacts__input" ref={userValues}>
                     <div className="edit-contacts__input-dropdown">
                         <DropdownField />
-                        <DropdownRelationship />
-                        <DropdownTarget />
                     </div>
                     <div className="edit-contacts__input-personal">
                         <InputFieldError

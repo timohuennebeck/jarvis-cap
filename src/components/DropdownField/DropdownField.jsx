@@ -1,15 +1,29 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import { getContactsFunnel } from "../../utils/contactsFunnelBackend";
+import { useOutletContext } from "react-router-dom";
 import "./DropdownField.scss";
 
 export default function DropdownField({ value, onChange }) {
+    const [currentUser] = useOutletContext();
+    const [contactsFunnel, setContactsFunnel] = useState([]);
+
+    useEffect(() => {
+        getContactsFunnel().then(({ data }) => {
+            setContactsFunnel(data.filter((item) => item.users_id === currentUser.id));
+        });
+    }, [currentUser]);
+
     return (
         <div className="dropdown">
             <select className="dropdown-select" name="status" value={value} onChange={onChange}>
-                <option value="To Be Contacted">To Be Contacted</option>
-                <option value="LinkedIn CR Accepted">LinkedIn CR Accepted</option>
-                <option value="Awaiting Response">Awaiting Response</option>
-                <option value="Followed Up [Pre-Conversation]">Followed Up [Pre-Conversation]</option>
-                <option value="Coffee Conversation Scheduled">Coffee Conversation Scheduled</option>
-                <option value="Followed Up [Post-Conversation]">Followed Up [Post-Conversation]</option>
+                {contactsFunnel.map((item) => {
+                    return (
+                        <option key={item.id} value={item.status}>
+                            {item.status}
+                        </option>
+                    );
+                })}
             </select>
         </div>
     );

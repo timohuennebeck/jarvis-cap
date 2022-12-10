@@ -76,7 +76,6 @@
                 width: 100%;
 
                 &-content {
-
                     &-div {
                         @include flex-vertical;
                         gap: $gap-default;
@@ -118,10 +117,6 @@
             border-radius: $border-radius-default;
             padding: 1rem;
             background-color: #fff;
-
-            @include desktop {
-                flex: 1 1 0;
-            }
 
             &-header {
                 font-size: 0.8125rem;

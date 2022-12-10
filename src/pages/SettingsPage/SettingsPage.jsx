@@ -1,6 +1,5 @@
 import "./SettingsPage.scss";
 
-import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 import InputField from "../../components/InputField/InputField";

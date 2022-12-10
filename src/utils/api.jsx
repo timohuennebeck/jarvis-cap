@@ -54,6 +54,8 @@ export const deleteContact = ({ id }) => {
     return axios.delete(`${API_URL}/contacts/${id}`);
 };
 
+
+
 // companies
 
 export const getCompanies = () => {

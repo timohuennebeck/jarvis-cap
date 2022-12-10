@@ -8,7 +8,6 @@ import ContactsPage from "./pages/ContactsPage/ContactsPage";
 import ReviewPage from "./pages/ReviewPage/ReviewPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import MaintenancePage from "./pages/MaintenancePage/MaintenancePage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 
@@ -24,6 +23,7 @@ import HelpCenterPage from "./pages/HelpCenterPage/HelpCenterPage";
 import CompaniesPage from "./pages/CompaniesPage/CompaniesPage";
 import EditExistingCompany from "./components/EditExistingCompany/EditExistingCompany";
 import AddNewCompany from "./components/AddNewCompany/AddNewCompany";
+import FunnelsPage from "./pages/FunnelsPage/FunnelsPage";
 
 function App() {
     const { isAuthenticated } = useAuth0();
@@ -51,9 +51,9 @@ function App() {
                     <Route path="/review/:id" element={<ReviewPage />} />
                     <Route path="/settings" element={<SettingsPage />} />
 
-                    <Route path="/help-center" element={<HelpCenterPage />} />
+                    <Route path="/funnels" element={<FunnelsPage />} />
 
-                    <Route path="/construction" element={<MaintenancePage />} />
+                    <Route path="/help-center" element={<HelpCenterPage />} />
 
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>

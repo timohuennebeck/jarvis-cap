@@ -10,13 +10,14 @@ import kanbanImg from "../../assets/icons/layout-4.svg";
 import { getContacts } from "../../utils/api";
 
 // libraries
+import Papa from "papaparse";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Papa from "papaparse";
 import { addNewContact } from "../../utils/api";
 import { useRef } from "react";
 import { useOutletContext } from "react-router-dom";
+import { getContactsFunnel } from "../../utils/contactsFunnelBackend";
 
 export default function ContactsPage() {
     const [currentUser] = useOutletContext();
@@ -24,6 +25,7 @@ export default function ContactsPage() {
     const [parsedData, setParsedData] = useState([]);
     const [updateMessage, setUpdateMessage] = useState(false);
     const [updateStatus, setUpdateStatus] = useState([]);
+    const [contactsFunnel, setContactsFunnel] = useState([]);
     const [filteredContacts, setFilteredContacts] = useState([]);
 
     const userValues = useRef();
@@ -31,14 +33,23 @@ export default function ContactsPage() {
     useEffect(() => {
         getContacts().then(({ data }) => {
             setContactsData(data.filter((item) => item.users_id === currentUser.id));
+        });
+        getContactsFunnel().then(({ data }) => {
+            const filteredData = data.filter((item) => item.users_id === currentUser.id);
+            setContactsFunnel(filteredData[0].status);
+        });
+    }, [currentUser]);
+
+    useEffect(() => {
+        getContacts().then(({ data }) => {
             setFilteredContacts(
                 data.filter(
                     (person) =>
-                        person.status === "To Be Contacted" && person.users_id === currentUser.id
+                        person.status === contactsFunnel && person.users_id === currentUser.id
                 )
             );
         });
-    }, [currentUser]);
+    }, [contactsFunnel, currentUser]);
 
     const handleChange = (e) => {
         setUpdateStatus({ ...updateStatus, [e.target.name]: e.target.value });
@@ -46,7 +57,7 @@ export default function ContactsPage() {
 
     useEffect(() => {
         setFilteredContacts(contactsData.filter((person) => person.status === updateStatus.status));
-    }, [updateStatus, updateMessage]);
+    }, [updateStatus, contactsData]);
 
     const resetMessage = () => {
         setUpdateMessage(false);
@@ -114,7 +125,7 @@ export default function ContactsPage() {
                             <img src={kanbanImg} alt="" />
                         </Link>
                         <div className="contacts__dropdown-ctn-field">
-                            <DropdownField value={updateStatus.status} onChange={handleChange} />
+                            <DropdownField onChange={handleChange} />
                         </div>
                     </div>
                     <p className="contacts__dropdown-amount">

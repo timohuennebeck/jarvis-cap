@@ -5,7 +5,6 @@ import calendarImg from "../../assets/icons/calendar-month.svg";
 import tagImg from "../../assets/icons/price-tag.svg";
 import usersImg from "../../assets/icons/users.svg";
 import applicationsImg from "../../assets/icons/add-note.svg";
-import rejectionsImg from "../../assets/icons/briefcase.svg";
 import { useOutletContext } from "react-router-dom";
 import { useRef } from "react";
 
@@ -18,13 +17,21 @@ import {
     getThisMonthContacts,
     updateUser,
 } from "../../utils/api";
+import { getCompaniesFunnel } from "../../utils/companiesFunnelBackend";
+
 import { useState } from "react";
 import { useEffect } from "react";
+import { getContactsFunnel } from "../../utils/contactsFunnelBackend";
+import DashboardFunnels from "../../components/DashboardFunnels/DashboardFunnels";
 
 export default function DashboardPage() {
     const [currentUser, setCurrentUser] = useOutletContext();
     const [contactsData, setContactsData] = useState([]);
+    const [contactsFunnelData, setContactsFunnelData] = useState([]);
+
     const [companiesData, setCompaniesData] = useState([]);
+    const [companiesFunnelData, setFunnelCompaniesData] = useState([]);
+
     const [currentMonthContacts, setCurrentMonthContacts] = useState([]);
     const [currentMonthDates, setCurrentMonthDates] = useState([]);
     const [lastMonthContacts, setLastMonthContacts] = useState([]);
@@ -55,6 +62,12 @@ export default function DashboardPage() {
         getLastMonthCompanies().then(({ data }) => {
             setLastMonthDates(filterUser(data));
         });
+        getContactsFunnel().then(({ data }) => {
+            setContactsFunnelData(filterUser(data));
+        });
+        getCompaniesFunnel().then(({ data }) => {
+            setFunnelCompaniesData(filterUser(data));
+        });
     }, [currentUser]);
 
     const handleChange = (e) => {
@@ -63,14 +76,6 @@ export default function DashboardPage() {
         });
         setCurrentUser({ ...currentUser, [e.target.name]: e.target.value });
     };
-
-    const rejectionsThisMonth = currentMonthDates.filter((item) => item.status === "Rejected");
-    const rejectionsLastMonth = lastMonthDates.filter((item) => item.status === "Rejected");
-    const rejectionsChange = ((rejectionsThisMonth.length - rejectionsLastMonth.length) / 1) * 100;
-
-    if (!contactsData) {
-        return null;
-    }
 
     return (
         <div className="dashboard">
@@ -128,14 +133,12 @@ export default function DashboardPage() {
                     </p>
                 </div>
                 <iframe
-                className="dashboard__ctn-video"
-                width="100%"
-                height="500rem"
+                    title="demo"
+                    className="dashboard__ctn-video"
+                    width="100%"
+                    height="500rem"
                     src="https://www.loom.com/embed/4edc34eb6a634d698ed1601e63d3d911"
-                    frameborder="0"
-                    webkitallowfullscreen
-                    mozallowfullscreen
-                    allowfullscreen
+                    frameBorder="0"
                 ></iframe>
                 <div className="dashboard__ctn-stats">
                     <div className="dashboard__ctn-stats-title">
@@ -175,202 +178,27 @@ export default function DashboardPage() {
                             </div>
                         </div>
                     </div>
-                    <div className="dashboard__ctn-stats-title">
-                        <img src={rejectionsImg} alt="" />
-                        <div className="dashboard__ctn-stats-title-content">
-                            <p className="dashboard__ctn-stats-title-content-name">
-                                Rejections Received
-                            </p>
-                            <div className="dashboard__ctn-stats-title-content-div">
-                                <p>
-                                    {rejectionsThisMonth.length === 0
-                                        ? 0
-                                        : rejectionsThisMonth.length}
-                                </p>
-                                <p
-                                    className={
-                                        rejectionsChange > 0
-                                            ? "dashboard__ctn-stats-title-content-div-color negative"
-                                            : "dashboard__ctn-stats-title-content-div-color"
-                                    }
-                                >
-                                    {`${rejectionsChange}%`}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div className="dashboard__stats">
                 <div className="dashboard__stats-contacts">
                     <p className="dashboard__stats-contacts-header">Funnel - Contacts</p>
                     <div className="dashboard__stats-contacts-indv">
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>To Be Contacted</p>
-                            <p>
-                                {
-                                    contactsData.filter(
-                                        (person) => person.status === "To Be Contacted"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>LinkedIn CR Accepted</p>
-                            <p>
-                                {
-                                    contactsData.filter(
-                                        (person) => person.status === "LinkedIn CR Accepted"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Awaiting Response</p>
-                            <p>
-                                {
-                                    contactsData.filter(
-                                        (person) => person.status === "Awaiting Response"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Followed Up [Pre-Conversation]</p>
-                            <p>
-                                {
-                                    contactsData.filter(
-                                        (person) =>
-                                            person.status === "Followed Up [Pre-Conversation]"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Coffee Conversation Scheduled</p>
-                            <p>
-                                {
-                                    contactsData.filter(
-                                        (person) =>
-                                            person.status === "Coffee Conversation Scheduled"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Followed Up [Post-Conversation]</p>
-                            <p>
-                                {
-                                    contactsData.filter(
-                                        (person) =>
-                                            person.status === "Followed Up [Post-Conversation]"
-                                    ).length
-                                }
-                            </p>
-                        </div>
+                        {contactsFunnelData.map((item) => {
+                            return (
+                                <DashboardFunnels key={item.id} data={item} value={contactsData} />
+                            );
+                        })}
                     </div>
                 </div>
                 <div className="dashboard__stats-networking">
                     <p className="dashboard__stats-networking-header">Funnel - Companies</p>
                     <div className="dashboard__stats-networking-indv">
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Preparing</p>
-                            <p>
-                                {
-                                    companiesData.filter((person) => person.status === "Preparing")
-                                        .length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Messaged Recruiter</p>
-                            <p>
-                                {
-                                    companiesData.filter(
-                                        (person) => person.status === "Messaged Recruiter"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>VC Conversation Scheduled</p>
-                            <p>
-                                {
-                                    companiesData.filter(
-                                        (person) => person.status === "VC Conversation Scheduled"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Preparing Documents</p>
-                            <p>
-                                {
-                                    companiesData.filter(
-                                        (person) => person.status === "Preparing Documents"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Followed Up [Pre-Interview]</p>
-                            <p>
-                                {
-                                    companiesData.filter(
-                                        (person) => person.status === "Followed Up [Pre-Interview]"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Interview Scheduled</p>
-                            <p>
-                                {
-                                    companiesData.filter(
-                                        (person) => person.status === "Interview Scheduled"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Interview Finished</p>
-                            <p>
-                                {
-                                    companiesData.filter(
-                                        (person) => person.status === "Interview Finished"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Followed Up [Post-Interview]</p>
-                            <p>
-                                {
-                                    companiesData.filter(
-                                        (person) => person.status === "Followed Up [Post-Interview]"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Negotiating</p>
-                            <p>
-                                {
-                                    companiesData.filter(
-                                        (person) => person.status === "Negotiating"
-                                    ).length
-                                }
-                            </p>
-                        </div>
-                        <div className="dashboard__stats-contacts-indv-name">
-                            <p>Rejected</p>
-                            <p>
-                                {
-                                    companiesData.filter((person) => person.status === "Rejected")
-                                        .length
-                                }
-                            </p>
-                        </div>
+                        {companiesFunnelData.map((item) => {
+                            return (
+                                <DashboardFunnels key={item.id} data={item} value={companiesData} />
+                            );
+                        })}
                     </div>
                 </div>
             </div>
