@@ -28,7 +28,7 @@ export default function SBNavigation() {
                 </div>
                 <div className="nav-list__ctn-main">
                     <ButtonWithLink link="/" name="Dashboard" img={dashhboardImg} />
-                    <ButtonWithLink link="/todo" name="To-Do" img={trackerImg} />
+                    <ButtonWithLink link="/todos" name="To-Do" img={trackerImg} />
                     <ButtonWithLink link="/contacts" name="Contacts" img={contactsImg} />
                     <ButtonWithLink link="/companies" name="Companies" img={companiesImg} />
                     {/* <ButtonWithLink link="/review/1" name="Review" img={reviewImg} /> */}

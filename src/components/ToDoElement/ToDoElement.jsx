@@ -1,10 +1,10 @@
 import "./ToDoElement.scss";
 import minusImg from "../../assets/icons/minus.svg";
-import { deleteContactFunnel } from "../../utils/contactsFunnelBackend";
+import { deleteToDo } from "../../utils/toDosBackend";
 
 export default function ToDoElement({ id, name, value, onChange, updateList, setUpdateList }) {
-    const deleteFunnel = async () => {
-        deleteContactFunnel({ id }).then(() => {
+    const deleteToDoElement = async () => {
+        deleteToDo({ id }).then(() => {
             setUpdateList(!updateList);
         });
     };
@@ -20,7 +20,7 @@ export default function ToDoElement({ id, name, value, onChange, updateList, set
                         onChange={onChange}
                     />
                 </div>
-                <div className="input-funnel__delete" onClick={deleteFunnel}>
+                <div className="input-funnel__delete" onClick={deleteToDoElement}>
                     <img src={minusImg} alt="" />
                 </div>
             </div>

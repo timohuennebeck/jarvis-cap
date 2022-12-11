@@ -43,18 +43,6 @@ export default function UploadContactsFunnel() {
     return (
         <form className="upload-contacts" ref={userValues}>
             <p className="upload-contacts__header">Funnel - Contacts</p>
-            {funnelData.map((item) => {
-                return (
-                    <InputFieldFunnels
-                        name={item.status}
-                        value={item.status}
-                        key={item.id}
-                        id={item.id}
-                        updateList={updateList}
-                        setUpdateList={setUpdateList}
-                    />
-                );
-            })}
             <div className="upload-contacts__upload">
                 <div className="upload-contacts__upload-input">
                     <label className="upload-contacts__upload-input-label">Funnel Name</label>
@@ -75,6 +63,18 @@ export default function UploadContactsFunnel() {
                     <p className="error__message">This field is required</p>
                 </div>
             )}
+            {funnelData.map((item) => {
+                return (
+                    <InputFieldFunnels
+                        name={item.status}
+                        value={item.status}
+                        key={item.id}
+                        id={item.id}
+                        updateList={updateList}
+                        setUpdateList={setUpdateList}
+                    />
+                );
+            })}
         </form>
     );
 }

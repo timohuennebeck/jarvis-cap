@@ -23,6 +23,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getContactsFunnel } from "../../utils/contactsFunnelBackend";
 import DashboardFunnels from "../../components/DashboardFunnels/DashboardFunnels";
+import { Link } from "react-router-dom";
+import { getToDos } from "../../utils/toDosBackend";
 
 export default function DashboardPage() {
     const [currentUser, setCurrentUser] = useOutletContext();
@@ -31,6 +33,8 @@ export default function DashboardPage() {
 
     const [companiesData, setCompaniesData] = useState([]);
     const [companiesFunnelData, setFunnelCompaniesData] = useState([]);
+
+    const [toDosData, setToDosData] = useState([]);
 
     const [currentMonthContacts, setCurrentMonthContacts] = useState([]);
     const [currentMonthDates, setCurrentMonthDates] = useState([]);
@@ -49,6 +53,9 @@ export default function DashboardPage() {
         });
         getCompanies().then(({ data }) => {
             setCompaniesData(filterUser(data));
+        });
+        getToDos().then(({ data }) => {
+            setToDosData(filterUser(data));
         });
         getThisMonthContacts().then(({ data }) => {
             setCurrentMonthContacts(filterUser(data));
@@ -182,24 +189,57 @@ export default function DashboardPage() {
             </div>
             <div className="dashboard__stats">
                 <div className="dashboard__stats-contacts">
-                    <p className="dashboard__stats-contacts-header">Funnel - Contacts</p>
-                    <div className="dashboard__stats-contacts-indv">
-                        {contactsFunnelData.map((item) => {
-                            return (
-                                <DashboardFunnels key={item.id} data={item} value={contactsData} />
-                            );
-                        })}
+                    <div className="dashboard__stats-contacts-element">
+                        <p className="dashboard__stats-contacts-header">Funnel - Contacts</p>
+                        <div className="dashboard__stats-contacts-indv">
+                            {contactsFunnelData.map((item) => {
+                                return (
+                                    <DashboardFunnels
+                                        key={item.id}
+                                        data={item}
+                                        value={contactsData}
+                                    />
+                                );
+                            })}
+                        </div>
                     </div>
+                    <Link className="dashboard__stats-contacts-link" to="/funnels">
+                        Explore More
+                    </Link>
                 </div>
                 <div className="dashboard__stats-networking">
-                    <p className="dashboard__stats-networking-header">Funnel - Companies</p>
-                    <div className="dashboard__stats-networking-indv">
-                        {companiesFunnelData.map((item) => {
-                            return (
-                                <DashboardFunnels key={item.id} data={item} value={companiesData} />
-                            );
-                        })}
+                    <div className="dashboard__stats-networking-element">
+                        <p className="dashboard__stats-networking-header">Funnel - Companies</p>
+                        <div className="dashboard__stats-networking-indv">
+                            {companiesFunnelData.map((item) => {
+                                return (
+                                    <DashboardFunnels
+                                        key={item.id}
+                                        data={item}
+                                        value={companiesData}
+                                    />
+                                );
+                            })}
+                        </div>
                     </div>
+                    <Link className="dashboard__stats-networking-link" to="/funnels">
+                        Explore More
+                    </Link>
+                </div>
+                <div className="dashboard__stats-todos">
+                    <div className="dashboard__stats-todos-element">
+                        <p className="dashboard__stats-todos-header">To-Do - List</p>
+                        <div className="dashboard__stats-todos-indv">
+                            {toDosData.map((item) => {
+                                return (
+                                    <DashboardFunnels key={item.id} data={item} value={toDosData} />
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <Link className="dashboard__stats-todos-link" to="/todos">
+                        Explore More
+                    </Link>
                 </div>
             </div>
         </div>

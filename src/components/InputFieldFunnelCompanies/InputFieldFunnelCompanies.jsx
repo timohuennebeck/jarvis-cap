@@ -11,6 +11,7 @@ export default function InputFieldFunnelCompanies({
     setUpdateList,
 }) {
     const deleteFunnel = async () => {
+        console.log(id);
         deleteCompanyFunnel({ id }).then(() => {
             setUpdateList(!updateList);
         });

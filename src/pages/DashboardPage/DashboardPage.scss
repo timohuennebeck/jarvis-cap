@@ -111,12 +111,19 @@
         }
 
         &-contacts,
-        &-networking {
+        &-networking,
+        &-todos {
             @include flex-column;
+            justify-content: space-between;
             gap: $gap-default;
             border-radius: $border-radius-default;
             padding: 1rem;
             background-color: #fff;
+
+            &-element {
+                @include flex-column;
+                gap: $gap-default;
+            }
 
             &-header {
                 font-size: 0.8125rem;
@@ -126,11 +133,32 @@
             &-indv {
                 @include flex-column;
                 gap: $gap-default;
+                overflow: scroll;
+                min-height: 12.5rem;
+                max-height: 12.5rem;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
 
                 &-name {
                     @include flex-vertical;
                     justify-content: space-between;
+
+                    &-length {
+                        max-width: 15rem;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
                 }
+            }
+
+            &-link {
+                text-decoration: none;
+                font-size: 0.8125rem;
+                color: #000;
+                font-weight: 700;
             }
         }
     }

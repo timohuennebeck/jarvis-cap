@@ -39,7 +39,7 @@ function App() {
                 <Route element={<UserInterfaceLYT />}>
                     <Route path="/" element={<DashboardPage />} />
 
-                    <Route path="/todo" element={<ToDoPage />} />
+                    <Route path="/todos" element={<ToDoPage />} />
 
                     <Route path="/contacts" element={<ContactsPage />} />
                     <Route path="/contacts-kanban" element={<KanbanContactsPage />} />
