@@ -1,0 +1,31 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.input-funnel {
+    display: flex;
+    gap: $gap-default;
+
+    &__input {
+        @include flex-vertical;
+        background-color: #fff;
+        border-radius: $border-radius-default;
+        padding: $border-padding-default;
+        gap: $gap-default;
+        width: 100%;
+
+        &-name {
+            width: 100%;
+            border: none;
+            outline: none;
+        }
+    }
+
+    &__delete {
+        @include flex;
+        flex-shrink: 0;
+        background-color: #fff;
+        border-radius: $border-radius-default;
+        padding: $border-padding-default;
+        cursor: pointer;
+    }
+}

@@ -1,4 +1,4 @@
-import "./UploadCompaniesFunnel.scss";
+import "./ToDoPage.scss";
 
 import { useEffect } from "react";
 import { addNewCompanyFunnel, getCompaniesFunnel } from "../../utils/companiesFunnelBackend";
@@ -6,11 +6,11 @@ import { useRef } from "react";
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import plusImg from "../../assets/icons/plus.svg";
-import InputFieldFunnelCompanies from "../InputFieldFunnelCompanies/InputFieldFunnelCompanies";
+import ToDoElement from "../../components/ToDoElement/ToDoElement";
 
-export default function UploadCompaniesFunnel() {
+export default function ToDoPage() {
     const [currentUser] = useOutletContext();
-    const [funnelData, setFunnelData] = useState([]);
+    const [toDoData, setToDoData] = useState([]);
     const [errorMessage, setErrorMessage] = useState([]);
     const [updateList, setUpdateList] = useState(false);
 
@@ -18,7 +18,7 @@ export default function UploadCompaniesFunnel() {
 
     useEffect(() => {
         getCompaniesFunnel().then(({ data }) => {
-            setFunnelData(data.filter((item) => item.users_id === currentUser.id));
+            setToDoData(data.filter((item) => item.users_id === currentUser.id));
         });
     }, [currentUser, updateList]);
 
@@ -42,10 +42,23 @@ export default function UploadCompaniesFunnel() {
 
     return (
         <form className="upload-contacts" ref={userValues}>
-            <p className="upload-contacts__header">Funnel - Companies</p>
-            {funnelData.map((item) => {
+            <div className="upload-contacts__upload">
+                <div className="upload-contacts__upload-input">
+                    <label className="upload-contacts__upload-input-label">+ New Task</label>
+                    <input
+                        className="upload-contacts__upload-input-border"
+                        label="+ New Task"
+                        placeholder="Insert Task Name"
+                        name="status"
+                    />
+                </div>
+                <div className="upload-contacts__upload-button" onClick={handleSubmit}>
+                    <img src={plusImg} alt="" />
+                </div>
+            </div>
+            {toDoData.map((item) => {
                 return (
-                    <InputFieldFunnelCompanies
+                    <ToDoElement
                         name={item.status}
                         value={item.status}
                         key={item.id}
@@ -55,20 +68,6 @@ export default function UploadCompaniesFunnel() {
                     />
                 );
             })}
-            <div className="upload-contacts__upload">
-                <div className="upload-contacts__upload-input">
-                    <label className="upload-contacts__upload-input-label">Funnel Name</label>
-                    <input
-                        className="upload-contacts__upload-input-border"
-                        label="Funnel Name"
-                        placeholder="Insert Your Funnel Name"
-                        name="status"
-                    />
-                </div>
-                <div className="upload-contacts__upload-button" onClick={handleSubmit}>
-                    <img src={plusImg} alt="" />
-                </div>
-            </div>
             {!errorMessage && (
                 <div className="error">
                     <p className="error__sign">!</p>

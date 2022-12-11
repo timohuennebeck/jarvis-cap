@@ -37,18 +37,7 @@ export default function AddNewContact() {
             position: userValues.current.position.value,
             email: userValues.current.email.value,
             phone: userValues.current.phone.value,
-            linked_in: userValues.current.linked_in.value,
-            company: userValues.current.company.value,
-            street_name: userValues.current.street_name.value,
-            city: userValues.current.city.value,
-            state: userValues.current.state.value,
-            postcode: userValues.current.postcode.value,
-            country: userValues.current.country.value,
-            icebreaker: userValues.current.icebreaker.value,
-            paragraph_one: userValues.current.paragraph_one.value,
-            paragraph_two: userValues.current.paragraph_two.value,
-            paragraph_three: userValues.current.paragraph_three.value,
-            call_to_action: userValues.current.call_to_action.value,
+            linked_in_url: userValues.current.linked_in_url.value,
         };
 
         setUserInput(addInputData);
@@ -102,113 +91,45 @@ export default function AddNewContact() {
                     <div className="edit-contacts__input-personal">
                         <InputFieldError
                             label="First Name"
-                            placeholder="First Name"
+                            placeholder="Insert First Name"
                             name="first_name"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="Last Name"
-                            placeholder="Last Name"
+                            placeholder="Insert Last Name"
                             name="last_name"
                             errorMessage={errorMessage}
                         />
 
                         <InputFieldError
                             label="Position"
-                            placeholder="Position"
+                            placeholder="Insert Position"
                             name="position"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="Email"
-                            placeholder="Email"
+                            placeholder="Insert Email"
                             name="email"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="Phone"
-                            placeholder="Phone"
+                            placeholder="Insert Phone"
                             name="phone"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="Image URL"
-                            placeholder="Image URL"
+                            placeholder="Insert Image URL"
                             name="image_url"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="LinkedIn"
-                            placeholder="LinkedIn"
-                            name="linked_in"
-                            errorMessage={errorMessage}
-                        />
-                    </div>
-                    <div className="edit-contacts__input-business">
-                        <InputFieldError
-                            label="Company"
-                            placeholder="Company"
-                            name="company"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="Street Name"
-                            placeholder="Street Name"
-                            name="street_name"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="City"
-                            placeholder="City"
-                            name="city"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="State"
-                            placeholder="State"
-                            name="state"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="Postcode"
-                            placeholder="Postcode"
-                            name="postcode"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="Country"
-                            placeholder="Country"
-                            name="country"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="Icebreaker"
-                            placeholder="Icebreaker"
-                            name="icebreaker"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="Paragraph 1"
-                            placeholder="Paragraph 1"
-                            name="paragraph_one"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="Paragraph 2"
-                            placeholder="Paragraph 2"
-                            name="paragraph_two"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="Paragraph 3"
-                            placeholder="Paragraph 3"
-                            name="paragraph_three"
-                            errorMessage={errorMessage}
-                        />
-                        <InputFieldError
-                            label="Call To Action"
-                            placeholder="Call To Action"
-                            name="call_to_action"
+                            placeholder="Insert LinkedIn"
+                            name="linked_in_url"
                             errorMessage={errorMessage}
                         />
                     </div>

@@ -97,43 +97,43 @@ export default function AddNewCompany() {
                     <div className="edit-contacts__input-personal">
                         <InputFieldError
                             label="Name"
-                            placeholder="Name"
+                            placeholder="Insert Name"
                             name="name"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="Position To Fill"
-                            placeholder="Position To Fill"
+                            placeholder="Insert Position To Fill"
                             name="position_to_fill"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="Posting URL"
-                            placeholder="Posting URL"
+                            placeholder="Insert Posting URL"
                             name="posting_url"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="Location"
-                            placeholder="Location"
+                            placeholder="Insert Location"
                             name="location"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="Postcode"
-                            placeholder="Postcode"
+                            placeholder="Insert Postcode"
                             name="postcode"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="Street Name"
-                            placeholder="Street Name"
+                            placeholder="Insert Street Name"
                             name="street_name"
                             errorMessage={errorMessage}
                         />
                         <InputFieldError
                             label="State"
-                            placeholder="State"
+                            placeholder="Insert State"
                             name="state"
                             errorMessage={errorMessage}
                         />

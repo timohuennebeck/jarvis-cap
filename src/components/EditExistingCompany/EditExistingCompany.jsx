@@ -104,7 +104,7 @@ export default function EditExistingCompany() {
                     <div className="edit-contacts__input-personal">
                         <InputFieldError
                             label="Name"
-                            placeholder="Name"
+                            placeholder="Insert Name"
                             name="name"
                             value={userInput.name}
                             onChange={handleChange}
@@ -112,7 +112,7 @@ export default function EditExistingCompany() {
                         />
                         <InputFieldError
                             label="Position To Fill"
-                            placeholder="Position To Fill"
+                            placeholder="Insert Position To Fill"
                             name="position_to_fill"
                             value={userInput.position_to_fill}
                             onChange={handleChange}
@@ -120,7 +120,7 @@ export default function EditExistingCompany() {
                         />
                         <InputFieldError
                             label="Posting URL"
-                            placeholder="Posting URL"
+                            placeholder="Insert Posting URL"
                             name="posting_url"
                             value={userInput.posting_url}
                             onChange={handleChange}
@@ -128,7 +128,7 @@ export default function EditExistingCompany() {
                         />
                         <InputFieldError
                             label="Location"
-                            placeholder="Location"
+                            placeholder="Insert Location"
                             name="location"
                             value={userInput.location}
                             onChange={handleChange}
@@ -136,7 +136,7 @@ export default function EditExistingCompany() {
                         />
                         <InputFieldError
                             label="Postcode"
-                            placeholder="Postcode"
+                            placeholder="Insert Postcode"
                             name="postcode"
                             value={userInput.postcode}
                             onChange={handleChange}
@@ -144,7 +144,7 @@ export default function EditExistingCompany() {
                         />
                         <InputFieldError
                             label="Street Name"
-                            placeholder="Street Name"
+                            placeholder="Insert Street Name"
                             name="street_name"
                             value={userInput.street_name}
                             onChange={handleChange}
@@ -152,7 +152,7 @@ export default function EditExistingCompany() {
                         />
                         <InputFieldError
                             label="State"
-                            placeholder="State"
+                            placeholder="Insert State"
                             name="state"
                             value={userInput.state}
                             onChange={handleChange}

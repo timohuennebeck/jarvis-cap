@@ -24,6 +24,7 @@ import CompaniesPage from "./pages/CompaniesPage/CompaniesPage";
 import EditExistingCompany from "./components/EditExistingCompany/EditExistingCompany";
 import AddNewCompany from "./components/AddNewCompany/AddNewCompany";
 import FunnelsPage from "./pages/FunnelsPage/FunnelsPage";
+import ToDoPage from "./pages/ToDoPage/ToDoPage";
 
 function App() {
     const { isAuthenticated } = useAuth0();
@@ -37,6 +38,8 @@ function App() {
             <Routes>
                 <Route element={<UserInterfaceLYT />}>
                     <Route path="/" element={<DashboardPage />} />
+
+                    <Route path="/todo" element={<ToDoPage />} />
 
                     <Route path="/contacts" element={<ContactsPage />} />
                     <Route path="/contacts-kanban" element={<KanbanContactsPage />} />
