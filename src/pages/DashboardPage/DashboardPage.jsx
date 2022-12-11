@@ -192,15 +192,22 @@ export default function DashboardPage() {
                     <div className="dashboard__stats-contacts-element">
                         <p className="dashboard__stats-contacts-header">Funnel - Contacts</p>
                         <div className="dashboard__stats-contacts-indv">
-                            {contactsFunnelData.map((item) => {
-                                return (
-                                    <DashboardFunnels
-                                        key={item.id}
-                                        data={item}
-                                        value={contactsData}
-                                    />
-                                );
-                            })}
+                            {contactsFunnelData.length !== 0 ? (
+                                contactsFunnelData.map((item) => {
+                                    return (
+                                        <DashboardFunnels
+                                            key={item.id}
+                                            data={item}
+                                            value={contactsData}
+                                        />
+                                    );
+                                })
+                            ) : (
+                                <p className="faded">
+                                    Please add some funnels for the Contacts to start populating
+                                    some data here.
+                                </p>
+                            )}
                         </div>
                     </div>
                     <Link className="dashboard__stats-contacts-link" to="/funnels">
@@ -211,15 +218,22 @@ export default function DashboardPage() {
                     <div className="dashboard__stats-networking-element">
                         <p className="dashboard__stats-networking-header">Funnel - Companies</p>
                         <div className="dashboard__stats-networking-indv">
-                            {companiesFunnelData.map((item) => {
-                                return (
-                                    <DashboardFunnels
-                                        key={item.id}
-                                        data={item}
-                                        value={companiesData}
-                                    />
-                                );
-                            })}
+                            {companiesFunnelData.length !== 0 ? (
+                                companiesFunnelData.map((item) => {
+                                    return (
+                                        <DashboardFunnels
+                                            key={item.id}
+                                            data={item}
+                                            value={companiesData}
+                                        />
+                                    );
+                                })
+                            ) : (
+                                <p className="faded">
+                                    Please add some funnels for the Companies to start populating
+                                    some data here.
+                                </p>
+                            )}
                         </div>
                     </div>
                     <Link className="dashboard__stats-networking-link" to="/funnels">
@@ -230,11 +244,21 @@ export default function DashboardPage() {
                     <div className="dashboard__stats-todos-element">
                         <p className="dashboard__stats-todos-header">To-Do - List</p>
                         <div className="dashboard__stats-todos-indv">
-                            {toDosData.map((item) => {
-                                return (
-                                    <DashboardFunnels key={item.id} data={item} value={toDosData} />
-                                );
-                            })}
+                            {toDosData.length !== 0 ? (
+                                toDosData.map((item) => {
+                                    return (
+                                        <DashboardFunnels
+                                            key={item.id}
+                                            data={item}
+                                            value={toDosData}
+                                        />
+                                    );
+                                })
+                            ) : (
+                                <p className="faded">
+                                    Please add some To Do's to start populating some data here.
+                                </p>
+                            )}
                         </div>
                     </div>
                     <Link className="dashboard__stats-todos-link" to="/todos">
