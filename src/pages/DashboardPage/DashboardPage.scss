@@ -134,7 +134,6 @@
                 @include flex-column;
                 gap: $gap-default;
                 overflow: scroll;
-                min-height: 12.5rem;
                 max-height: 12.5rem;
 
                 &::-webkit-scrollbar {
