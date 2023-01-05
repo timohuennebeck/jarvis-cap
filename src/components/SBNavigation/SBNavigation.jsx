@@ -10,6 +10,7 @@ import contactsImg from "../../assets/icons/users.svg";
 import companiesImg from "../../assets/icons/briefcase.svg";
 import reviewImg from "../../assets/icons/eye.svg";
 import funnelsImg from "../../assets/icons/grid.svg";
+import aiImg from "../../assets/icons/code.svg";
 import helpCenterImg from "../../assets/icons/bell.svg";
 import settingsImg from "../../assets/icons/cog.svg";
 import logOutImg from "../../assets/icons/lock-alt.svg";
@@ -33,6 +34,7 @@ export default function SBNavigation() {
                     <ButtonWithLink link="/companies" name="Companies" img={companiesImg} />
                     {/* <ButtonWithLink link="/review/1" name="Review" img={reviewImg} /> */}
                     <ButtonWithLink link="/funnels" name="Funnels" img={funnelsImg} />
+                    <ButtonWithLink link="/ai-generator" name="AI Generator" img={aiImg} />
                 </div>
             </div>
 

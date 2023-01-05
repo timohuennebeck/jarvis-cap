@@ -25,6 +25,7 @@ import EditExistingCompany from "./components/EditExistingCompany/EditExistingCo
 import AddNewCompany from "./components/AddNewCompany/AddNewCompany";
 import FunnelsPage from "./pages/FunnelsPage/FunnelsPage";
 import ToDoPage from "./pages/ToDoPage/ToDoPage";
+import AIGeneratorPage from "./pages/AIGeneratorPage/AIGeneratorPage";
 
 function App() {
     const { isAuthenticated } = useAuth0();
@@ -55,6 +56,8 @@ function App() {
                     <Route path="/settings" element={<SettingsPage />} />
 
                     <Route path="/funnels" element={<FunnelsPage />} />
+
+                    <Route path="/ai-generator" element={<AIGeneratorPage />} />
 
                     <Route path="/help-center" element={<HelpCenterPage />} />
 
