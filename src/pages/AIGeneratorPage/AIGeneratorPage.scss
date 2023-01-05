@@ -3,55 +3,77 @@
 
 .ai-generator {
     @include flex-column;
-    align-items: center;
-    height: 100%;
-    padding: 2.5rem 0;
+    height: 85vh;
+    gap: $gap-default;
 
-    &__container {
-        @include flex-column;
-        justify-content: space-between;
+    @include desktop {
         height: 100%;
-        width: 50%;
+    }
 
-        &-form {
-            display: flex;
-            width: 100%;
-            gap: $gap-default;
+    &__header {
+        @include flex-column;
+        gap: $gap-default;
+        background-color: #fff;
+        padding: 1.75rem;
+        border-radius: $border-radius-default;
+    }
 
-            &-input {
-                background-color: #fff;
-                border-radius: $border-radius-default;
-                padding: $border-padding-default;
-                border: none;
-                width: 100%;
-                outline: none;
-                resize: none;
-                height: 2.5rem;
+    &__response {
+        height: 100%;
+        background-color: #fff;
+        padding: 1.75rem;
+        border-radius: $border-radius-default;
 
-                &::-webkit-scrollbar {
-                    display: none;
-                }
+        &-indv {
+            &-fade {
+                opacity: 50%;
             }
+        }
+    }
 
-            &-button {
-                display: flex;
-                align-items: flex-end;
+    &__form {
+        @include flex-column;
+        width: 100%;
+        gap: $gap-default;
 
-                &-indv {
-                    border: none;
-                    padding: $btn-input-padding-default;
-                    border-radius: $border-radius-default;
-                    background-color: #000;
-                    color: #fff;
-                    font-size: 0.75rem;
-                    text-decoration: none;
-                    min-height: 2.5rem;
-                    max-height: 2.5rem;
+        @include desktop {
+            flex-direction: row;
+        }
 
-                    &:hover {
-                        transform: scale(1.05);
-                        cursor: pointer;
-                    }
+        &-input {
+            background-color: #fff;
+            border-radius: $border-radius-default;
+            padding: $border-padding-default;
+            border: none;
+            width: 100%;
+            outline: none;
+            resize: none;
+            height: 2.5rem;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        &-button {
+            display: flex;
+            align-items: flex-end;
+
+            &-indv {
+                border: none;
+                padding: $btn-input-padding-default;
+                border-radius: $border-radius-default;
+                background-color: #000;
+                color: #fff;
+                font-size: 0.75rem;
+                text-decoration: none;
+                min-height: 2.5rem;
+                max-height: 2.5rem;
+                width: 100%;
+
+                &:hover {
+                    transform: scale(1.05);
+                    cursor: pointer;
                 }
             }
         }
